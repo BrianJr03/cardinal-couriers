@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Apple",
+    "price": 1.99
+  },
+  {
+    "name": "Orange",
+    "price": 2.99
+  },
+  {
+    "name":"Bottled Water",
+    "price": 1.89
+  },
+  {
+    "name": "Ramen Noodles",
+    "price": 0.99
+  },
+  {
+    "name": "Mac and Cheese",
+    "price": 1.29
+  }
+]
