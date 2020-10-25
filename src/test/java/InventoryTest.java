@@ -1,11 +1,17 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import edu.bsu.cs222.finalProject.Inventory;
+import edu.bsu.cs222.finalProject.Item;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
+import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class InventoryTest
 {
@@ -28,6 +34,12 @@ public class InventoryTest
             singleItem[1] = item.getAsJsonObject().get("price").getAsString();
             itemsList.add(singleItem);
         }
+    }
 
+    @Test
+    public void testCanReturnFirstItemFromList() throws IOException {
+        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+        Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
+        Assertions.assertEquals("1.99", inventory.getItems().get(0).getPrice());
     }
 }
