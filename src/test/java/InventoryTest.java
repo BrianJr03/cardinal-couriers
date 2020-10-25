@@ -2,7 +2,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import edu.bsu.cs222.finalProject.Inventory;
-import edu.bsu.cs222.finalProject.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
