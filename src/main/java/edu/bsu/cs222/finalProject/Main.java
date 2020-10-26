@@ -23,7 +23,7 @@ public class Main {
             } else if (selection.equals("3")) {
                 editCart(cart);
             } else if (selection.equals("4")) {
-                //code to check out (not yet implemented)
+                System.out.println("This feature will be added in a future implementation!");
             }
             selection = selectMenuOption();
         }
@@ -42,8 +42,8 @@ public class Main {
         if (itemIndex == 0) {
             return;
         }
-        if (1 <= itemIndex && itemIndex < counter ) {
-            Item selectedItem = inventory.getItems().get(itemIndex-1);
+        if (1 <= itemIndex && itemIndex < counter) {
+            Item selectedItem = inventory.getItems().get(itemIndex - 1);
             System.out.println("How much " + selectedItem.getName() + " would you like to add to your cart?");
             int quantity = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < quantity; i++) {
@@ -73,7 +73,7 @@ public class Main {
         System.out.println("Select the number of the item you'd like to remove.");
         Scanner console = new Scanner(System.in);
         int selectedIndex = console.nextInt();
-        if (cart.getCartItems().get(selectedIndex-1)!=null) {
+        if (0 < selectedIndex && selectedIndex <= cart.getCartItems().size()) {
             cart.remove(cart.getCartItems().get(selectedIndex - 1));
             System.out.println("Item successfully removed from cart. Would you like to continue editing? Y or N");
             String continueResponse = console.next();
@@ -122,70 +122,4 @@ public class Main {
     }
 
 
-    public static void addItemsToCart() throws IOException {
-        Cart cart = new Cart(new ArrayList<>());
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
-
-        while (true) {
-            Scanner input = new Scanner(System.in);
-
-            displayItems(inventory);
-            System.out.println("\nWhat would you like to order today? ( '0' to exit )");
-
-            int itemToOrder = input.nextInt();
-            if (itemToOrder == 0) {
-                break;
-            }
-
-            System.out.println("\nPlease enter the quantity of this item.");
-            int quantity = input.nextInt();
-
-            for (int i = 0; i < quantity; i++) {
-
-                Item itemToCart = inventory.getItems().get(itemToOrder - 1);
-                cart.add(itemToCart);
-            }
-
-            System.out.println("-------------------");
-            System.out.println("Enter 'back' to add another item to your cart");
-            System.out.println("Enter 'view cart' to see your current cart");
-            System.out.println("-------------------");
-
-            while (true) {
-                String selection = input.nextLine();
-
-                if (selection.equalsIgnoreCase("back")) {
-                    break;
-                } else if (selection.equalsIgnoreCase("view cart")) {
-                    System.out.println("\nYour cart");
-                    System.out.println("\nEnter 'edit' to edit your cart. Enter 'back' to go back.");
-                    System.out.println("---------");
-
-                    int itemCounter = 0;
-                    for (Item item : cart.getCartItems()) {
-                        itemCounter++;
-                        String name = item.getName();
-                        String price = item.getPrice();
-                        System.out.printf("%d. %s | $%s\n", itemCounter, name, price);
-                    }
-
-                        System.out.println("---------");
-                        String edit = input.nextLine();
-
-                        if (edit.equalsIgnoreCase("edit")){
-                            System.out.println("Enter the number of the item you would like to remove.");
-                            System.out.println("\nEnter 'done' to finish editing.");
-                            String itemEdit = input.nextLine();
-                            while (!itemEdit.equalsIgnoreCase("done")){
-                                int itemNumber = Integer.parseInt(itemEdit);
-                                cart.getCartItems().remove(itemNumber-1);
-                            }
-                        }
-                        else if (edit.equalsIgnoreCase("done")){
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
+}
