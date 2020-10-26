@@ -19,7 +19,7 @@ public class Main {
             if (selection.equals("1")) {
                 addItemsToCart(storeInventory, cart);
             } else if (selection.equals("2")) {
-                //code to view cart
+                displayCart(cart);
             } else if (selection.equals("3")) {
                 //code to edit cart
             } else if (selection.equals("4")) {
@@ -53,6 +53,19 @@ public class Main {
         } else {
             System.out.println("No item exists under that number. Returning to main menu...");
         }
+    }
+
+    public static void displayCart(Cart cart) {
+        int counter = 1;
+        if (cart.getCartItems().isEmpty()) {
+            System.out.println("The cart is empty.\n");
+            return;
+        }
+        for (Item item : cart.getCartItems()) {
+            System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
+            counter++;
+        }
+        System.out.println();
     }
 
     public static void displayHeader() {
