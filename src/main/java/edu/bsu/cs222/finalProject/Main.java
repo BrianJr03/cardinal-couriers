@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
+import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
+
 public class Main
 {
     public static void main( String[] args ) throws IOException
