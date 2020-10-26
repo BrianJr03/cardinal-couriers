@@ -71,7 +71,7 @@ public class Main {
                     break;
                 } else if (selection.equalsIgnoreCase("view cart")) {
                     System.out.println("\nYour cart");
-                    System.out.println("\nEnter 'edit' to edit your cart.");
+                    System.out.println("\nEnter 'edit' to edit your cart. Enter 'back' to go back.");
                     System.out.println("---------");
 
                     int itemCounter = 0;
@@ -83,7 +83,10 @@ public class Main {
                     }
 
                         System.out.println("---------");
-                        break;
+                        String edit = input.nextLine();
+                        if (edit.equalsIgnoreCase("edit")){
+                            System.out.println("Enter the number of the item you would like to remove.");
+                        }
                     }
                 }
             }
