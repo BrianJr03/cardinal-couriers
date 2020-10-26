@@ -87,7 +87,7 @@ public class Main {
 
                         if (edit.equalsIgnoreCase("edit")){
                             System.out.println("Enter the number of the item you would like to remove.");
-                            System.out.println("\n Enter 'done' to finish editing.");
+                            System.out.println("\nEnter 'done' to finish editing.");
                             String itemEdit = input.nextLine();
                             while (!itemEdit.equalsIgnoreCase("done")){
                                 int itemNumber = Integer.parseInt(itemEdit);
