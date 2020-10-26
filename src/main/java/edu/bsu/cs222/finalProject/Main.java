@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +10,49 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Inventory storeInventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+        ArrayList<Item> cartItems = new ArrayList<>();
+        Cart cart = new Cart(cartItems);
         displayHeader();
-        addItemsToCart();
+        String selection = selectMenuOption();
+        while (!selection.equals("5")) {
+            if (selection.equals("1")) {
+                addItemsToCart(storeInventory, cart);
+            } else if (selection.equals("2")) {
+                //code to view cart
+            } else if (selection.equals("3")) {
+                //code to edit cart
+            } else if (selection.equals("4")) {
+                //code to check out (not yet implemented)
+            }
+            selection = selectMenuOption();
+        }
+    }
+
+    public static void addItemsToCart(Inventory inventory, Cart cart) {
+        System.out.println("-------------------------");
+        Scanner scanner = new Scanner(System.in);
+        int counter = 1;
+        for (Item item : inventory.getItems()) {
+            System.out.println(counter + ". " + item.prettyPrintItem());
+            counter++;
+        }
+        System.out.println("Enter the number of the item you'd like to order. Type 0 to go to main menu.");
+        int itemIndex = Integer.parseInt(scanner.nextLine());
+        if (itemIndex == 0) {
+            return;
+        }
+        if (1 <= itemIndex && itemIndex < counter ) {
+            Item selectedItem = inventory.getItems().get(itemIndex-1);
+            System.out.println("How much " + selectedItem.getName() + " would you like to add to your cart?");
+            int quantity = Integer.parseInt(scanner.nextLine());
+            for (int i = 0; i < quantity; i++) {
+                cart.add(selectedItem);
+            }
+            System.out.println("Item successfully added to cart. Returning to main menu...");
+        } else {
+            System.out.println("No item exists under that number. Returning to main menu...");
+        }
     }
 
     public static void displayHeader() {
@@ -18,14 +60,12 @@ public class Main {
         System.out.println("|      Thank You for choosing to Shop with      |");
         System.out.println("|                Grocery Shop BSU               |");
         System.out.println("*-----------------------------------------------*\n");
-        System.out.println("Our Available Items");
+        System.out.println("Main Menu");
         System.out.println("-------------------");
     }
 
-    public static void displayItems() throws IOException {
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+    public static void displayItems(Inventory inventory) throws IOException {
         ArrayList<Item> items = inventory.getItems();
-
         int itemCounter = 0;
         for (Item item : items) {
             itemCounter++;
@@ -35,6 +75,21 @@ public class Main {
         }
     }
 
+    public static void displayMainMenu() {
+        System.out.println("1. View and select items to add to cart.");
+        System.out.println("2. View cart.");
+        System.out.println("3. Edit cart.");
+        System.out.println("4. Checkout.");
+        System.out.println("5. Exit");
+    }
+
+    public static String selectMenuOption() {
+        Scanner console = new Scanner(System.in);
+        displayMainMenu();
+        return console.nextLine();
+    }
+
+
     public static void addItemsToCart() throws IOException {
         Cart cart = new Cart(new ArrayList<>());
         Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
@@ -42,7 +97,7 @@ public class Main {
         while (true) {
             Scanner input = new Scanner(System.in);
 
-            displayItems();
+            displayItems(inventory);
             System.out.println("\nWhat would you like to order today? ( '0' to exit )");
 
             int itemToOrder = input.nextInt();

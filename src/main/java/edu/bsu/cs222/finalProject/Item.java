@@ -17,6 +17,10 @@ public class Item {
     public String getPrice() {
         return price;
     }
+
+    public String prettyPrintItem() {
+        return String.format("%s | $%s", this.getName(), this.getPrice());
+    }
 }
 
 
