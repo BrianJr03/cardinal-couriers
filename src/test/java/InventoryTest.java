@@ -14,7 +14,6 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class InventoryTest
 {
-
     @Test
     public void getItemsFromInventory() throws IOException
     {
@@ -37,7 +36,7 @@ public class InventoryTest
 
     @Test
     public void testCanReturnFirstItemFromList() throws IOException {
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+        Inventory inventory = new Inventory(createArrayListOfItems( collectItemsFromResources() ));
         Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
         Assertions.assertEquals("1.99", inventory.getItems().get(0).getPrice());
     }

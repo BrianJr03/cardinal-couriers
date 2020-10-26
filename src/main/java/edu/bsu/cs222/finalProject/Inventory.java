@@ -1,6 +1,5 @@
 package edu.bsu.cs222.finalProject;
 
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private ArrayList<Item> items;
+    private final ArrayList<Item> items;
 
     public Inventory(ArrayList<Item> items) {
         this.items = items;
@@ -23,9 +22,10 @@ public class Inventory {
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();
-        for (int i = 0; i < itemData.size(); i++) {
-            Item newItem = new Item(itemData.get(i)[0], itemData.get(i)[1]);
-            itemsList.add(newItem);
+        for ( String[] itemDatum : itemData )
+        {
+            Item newItem = new Item( itemDatum[ 0 ] , itemDatum[ 1 ] );
+            itemsList.add( newItem );
         }
         return itemsList;
     }
@@ -49,5 +49,3 @@ public class Inventory {
         return itemsList;
     }
 }
-
-
