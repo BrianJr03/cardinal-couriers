@@ -1,6 +1,5 @@
 package edu.bsu.cs222.finalProject;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,14 +15,11 @@ public class Main {
         displayHeader();
         String selection = selectMenuOption();
         while (!selection.equals("5")) {
-            if (selection.equals("1")) {
-                addItemsToCart(storeInventory, cart);
-            } else if (selection.equals("2")) {
-                displayCart(cart);
-            } else if (selection.equals("3")) {
-                editCart(cart);
-            } else if (selection.equals("4")) {
-                System.out.println("This feature will be added in a future implementation!");
+            switch (selection) {
+                case "1" -> addItemsToCart(storeInventory, cart);
+                case "2" -> displayCart(cart);
+                case "3" -> editCart(cart);
+                case "4" -> System.out.println("This feature will be added in a future implementation!");
             }
             selection = selectMenuOption();
         }
@@ -79,9 +75,7 @@ public class Main {
             String continueResponse = console.next();
             if (continueResponse.equalsIgnoreCase("y")) {
                 editCart(cart);
-            } else {
-                return;
-            }
+            } 
         } else {
             System.out.println("There is no item with that index. Returning to main menu...");
         }
@@ -94,17 +88,6 @@ public class Main {
         System.out.println("*-----------------------------------------------*\n");
         System.out.println("Main Menu");
         System.out.println("-------------------");
-    }
-
-    public static void displayItems(Inventory inventory) throws IOException {
-        ArrayList<Item> items = inventory.getItems();
-        int itemCounter = 0;
-        for (Item item : items) {
-            itemCounter++;
-            String name = item.getName();
-            String price = item.getPrice();
-            System.out.printf("%d. %s | $%s\n", itemCounter, name, price);
-        }
     }
 
     public static void displayMainMenu() {

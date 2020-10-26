@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
@@ -32,6 +33,7 @@ public class InventoryTest
             singleItem[1] = item.getAsJsonObject().get("price").getAsString();
             itemsList.add(singleItem);
         }
+        System.out.println(Arrays.toString(itemsList.get(0)));
     }
 
     @Test
