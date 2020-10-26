@@ -1,28 +1,88 @@
 package edu.bsu.cs222.finalProject;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Main extends Application implements EventHandler<ActionEvent>
+public class Main
 {
-    public static void main(String[] args)
-    { launch( args ); }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception
+    public static void main( String[] args ) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
-
-        primaryStage.setTitle("Grocery Shop");
-        primaryStage.setScene(new Scene(root,725,615));
-        primaryStage.show();
+        displayHeader();
+        displayItems();
+        addItemsToCart();
     }
 
-    @Override
-    public void handle(ActionEvent event) {}
+    public static void displayHeader( )
+    {
+        System.out.println("\n*-----------------------------------------------*");
+        System.out.println("|      Thank You for choosing to Shop with      |");
+        System.out.println("|                Grocery Shop BSU               |");
+        System.out.println("*-----------------------------------------------*\n");
+        System.out.println("Our Available items");
+        System.out.println("-------------------");
+    }
+
+    public static void displayItems() throws IOException
+    {
+        Inventory inventory = new Inventory( createArrayListOfItems( collectItemsFromResources() ));
+        ArrayList < Item > items = inventory.getItems();
+
+        int itemCounter = 0;
+        for ( Item item : items )
+        {
+            itemCounter++;
+            String name = item.getName();
+            String price = item.getPrice();
+            System.out.printf( "%d. %s | $%s\n", itemCounter , name, price );
+        }
+    }
+
+    public static void addItemsToCart() throws IOException
+    {
+        Cart cart = new Cart(new ArrayList<>());
+        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+
+        while ( true )
+        {
+           Scanner input = new Scanner( System.in );
+
+           System.out.println("\nWhat would you like to order today? ( '0' to exit )");
+
+           int itemToOrder = input.nextInt();
+           if (itemToOrder == 0)
+           { break; }
+
+           Item itemToCart = inventory.getItems().get( itemToOrder-1 );
+           cart.add(itemToCart);
+
+           System.out.println("-------------------");
+           System.out.println("Enter 'back' to add another item to your cart");
+           System.out.println("Enter 'view cart' to see your current cart");
+           System.out.println("-------------------");
+
+           while ( true )
+           {
+               String selection = input.nextLine();
+
+               if (selection.equalsIgnoreCase( "back" ))
+               { break; }
+
+               else if (selection.equalsIgnoreCase( "view cart" ))
+               {
+                   System.out.println("\nYour cart");
+                   System.out.println("---------");
+
+                   for (Item item : cart.getCartItems())
+                   {
+                       String name = item.getName();
+                       String price = item.getPrice();
+                       System.out.printf( "%s | $%s\n" , name, price );
+                   }
+                   System.out.println("---------");
+                   break;
+               }
+           }
+       }
+    }
 }
