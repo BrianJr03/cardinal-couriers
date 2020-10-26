@@ -10,7 +10,6 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 public class Main {
     public static void main(String[] args) throws IOException {
         displayHeader();
-        displayItems();
         addItemsToCart();
     }
 
@@ -43,6 +42,7 @@ public class Main {
         while (true) {
             Scanner input = new Scanner(System.in);
 
+            displayItems();
             System.out.println("\nWhat would you like to order today? ( '0' to exit )");
 
             int itemToOrder = input.nextInt();
@@ -84,10 +84,18 @@ public class Main {
 
                         System.out.println("---------");
                         String edit = input.nextLine();
+
                         if (edit.equalsIgnoreCase("edit")){
                             System.out.println("Enter the number of the item you would like to remove.");
-                            int itemNumber = input.nextInt();
-                            cart.getCartItems().remove(itemNumber-1);
+                            System.out.println("\n Enter 'done' to finish editing.");
+                            String itemEdit = input.nextLine();
+                            while (!itemEdit.equalsIgnoreCase("done")){
+                                int itemNumber = Integer.parseInt(itemEdit);
+                                cart.getCartItems().remove(itemNumber-1);
+                            }
+                        }
+                        else if (edit.equalsIgnoreCase("done")){
+                            break;
                         }
                     }
                 }

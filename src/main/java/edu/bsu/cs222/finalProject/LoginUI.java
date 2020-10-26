@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main1 extends Application implements EventHandler<ActionEvent>
+public class LoginUI extends Application implements EventHandler<ActionEvent>
 {
 
     public static void main(String[] args)
