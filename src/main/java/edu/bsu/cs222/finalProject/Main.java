@@ -82,10 +82,10 @@ public class Main {
     }
 
     public static void displayHeader() {
-        System.out.println("\n*-----------------------------------------------*");
-        System.out.println("|      Thank You for choosing to Shop with      |");
+        System.out.println("\n*---------------------------------------------*");
+        System.out.println("|      Thank You for choosing to shop with      |");
         System.out.println("|                Grocery Shop BSU               |");
-        System.out.println("*-----------------------------------------------*\n");
+        System.out.println("*---------------------------------------------*\n");
         System.out.println("Main Menu");
         System.out.println("-------------------");
     }
