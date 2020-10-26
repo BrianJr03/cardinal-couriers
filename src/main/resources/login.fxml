@@ -34,7 +34,7 @@
             <Font name="Century Schoolbook" size="13.0" />
          </font></TextField>
       <Label alignment="BOTTOM_LEFT" layoutX="127.0" layoutY="122.0" text="Sign in with your BSU info to continue" textFill="#a3a3a3" wrapText="true" />
-      <Button layoutX="145.0" layoutY="379.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="167.0" styleClass="loginBtn" text="Login" underline="true">
+      <Button layoutX="145.0" layoutY="379.0" mnemonicParsing="false" onAction="#launchMainUI" prefHeight="38.0" prefWidth="167.0" styleClass="loginBtn" text="Login" underline="true">
          <font>
             <Font name="Impact" size="12.0" />
          </font>
