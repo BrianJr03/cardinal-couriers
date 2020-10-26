@@ -71,6 +71,7 @@ public class Main {
                     break;
                 } else if (selection.equalsIgnoreCase("view cart")) {
                     System.out.println("\nYour cart");
+                    System.out.println("\nEnter 'edit' to edit your cart.");
                     System.out.println("---------");
 
                     int itemCounter = 0;
