@@ -86,6 +86,8 @@ public class Main {
                         String edit = input.nextLine();
                         if (edit.equalsIgnoreCase("edit")){
                             System.out.println("Enter the number of the item you would like to remove.");
+                            String itemNumber = input.nextLine();
+                            cart.getCartItems().remove(itemNumber-1);
                         }
                     }
                 }
