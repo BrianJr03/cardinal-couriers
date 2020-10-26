@@ -21,7 +21,7 @@ public class Main {
             } else if (selection.equals("2")) {
                 displayCart(cart);
             } else if (selection.equals("3")) {
-                //code to edit cart
+                editCart(cart);
             } else if (selection.equals("4")) {
                 //code to check out (not yet implemented)
             }
@@ -66,6 +66,25 @@ public class Main {
             counter++;
         }
         System.out.println();
+    }
+
+    public static void editCart(Cart cart) {
+        displayCart(cart);
+        System.out.println("Select the number of the item you'd like to remove.");
+        Scanner console = new Scanner(System.in);
+        int selectedIndex = console.nextInt();
+        if (cart.getCartItems().get(selectedIndex-1)!=null) {
+            cart.remove(cart.getCartItems().get(selectedIndex - 1));
+            System.out.println("Item successfully removed from cart. Would you like to continue editing? Y or N");
+            String continueResponse = console.next();
+            if (continueResponse.equalsIgnoreCase("y")) {
+                editCart(cart);
+            } else {
+                return;
+            }
+        } else {
+            System.out.println("There is no item with that index. Returning to main menu...");
+        }
     }
 
     public static void displayHeader() {
