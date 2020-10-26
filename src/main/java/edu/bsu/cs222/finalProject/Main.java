@@ -22,7 +22,7 @@ public class Main
         System.out.println("|      Thank You for choosing to Shop with      |");
         System.out.println("|                Grocery Shop BSU               |");
         System.out.println("*-----------------------------------------------*\n");
-        System.out.println("Our Available items");
+        System.out.println("Our Available Items");
         System.out.println("-------------------");
     }
 
@@ -56,8 +56,14 @@ public class Main
            if (itemToOrder == 0)
            { break; }
 
-           Item itemToCart = inventory.getItems().get( itemToOrder-1 );
-           cart.add(itemToCart);
+           System.out.println("\nPlease enter the quantity of this item.");
+           int quantity = input.nextInt();
+
+           for (int i=0; i < quantity; i++){
+
+               Item itemToCart = inventory.getItems().get( itemToOrder-1 );
+               cart.add(itemToCart);
+           }
 
            System.out.println("-------------------");
            System.out.println("Enter 'back' to add another item to your cart");
