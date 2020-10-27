@@ -19,7 +19,7 @@ public class Main {
                 case "1" -> addItemsToCart(storeInventory, cart);
                 case "2" -> displayCart(cart);
                 case "3" -> editCart(cart);
-                case "4" -> System.out.println("This feature will be added in a future implementation!");
+                case "4" -> System.out.println("\nThis feature will be added in a future implementation!\n4");
             }
             selection = selectMenuOption();
         }
@@ -33,7 +33,7 @@ public class Main {
             System.out.println(counter + ". " + item.prettyPrintItem());
             counter++;
         }
-        System.out.println("Enter the number of the item you'd like to order. Type 0 to go to main menu.");
+        System.out.println("\nEnter the number of the item you'd like to order. Type 0 to go to main menu.");
         int itemIndex = Integer.parseInt(scanner.nextLine());
         if (itemIndex == 0) {
             return;
@@ -45,16 +45,16 @@ public class Main {
             for (int i = 0; i < quantity; i++) {
                 cart.add(selectedItem);
             }
-            System.out.println("Item successfully added to cart. Returning to main menu...");
+            System.out.println("\nItem successfully added to cart. Returning to main menu...\n");
         } else {
-            System.out.println("No item exists under that number. Returning to main menu...");
+            System.out.println("\nNo item exists under that number. Returning to main menu...\n");
         }
     }
 
     public static void displayCart(Cart cart) {
         int counter = 1;
         if (cart.getCartItems().isEmpty()) {
-            System.out.println("The cart is empty.\n");
+            System.out.println("\nThe cart is empty.\n");
             return;
         }
         for (Item item : cart.getCartItems()) {
@@ -87,7 +87,7 @@ public class Main {
         System.out.println("|              Grocery Shop BSU               |");
         System.out.println("*---------------------------------------------*\n");
         System.out.println("Main Menu");
-        System.out.println("--------------------");
+        System.out.println("---------");
     }
 
     public static void displayMainMenu() {
@@ -103,6 +103,4 @@ public class Main {
         displayMainMenu();
         return console.nextLine();
     }
-
-
 }

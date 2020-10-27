@@ -1,11 +1,11 @@
 [
   {
     "name": "Apple",
-    "price": 1.99
+    "price": 1.69
   },
   {
     "name": "Orange",
-    "price": 2.99
+    "price": 1.69
   },
   {
     "name":"Bottled Water",
@@ -17,6 +17,26 @@
   },
   {
     "name": "Mac and Cheese",
-    "price": 1.29
+    "price": 1.79
+  },
+  {
+    "name": "Frozen Pizza",
+    "price": 2.99
+  },
+  {
+    "name": "Hand Sanitizer",
+    "price": 1.09
+  },
+  {
+    "name": "Paper Plates",
+    "price": 1.99
+  },
+  {
+    "name": "Popcorn",
+    "price": 1.49
+  },
+  {
+    "name": "French Toast Sticks",
+    "price": 1.99
   }
 ]
