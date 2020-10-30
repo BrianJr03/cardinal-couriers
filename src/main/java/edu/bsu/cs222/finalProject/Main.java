@@ -1,13 +1,15 @@
 package edu.bsu.cs222.finalProject;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class Main {
+    public static LocalDate purchaseDate = DateTime.now().toLocalDate();
     public static ArrayList < Cart > previousOrders = new ArrayList <>();
     public static void main( String[] args) throws IOException {
         Inventory storeInventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
@@ -55,7 +57,6 @@ public class Main {
         }
     }
 
-
     public static void displayCart(Cart cart) {
         int counter = 1;
         if (cart.getCartItems().isEmpty()) {
@@ -96,18 +97,19 @@ public class Main {
         Scanner input = new Scanner( System.in );
         String userResponse = input.nextLine();
 
-        if ( userResponse.equalsIgnoreCase( "Yes")) {
-            displayPreviousOrders( previousOrders );
+        if ( userResponse.equalsIgnoreCase("Yes") ) {
+            displayPreviousOrders( previousOrders, purchaseDate );
         }
     }
 
-    public static void displayPreviousOrders(ArrayList < Cart > previousOrders) {
+    public static void displayPreviousOrders( ArrayList < Cart > previousOrders, LocalDate date ) {
         int orderCount = 0;
         for (Cart userOrder : previousOrders) {
             orderCount++;
             System.out.printf("\nOrder %d", orderCount);
             System.out.println("\n--------");
             displayCart( userOrder );
+            System.out.println("Date purchased: " + date + "\n");
         }
     }
 
