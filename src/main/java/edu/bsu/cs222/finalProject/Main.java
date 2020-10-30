@@ -20,7 +20,10 @@ public class Main {
                 case "1" -> addItemsToCart(storeInventory, cart);
                 case "2" -> displayCart(cart);
                 case "3" -> editCart(cart);
-                case "4" -> checkOut( cart );
+                case "4" -> {
+                    checkOut( cart );
+                    cart = new Cart( new ArrayList <>() );
+                }
             }
             selection = selectMenuOption();
         }
@@ -86,19 +89,15 @@ public class Main {
     public static void checkOut(Cart cart) {
         previousOrders.add( cart );
 
-        System.out.println("Thanks for purchasing your order!");
-        System.out.println("Would you like to view your previous orders?");
+        System.out.println("\nThanks for purchasing your order!");
+        System.out.println("Your shopping cart is now empty.");
+        System.out.println("\nWould you like to view your previous orders?");
 
         Scanner input = new Scanner( System.in );
         String userResponse = input.nextLine();
 
-        if ( userResponse.equalsIgnoreCase( "Yes"))
-        {
+        if ( userResponse.equalsIgnoreCase( "Yes")) {
             displayPreviousOrders( previousOrders );
-
-            // Need to find a way to reset a user's cart after purchase
-            // ArrayList<Item> cartItems = new ArrayList<>();
-            //  cart = new Cart(cartItems);
         }
     }
 
@@ -126,7 +125,7 @@ public class Main {
         System.out.println("2. View cart.");
         System.out.println("3. Edit cart.");
         System.out.println("4. Checkout.");
-        System.out.println("5. Exit.\n");
+        System.out.println("5. Exit\n");
     }
 
     public static String selectMenuOption() {

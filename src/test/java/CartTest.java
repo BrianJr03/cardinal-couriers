@@ -23,6 +23,21 @@ public class CartTest {
     }
 
     @Test
+    public void testCanResetCart() throws IOException {
+        Cart cart = new Cart(new ArrayList<>());
+        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+        Item itemToCart = inventory.getItems().get(0);
+        Item itemToCart1 = inventory.getItems().get(0);
+        Item itemToCart2 = inventory.getItems().get(0);
+        cart.add(itemToCart);
+        cart.add(itemToCart1);
+        cart.add(itemToCart2);
+        cart = new Cart( new ArrayList <>() );
+        Assertions.assertFalse(cart.getCartItems().contains(itemToCart) ||
+                cart.getCartItems().contains(itemToCart1) || cart.getCartItems().contains(itemToCart2) );
+    }
+
+    @Test
     public void testCanRemoveItemFromCart() throws IOException {
         Cart cart = new Cart(new ArrayList<>());
         Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
