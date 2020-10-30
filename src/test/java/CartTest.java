@@ -34,16 +34,18 @@ public class CartTest {
 
     @Test
     public void printPreviousOrders() throws IOException {
-        Cart cart = new Cart(new ArrayList<>());
         Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+
+        //Order 1
+        Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(0);
         Item otherItemToCart = inventory.getItems().get(1);
         cart.add(itemToCart);
         cart.add( otherItemToCart );
 
+        //Order 2
         Cart cart2 = new Cart(new ArrayList<>());
-        Inventory inventory2 = new Inventory(createArrayListOfItems(collectItemsFromResources()));
-        Item itemToCart2 = inventory2.getItems().get(2);
+        Item itemToCart2 = inventory.getItems().get(2);
         Item otherItemToCart2 = inventory.getItems().get(3);
         cart2.add(itemToCart2);
         cart2.add( otherItemToCart2 );

@@ -8,6 +8,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class Main {
+    public static ArrayList < Cart > previousOrders = new ArrayList <>();
     public static void main( String[] args) throws IOException {
         Inventory storeInventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
         ArrayList<Item> cartItems = new ArrayList<>();
@@ -19,7 +20,7 @@ public class Main {
                 case "1" -> addItemsToCart(storeInventory, cart);
                 case "2" -> displayCart(cart);
                 case "3" -> editCart(cart);
-                case "4" -> System.out.println("Will be implemented later...");
+                case "4" -> checkOut( cart );
             }
             selection = selectMenuOption();
         }
@@ -58,8 +59,6 @@ public class Main {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
-        System.out.println("\nYour Cart");
-        System.out.println("----");
         for (Item item : cart.getCartItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
             counter++;
@@ -84,6 +83,34 @@ public class Main {
         }
     }
 
+    public static void checkOut(Cart cart) {
+        previousOrders.add( cart );
+
+        System.out.println("Thanks for purchasing your order!");
+        System.out.println("Would you like to view your previous orders?");
+
+        Scanner input = new Scanner( System.in );
+        String userResponse = input.nextLine();
+
+        if ( userResponse.equalsIgnoreCase( "Yes"))
+        {
+            displayPreviousOrders( previousOrders );
+
+            // Need to find a way to reset a user's cart after purchase
+            // ArrayList<Item> cartItems = new ArrayList<>();
+            //  cart = new Cart(cartItems);
+        }
+    }
+
+    public static void displayPreviousOrders(ArrayList < Cart > previousOrders) {
+        int orderCount = 0;
+        for (Cart userOrder : previousOrders) {
+            orderCount++;
+            System.out.printf("\nOrder %d", orderCount);
+            System.out.println("\n--------");
+            displayCart( userOrder );
+        }
+    }
 
     public static void displayHeader() {
         System.out.println("\n*---------------------------------------------*");
@@ -99,7 +126,7 @@ public class Main {
         System.out.println("2. View cart.");
         System.out.println("3. Edit cart.");
         System.out.println("4. Checkout.");
-        System.out.println("5. Exit");
+        System.out.println("5. Exit.\n");
     }
 
     public static String selectMenuOption() {
