@@ -8,7 +8,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main( String[] args) throws IOException {
         Inventory storeInventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
         ArrayList<Item> cartItems = new ArrayList<>();
         Cart cart = new Cart(cartItems);
@@ -19,7 +19,7 @@ public class Main {
                 case "1" -> addItemsToCart(storeInventory, cart);
                 case "2" -> displayCart(cart);
                 case "3" -> editCart(cart);
-                case "4" -> System.out.println("\nThis feature will be added in a future implementation!\n4");
+                case "4" -> System.out.println("Will be implemented later...");
             }
             selection = selectMenuOption();
         }
@@ -51,12 +51,15 @@ public class Main {
         }
     }
 
+
     public static void displayCart(Cart cart) {
         int counter = 1;
         if (cart.getCartItems().isEmpty()) {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
+        System.out.println("\nYour Cart");
+        System.out.println("----");
         for (Item item : cart.getCartItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
             counter++;
@@ -80,6 +83,7 @@ public class Main {
             System.out.println("There is no item with that index. Returning to main menu...");
         }
     }
+
 
     public static void displayHeader() {
         System.out.println("\n*---------------------------------------------*");
