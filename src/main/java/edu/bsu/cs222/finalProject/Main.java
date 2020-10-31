@@ -63,16 +63,18 @@ public class Main {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
+        double sum = 0;
         for (Item item : cart.getCartItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
+            sum += Double.parseDouble( item.getPrice() );
             counter++;
         }
-        System.out.println();
+        System.out.println("\nTotal: $" + Math.round ( sum * 100.0 ) / 100.0);
     }
 
     public static void editCart(Cart cart) {
         displayCart(cart);
-        System.out.println("Select the number of the item you'd like to remove.");
+        System.out.println("\nSelect the number of the item you'd like to remove.");
         Scanner console = new Scanner(System.in);
         int selectedIndex = console.nextInt();
         if (0 < selectedIndex && selectedIndex <= cart.getCartItems().size()) {

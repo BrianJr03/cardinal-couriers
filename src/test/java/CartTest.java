@@ -12,10 +12,14 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class CartTest {
 
+    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+
+    public CartTest( ) throws IOException
+    {}
+
     @Test
-    public void testCanAddItemToCart() throws IOException {
+    public void testCanAddItemToCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
         Item itemToCart = inventory.getItems().get(0);
         cart.add(itemToCart);
         Assertions.assertEquals("\"Apple\"", cart.getCartItems().get(0).getName());
@@ -23,9 +27,23 @@ public class CartTest {
     }
 
     @Test
-    public void testCanResetCart() throws IOException {
+    public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+        Item itemToCart = inventory.getItems().get(0);
+        Item itemToCart2 = inventory.getItems().get(1);
+        cart.add(itemToCart);
+        cart.add( itemToCart2 );
+
+        double sum = 0.0;
+        for (Item item : cart.getCartItems()) {
+            sum += Double.parseDouble( item.getPrice() );
+        }
+        Assertions.assertEquals( sum , 3.38 );
+    }
+
+    @Test
+    public void testCanResetCart() {
+        Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(0);
         Item itemToCart1 = inventory.getItems().get(0);
         Item itemToCart2 = inventory.getItems().get(0);
@@ -38,9 +56,8 @@ public class CartTest {
     }
 
     @Test
-    public void testCanRemoveItemFromCart() throws IOException {
+    public void testCanRemoveItemFromCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
         Item itemToCart = inventory.getItems().get(0);
         cart.add(itemToCart);
         cart.remove(itemToCart);
@@ -48,9 +65,7 @@ public class CartTest {
     }
 
     @Test
-    public void printPreviousOrders() throws IOException {
-        Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
-
+    public void printPreviousOrders() {
         //Order 1
         Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(0);
@@ -85,7 +100,6 @@ public class CartTest {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
-
         for (Item item : cart.getCartItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
             counter++;
