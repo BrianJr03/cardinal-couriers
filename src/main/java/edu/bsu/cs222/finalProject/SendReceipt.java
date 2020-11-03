@@ -32,8 +32,8 @@ public class SendReceipt {
         }
         writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0 + "\n" );
         writer.write( "Date purchased: "  + purchaseDate + "\n");
-        writer.write( "--------------------------------------\n" );
-        writer.write( "Thanks for shopping with us!" );
+        writer.write( "---------------------------------------------\n" );
+        writer.write( "\nThanks for shopping with us!" );
         writer.close();
     }
 

@@ -112,10 +112,10 @@ public class Cart {
         System.out.println("-------------");
         displayPreviousOrders( previousOrders, purchaseDate );
 
-        System.out.println("Would you like to add a previous order to your current cart?");
+        System.out.println("Would you like to add a previous order to your current cart? Y or N");
         String userInput = in.nextLine();
 
-        if (userInput.equalsIgnoreCase( "yes" )) {
+        if (userInput.equalsIgnoreCase( "y" )) {
             System.out.println("Which order would you like to add to your cart?");
             int orderIndex = in.nextInt();
 
@@ -131,9 +131,9 @@ public class Cart {
         Scanner input = new Scanner( System.in );
         System.out.println( "\nThanks for purchasing your order!" );
         System.out.println( "Your shopping cart is now empty." );
-        System.out.print( "\nWould you like to be emailed a receipt?\n");
+        System.out.print( "\nWould you like to be emailed a receipt? Y or N \n");
         String userInput = input.nextLine();
-        if (userInput.equalsIgnoreCase( "yes" )) {
+        if (userInput.equalsIgnoreCase( "y" )) {
             System.out.println("\nPlease enter your email:");
             String userEmail = input.nextLine();
             SendReceipt.writeReceipt( cart );
