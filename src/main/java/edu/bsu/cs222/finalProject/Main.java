@@ -130,7 +130,9 @@ public class Main {
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
         }
         writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0 + "\n" );
-        writer.write( "Date purchased: "  + purchaseDate);
+        writer.write( "Date purchased: "  + purchaseDate + "\n");
+        writer.write( "------------------------" );
+        writer.write( "Thanks for shopping with us!" );
         writer.close();
     }
 

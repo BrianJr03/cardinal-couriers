@@ -43,6 +43,6 @@ public class SendReceipt {
         msg.setContent( emailContent );
         Transport.send( msg );
 
-        System.out.println("\nYour receipt has been sent.");
+        System.out.printf("\nYour receipt has been sent to '%s",  userEmail + "'.\n");
     }
 }
