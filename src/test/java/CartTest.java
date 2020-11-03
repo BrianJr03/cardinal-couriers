@@ -106,4 +106,43 @@ public class CartTest {
         }
         System.out.println();
     }
+
+    @Test
+    public void reOrderCart(){
+        //Order 1
+        Cart cart = new Cart(new ArrayList<>());
+        Item itemToCart = inventory.getItems().get(6);
+        Item otherItemToCart = inventory.getItems().get(4);
+        cart.add(itemToCart);
+        cart.add( otherItemToCart );
+
+        //Order 2
+        Cart cart2 = new Cart(new ArrayList<>());
+        Item itemToCart2 = inventory.getItems().get(7);
+        Item otherItemToCart2 = inventory.getItems().get(9);
+        cart2.add(itemToCart2);
+        cart2.add( otherItemToCart2 );
+
+        ArrayList < Cart > previousOrders = new ArrayList<>();
+        Cart newCart = new Cart( new ArrayList <>() );
+
+        previousOrders.add( cart );
+        previousOrders.add( cart2 );
+
+        System.out.println("Order 1");
+        System.out.println("--------");
+        displayCart( previousOrders.get( 0 ) );
+
+        System.out.println("Order 2");
+        System.out.println("--------");
+        displayCart( previousOrders.get( 1 ) );
+
+        //selects first order and adds it to cart
+        for (Item item : previousOrders.get( 0 ).getCartItems())
+        { newCart.add( item ); }
+
+        System.out.println("New cart");
+        System.out.println("--------");
+        displayCart( newCart );
+    }
 }
