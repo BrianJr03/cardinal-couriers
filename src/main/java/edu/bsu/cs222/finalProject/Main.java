@@ -2,6 +2,8 @@ package edu.bsu.cs222.finalProject;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,8 +14,10 @@ public class Main
 {
     public static LocalDate purchaseDate = DateTime.now().toLocalDate();
     public static ArrayList < Cart > previousOrders = new ArrayList <>();
+    public static SendReceipt email = new SendReceipt();
 
-    public static void main( String[] args ) throws IOException {
+    public static void main( String[] args ) throws IOException, MessagingException
+    {
         Inventory storeInventory = new Inventory( createArrayListOfItems( collectItemsFromResources() ) );
         ArrayList < Item > cartItems = new ArrayList <>();
         Cart cart = new Cart( cartItems );
@@ -104,19 +108,24 @@ public class Main
         }
     }
 
-    public static void checkOut( Cart cart ) {
+    public static void checkOut( Cart cart ) throws MessagingException {
         previousOrders.add( cart );
-
+        Scanner input = new Scanner( System.in );
         System.out.println( "\nThanks for purchasing your order!" );
         System.out.println( "Your shopping cart is now empty." );
+        System.out.print( "\nWould you like to be emailed a receipt?\n");
+        String userInput = input.nextLine();
+        if (userInput.equalsIgnoreCase( "yes" ))
+        {
+            System.out.println("Please enter your email:");
+            String userEmail = input.nextLine();
+            email.sendReceipt( userEmail );
+        }
     }
 
     public static Cart reOrderCart() {
-
         if (previousOrders == null)
-        {
-            System.out.println("There are no orders to display.");
-        }
+        { System.out.println("There are no orders to display."); }
 
         Cart newCart = new Cart( new ArrayList <>() );
         Scanner in = new Scanner( System.in );
