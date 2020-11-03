@@ -1,1 +1,0 @@
-[["Apple", "1.99"],["Orange","2.99"],["BottleWater", "1.89"],["Ramen", "0.99"], ["MacCheese", "1.29"]]

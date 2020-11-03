@@ -14,7 +14,7 @@ public class LoginController
 
     @SuppressWarnings( "unused" )
     public void launchMainUI( ActionEvent actionEvent  ) throws IOException {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource( "/MainUI.fxml" ));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/MainUI.fxml" ));
             rootPane.getChildren().setAll( pane );
     }
 }
