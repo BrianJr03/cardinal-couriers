@@ -1,13 +1,19 @@
 package edu.bsu.cs222.finalProject;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
 public class SendReceipt
 {
-    public void sendReceipt(String userEmail) throws MessagingException {
+    public void sendReceipt(String userEmail) throws MessagingException
+    {
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
 
@@ -30,12 +36,11 @@ public class SendReceipt
         msg.setSubject( "Thanks for the order! [Receipt]" );
 
         //Attach .txt here
-        String fileName = "C:/Users/walte/OneDrive/Desktop/Fall " + //needs to reference receiptGS_BSU.txt in project folder, not local pc
-                "2020/currentFinal_Grocery-Shop/src/main/resources/receiptGS_BSU.txt";
+        String fileName = "receiptGS_BSU.txt";
 
         DataSource source = new FileDataSource( fileName );
         textBodyPart.setDataHandler( new DataHandler( source ) );
-        textBodyPart.setFileName( fileName );
+
         emailContent.addBodyPart( textBodyPart );
         msg.setContent( emailContent );
         Transport.send( msg );

@@ -10,14 +10,12 @@ import java.util.Scanner;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
-public class Main
-{
+public class Main {
     public static LocalDate purchaseDate = DateTime.now().toLocalDate();
     public static ArrayList < Cart > previousOrders = new ArrayList <>();
     public static SendReceipt email = new SendReceipt();
 
-    public static void main( String[] args ) throws IOException, MessagingException
-    {
+    public static void main( String[] args ) throws IOException, MessagingException {
         Inventory storeInventory = new Inventory( createArrayListOfItems( collectItemsFromResources() ) );
         ArrayList < Item > cartItems = new ArrayList <>();
         Cart cart = new Cart( cartItems );
@@ -175,7 +173,7 @@ public class Main
         System.out.println( "2. View cart." );
         System.out.println( "3. Edit cart." );
         System.out.println( "4. Checkout." );
-        System.out.println("5. View Order history.");
+        System.out.println("5. View order history.");
         System.out.println( "6. Exit\n" );
     }
 
