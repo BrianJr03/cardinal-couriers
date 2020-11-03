@@ -13,11 +13,9 @@ import java.util.Arrays;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
-public class InventoryTest
-{
+public class InventoryTest {
     @Test
-    public void getItemsFromInventory() throws IOException
-    {
+    public void getItemsFromInventory() throws IOException {
         JsonParser parser = new JsonParser();
         FileReader reader = new FileReader( "src/main/resources/items.json" );
 
@@ -26,8 +24,7 @@ public class InventoryTest
         JsonArray inventory = parser.parse(reader).getAsJsonArray();
         reader.close();
 
-        for (JsonElement item : inventory)
-        {
+        for (JsonElement item : inventory) {
             String[] singleItem = new String[2];
             singleItem[0] = item.getAsJsonObject().get("name").toString();
             singleItem[1] = item.getAsJsonObject().get("price").getAsString();

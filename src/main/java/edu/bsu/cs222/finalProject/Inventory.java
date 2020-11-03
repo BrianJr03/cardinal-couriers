@@ -22,8 +22,7 @@ public class Inventory {
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();
-        for ( String[] itemDatum : itemData )
-        {
+        for ( String[] itemDatum : itemData ) {
             Item newItem = new Item( itemDatum[ 0 ] , itemDatum[ 1 ] );
             itemsList.add( newItem );
         }
@@ -33,14 +32,12 @@ public class Inventory {
     public static ArrayList<String[]> collectItemsFromResources() throws IOException {
         JsonParser parser = new JsonParser();
         FileReader reader = new FileReader( "src/main/resources/items.json" );
-
         ArrayList<String[]> itemsList = new ArrayList<>();
 
         JsonArray inventory = parser.parse(reader).getAsJsonArray();
         reader.close();
 
-        for (JsonElement item : inventory)
-        {
+        for (JsonElement item : inventory) {
             String[] singleItem = new String[2];
             singleItem[0] = item.getAsJsonObject().get("name").toString();
             singleItem[1] = item.getAsJsonObject().get("price").getAsString();

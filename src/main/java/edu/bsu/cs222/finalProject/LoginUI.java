@@ -8,15 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class LoginUI extends Application implements EventHandler<ActionEvent>
-{
+public class LoginUI extends Application implements EventHandler<ActionEvent> {
 
     public static void main(String[] args)
     { launch( args ); }
 
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource( "/ui/login.fxml" ));
 
         primaryStage.setTitle("Grocery Shop");
