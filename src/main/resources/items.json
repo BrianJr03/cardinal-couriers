@@ -17,7 +17,7 @@
   },
   {
     "name": "Mac and Cheese",
-    "price": 1.79
+    "price": 1.75
   },
   {
     "name": "Frozen Pizza",
@@ -38,5 +38,9 @@
   {
     "name": "French Toast Sticks",
     "price": 1.99
+  },
+  {
+    "name": "Cleaning Spray Plus",
+    "price": 3.79
   }
 ]
