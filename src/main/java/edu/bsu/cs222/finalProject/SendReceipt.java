@@ -10,10 +10,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
-public class SendReceipt
-{
-    public void sendReceipt(String userEmail) throws MessagingException
-    {
+public class SendReceipt {
+    public void sendReceipt(String userEmail) throws MessagingException {
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
 

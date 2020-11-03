@@ -1,1 +1,7 @@
-Receipt for Grocery Shop BSU
+Receipt
+------------
+1. "Bottled Water" | 1.89
+2. "Bottled Water" | 1.89
+3. "Bottled Water" | 1.89
+
+Total: $5.67

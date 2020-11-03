@@ -4,6 +4,8 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import javax.mail.MessagingException;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -42,8 +44,7 @@ public class Main {
         System.out.println( "-------------------------" );
         Scanner scanner = new Scanner( System.in );
         int counter = 1;
-        for ( Item item : inventory.getItems() )
-        {
+        for ( Item item : inventory.getItems() ) {
             System.out.println( counter + ". " + item.prettyPrintItem() );
             counter++;
         }
@@ -53,13 +54,11 @@ public class Main {
         {
             return;
         }
-        if ( 1 <= itemIndex && itemIndex < counter )
-        {
+        if ( 1 <= itemIndex && itemIndex < counter ) {
             Item selectedItem = inventory.getItems().get( itemIndex - 1 );
             System.out.println( "How much " + selectedItem.getName() + " would you like to add to your cart?" );
             int quantity = Integer.parseInt( scanner.nextLine() );
-            for ( int i = 0; i < quantity; i++ )
-            {
+            for ( int i = 0; i < quantity; i++ ) {
                 cart.add( selectedItem );
             }
             System.out.println( "\nItem successfully added to cart. Returning to main menu...\n" );
@@ -71,14 +70,12 @@ public class Main {
 
     public static void displayCart( Cart cart ) {
         int counter = 1;
-        if ( cart.getCartItems().isEmpty() )
-        {
+        if ( cart.getCartItems().isEmpty() ) {
             System.out.println( "\nThe cart is empty.\n" );
             return;
         }
         double sum = 0;
-        for ( Item item : cart.getCartItems() )
-        {
+        for ( Item item : cart.getCartItems() ) {
             System.out.println( counter + ". " + item.getName() + " | " + item.getPrice() );
             sum += Double.parseDouble( item.getPrice() );
             counter++;
@@ -106,19 +103,34 @@ public class Main {
         }
     }
 
-    public static void checkOut( Cart cart ) throws MessagingException {
+    public static void checkOut( Cart cart ) throws MessagingException, IOException {
         previousOrders.add( cart );
         Scanner input = new Scanner( System.in );
         System.out.println( "\nThanks for purchasing your order!" );
         System.out.println( "Your shopping cart is now empty." );
         System.out.print( "\nWould you like to be emailed a receipt?\n");
         String userInput = input.nextLine();
-        if (userInput.equalsIgnoreCase( "yes" ))
-        {
-            System.out.println("Please enter your email:");
+        if (userInput.equalsIgnoreCase( "yes" )) {
+            System.out.println("\nPlease enter your email:");
             String userEmail = input.nextLine();
+            writeReceipt( cart );
             email.sendReceipt( userEmail );
         }
+    }
+
+    public static void writeReceipt(Cart cart) throws IOException {
+        int counter = 0;
+        double sum = 0;
+        File file = new File( "receiptGS_BSU.txt" );
+        FileWriter writer = new FileWriter(file);
+        writer.write( "Receipt" + "\n" + "------------" + "\n");
+        for (Item item : cart.getCartItems()) {
+            counter++;
+            sum += Double.parseDouble( item.getPrice() );
+            writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
+        }
+        writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0);
+        writer.close();
     }
 
     public static Cart reOrderCart() {
@@ -149,8 +161,7 @@ public class Main {
 
     public static void displayPreviousOrders( ArrayList < Cart > previousOrders , LocalDate date ) {
         int orderCount = 0;
-        for ( Cart userOrder : previousOrders )
-        {
+        for ( Cart userOrder : previousOrders ) {
             orderCount++;
             System.out.printf( "\nOrder %d" , orderCount );
             System.out.println( "\n--------" );
