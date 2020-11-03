@@ -129,7 +129,8 @@ public class Main {
             sum += Double.parseDouble( item.getPrice() );
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
         }
-        writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0);
+        writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0 + "\n" );
+        writer.write( "Date purchased: "  + purchaseDate);
         writer.close();
     }
 
