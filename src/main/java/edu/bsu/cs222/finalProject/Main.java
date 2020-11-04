@@ -14,7 +14,6 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 public class Main {
     public static LocalDate purchaseDate = DateTime.now().toLocalDate();
     public static ArrayList < Cart > previousOrders = new ArrayList <>();
-    public static SendReceipt email = new SendReceipt();
 
     public static void main( String[] args ) throws IOException, MessagingException {
         Inventory storeInventory = new Inventory( createArrayListOfItems( collectItemsFromResources() ) );

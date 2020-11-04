@@ -86,13 +86,11 @@ public class Cart {
         System.out.println( "\nSelect the number of the item you'd like to remove." );
         Scanner console = new Scanner( System.in );
         int selectedIndex = console.nextInt();
-        if ( 0 < selectedIndex && selectedIndex <= cart.getCartItems().size() )
-        {
+        if ( 0 < selectedIndex && selectedIndex <= cart.getCartItems().size() ) {
             cart.remove( cart.getCartItems().get( selectedIndex - 1 ) );
             System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
             String continueResponse = console.next();
-            if ( continueResponse.equalsIgnoreCase( "y" ) )
-            {
+            if ( continueResponse.equalsIgnoreCase( "y" ) ) {
                 editCart( cart );
             }
         } else
@@ -131,13 +129,28 @@ public class Cart {
         Scanner input = new Scanner( System.in );
         System.out.println( "\nThanks for purchasing your order!" );
         System.out.println( "Your shopping cart is now empty." );
-        System.out.print( "\nWould you like to be emailed a receipt? Y or N \n");
+        System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
         String userInput = input.nextLine();
         if (userInput.equalsIgnoreCase( "y" )) {
-            System.out.println("\nPlease enter your email:");
-            String userEmail = input.nextLine();
-            SendReceipt.writeReceipt( cart );
-            email.sendReceipt( userEmail );
+            System.out.println("\n1. via Text\n2. via Email\n" +
+                    "");
+            String userChoice = input.nextLine();
+            switch ( userChoice )
+            {
+                case "1" -> {
+                    System.out.println( "\nPlease enter your phone number:" );
+                    String phoneNumber = input.nextLine();
+                    SendReceipt.writeReceipt( cart );
+                    SendReceipt.sendReceiptAsTextMSG( phoneNumber );
+                }
+
+                case "2" -> {
+                    System.out.println( "\nPlease enter your email:" );
+                    String userEmail = input.nextLine();
+                    SendReceipt.writeReceipt( cart );
+                    SendReceipt.sendReceiptAsEmail( userEmail );
+                }
+            }
         }
     }
 }

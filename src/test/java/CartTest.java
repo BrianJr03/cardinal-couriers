@@ -21,7 +21,7 @@ public class CartTest {
         Item itemToCart = inventory.getItems().get(0);
         cart.add(itemToCart);
         Assertions.assertEquals("\"Apple\"", cart.getCartItems().get(0).getName());
-        Assertions.assertEquals("1.99", cart.getCartItems().get(0).getPrice());
+        Assertions.assertEquals("1.69", cart.getCartItems().get(0).getPrice());
     }
 
     @Test
@@ -91,7 +91,6 @@ public class CartTest {
         }
     }
 
-    @Test
     public static void displayCart(Cart cart) {
         int counter = 1;
         if (cart.getCartItems().isEmpty()) {

@@ -1,14 +1,12 @@
-Receipt for order 1316N
---------------------------------------
-1. "Bottled Water" | 1.89
-2. "French Toast Sticks" | 1.99
-3. "Cleaning Spray Plus" | 3.79
+Receipt for order 1681N
+---------------------------------------
+1. "Ramen Noodles" | 0.99
+2. "Ramen Noodles" | 0.99
+3. "Ramen Noodles" | 0.99
 4. "Ramen Noodles" | 0.99
-5. "Frozen Pizza" | 2.99
-6. "Paper Plates" | 1.99
 
-Total: $13.64
-Date purchased: 2020-11-03
+Total: $3.96
+Date purchased: 2020-11-04
 ---------------------------------------------
 
 Thanks for shopping with us!

@@ -1,6 +1,5 @@
 package edu.bsu.cs222.finalProject;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -14,9 +13,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class SendReceipt {
-    public static LocalDate purchaseDate = DateTime.now().toLocalDate();
+    static LocalDate purchaseDate = Main.purchaseDate;
 
     public static void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
@@ -24,20 +24,21 @@ public class SendReceipt {
         int counter = 0; double sum = 0;
         File file = new File( "receiptGS_BSU.txt" );
         FileWriter writer = new FileWriter(file);
-        writer.write( "Receipt for order " + orderNumber + "N\n" + "--------------------------------------" + "\n");
+        writer.write( "Receipt for order " + orderNumber + "N\n" + "----------------------" +
+                "-----------------" + "\n");
         for (Item item : cart.getCartItems()) {
             counter++;
             sum += Double.parseDouble( item.getPrice() );
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
         }
         writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0 + "\n" );
-        writer.write( "Date purchased: "  + purchaseDate + "\n");
+        writer.write( "Date purchased: " + purchaseDate + "\n");
         writer.write( "---------------------------------------------\n" );
         writer.write( "\nThanks for shopping with us!" );
         writer.close();
     }
 
-    public void sendReceipt(String userEmail) throws MessagingException {
+    public static void sendReceiptAsEmail( String userEmail) throws MessagingException {
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
 
@@ -55,8 +56,8 @@ public class SendReceipt {
         });
 
         MimeMessage msg = new MimeMessage( session );
-        msg.setFrom(new InternetAddress(companyEmail) );
-        msg.addRecipient( Message.RecipientType.TO, new InternetAddress( userEmail ) );
+        msg.setFrom(new InternetAddress( companyEmail ));
+        msg.addRecipient(Message.RecipientType.TO, new InternetAddress( userEmail ));
         msg.setSubject( "Thanks for the order! [Receipt]" );
 
         //Attach .txt here
@@ -69,6 +70,26 @@ public class SendReceipt {
         msg.setContent( emailContent );
         Transport.send( msg );
 
-        System.out.printf("\nYour receipt has been sent to '%s",  userEmail + "'.\n");
+        System.out.println("\nYour receipt has been sent.");
+    }
+
+    public static void sendReceiptAsTextMSG(String phoneNumber) throws MessagingException
+    {
+        System.out.println("\nWhich carrier do you have service with?");
+
+        System.out.println("1. AT&T");
+        System.out.println("2. Sprint");
+        System.out.println("3. Verizon");
+        System.out.println("4. T-Mobile");
+
+        Scanner input = new Scanner( System.in);
+        String userCarrier = input.nextLine();
+        switch ( userCarrier ) {
+                    case "1" -> sendReceiptAsEmail( phoneNumber + "@mms.att.net" );
+                    case "2" -> sendReceiptAsEmail( phoneNumber + "@pm.sprint.com" );
+                    case "3" -> sendReceiptAsEmail( phoneNumber + "@vzwpix.com" );
+                    case "4" -> sendReceiptAsEmail( phoneNumber + "@tmomail.net" );
+                    default -> System.out.println("Select a valid carrier.");
+        }
     }
 }

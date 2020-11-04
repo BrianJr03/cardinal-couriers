@@ -38,6 +38,6 @@ public class InventoryTest {
     public void testCanReturnFirstItemFromList() throws IOException {
         Inventory inventory = new Inventory(createArrayListOfItems( collectItemsFromResources() ));
         Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
-        Assertions.assertEquals("1.99", inventory.getItems().get(0).getPrice());
+        Assertions.assertEquals("1.69", inventory.getItems().get(0).getPrice());
     }
 }
