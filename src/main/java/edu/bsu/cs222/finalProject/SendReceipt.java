@@ -16,15 +16,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class SendReceipt {
-
     public static LocalDate purchaseDate = DateTime.now().toLocalDate();
 
     public static void writeReceipt(Cart cart) throws IOException {
-        int counter = 0;
-        double sum = 0;
+        int lowerbound = 1225; int upperbound = 2590;
+        int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
+        int counter = 0; double sum = 0;
         File file = new File( "receiptGS_BSU.txt" );
         FileWriter writer = new FileWriter(file);
-        writer.write( "Receipt" + "\n" + "------------" + "\n");
+        writer.write( "Receipt for order " + orderNumber + "N\n" + "--------------------------------------" + "\n");
         for (Item item : cart.getCartItems()) {
             counter++;
             sum += Double.parseDouble( item.getPrice() );
