@@ -1,11 +1,7 @@
 package edu.bsu.cs222.finalProject;
 
-import org.joda.time.LocalDate;
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import static edu.bsu.cs222.finalProject.Main.*;
 
 public class Cart {
 
@@ -40,17 +36,6 @@ public class Cart {
             counter++;
         }
         System.out.println( "\nTotal: $" + Math.round( sum * 100.0 ) / 100.0 );
-    }
-
-    public static void displayPreviousOrders( ArrayList < Cart > previousOrders , LocalDate date ) {
-        int orderCount = 0;
-        for ( Cart userOrder : previousOrders ) {
-            orderCount++;
-            System.out.printf( "\nOrder %d" , orderCount );
-            System.out.println( "\n--------" );
-            displayCart( userOrder );
-            System.out.println( "Date purchased: " + date + "\n" );
-        }
     }
 
     public static void addItemsToCart( Inventory inventory , Cart cart ) {
@@ -96,61 +81,6 @@ public class Cart {
         } else
         {
             System.out.println( "There is no item with that index. Returning to main menu..." );
-        }
-    }
-
-    public static Cart reOrderCart() {
-        if (previousOrders == null)
-        { System.out.println("There are no orders to display."); }
-
-        Cart newCart = new Cart( new ArrayList <>() );
-        Scanner in = new Scanner( System.in );
-
-        System.out.println("\nOrder history");
-        System.out.println("-------------");
-        displayPreviousOrders( previousOrders, purchaseDate );
-
-        System.out.println("Would you like to add a previous order to your current cart? Y or N");
-        String userInput = in.nextLine();
-
-        if (userInput.equalsIgnoreCase( "y" )) {
-            System.out.println("Which order would you like to add to your cart?");
-            int orderIndex = in.nextInt();
-
-            for (Item item : previousOrders.get( orderIndex - 1 ).getCartItems())
-            { newCart.add( item ); }
-            System.out.printf("\nOrder %d has been added to your cart.\n", orderIndex);
-        }
-        return newCart;
-    }
-
-    public static void checkOut( Cart cart ) throws MessagingException, IOException {
-        previousOrders.add( cart );
-        Scanner input = new Scanner( System.in );
-        System.out.println( "\nThanks for purchasing your order!" );
-        System.out.println( "Your shopping cart is now empty." );
-        System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
-        String userInput = input.nextLine();
-        if (userInput.equalsIgnoreCase( "y" )) {
-            System.out.println("\n1. via Text\n2. via Email\n" +
-                    "");
-            String userChoice = input.nextLine();
-            switch ( userChoice )
-            {
-                case "1" -> {
-                    System.out.println( "\nPlease enter your phone number:" );
-                    String phoneNumber = input.nextLine();
-                    SendReceipt.writeReceipt( cart );
-                    SendReceipt.sendReceiptAsTextMSG( phoneNumber );
-                }
-
-                case "2" -> {
-                    System.out.println( "\nPlease enter your email:" );
-                    String userEmail = input.nextLine();
-                    SendReceipt.writeReceipt( cart );
-                    SendReceipt.sendReceiptAsEmail( userEmail );
-                }
-            }
         }
     }
 }

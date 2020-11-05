@@ -6,8 +6,6 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static edu.bsu.cs222.finalProject.Cart.reOrderCart;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
@@ -29,10 +27,10 @@ public class Main {
                 case "2" -> Cart.displayCart( cart );
                 case "3" -> Cart.editCart( cart );
                 case "4" -> {
-                    Cart.checkOut( cart );
+                    checkOut( cart );
                     cart = new Cart( new ArrayList <>() );
                 }
-                case "5" -> cart = reOrderCart();
+                case "5" -> cart = reOrderPreviousOrder();
             }
             selection = selectMenuOption();
         }
@@ -60,5 +58,48 @@ public class Main {
         Scanner console = new Scanner( System.in );
         displayMainMenu();
         return console.nextLine();
+    }
+
+    public static void checkOut( Cart cart ) throws MessagingException, IOException {
+        previousOrders.add( cart );
+        System.out.println( "\nThanks for purchasing your order!" );
+        System.out.println( "Your shopping cart is now empty." );
+        SendReceipt.askUserForReceipt( cart );
+    }
+
+    public static void displayPreviousOrders( ArrayList < Cart > previousOrders , LocalDate date ) {
+        int orderCount = 0;
+        for ( Cart userOrder : previousOrders ) {
+            orderCount++;
+            System.out.printf( "\nOrder %d" , orderCount );
+            System.out.println( "\n--------" );
+            Cart.displayCart( userOrder );
+            System.out.println( "Date purchased: " + date + "\n" );
+        }
+    }
+
+    public static Cart reOrderPreviousOrder() {
+        if (previousOrders == null)
+        { System.out.println("There are no orders to display."); }
+
+        Cart newCart = new Cart( new ArrayList <>() );
+        Scanner in = new Scanner( System.in );
+
+        System.out.println("\nOrder history");
+        System.out.println("-------------");
+        displayPreviousOrders( previousOrders, purchaseDate );
+
+        System.out.println("Would you like to add a previous order to your current cart? Y or N");
+        String userInput = in.nextLine();
+
+        if (userInput.equalsIgnoreCase( "y" )) {
+            System.out.println("Which order would you like to add to your cart?");
+            int orderIndex = in.nextInt();
+
+            for (Item item : previousOrders.get( orderIndex - 1 ).getCartItems())
+            { newCart.add( item ); }
+            System.out.printf("\nOrder %d has been added to your cart.\n", orderIndex);
+        }
+        return newCart;
     }
 }

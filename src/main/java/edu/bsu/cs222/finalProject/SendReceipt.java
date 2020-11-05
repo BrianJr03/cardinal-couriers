@@ -18,6 +18,32 @@ import java.util.Scanner;
 public class SendReceipt {
     static LocalDate purchaseDate = Main.purchaseDate;
 
+    public static void askUserForReceipt(Cart cart) throws MessagingException, IOException {
+        Scanner input = new Scanner( System.in );
+        System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
+        String userInput = input.nextLine();
+        if (userInput.equalsIgnoreCase( "y" )) {
+            System.out.println("\n1. via Text\n2. via Email\n" +
+                    "");
+            String userChoice = input.nextLine();
+            switch ( userChoice ) {
+                case "1" -> {
+                    System.out.println( "\nPlease enter your phone number:" );
+                    String phoneNumber = input.nextLine();
+                    writeReceipt( cart );
+                    sendReceiptAsTextMSG( phoneNumber );
+                }
+
+                case "2" -> {
+                    System.out.println( "\nPlease enter your email:" );
+                    String userEmail = input.nextLine();
+                    writeReceipt( cart );
+                    sendReceiptAsEmail( userEmail );
+                }
+            }
+        }
+    }
+
     public static void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
@@ -82,14 +108,14 @@ public class SendReceipt {
         System.out.println("3. Verizon");
         System.out.println("4. T-Mobile");
 
-        Scanner input = new Scanner( System.in);
+        Scanner input = new Scanner(System.in);
         String userCarrier = input.nextLine();
         switch ( userCarrier ) {
                     case "1" -> sendReceiptAsEmail( phoneNumber + "@mms.att.net" );
                     case "2" -> sendReceiptAsEmail( phoneNumber + "@pm.sprint.com" );
                     case "3" -> sendReceiptAsEmail( phoneNumber + "@vzwpix.com" );
                     case "4" -> sendReceiptAsEmail( phoneNumber + "@tmomail.net" );
-                    default -> System.out.println("Select a valid carrier.");
+                    default -> System.out.println("\nFailed to select a valid carrier. Main menu..");
         }
     }
 }

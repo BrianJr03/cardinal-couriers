@@ -1,11 +1,13 @@
-Receipt for order 1681N
+Receipt for order 1645N
 ---------------------------------------
 1. "Ramen Noodles" | 0.99
-2. "Ramen Noodles" | 0.99
-3. "Ramen Noodles" | 0.99
-4. "Ramen Noodles" | 0.99
+2. "Apple" | 1.69
+3. "Orange" | 1.69
+4. "Bottled Water" | 1.89
+5. "Mac and Cheese" | 1.75
+6. "Frozen Pizza" | 2.99
 
-Total: $3.96
+Total: $11.0
 Date purchased: 2020-11-04
 ---------------------------------------------
 
