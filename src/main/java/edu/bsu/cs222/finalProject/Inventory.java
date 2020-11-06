@@ -12,13 +12,20 @@ public class Inventory {
 
     private final ArrayList<Item> items;
 
-    public Inventory(ArrayList<Item> items) {
-        this.items = items;
-    }
+    public Inventory(ArrayList<Item> items)
+    { this.items = items; }
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
+    public ArrayList<Item> getItems()
+    { return items; }
+
+    public static String getStore_A_Inventory()
+    { return "src/main/resources/storeItems/storeA_items.json"; }
+
+    public static String getStore_B_Inventory()
+    { return "src/main/resources/storeItems/storeB_items.json"; }
+
+    public static String getStore_C_Inventory()
+    { return "src/main/resources/storeItems/storeC_items.json"; }
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();
@@ -29,9 +36,9 @@ public class Inventory {
         return itemsList;
     }
 
-    public static ArrayList<String[]> collectItemsFromResources() throws IOException {
+    public static ArrayList<String[]> collectItemsFromResources(String filePath) throws IOException {
         JsonParser parser = new JsonParser();
-        FileReader reader = new FileReader( "src/main/resources/items.json" );
+        FileReader reader = new FileReader( filePath );
         ArrayList<String[]> itemsList = new ArrayList<>();
 
         JsonArray inventory = parser.parse(reader).getAsJsonArray();

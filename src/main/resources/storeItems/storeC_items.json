@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Chicken Noodle Soup",
+    "price": 3.50
+  },
+  {
+    "name": "Frozen Burgers",
+    "price": 4.79
+  },
+  {
+    "name":"Burrito",
+    "price": 0.99
+  },
+  {
+    "name": "Italian Sausage",
+    "price": 3.29
+  },
+  {
+    "name": "Ready-to-Bake brownies",
+    "price": 2.99
+  },
+  {
+    "name": "1lb Ground Beef",
+    "price": 9.99
+  },
+  {
+    "name": "Hot Chips",
+    "price": 0.99
+  },
+  {
+    "name": "PeanutButter",
+    "price": 1.99
+  },
+  {
+    "name": "Jelly",
+    "price": 1.89
+  },
+  {
+    "name": "Cookie Dough",
+    "price": 2.59
+  },
+  {
+    "name": "Cake Mix",
+    "price": 1.00
+  }
+]

@@ -14,12 +14,13 @@ public class Main {
     public static ArrayList < Cart > previousOrders = new ArrayList <>();
 
     public static void main( String[] args ) throws IOException, MessagingException {
-        Inventory storeInventory = new Inventory( createArrayListOfItems( collectItemsFromResources() ) );
+        displayHeader();
+        Inventory storeInventory =
+                new Inventory( createArrayListOfItems( collectItemsFromResources(storePicker()) ) );
         ArrayList < Item > cartItems = new ArrayList <>();
         Cart cart = new Cart( cartItems );
-        displayHeader();
         String selection = selectMenuOption();
-        while ( !selection.equals( "6" ) )
+        while ( !selection.equals( "7" ) )
         {
             switch ( selection )
             {
@@ -31,8 +32,37 @@ public class Main {
                     cart = new Cart( new ArrayList <>() );
                 }
                 case "5" -> cart = reOrderPreviousOrder();
+                case "6" -> storeInventory = new Inventory( createArrayListOfItems
+                        ( collectItemsFromResources(storePicker()) ) );
             }
             selection = selectMenuOption();
+        }
+    }
+
+    public static String storePicker()
+    {
+        System.out.println("Which store would you like to shop from today?\n");
+        System.out.println("1. Store A");
+        System.out.println("2. Store B");
+        System.out.println("3. Store C\n");
+        Scanner input = new Scanner( System.in );
+        String userChoice = input.nextLine();
+        switch ( userChoice )
+        {
+            case "1" -> {
+                System.out.println("\nStore A");
+                return Inventory.getStore_A_Inventory(); }
+            case "2" -> {
+                System.out.println("\nStore B");
+                return Inventory.getStore_B_Inventory(); }
+            case "3" -> {
+                System.out.println("\nStore C");
+                return Inventory.getStore_C_Inventory(); }
+            default -> {
+                System.out.println( "\nPlease pick a valid Store." );
+                System.out.println( "Redirecting to Store A...\n" );
+                return Inventory.getStore_A_Inventory();
+            }
         }
     }
 
@@ -41,17 +71,18 @@ public class Main {
         System.out.println( "|    Thank You for choosing to shop with      |" );
         System.out.println( "|              Grocery Shop BSU               |" );
         System.out.println( "*---------------------------------------------*\n" );
-        System.out.println( "Main Menu" );
-        System.out.println( "---------" );
     }
 
     public static void displayMainMenu( ) {
-        System.out.println( "\n1. View and select items to add to cart." );
+        System.out.println( "Main Menu" );
+        System.out.println( "---------" );
+        System.out.println( "1. View and select items to add to cart." );
         System.out.println( "2. View cart." );
         System.out.println( "3. Edit cart." );
         System.out.println( "4. Checkout." );
         System.out.println("5. View order history.");
-        System.out.println( "6. Exit\n" );
+        System.out.println("6. Switch Stores.");
+        System.out.println( "7. Exit\n" );
     }
 
     public static String selectMenuOption( ) {
@@ -63,7 +94,13 @@ public class Main {
     public static void checkOut( Cart cart ) throws MessagingException, IOException {
         previousOrders.add( cart );
         System.out.println( "\nThanks for purchasing your order!" );
-        System.out.println( "Your shopping cart is now empty." );
+        System.out.println( "Your shopping cart is now empty.\n" );
+        System.out.println("Mark for contactless delivery? Y or N");
+        Scanner input = new Scanner( System.in );
+        String userChoice = input.nextLine();
+        if(userChoice.equalsIgnoreCase( "y" )) {
+            System.out.println("Marked for contactless delivery!");
+        }
         SendReceipt.askUserForReceipt( cart );
     }
 

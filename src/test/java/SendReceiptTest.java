@@ -10,7 +10,9 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class SendReceiptTest {
-    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources()));
+    String filePath = "src/main/resources/storeA_items.json";
+
+    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources(filePath)));
 
     public SendReceiptTest( ) throws IOException {}
 

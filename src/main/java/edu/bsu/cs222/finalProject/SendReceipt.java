@@ -57,14 +57,14 @@ public class SendReceipt {
             sum += Double.parseDouble( item.getPrice() );
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
         }
-        writer.write( "\nTotal: $" + Math.round(sum * 100.0 ) / 100.0 + "\n" );
+        writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
         writer.write( "Date purchased: " + purchaseDate + "\n");
         writer.write( "---------------------------------------------\n" );
         writer.write( "\nThanks for shopping with us!" );
         writer.close();
     }
 
-    public static void sendReceiptAsEmail( String userEmail) throws MessagingException {
+    public static void sendReceiptAsEmail(String userEmail) throws MessagingException {
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
 
@@ -99,10 +99,8 @@ public class SendReceipt {
         System.out.println("\nYour receipt has been sent.");
     }
 
-    public static void sendReceiptAsTextMSG(String phoneNumber) throws MessagingException
-    {
+    public static void sendReceiptAsTextMSG(String phoneNumber) throws MessagingException {
         System.out.println("\nWhich carrier do you have service with?");
-
         System.out.println("1. AT&T");
         System.out.println("2. Sprint");
         System.out.println("3. Verizon");

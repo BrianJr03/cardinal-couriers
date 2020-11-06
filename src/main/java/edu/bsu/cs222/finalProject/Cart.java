@@ -78,8 +78,7 @@ public class Cart {
             if ( continueResponse.equalsIgnoreCase( "y" ) ) {
                 editCart( cart );
             }
-        } else
-        {
+        } else {
             System.out.println( "There is no item with that index. Returning to main menu..." );
         }
     }

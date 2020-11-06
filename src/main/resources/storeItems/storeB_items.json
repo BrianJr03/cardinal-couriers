@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Bread",
+    "price": 0.99
+  },
+  {
+    "name": "Premium Salsa",
+    "price": 5.00
+  },
+  {
+    "name":"Milk",
+    "price": 1.10
+  },
+  {
+    "name": "Tomatoes",
+    "price": 1.29
+  },
+  {
+    "name": "Steak",
+    "price": 8.99
+  },
+  {
+    "name": "Ice Cream",
+    "price": 4.99
+  },
+  {
+    "name": "Bacon",
+    "price": 2.09
+  },
+  {
+    "name": "BBQ Sauce",
+    "price": 1.99
+  },
+  {
+    "name": "Ketchup",
+    "price": 1.89
+  },
+  {
+    "name": "Apple Sauce",
+    "price": 0.59
+  },
+  {
+    "name": "Yogurt",
+    "price": 1.00
+  }
+]
