@@ -39,8 +39,7 @@ public class Main {
         }
     }
 
-    public static String storePicker()
-    {
+    public static String storePicker() {
         System.out.println("Which store would you like to shop from today?\n");
         System.out.println("1. Store A");
         System.out.println("2. Store B");
