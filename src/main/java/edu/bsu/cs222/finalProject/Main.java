@@ -33,7 +33,7 @@ public class Main {
                 }
                 case "5" -> cart = reOrderPreviousOrder();
                 case "6" -> storeInventory = new Inventory( createArrayListOfItems
-                        ( collectItemsFromResources( storePicker() )));
+                        (collectItemsFromResources( storePicker() )));
             }
             selection = selectMenuOption();
         }

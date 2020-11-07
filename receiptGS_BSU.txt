@@ -1,3 +1,13 @@
-TEST RECEIPT
-1. "Hand Sanitizer" | 1.09
-2. "Mac and Cheese" | 1.75
+Receipt for order 2111N
+---------------------------------------
+1. "Italian Sausage" | 3.29
+2. "Italian Sausage" | 3.29
+3. "Italian Sausage" | 3.29
+4. "Italian Sausage" | 3.29
+5. "Italian Sausage" | 3.29
+
+Total: $16.45
+Date purchased: 2020-11-06
+---------------------------------------------
+
+Thanks for shopping with us!

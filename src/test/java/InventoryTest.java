@@ -58,20 +58,23 @@ public class InventoryTest {
     }
 
     @Test
-    public void searchForItemInInventory() throws IOException //Needs work
-    {
+    public void testSearchForItem() throws IOException {
         Inventory inventory =
-                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getStore_A_Inventory()) ));
-        String itemToSearchFor = "Orange";
+                new Inventory(createArrayListOfItems(collectItemsFromResources(Inventory.getStore_A_Inventory())));
 
-        for ( Item item : inventory.getItems())
-        {
-            System.out.println(item.getName());
-            if ( itemToSearchFor.equalsIgnoreCase( item.getName() ) )
-            {
-                System.out.printf("\nItem found: %s", item.getName());
+        String nameOfItemToQuery = '"' + "Orange" + '"' ;
+        String priceOfItemToQuery = "1.69";
+
+        for (int i = 0; i < inventory.getItems().size(); i++) {
+            if (nameOfItemToQuery.equalsIgnoreCase(inventory.getItems().get( i ).getName())) {
+                System.out.printf("\nQueried item: %s\n", nameOfItemToQuery);
+                String name = inventory.getItems().get( i ).getName();
+                String price = inventory.getItems().get( i ).getPrice();
+                Item queriedItem = new Item(name, price);
+                System.out.printf("Found: %s\n", queriedItem.prettyPrintItem());
+                Assertions.assertEquals(nameOfItemToQuery, queriedItem.getName());
+                Assertions.assertEquals(priceOfItemToQuery, queriedItem.getPrice());
             }
         }
-        System.out.println("\nItem not found.");
     }
 }
