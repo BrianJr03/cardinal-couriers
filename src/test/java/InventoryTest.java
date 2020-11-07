@@ -61,7 +61,7 @@ public class InventoryTest {
     public void searchForItemInInventory() throws IOException //Needs work
     {
         Inventory inventory =
-                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getStore_B_Inventory()) ));
+                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getStore_A_Inventory()) ));
         String itemToSearchFor = "Orange";
 
         for ( Item item : inventory.getItems())

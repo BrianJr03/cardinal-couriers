@@ -16,7 +16,7 @@ public class Main {
     public static void main( String[] args ) throws IOException, MessagingException {
         displayHeader();
         Inventory storeInventory =
-                new Inventory( createArrayListOfItems( collectItemsFromResources(storePicker()) ) );
+                new Inventory(createArrayListOfItems(collectItemsFromResources( storePicker() )));
         ArrayList < Item > cartItems = new ArrayList <>();
         Cart cart = new Cart( cartItems );
         String selection = selectMenuOption();
@@ -33,7 +33,7 @@ public class Main {
                 }
                 case "5" -> cart = reOrderPreviousOrder();
                 case "6" -> storeInventory = new Inventory( createArrayListOfItems
-                        ( collectItemsFromResources(storePicker()) ) );
+                        ( collectItemsFromResources( storePicker() )));
             }
             selection = selectMenuOption();
         }
@@ -73,7 +73,7 @@ public class Main {
     }
 
     public static void displayMainMenu( ) {
-        System.out.println( "Main Menu" );
+        System.out.println( "\nMain Menu" );
         System.out.println( "---------" );
         System.out.println( "1. View and select items to add to cart." );
         System.out.println( "2. View cart." );

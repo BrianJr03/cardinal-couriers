@@ -10,8 +10,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class SendReceiptTest {
-    String filePath = "src/main/resources/storeA_items.json";
-
+    String filePath = "src/main/resources/storeItems/storeA_items.json";
     Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources(filePath)));
 
     public SendReceiptTest( ) throws IOException {}
@@ -28,6 +27,7 @@ public class SendReceiptTest {
         File file = new File( "receiptGS_BSU.txt" );
         FileWriter writer = new FileWriter(file);
 
+        writer.write( "TEST RECEIPT\n" );
         for (Item item : cart.getCartItems()) {
             counter++;
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );

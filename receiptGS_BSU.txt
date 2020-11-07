@@ -1,34 +1,3 @@
-Receipt for order 1670N
----------------------------------------
-1. "Ice Cream" | 4.99
-2. "Ice Cream" | 4.99
-3. "Apple Sauce" | 0.59
-4. "Apple Sauce" | 0.59
-5. "Apple Sauce" | 0.59
-6. "Apple Sauce" | 0.59
-7. "Apple Sauce" | 0.59
-8. "Apple Sauce" | 0.59
-9. "Apple Sauce" | 0.59
-10. "Apple Sauce" | 0.59
-11. "Apple Sauce" | 0.59
-12. "Apple Sauce" | 0.59
-13. "Ready-to-Bake brownies" | 2.99
-14. "Ready-to-Bake brownies" | 2.99
-15. "Ready-to-Bake brownies" | 2.99
-16. "Ready-to-Bake brownies" | 2.99
-17. "1lb Ground Beef" | 9.99
-18. "Paper Plates" | 1.99
-19. "Paper Plates" | 1.99
-20. "Bottled Water" | 1.89
-21. "Bottled Water" | 1.89
-22. "Bottled Water" | 1.89
-23. "Bottled Water" | 1.89
-24. "Bottled Water" | 1.89
-25. "Bottled Water" | 1.89
-26. "Bottled Water" | 1.89
-
-Total: $55.04
-Date purchased: 2020-11-05
----------------------------------------------
-
-Thanks for shopping with us!
+TEST RECEIPT
+1. "Hand Sanitizer" | 1.09
+2. "Mac and Cheese" | 1.75
