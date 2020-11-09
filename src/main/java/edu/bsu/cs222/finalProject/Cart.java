@@ -3,6 +3,7 @@ package edu.bsu.cs222.finalProject;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Cart {
 
     private final ArrayList<Item> cartItems;
@@ -47,11 +48,9 @@ public class Cart {
             counter++;
         }
         System.out.println( "\nEnter the number of the item you'd like to order. Type 0 to go to main menu." );
+
         int itemIndex = Integer.parseInt( scanner.nextLine() );
-        if ( itemIndex == 0 )
-        {
-            return;
-        }
+        if ( itemIndex == 0 ){return;}
         if ( 1 <= itemIndex && itemIndex < counter ) {
             Item selectedItem = inventory.getItems().get( itemIndex - 1 );
             System.out.println( "How much " + selectedItem.getName() + " would you like to add to your cart?" );

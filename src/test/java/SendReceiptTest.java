@@ -2,31 +2,32 @@ import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import org.junit.jupiter.api.Test;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class SendReceiptTest {
-    String filePath = "src/main/resources/storeItems/storeA_items.json";
-    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources(filePath)));
+    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
+            (Inventory.getStore_A_Inventory())));
 
     public SendReceiptTest( ) throws IOException {}
 
-    @Test
+    @Test //Will override receiptGS_BSU.txt
     public void writeReceipt() throws IOException {
         Cart cart = new Cart(new ArrayList <>());
-        Item itemToCart = inventory.getItems().get(6);
-        Item otherItemToCart = inventory.getItems().get(4);
-        cart.add(itemToCart);
-        cart.add( otherItemToCart );
+        Item handSanitizer = inventory.getItems().get(6);
+        Item macAndCheese = inventory.getItems().get(4);
+        cart.add(handSanitizer);
+        cart.add( macAndCheese );
 
-        int counter = 0;
         File file = new File( "receiptGS_BSU.txt" );
         FileWriter writer = new FileWriter(file);
 
+        int counter = 0;
         writer.write( "TEST RECEIPT\n" );
         for (Item item : cart.getCartItems()) {
             counter++;
