@@ -6,6 +6,7 @@
 .text-field:focused {
     -fx-background-color: -fx-focus-color, -fx-background ;
 }
+
 .parent {
 -fx-background-color: #FFFFFF;
 }

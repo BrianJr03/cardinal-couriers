@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.LoginController">
-   <VBox alignment="CENTER" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheet.css">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.LoginController">
+   <VBox alignment="CENTER" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Label prefHeight="28.0" prefWidth="190.0" text="Grocery Shop BSU">
          <font>
             <Font name="Century Schoolbook Italic" size="18.0" />
@@ -20,10 +20,10 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Image url="@../pngs/groceries_200x200.png" />
+         <Image url="@../pngs/groceries200x200.png" />
       </ImageView>
    </VBox>
-   <Pane fx:id="usernameInput" layoutX="270.0" layoutY="-2.0" prefHeight="556.0" prefWidth="456.0" styleClass="parent" stylesheets="@../stylesheet.css">
+   <Pane layoutX="270.0" layoutY="-2.0" prefHeight="556.0" prefWidth="456.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Label alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="86.0" text="Welcome" textFill="#545454">
          <font>
             <Font name="Impact" size="24.0" />
@@ -47,7 +47,7 @@
          <font>
             <Font name="Century Schoolbook" size="12.0" />
          </font></Label>
-      <TextField layoutX="144.0" layoutY="238.0" promptText="username" />
+      <TextField fx:id="usernameInput" layoutX="144.0" layoutY="238.0" promptText="username" />
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
       <Image url="@../pngs/bsu.png" />

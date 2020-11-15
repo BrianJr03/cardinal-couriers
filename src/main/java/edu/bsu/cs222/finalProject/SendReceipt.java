@@ -18,33 +18,36 @@ import java.util.Scanner;
 public class SendReceipt {
     static LocalDate purchaseDate = Main.purchaseDate;
 
-    public static void askUserForReceipt(Cart cart) throws MessagingException, IOException {
+    public void askUserForReceipt(Cart cart) throws MessagingException, IOException {
         Scanner input = new Scanner( System.in );
         System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
         String userInput = input.nextLine();
         if (userInput.equalsIgnoreCase( "y" )) {
-            System.out.println("\n1. via Text\n2. via Email\n" +
-                    "");
+            System.out.println("\n1. via Text\n2. via Email\n");
             String userChoice = input.nextLine();
-            switch ( userChoice ) {
-                case "1" -> {
-                    System.out.println( "\nPlease enter your phone number:" );
-                    String phoneNumber = input.nextLine();
-                    writeReceipt( cart );
-                    sendReceiptAsTextMSG( phoneNumber );
-                }
-
-                case "2" -> {
-                    System.out.println( "\nPlease enter your email:" );
-                    String userEmail = input.nextLine();
-                    writeReceipt( cart );
-                    sendReceiptAsEmail( userEmail );
-                }
-            }
+            showReceiptOptions( userChoice , cart );
         }
     }
 
-    public static void writeReceipt(Cart cart) throws IOException {
+    public void showReceiptOptions(String userChoice, Cart cart) throws IOException, MessagingException {
+        Scanner in = new Scanner( System.in );
+        switch ( userChoice ) {
+            case "1" -> {
+                System.out.println( "\nPlease enter your phone number:" );
+                String phoneNumber = in.nextLine();
+                sendReceiptAsTextMSG( phoneNumber, cart );
+            }
+
+            case "2" -> {
+                System.out.println( "\nPlease enter your email:" );
+                String userEmail = in.nextLine();
+                sendReceiptAsEmail( userEmail , cart );
+            }
+            default -> System.out.println("\nPlease enter a valid choice. \nReturning to Main Menu..");
+        }
+    }
+
+    public void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
         int counter = 0; double sum = 0;
@@ -54,7 +57,7 @@ public class SendReceipt {
                 "-----------------" + "\n");
         for (Item item : cart.getCartItems()) {
             counter++;
-            sum += Double.parseDouble( item.getPrice() );
+            sum = cart.getPriceSum( sum, Double.parseDouble( item.getPrice() ));
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
         }
         writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
@@ -64,7 +67,8 @@ public class SendReceipt {
         writer.close();
     }
 
-    public static void sendReceiptAsEmail(String userEmail) throws MessagingException {
+    public void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
+        writeReceipt( cart );
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
 
@@ -86,7 +90,6 @@ public class SendReceipt {
         msg.addRecipient(Message.RecipientType.TO, new InternetAddress( userEmail ));
         msg.setSubject( "Thanks for the order! [Receipt]" );
 
-        //Attach .txt here
         String fileName = "receiptGS_BSU.txt";
 
         DataSource source = new FileDataSource( fileName );
@@ -99,20 +102,20 @@ public class SendReceipt {
         System.out.println("\nYour receipt has been sent.\n");
     }
 
-    public static void sendReceiptAsTextMSG(String phoneNumber) throws MessagingException {
+    public void sendReceiptAsTextMSG( String phoneNumber , Cart cart ) throws MessagingException, IOException {
+        writeReceipt( cart );
         System.out.println("\nWhich carrier do you have service with?");
         System.out.println("1. AT&T");
         System.out.println("2. Sprint");
         System.out.println("3. Verizon");
         System.out.println("4. T-Mobile");
-
         Scanner input = new Scanner(System.in);
         String userCarrier = input.nextLine();
         switch ( userCarrier ) {
-                    case "1" -> sendReceiptAsEmail( phoneNumber + "@mms.att.net" );
-                    case "2" -> sendReceiptAsEmail( phoneNumber + "@pm.sprint.com" );
-                    case "3" -> sendReceiptAsEmail( phoneNumber + "@vzwpix.com" );
-                    case "4" -> sendReceiptAsEmail( phoneNumber + "@tmomail.net" );
+                    case "1" -> sendReceiptAsEmail( phoneNumber + "@mms.att.net", cart );
+                    case "2" -> sendReceiptAsEmail( phoneNumber + "@pm.sprint.com", cart );
+                    case "3" -> sendReceiptAsEmail( phoneNumber + "@vzwpix.com", cart );
+                    case "4" -> sendReceiptAsEmail( phoneNumber + "@tmomail.net", cart );
                     default -> System.out.println("\nFailed to select a valid carrier. Main menu..");
         }
     }

@@ -5,41 +5,24 @@ import java.util.Scanner;
 
 
 public class Cart {
-
     private final ArrayList<Item> cartItems;
 
-    public Cart(ArrayList<Item> cartItems) {
-        this.cartItems = cartItems;
-    }
+    public Cart(ArrayList<Item> cartItems)
+    { this.cartItems = cartItems; }
 
-    public ArrayList<Item> getCartItems() {
-        return cartItems;
-    }
+    public ArrayList<Item> getCartItems()
+    { return cartItems; }
 
-    public void add(Item itemToCart) {
-        cartItems.add(itemToCart);
-    }
+    public void add(Item itemToCart)
+    { cartItems.add(itemToCart); }
 
-    public void remove(Item itemToCart) {
-        cartItems.remove(itemToCart);
-    }
+    public void remove(Item itemToCart)
+    { cartItems.remove(itemToCart); }
 
-    public static void displayCart( Cart cart ) {
-        int counter = 1;
-        if ( cart.getCartItems().isEmpty() ) {
-            System.out.println( "\nThe cart is empty.\n" );
-            return;
-        }
-        double sum = 0;
-        for ( Item item : cart.getCartItems() ) {
-            System.out.println( counter + ". " + item.getName() + " | " + item.getPrice() );
-            sum += Double.parseDouble( item.getPrice() );
-            counter++;
-        }
-        System.out.println( "\nTotal: $" + Math.round( sum * 100.0 ) / 100.0 );
-    }
+    public Double getPriceSum(double sum, double itemPrice)
+    { return sum + itemPrice; }
 
-    public static void addItemsToCart( Inventory inventory , Cart cart ) {
+    public void addItemsToCart( Inventory inventory , Cart cart ) {
         System.out.println( "-------------------------" );
         Scanner scanner = new Scanner( System.in );
         int counter = 1;
@@ -65,12 +48,13 @@ public class Cart {
         }
     }
 
-    public static void editCart( Cart cart ) {
-        Cart.displayCart( cart );
+    public void editCart( Cart cart ) {
+        Display display = new Display();
+        display.displayCart( cart );
         System.out.println( "\nSelect the number of the item you'd like to remove." );
         Scanner console = new Scanner( System.in );
         int selectedIndex = console.nextInt();
-        if ( 0 < selectedIndex && selectedIndex <= cart.getCartItems().size() ) {
+        if (selectedIndex > 0 && selectedIndex <= cart.getCartItems().size()) {
             cart.remove( cart.getCartItems().get( selectedIndex - 1 ) );
             System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
             String continueResponse = console.next();

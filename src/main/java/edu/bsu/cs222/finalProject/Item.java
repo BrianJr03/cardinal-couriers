@@ -10,13 +10,9 @@ public class Item {
         this.price = price;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public String getPrice() {
-        return price;
-    }
+    public String getPrice() { return price; }
 
     public String prettyPrintItem() {
         return String.format("%s | $%s", this.getName(), this.getPrice());

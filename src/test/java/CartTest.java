@@ -12,16 +12,24 @@ public class CartTest {
     Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
             (Inventory.getStore_A_Inventory())));
 
-    public CartTest( ) throws IOException
-    {}
+    public CartTest() throws IOException {}
 
     @Test
     public void testCanAddItemToCart() {
+        ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(0);
         cart.add(itemToCart);
-        Assertions.assertEquals("\"Apple\"", cart.getCartItems().get(0).getName());
-        Assertions.assertEquals("1.69", cart.getCartItems().get(0).getPrice());
+
+        ArrayList<String> actualOrderInfo = new ArrayList <>();
+        actualOrderInfo.add( '"' + "Apple" + '"');
+        actualOrderInfo.add( String.valueOf( 1.69 ) );
+
+        for(Item item : cart.getCartItems()) {
+            expectedOrderInfo.add( item.getName() );
+            expectedOrderInfo.add( item.getPrice() );
+        }
+        Assertions.assertEquals( expectedOrderInfo, actualOrderInfo );
     }
 
     @Test
@@ -31,7 +39,6 @@ public class CartTest {
         Item itemToCart2 = inventory.getItems().get(1);
         cart.add(itemToCart);
         cart.add( itemToCart2 );
-
         double sum = 0.0;
         for (Item item : cart.getCartItems()) {
             sum += Double.parseDouble( item.getPrice() );
@@ -64,24 +71,9 @@ public class CartTest {
 
     @Test
     public void printPreviousOrders() {
-        //Order 1
-        Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        Item otherItemToCart = inventory.getItems().get(1);
-        cart.add(itemToCart);
-        cart.add( otherItemToCart );
-
-        //Order 2
-        Cart cart2 = new Cart(new ArrayList<>());
-        Item itemToCart2 = inventory.getItems().get(2);
-        Item otherItemToCart2 = inventory.getItems().get(3);
-        cart2.add(itemToCart2);
-        cart2.add( otherItemToCart2 );
-
         ArrayList < Cart > previousOrders = new ArrayList<>();
-        previousOrders.add( cart );
-        previousOrders.add( cart2 );
-
+        previousOrders.add( getOrder1() );
+        previousOrders.add( getOrder2() );
         int orderCount = 0;
         for (Cart userOrder : previousOrders) {
             orderCount++;
@@ -106,27 +98,13 @@ public class CartTest {
 
     @Test
     public void reOrderCart(){
-        //Order 1
-        Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(6);
-        Item otherItemToCart = inventory.getItems().get(4);
-        cart.add(itemToCart);
-        cart.add( otherItemToCart );
-
-        //Order 2
-        Cart cart2 = new Cart(new ArrayList<>());
-        Item itemToCart2 = inventory.getItems().get(7);
-        Item otherItemToCart2 = inventory.getItems().get(9);
-        cart2.add(itemToCart2);
-        cart2.add( otherItemToCart2 );
-
         ArrayList < Cart > previousOrders = new ArrayList<>();
         Cart newCart = new Cart( new ArrayList <>() );
 
-        previousOrders.add( cart );
-        previousOrders.add( cart2 );
+        previousOrders.add( getOrder1() );
+        previousOrders.add( getOrder2() );
 
-        System.out.println("Order 1");
+        System.out.println("\nOrder 1");
         System.out.println("--------");
         displayCart( previousOrders.get( 0 ) );
 
@@ -134,12 +112,28 @@ public class CartTest {
         System.out.println("--------");
         displayCart( previousOrders.get( 1 ) );
 
-        //selects first order and adds it to cart
+        //Selects first order and adds it to cart
         for (Item item : previousOrders.get( 0 ).getCartItems())
         { newCart.add( item ); }
 
         System.out.println("New cart");
         System.out.println("--------");
         displayCart( newCart );
+    }
+
+    public Cart getOrder1() {
+        Cart order1 = new Cart(new ArrayList<>());
+        Item itemToCart = inventory.getItems().get(6);
+        Item otherItemToCart = inventory.getItems().get(4);
+        order1.add(itemToCart); order1.add( otherItemToCart );
+        return order1;
+    }
+
+    public Cart getOrder2() {
+        Cart order2 = new Cart(new ArrayList<>());
+        Item itemToCart = inventory.getItems().get(7);
+        Item otherItemToCart = inventory.getItems().get(9);
+        order2.add(itemToCart); order2.add( otherItemToCart );
+        return order2;
     }
 }
