@@ -12,9 +12,9 @@ public class Display {
     }
 
     public void displayMainMenu() {
-        System.out.println( "\nMain Menu" );
+        System.out.println( "Main Menu" );
         System.out.println( "---------" );
-        System.out.println( "1. View and select items to add to cart." );
+        System.out.println( "1. View items." );
         System.out.println( "2. View cart." );
         System.out.println( "3. Edit cart." );
         System.out.println( "4. Checkout." );
@@ -44,6 +44,6 @@ public class Display {
             sum = cart.getPriceSum( sum, Double.parseDouble( item.getPrice() ));
             counter++;
         }
-        System.out.println( "\nTotal: $" + Math.round( sum * 100.0 ) / 100.0 );
+        System.out.println( "\nTotal: $" + Math.round( sum * 100.0 ) / 100.0 + "\n");
     }
 }

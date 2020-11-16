@@ -39,7 +39,7 @@ public class SendReceiptTest {
         writer.close();
     }
 
-    public static boolean isValidNumber(String phoneNumber) {
+    public static boolean isValidPhoneNumber( String phoneNumber) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
         return (matcher.find() && matcher.group().equals(phoneNumber));
@@ -72,7 +72,7 @@ public class SendReceiptTest {
             case "2" -> {System.out.println("\nRequired format: xxx-xxx-xxxx");
                 System.out.print("Enter phone number: ");
                 String phoneNumber = in.nextLine();
-                if (isValidNumber(phoneNumber))
+                if (isValidPhoneNumber(phoneNumber))
                     System.out.print("\nValid phone number.\n");
                 else
                     System.out.print("\nNot a valid phone number.\n");}

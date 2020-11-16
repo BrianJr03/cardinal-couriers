@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SendReceipt {
     static LocalDate purchaseDate = Main.purchaseDate;
@@ -32,16 +34,22 @@ public class SendReceipt {
     public void showReceiptOptions(String userChoice, Cart cart) throws IOException, MessagingException {
         Scanner in = new Scanner( System.in );
         switch ( userChoice ) {
-            case "1" -> {
-                System.out.println( "\nPlease enter your phone number:" );
+            case "1" -> {System.out.println("\nRequired format: xxx-xxx-xxxx");
+                System.out.println( "Please enter your phone number:" );
                 String phoneNumber = in.nextLine();
-                sendReceiptAsTextMSG( phoneNumber, cart );
+                if (isValidPhoneNumber( phoneNumber ))
+                    { sendReceiptAsTextMSG( phoneNumber, cart ); }
+                else
+                    { System.out.println("\nPlease enter a valid phone number. Main menu..\n"); }
+
             }
 
-            case "2" -> {
-                System.out.println( "\nPlease enter your email:" );
+            case "2" -> {System.out.println( "\nPlease enter your email:" );
                 String userEmail = in.nextLine();
-                sendReceiptAsEmail( userEmail , cart );
+                if (isValidEmail( userEmail ))
+                    { sendReceiptAsEmail( userEmail , cart ); }
+                else
+                    { System.out.println("\nPlease enter a valid email address. Main menu..\n"); }
             }
             default -> System.out.println("\nPlease enter a valid choice. \nReturning to Main Menu..");
         }
@@ -65,6 +73,22 @@ public class SendReceipt {
         writer.write( "---------------------------------------------\n" );
         writer.write( "\nThanks for shopping with us!" );
         writer.close();
+    }
+
+    private static boolean isValidPhoneNumber( String phoneNumber) {
+        Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return (matcher.find() && matcher.group().equals(phoneNumber));
+    }
+
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) return false;
+        return pattern.matcher(email).matches();
     }
 
     public void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
@@ -116,7 +140,7 @@ public class SendReceipt {
                     case "2" -> sendReceiptAsEmail( phoneNumber + "@pm.sprint.com", cart );
                     case "3" -> sendReceiptAsEmail( phoneNumber + "@vzwpix.com", cart );
                     case "4" -> sendReceiptAsEmail( phoneNumber + "@tmomail.net", cart );
-                    default -> System.out.println("\nFailed to select a valid carrier. Main menu..");
+                    default -> System.out.println("\nFailed to select a valid carrier. Main menu..\n");
         }
     }
 }

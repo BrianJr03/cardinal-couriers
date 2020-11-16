@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class LoginController {
     @FXML
@@ -26,7 +27,10 @@ public class LoginController {
     public String getUsername() {
         String username;
         username = usernameInput.getText();
-        return username;
+        if (isValidUsername( username ))
+            {return username;}
+        else
+            {return "Invalid Username";}
     }
 
     @SuppressWarnings( "unused" ) // will be used later
@@ -34,6 +38,13 @@ public class LoginController {
         String password;
         password = passwordInput.getText();
         return password;
+    }
+
+    private boolean isValidUsername(String username) {
+        String userNameRegex = "^[a-zA-Z0-9]+$";
+        Pattern pattern = Pattern.compile(userNameRegex);
+        if (username == null) return false;
+        return pattern.matcher(username).matches();
     }
 
     @SuppressWarnings( "unused" ) // will be used later

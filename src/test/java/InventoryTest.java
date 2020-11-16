@@ -17,7 +17,7 @@ public class InventoryTest {
     @Test
     public void getItemsFromStoreA() throws IOException {
         JsonParser parser = new JsonParser();
-        FileReader reader = new FileReader( "src/main/resources/storeItems/storeA_items.json" );
+        FileReader reader = new FileReader( "src/main/resources/storeItems/Walmart_Items.json" );
 
         ArrayList<String[]> itemsList = new ArrayList<>();
 

@@ -19,13 +19,13 @@ public class Inventory {
     { return items; }
 
     public static String getStore_A_Inventory()
-    { return "src/main/resources/storeItems/storeA_items.json"; }
+    { return "src/main/resources/storeItems/Walmart_Items.json"; }
 
     public static String getStore_B_Inventory()
-    { return "src/main/resources/storeItems/storeB_items.json"; }
+    { return "src/main/resources/storeItems/Target_Items.json"; }
 
     public static String getStore_C_Inventory()
-    { return "src/main/resources/storeItems/storeC_items.json"; }
+    { return "src/main/resources/storeItems/Kroger_Items.json"; }
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();

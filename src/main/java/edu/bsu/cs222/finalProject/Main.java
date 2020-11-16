@@ -39,24 +39,24 @@ public class Main {
 
     public static String storePicker() {
         System.out.println("Which store would you like to shop from today?\n");
-        System.out.println("1. Store A");
-        System.out.println("2. Store B");
-        System.out.println("3. Store C\n");
+        System.out.println("1. Walmart");
+        System.out.println("2. Target");
+        System.out.println("3. Kroger\n");
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
         switch ( userChoice ) {
             case "1" -> {
-                System.out.println("\nStore A");
+                System.out.println("\nWalmart");
                 return Inventory.getStore_A_Inventory(); }
             case "2" -> {
-                System.out.println("\nStore B");
+                System.out.println("\nTarget");
                 return Inventory.getStore_B_Inventory(); }
             case "3" -> {
-                System.out.println("\nStore C");
+                System.out.println("\nKroger");
                 return Inventory.getStore_C_Inventory(); }
             default -> {
                 System.out.println( "\nPlease pick a valid Store." );
-                System.out.println( "Redirecting to Store A..\n" );
+                System.out.println( "Redirecting to Walmart..\n" );
                 return Inventory.getStore_A_Inventory();
             }
         }
@@ -75,8 +75,10 @@ public class Main {
         System.out.println("Mark for contactless delivery? Y or N");
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
-        if(userChoice.equalsIgnoreCase( "y" )) {
-            System.out.println("Marked for contactless delivery!");
+        switch ( userChoice.toUpperCase() ) {
+            case "Y" ->  System.out.println("\nMarked for contactless delivery!");
+            case "N" -> System.out.println("\nOrder is not marked contactless delivery.");
+            default -> System.out.println("\nPlease enter Y or N\nOrder is not marked contactless delivery.");
         }
         sendReceipt.askUserForReceipt( cart );
     }
