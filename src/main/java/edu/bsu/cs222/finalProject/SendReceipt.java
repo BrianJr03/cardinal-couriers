@@ -18,16 +18,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SendReceipt {
-    static LocalDate purchaseDate = Main.purchaseDate;
+    LocalDate purchaseDate = Main.purchaseDate;
 
     public void askUserForReceipt(Cart cart) throws MessagingException, IOException {
         Scanner input = new Scanner( System.in );
         System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
         String userInput = input.nextLine();
-        if (userInput.equalsIgnoreCase( "y" )) {
-            System.out.println("\n1. via Text\n2. via Email\n");
-            String userChoice = input.nextLine();
-            showReceiptOptions( userChoice , cart );
+        switch ( userInput.toUpperCase() ) {
+            case "Y" -> {
+                System.out.println( "\n1. via Text\n2. via Email\n" );
+                String userChoice = input.nextLine();
+                showReceiptOptions( userChoice , cart );
+            }
+            case "N" -> System.out.println("\nReturning to Main Menu..\n");
+            default -> System.out.println("\nPlease enter Y or N. Main Menu..\n");
         }
     }
 
@@ -40,7 +44,7 @@ public class SendReceipt {
                 if (isValidPhoneNumber( phoneNumber ))
                     { sendReceiptAsTextMSG( phoneNumber, cart ); }
                 else
-                    { System.out.println("\nPlease enter a valid phone number. Main menu..\n"); }
+                    { System.out.println("\nPlease enter a valid phone number.\nMain menu..\n"); }
 
             }
 
@@ -49,9 +53,9 @@ public class SendReceipt {
                 if (isValidEmail( userEmail ))
                     { sendReceiptAsEmail( userEmail , cart ); }
                 else
-                    { System.out.println("\nPlease enter a valid email address. Main menu..\n"); }
+                    { System.out.println("\nPlease enter a valid email address.\nMain Menu..\n"); }
             }
-            default -> System.out.println("\nPlease enter a valid choice. \nReturning to Main Menu..");
+            default -> System.out.println("\nPlease enter a valid choice.\nReturning to Main Menu..");
         }
     }
 
@@ -66,8 +70,7 @@ public class SendReceipt {
         for (Item item : cart.getCartItems()) {
             counter++;
             sum = cart.getPriceSum( sum, Double.parseDouble( item.getPrice() ));
-            writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );
-        }
+            writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );}
         writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
         writer.write( "Date purchased: " + purchaseDate + "\n");
         writer.write( "---------------------------------------------\n" );
@@ -75,13 +78,13 @@ public class SendReceipt {
         writer.close();
     }
 
-    private static boolean isValidPhoneNumber( String phoneNumber) {
+    private boolean isValidPhoneNumber( String phoneNumber) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
         return (matcher.find() && matcher.group().equals(phoneNumber));
     }
 
-    public static boolean isValidEmail(String email) {
+    private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +

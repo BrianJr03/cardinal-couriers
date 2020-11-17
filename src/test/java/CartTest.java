@@ -10,7 +10,7 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class CartTest {
     Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
-            (Inventory.getStore_A_Inventory())));
+            (Inventory.getWalmartInventory())));
 
     public CartTest() throws IOException {}
 
@@ -83,7 +83,7 @@ public class CartTest {
         }
     }
 
-    public static void displayCart(Cart cart) {
+    public void displayCart(Cart cart) {
         int counter = 1;
         if (cart.getCartItems().isEmpty()) {
             System.out.println("\nThe cart is empty.\n");

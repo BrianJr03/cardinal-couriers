@@ -47,17 +47,17 @@ public class Main {
         switch ( userChoice ) {
             case "1" -> {
                 System.out.println("\nWalmart");
-                return Inventory.getStore_A_Inventory(); }
+                return Inventory.getKrogerInventory(); }
             case "2" -> {
                 System.out.println("\nTarget");
-                return Inventory.getStore_B_Inventory(); }
+                return Inventory.getTargetInventory(); }
             case "3" -> {
                 System.out.println("\nKroger");
-                return Inventory.getStore_C_Inventory(); }
+                return Inventory.getWalmartInventory(); }
             default -> {
                 System.out.println( "\nPlease pick a valid Store." );
                 System.out.println( "Redirecting to Walmart..\n" );
-                return Inventory.getStore_A_Inventory();
+                return Inventory.getKrogerInventory();
             }
         }
     }
@@ -84,7 +84,7 @@ public class Main {
     }
 
     public static Cart reOrderPreviousOrder() {
-        if (previousOrders == null) //needs work
+        if (previousOrders == null)
         { System.out.println("There are no orders to display."); }
 
         Cart newCart = new Cart( new ArrayList <>() );
