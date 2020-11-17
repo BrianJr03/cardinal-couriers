@@ -64,15 +64,13 @@ public class Display {
         System.out.println( "-------------------------" );
         Scanner scanner = new Scanner( System.in );
         System.out.println( "\nEnter the number of the item you'd like to order. Type 0 to go to main menu." );
-        int itemIndex = Integer.parseInt( scanner.nextLine() );
-        return itemIndex;
+        return Integer.parseInt( scanner.nextLine() );
     }
 
     public int getQuantity(Item selectedItem ){
         Scanner scanner = new Scanner(System.in);
         System.out.println( "How much " + selectedItem.getName() + " would you like to add to your cart?" );
-        int quantity = Integer.parseInt( scanner.nextLine() );
-        return quantity;
+        return Integer.parseInt( scanner.nextLine() );
     }
     public void successfulAddToCart(){
         System.out.println( "\nItem successfully added to cart. Returning to main menu...\n" );
@@ -84,13 +82,11 @@ public class Display {
     public int getItemToRemoveCart(){
         System.out.println( "\nSelect the number of the item you'd like to remove." );
         Scanner console = new Scanner( System.in );
-        int selectedIndex = console.nextInt();
-        return selectedIndex;
+        return console.nextInt();
     }
     public String continueEditCart(){
         Scanner console = new Scanner(System.in);
         System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
-        String continueResponse = console.next();
-        return continueResponse;
+        return console.next();
     }
 }

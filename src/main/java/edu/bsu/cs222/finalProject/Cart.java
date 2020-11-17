@@ -1,8 +1,6 @@
 package edu.bsu.cs222.finalProject;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 
 public class Cart {
     private final ArrayList<Item> cartItems;
