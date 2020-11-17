@@ -3,6 +3,8 @@ package edu.bsu.cs222.finalProject;
 import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Display {
     public void displayHeader() {
@@ -22,6 +24,16 @@ public class Display {
         System.out.println( "5. View order history." );
         System.out.println( "6. Switch Stores." );
         System.out.println( "7. Exit\n" );
+    }
+
+    public static boolean isIntegerInput(String input) {
+        Pattern pattern = Pattern.compile("[+-]?[0-9]+");
+        Matcher matcher = pattern.matcher(input);
+        if (!(matcher.find() && matcher.group().equals(input))) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void displayPreviousOrders( ArrayList < Cart > previousOrders , LocalDate date ) {
@@ -58,16 +70,28 @@ public class Display {
     }
 
     public int getItemIndexToAddCart(){
-        System.out.println( "-------------------------" );
+        System.out.println( "-----------------------------------------" );
         Scanner scanner = new Scanner( System.in );
         System.out.println( "\nEnter the number of the item you'd like to order. Type 0 to go to main menu." );
-        return Integer.parseInt( scanner.nextLine() );
+        String input = scanner.nextLine();
+        if (isIntegerInput(input)) {
+            return Integer.parseInt(input);
+        } else {
+            System.out.println("\nInput is not valid. Please try again.\n");
+            return getItemIndexToAddCart();
+        }
     }
 
     public int getQuantity(Item selectedItem ){
         Scanner scanner = new Scanner(System.in);
         System.out.println( "How much " + selectedItem.getName() + " would you like to add to your cart?" );
-        return Integer.parseInt( scanner.nextLine() );
+        String input = scanner.nextLine();
+        if (isIntegerInput(input)) {
+            return Integer.parseInt(input);
+        } else {
+            System.out.println("\nInput is not valid. Please try again.\n");
+            return getQuantity(selectedItem);
+        }
     }
     public void successfulAddToCart(){
         System.out.println( "\nItem successfully added to cart. Returning to main menu...\n" );
@@ -79,8 +103,15 @@ public class Display {
     public int getItemToRemoveCart(){
         System.out.println( "\nSelect the number of the item you'd like to remove." );
         Scanner console = new Scanner( System.in );
-        return console.nextInt();
+        String input = console.nextLine();
+        if (isIntegerInput(input)) {
+            return Integer.parseInt(input);
+        } else {
+            System.out.println("\nInput is not valid. Please try again.\n");
+            return getItemToRemoveCart();
+        }
     }
+
     public String continueEditCart(){
         Scanner console = new Scanner(System.in);
         System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
