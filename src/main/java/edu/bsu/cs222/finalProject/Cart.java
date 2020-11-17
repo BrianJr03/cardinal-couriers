@@ -23,28 +23,20 @@ public class Cart {
     { return sum + itemPrice; }
 
     public void addItemsToCart( Inventory inventory , Cart cart ) {
-        System.out.println( "-------------------------" );
-        Scanner scanner = new Scanner( System.in );
-        int counter = 1;
-        for ( Item item : inventory.getItems() ) {
-            System.out.println( counter + ". " + item.prettyPrintItem() );
-            counter++;
-        }
-        System.out.println( "\nEnter the number of the item you'd like to order. Type 0 to go to main menu." );
-
-        int itemIndex = Integer.parseInt( scanner.nextLine() );
+        Display display = new Display();
+        int counter = display.displayInventory(inventory);
+        int itemIndex = display.getItemIndexToAddCart();
         if ( itemIndex == 0 ){return;}
         if ( 1 <= itemIndex && itemIndex < counter ) {
             Item selectedItem = inventory.getItems().get( itemIndex - 1 );
-            System.out.println( "How much " + selectedItem.getName() + " would you like to add to your cart?" );
-            int quantity = Integer.parseInt( scanner.nextLine() );
+            int quantity = display.getQuantity(selectedItem);
             for ( int i = 0; i < quantity; i++ ) {
                 cart.add( selectedItem );
             }
-            System.out.println( "\nItem successfully added to cart. Returning to main menu...\n" );
+            display.successfulAddToCart();
         } else
         {
-            System.out.println( "\nNo item exists under that number. Returning to main menu...\n" );
+            display.itemNotFount();
         }
     }
 
