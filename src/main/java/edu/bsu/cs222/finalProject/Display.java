@@ -29,11 +29,7 @@ public class Display {
     public static boolean isIntegerInput(String input) {
         Pattern pattern = Pattern.compile("[+-]?[0-9]+");
         Matcher matcher = pattern.matcher(input);
-        if (!(matcher.find() && matcher.group().equals(input))) {
-            return false;
-        } else {
-            return true;
-        }
+        return matcher.find() && matcher.group().equals( input );
     }
 
     public void displayPreviousOrders( ArrayList < Cart > previousOrders , LocalDate date ) {
@@ -57,7 +53,7 @@ public class Display {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
             counter++;
         }
-        System.out.println(String.format("\nTotal: $%.2f\n", cart.getTotalCartPrice()));
+        System.out.printf( "\nTotal: $%.2f\n%n" , cart.getTotalCartPrice());
     }
 
     public void displayInventory( Inventory inventory ) {
