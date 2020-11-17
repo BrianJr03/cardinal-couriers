@@ -47,17 +47,17 @@ public class Main {
         switch ( userChoice ) {
             case "1" -> {
                 System.out.println("\nWalmart");
-                return Inventory.getKrogerInventory(); }
+                return Inventory.getInventory("walmart"); }
             case "2" -> {
                 System.out.println("\nTarget");
-                return Inventory.getTargetInventory(); }
+                return Inventory.getInventory("target"); }
             case "3" -> {
                 System.out.println("\nKroger");
-                return Inventory.getWalmartInventory(); }
+                return Inventory.getInventory("kroger"); }
             default -> {
                 System.out.println( "\nPlease pick a valid Store." );
                 System.out.println( "Redirecting to Walmart..\n" );
-                return Inventory.getKrogerInventory();
+                return Inventory.getInventory("walmart");
             }
         }
     }

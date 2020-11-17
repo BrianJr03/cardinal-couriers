@@ -37,7 +37,7 @@ public class InventoryTest {
     @Test
     public void testCanReturnFirstItemFromKroger() throws IOException {
         Inventory inventory =
-                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getKrogerInventory()) ));
+                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getInventory("kroger")) ));
 
         ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
@@ -58,7 +58,7 @@ public class InventoryTest {
     @Test
     public void testCanReturnFirstItemFromStoreB() throws IOException {
         Inventory inventory =
-                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getTargetInventory()) ));
+                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getInventory("target")) ));
 
         ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
@@ -79,7 +79,7 @@ public class InventoryTest {
     @Test
     public void testCanReturnFirstItemFromStoreC() throws IOException {
         Inventory inventory =
-                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getWalmartInventory()) ));
+                new Inventory(createArrayListOfItems( collectItemsFromResources(Inventory.getInventory("walmart")) ));
 
         ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
@@ -100,7 +100,7 @@ public class InventoryTest {
     @Test
     public void testSearchForItem() throws IOException {
         Inventory inventory =
-                new Inventory(createArrayListOfItems(collectItemsFromResources(Inventory.getWalmartInventory())));
+                new Inventory(createArrayListOfItems(collectItemsFromResources(Inventory.getInventory("walmart"))));
         ArrayList<String> actualOrder = new ArrayList <>();
         ArrayList<String> expectedOrder = new ArrayList <>();
 

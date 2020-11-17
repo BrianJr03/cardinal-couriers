@@ -18,14 +18,15 @@ public class Inventory {
     public ArrayList<Item> getItems()
     { return items; }
 
-    public static String getKrogerInventory()
-    { return  "src/main/resources/storeItems/Kroger_Items.json"; }
-
-    public static String getTargetInventory()
-    { return "src/main/resources/storeItems/Target_Items.json"; }
-
-    public static String getWalmartInventory()
-    { return "src/main/resources/storeItems/Walmart_Items.json"; }
+    public static String getInventory(String storeName) {
+        if (storeName.equalsIgnoreCase("kroger")) {
+            return "src/main/resources/storeItems/Kroger_Items.json";
+        } else if (storeName.equalsIgnoreCase("target")) {
+            return "src/main/resources/storeItems/Target_Items.json";
+        } else {
+            return "src/main/resources/storeItems/Walmart_Items.json";
+        }
+    }
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();
