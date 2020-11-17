@@ -15,7 +15,7 @@ public class Display {
     public void displayMainMenu() {
         System.out.println( "Main Menu" );
         System.out.println( "---------" );
-        System.out.println( "1. View items." );
+        System.out.println( "1. View items and add to cart." );
         System.out.println( "2. View cart." );
         System.out.println( "3. Edit cart." );
         System.out.println( "4. Checkout." );
@@ -48,14 +48,13 @@ public class Display {
         System.out.println(String.format("\nTotal: $%.2f\n", cart.getTotalCartPrice()));
     }
 
-    public int displayInventory( Inventory inventory ) {
+    public void displayInventory( Inventory inventory ) {
         System.out.println( "-------------------------" );
         int counter = 1;
         for ( Item item : inventory.getItems() ) {
             System.out.println( counter + ". " + item.prettyPrintItem() );
             counter++;
         }
-        return counter;
     }
 
     public int getItemIndexToAddCart(){

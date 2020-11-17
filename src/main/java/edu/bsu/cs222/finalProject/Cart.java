@@ -30,18 +30,16 @@ public class Cart {
 
     public void addItemsToCart( Inventory inventory , Cart cart ) {
         Display display = new Display();
-        int counter = display.displayInventory(inventory);
+        int inventorySize = inventory.getItems().size();
         int itemIndex = display.getItemIndexToAddCart();
-        if ( itemIndex == 0 ){return;}
-        if ( 1 <= itemIndex && itemIndex < counter ) {
+        if ( 1 <= itemIndex && itemIndex < inventorySize ) {
             Item selectedItem = inventory.getItems().get( itemIndex - 1 );
             int quantity = display.getQuantity(selectedItem);
             for ( int i = 0; i < quantity; i++ ) {
                 cart.add( selectedItem );
             }
             display.successfulAddToCart();
-        } else
-        {
+        } else {
             display.itemNotFound();
         }
     }

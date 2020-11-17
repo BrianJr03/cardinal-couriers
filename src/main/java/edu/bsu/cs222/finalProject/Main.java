@@ -24,7 +24,10 @@ public class Main {
         String selection = selectMenuOption();
         while ( !selection.equals( "7" ) ) {
             switch ( selection ) {
-                case "1" -> cart.addItemsToCart( storeInventory , cart );
+                case "1" -> {
+                    display.displayInventory(storeInventory);
+                    cart.addItemsToCart( storeInventory , cart );
+                }
                 case "2" -> display.displayCart( cart );
                 case "3" -> cart.editCart( cart );
                 case "4" -> { checkOut( cart );
