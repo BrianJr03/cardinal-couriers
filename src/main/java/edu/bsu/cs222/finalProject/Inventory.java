@@ -18,14 +18,14 @@ public class Inventory {
     public ArrayList<Item> getItems()
     { return items; }
 
-    public static String getStore_A_Inventory()
-    { return "src/main/resources/storeItems/Walmart_Items.json"; }
+    public static String getKrogerInventory()
+    { return  "src/main/resources/storeItems/Kroger_Items.json"; }
 
-    public static String getStore_B_Inventory()
+    public static String getTargetInventory()
     { return "src/main/resources/storeItems/Target_Items.json"; }
 
-    public static String getStore_C_Inventory()
-    { return "src/main/resources/storeItems/Kroger_Items.json"; }
+    public static String getWalmartInventory()
+    { return "src/main/resources/storeItems/Walmart_Items.json"; }
 
     public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
         ArrayList<Item> itemsList = new ArrayList<>();

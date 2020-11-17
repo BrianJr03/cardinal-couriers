@@ -1,11 +1,3 @@
-Receipt for order 1399N
----------------------------------------
-1. "Hot Chips" | 0.99
-2. "Hot Chips" | 0.99
-3. "Hot Chips" | 0.99
-
-Total: $2.97
-Date purchased: null
----------------------------------------------
-
-Thanks for shopping with us!
+TEST RECEIPT
+1. "Bacon" | 2.09
+2. "Steak" | 8.99

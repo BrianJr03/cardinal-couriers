@@ -15,7 +15,7 @@ import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class SendReceiptTest {
     Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
-            (Inventory.getStore_A_Inventory())));
+            (Inventory.getKrogerInventory())));
 
     public SendReceiptTest( ) throws IOException {}
 
