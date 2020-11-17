@@ -17,8 +17,16 @@ public class Cart {
     public void remove(Item itemToCart)
     { cartItems.remove(itemToCart); }
 
-    public Double getPriceSum(double sum, double itemPrice)
+    public double getPriceSum(double sum, double itemPrice)
     { return sum + itemPrice; }
+
+    public double getTotalCartPrice() {
+        double total = 0;
+        for (Item item : cartItems) {
+            total += Double.parseDouble(item.getPrice());
+        }
+        return total;
+    }
 
     public void addItemsToCart( Inventory inventory , Cart cart ) {
         Display display = new Display();

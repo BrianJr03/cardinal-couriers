@@ -41,13 +41,11 @@ public class Display {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
-        double sum = 0;
         for (Item item : cart.getCartItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
-            sum = cart.getPriceSum(sum, Double.parseDouble(item.getPrice()));
             counter++;
         }
-        System.out.println("\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n");
+        System.out.println(String.format("\nTotal: $%.2f\n", cart.getTotalCartPrice()));
     }
 
     public int displayInventory( Inventory inventory ) {
