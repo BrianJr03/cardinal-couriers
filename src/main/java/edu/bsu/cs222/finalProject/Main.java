@@ -10,10 +10,10 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class Main {
-    public static Display display = new Display();
-    public static SendReceipt sendReceipt = new SendReceipt();
-    public static LocalDate purchaseDate = DateTime.now().toLocalDate();
-    public static ArrayList < Cart > previousOrders = new ArrayList <>();
+    public static final Display display = new Display();
+    public static final SendReceipt sendReceipt = new SendReceipt();
+    public static final LocalDate purchaseDate = DateTime.now().toLocalDate();
+    public static final ArrayList < Cart > previousOrders = new ArrayList <>();
 
     public static void main( String[] args ) throws IOException, MessagingException {
         display.displayHeader();
@@ -84,7 +84,7 @@ public class Main {
     }
 
     public static Cart reOrderPreviousOrder() {
-        if (previousOrders == null)
+        if (previousOrders.isEmpty())
         { System.out.println("There are no orders to display."); }
 
         Cart newCart = new Cart( new ArrayList <>() );

@@ -9,7 +9,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class CartTest {
-    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
+    final Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
             (Inventory.getInventory("walmart"))));
 
     public CartTest() throws IOException {}

@@ -14,7 +14,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
 import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
 
 public class SendReceiptTest {
-    Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
+    final Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
             (Inventory.getInventory("kroger"))));
 
     public SendReceiptTest( ) throws IOException {}
