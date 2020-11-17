@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -18,8 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SendReceipt {
-    LocalDate purchaseDate = Main.purchaseDate;
-
+    private final LocalDate purchaseDate = DateTime.now().toLocalDate();
     public void askUserForReceipt(Cart cart) throws MessagingException, IOException {
         Scanner input = new Scanner( System.in );
         System.out.print( "\nWould you like to be sent a receipt? Y or N \n");
