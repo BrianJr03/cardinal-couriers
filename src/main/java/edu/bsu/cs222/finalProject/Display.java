@@ -77,7 +77,20 @@ public class Display {
     public void successfulAddToCart(){
         System.out.println( "\nItem successfully added to cart. Returning to main menu...\n" );
     }
-    public void itemNotFount(){
+    public void itemNotFound(){
         System.out.println( "\nNo item exists under that number. Returning to main menu...\n" );
+    }
+
+    public int getItemToRemoveCart(){
+        System.out.println( "\nSelect the number of the item you'd like to remove." );
+        Scanner console = new Scanner( System.in );
+        int selectedIndex = console.nextInt();
+        return selectedIndex;
+    }
+    public String continueEditCart(){
+        Scanner console = new Scanner(System.in);
+        System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
+        String continueResponse = console.next();
+        return continueResponse;
     }
 }

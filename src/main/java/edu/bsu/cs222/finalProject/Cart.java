@@ -36,25 +36,22 @@ public class Cart {
             display.successfulAddToCart();
         } else
         {
-            display.itemNotFount();
+            display.itemNotFound();
         }
     }
 
     public void editCart( Cart cart ) {
         Display display = new Display();
         display.displayCart( cart );
-        System.out.println( "\nSelect the number of the item you'd like to remove." );
-        Scanner console = new Scanner( System.in );
-        int selectedIndex = console.nextInt();
+        int selectedIndex = display.getItemToRemoveCart();
         if (selectedIndex > 0 && selectedIndex <= cart.getCartItems().size()) {
             cart.remove( cart.getCartItems().get( selectedIndex - 1 ) );
-            System.out.println( "Item successfully removed from cart. Would you like to continue editing? Y or N" );
-            String continueResponse = console.next();
+            String continueResponse = display.continueEditCart();
             if ( continueResponse.equalsIgnoreCase( "y" ) ) {
                 editCart( cart );
             }
         } else {
-            System.out.println( "There is no item with that index. Returning to main menu..." );
+            display.itemNotFound();
         }
     }
 }
