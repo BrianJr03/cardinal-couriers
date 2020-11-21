@@ -15,7 +15,6 @@ public class AlertBox {
         window.setTitle( title );
 
         Label label = new Label();
-
         label.setText( message );
 
         VBox layout = new VBox(10);

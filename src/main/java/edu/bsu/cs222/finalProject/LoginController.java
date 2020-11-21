@@ -2,8 +2,14 @@ package edu.bsu.cs222.finalProject;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -19,11 +25,41 @@ public class LoginController {
     @FXML
     private AnchorPane rootPane;
 
+    @FXML
+    private Label unMaskedPassword;
+
+    @FXML
+    private CheckBox checkBox;
+
+    @FXML
+    private ImageView passwordVisibility;
+
     AlertBox alertBox = new AlertBox();
+
+    public void initialize() {
+       passwordVisibility.setImage( isNotVisibleEye );
+    }
+
+    File isVisibleEye_File = new File( "src/main/resources/pngs/eye.png" );
+    Image isVisibleEye = new Image( isVisibleEye_File.toURI().toString() );
+
+    File isNotVisibleEye_File = new File( "src/main/resources/pngs/eye-slash.png" );
+    Image isNotVisibleEye = new Image( isNotVisibleEye_File.toURI().toString() );
 
     public void launchMainUI() throws IOException {
             AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/mainUI.fxml" ));
             rootPane.getChildren().setAll( pane );
+    }
+
+    public void showUnMaskedPassword() {
+        if (checkBox.isSelected()) {
+            passwordVisibility.setImage(isVisibleEye);
+            unMaskedPassword.setText( getPassword() );
+        }
+        else {
+            passwordVisibility.setImage( isNotVisibleEye );
+            unMaskedPassword.setText( "" );
+        }
     }
 
     public void showHowToChangePassword() {
