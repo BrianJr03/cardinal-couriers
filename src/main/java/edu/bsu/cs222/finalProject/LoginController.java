@@ -24,24 +24,23 @@ public class LoginController {
             rootPane.getChildren().setAll( pane );
     }
 
-    @SuppressWarnings( "unused" ) // will be used later
+    public void verifyUserInfo() throws IOException {
+        if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
+             { launchMainUI(); }
+        else
+            { AlertBox.display( "Warning" ,"Invalid username or password" ); }
+    }
+
     public String getUsername() {
         String username;
         username = usernameInput.getText();
-        if (isValidUserName( username ))
-            {return username;}
-        else
-            {return "Invalid username";}
+        return username;
     }
 
-    @SuppressWarnings( "unused" ) // will be used later
     public String getPassword() {
         String password;
         password = passwordInput.getText();
-        if (isValidPassword( password ))
-            {return password;}
-        else
-            {return "Invalid password";}
+        return password;
     }
 
     private boolean isValidUserName(String username) {
@@ -59,10 +58,12 @@ public class LoginController {
     @SuppressWarnings( "unused" ) // will be used later
     public ArrayList<String> getUserInfo() {
         ArrayList<String> userInfo = new ArrayList <>();
-        String username = this.getUsername();
-        String password = this.getPassword();
-        userInfo.add( username );
-        userInfo.add( password );
+        if(isValidUserName( getUsername() ) && isValidPassword( getPassword() )) {
+            String username = this.getUsername();
+            String password = this.getPassword();
+            userInfo.add( username );
+            userInfo.add( password );
+        }
         return userInfo;
     }
 }

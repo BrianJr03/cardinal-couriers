@@ -16,12 +16,12 @@ public class LoginTest
         return (matcher.find() && matcher.group().equals(password));
     }
 
-    // driver function to check for valid username or password
+    // driver function to check for valid bsu username or password
     public static void main(String[] args) {
         boolean running = true;
         while (running){
             Scanner in = new Scanner( System.in );
-            System.out.println("\n1. Check username\n2. Check password\n3. Exit\n");
+            System.out.println("\n1. Check BSU username\n2. Check BSU password\n3. Exit\n");
             String userChoice = in.nextLine();
             switch ( userChoice ) {
                 case "1" -> {System.out.print("\nEnter your BSU username: ");
