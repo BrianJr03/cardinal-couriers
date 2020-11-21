@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.geometry.*;
 
 public class AlertBox {
-    public static void display(String title, String alertMessage) {
+    public void display( String title, String message) {
         Stage window = new Stage();
         window.initModality( Modality.APPLICATION_MODAL );
         window.setMinWidth( 200 );
@@ -15,7 +15,8 @@ public class AlertBox {
         window.setTitle( title );
 
         Label label = new Label();
-        label.setText( alertMessage );
+
+        label.setText( message );
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(label);

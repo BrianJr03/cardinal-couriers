@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.LoginController">
-   <VBox alignment="CENTER" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+   <VBox alignment="CENTER" onMouseClicked="#showHowToChangePassword" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Label prefHeight="28.0" prefWidth="190.0" text="Grocery Shop BSU">
          <font>
             <Font name="Century Schoolbook Italic" size="18.0" />
@@ -40,14 +40,11 @@
             <Font name="Century Schoolbook" size="13.0" />
          </font>
       </PasswordField>
-      <Label layoutX="144.0" layoutY="428.0" text="Forgot password?" textFill="#a3a3a3">
-         <tooltip>
-            <Tooltip text="Please visit 'password.bsu.edu' to recover password." />
-         </tooltip>
-         <font>
-            <Font name="Century Schoolbook" size="12.0" />
-         </font></Label>
       <TextField fx:id="usernameInput" layoutX="144.0" layoutY="238.0" promptText="username" />
+      <Button layoutX="202.0" layoutY="423.0" mnemonicParsing="false" onAction="#showHowToChangePassword" prefHeight="25.0" prefWidth="110.0" styleClass="loginBtn" stylesheets="@../stylesheets/loginUI_stylesheet.css" text="Forgot password?">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font></Button>
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
       <Image url="@../pngs/bsu.png" />

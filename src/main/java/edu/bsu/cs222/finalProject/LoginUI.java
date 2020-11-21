@@ -17,7 +17,7 @@ public class LoginUI extends Application implements EventHandler<ActionEvent> {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource( "/ui/loginUI.fxml" ));
 
-        primaryStage.setTitle("Grocery Shop");
+        primaryStage.setTitle("Grocery Shop BSU");
         primaryStage.setScene(new Scene(root,725,615));
         primaryStage.show();
     }

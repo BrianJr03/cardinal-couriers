@@ -19,16 +19,23 @@ public class LoginController {
     @FXML
     private AnchorPane rootPane;
 
+    AlertBox alertBox = new AlertBox();
+
     public void launchMainUI() throws IOException {
             AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/mainUI.fxml" ));
             rootPane.getChildren().setAll( pane );
+    }
+
+    public void showHowToChangePassword() {
+        alertBox.display( "Recover Password",
+                "  Please visit 'password.bsu.edu' to recover your password  " );
     }
 
     public void verifyUserInfo() throws IOException {
         if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
              { launchMainUI(); }
         else
-            { AlertBox.display( "Warning" ,"Invalid username or password" ); }
+            { alertBox.display( "Warning" ,"Invalid username or password" ); }
     }
 
     public String getUsername() {
