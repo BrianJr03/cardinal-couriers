@@ -1,3 +1,11 @@
-TEST RECEIPT
-1. "Bacon" | 2.09
-2. "Steak" | 8.99
+Receipt for order 1920N
+---------------------------------------
+1. "Bottled Water" | 1.89
+2. "Bottled Water" | 1.89
+3. "Bottled Water" | 1.89
+
+Total: $5.67
+Date purchased: 2020-11-18
+---------------------------------------------
+
+Thanks for shopping with us!

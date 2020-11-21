@@ -17,9 +17,6 @@ public class Cart {
     public void remove(Item itemToCart)
     { cartItems.remove(itemToCart); }
 
-    public double getPriceSum(double sum, double itemPrice)
-    { return sum + itemPrice; }
-
     public double getTotalCartPrice() {
         double total = 0;
         for (Item item : cartItems) {

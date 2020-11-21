@@ -32,5 +32,4 @@ javafx {
     version = '15'
 }
 
-//Will be used in iteration 3
-//mainClassName = 'edu.bsu.cs222.finalProject.LoginUI'
+mainClassName = 'edu.bsu.cs222.finalProject.LoginUI'

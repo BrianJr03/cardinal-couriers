@@ -66,7 +66,7 @@ public class Display {
     }
 
     public int getItemIndexToAddCart(){
-        System.out.println( "-----------------------------------------" );
+        System.out.println( "-------------------------" );
         Scanner scanner = new Scanner( System.in );
         System.out.println( "\nEnter the number of the item you'd like to order. Type 0 to go to main menu." );
         String input = scanner.nextLine();

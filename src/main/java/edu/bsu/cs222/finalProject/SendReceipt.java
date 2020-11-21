@@ -69,27 +69,25 @@ public class SendReceipt {
                 "-----------------" + "\n");
         for (Item item : cart.getCartItems()) {
             counter++;
-            sum = cart.getPriceSum( sum, Double.parseDouble( item.getPrice() ));
+            sum = cart.getTotalCartPrice();
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );}
-        writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
-        writer.write( "Date purchased: " + purchaseDate + "\n");
-        writer.write( "---------------------------------------------\n" );
-        writer.write( "\nThanks for shopping with us!" );
-        writer.close();
+            writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
+            writer.write( "Date purchased: " + purchaseDate + "\n");
+            writer.write( "---------------------------------------------\n" );
+            writer.write( "\nThanks for shopping with us!" );
+            writer.close();
     }
 
-    private boolean isValidPhoneNumber( String phoneNumber) {
+    private boolean isValidPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
         return (matcher.find() && matcher.group().equals(phoneNumber));
     }
 
     private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\" +
+                ".[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\" +
+                ".)+[a-zA-Z]{2,7}$");
         if (email == null) return false;
         return pattern.matcher(email).matches();
     }

@@ -58,26 +58,29 @@ public class SendReceiptTest {
 
     // driver function to check for valid email or phone number
     public static void main(String[] args) {
-        Scanner in = new Scanner( System.in );
-        System.out.println("\n1. Check email\n2. Check phone number");
-        String userChoice = in.nextLine();
-        switch ( userChoice ) {
-            case "1" -> {System.out.print("\nEnter email: ");
-                String email = in.nextLine();
-                if (isValidEmail(email))
-                    System.out.print("\nValid email.\n");
-                else
-                    System.out.print("\nNot a valid email.\n"); }
+        boolean running = true;
+        while (running){
+            Scanner in = new Scanner( System.in );
+            System.out.println("\n1. Check email\n2. Check phone number\n3. Exit\n");
+            String userChoice = in.nextLine();
+            switch ( userChoice ) {
+                case "1" -> {System.out.print("\nEnter email: ");
+                    String email = in.nextLine();
+                    if (isValidEmail(email))
+                        System.out.print("\nValid email.\n");
+                    else
+                        System.out.print("\nNot a valid email.\n"); }
 
-            case "2" -> {System.out.println("\nRequired format: xxx-xxx-xxxx");
-                System.out.print("Enter phone number: ");
-                String phoneNumber = in.nextLine();
-                if (isValidPhoneNumber(phoneNumber))
-                    System.out.print("\nValid phone number.\n");
-                else
-                    System.out.print("\nNot a valid phone number.\n");}
-
-            default -> System.out.println("Choose valid option.");
+                case "2" -> {System.out.println("\nRequired format: xxx-xxx-xxxx");
+                    System.out.print("Enter phone number: ");
+                    String phoneNumber = in.nextLine();
+                    if (isValidPhoneNumber(phoneNumber))
+                        System.out.print("\nValid phone number.\n");
+                    else
+                        System.out.print("\nNot a valid phone number.\n");}
+                case "3" -> running = false;
+                default -> System.out.println("\nChoose a valid option.");
+            }
         }
     }
 }

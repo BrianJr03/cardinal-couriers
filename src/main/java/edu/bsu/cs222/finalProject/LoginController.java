@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginController {
@@ -27,24 +28,32 @@ public class LoginController {
     public String getUsername() {
         String username;
         username = usernameInput.getText();
-        if (isValidUsername( username ))
+        if (isValidUserName( username ))
             {return username;}
         else
-            {return "Invalid Username";}
+            {return "Invalid username";}
     }
 
     @SuppressWarnings( "unused" ) // will be used later
     public String getPassword() {
         String password;
         password = passwordInput.getText();
-        return password;
+        if (isValidPassword( password ))
+            {return password;}
+        else
+            {return "Invalid password";}
     }
 
-    private boolean isValidUsername(String username) {
-        String userNameRegex = "^[a-zA-Z0-9]+$";
-        Pattern pattern = Pattern.compile(userNameRegex);
-        if (username == null) return false;
-        return pattern.matcher(username).matches();
+    private boolean isValidUserName(String username) {
+        Pattern pattern = Pattern.compile("[a-zA-Z]+(@bsu\\.edu)?");
+        Matcher matcher = pattern.matcher(username);
+        return (matcher.find() && matcher.group().equals(username));
+    }
+
+    private boolean isValidPassword(String password) {
+        Pattern pattern = Pattern.compile("[a-zA-Z]+([+-]?[0-9]+)?");
+        Matcher matcher = pattern.matcher(password);
+        return (matcher.find() && matcher.group().equals(password));
     }
 
     @SuppressWarnings( "unused" ) // will be used later
