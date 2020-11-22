@@ -4,10 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.MainUIController">
-    <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent" stylesheets="@../stylesheets/mainUI_stylesheet.css">
-        <ListView layoutX="108.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0" />
-        <Label layoutX="194.0" layoutY="107.0" text="Items" />
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.MainUIController">
+    <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
+        <Label layoutX="127.0" layoutY="298.0" prefHeight="54.0" prefWidth="366.0" text="items" textFill="#dd2828">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </Pane>
    <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
       <font>

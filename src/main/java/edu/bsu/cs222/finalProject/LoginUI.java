@@ -19,6 +19,7 @@ public class LoginUI extends Application implements EventHandler<ActionEvent> {
 
         primaryStage.setTitle("Grocery Shop BSU");
         primaryStage.setScene(new Scene(root,725,615));
+        primaryStage.setResizable( false );
         primaryStage.show();
     }
 

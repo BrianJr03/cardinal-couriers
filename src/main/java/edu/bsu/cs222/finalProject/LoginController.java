@@ -1,14 +1,13 @@
 package edu.bsu.cs222.finalProject;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,17 +15,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginController {
-    @FXML
-    private javafx.scene.control.TextField usernameInput;
-
-    @FXML
-    private PasswordField passwordInput;
 
     @FXML
     private AnchorPane rootPane;
 
     @FXML
-    private Label unMaskedPassword;
+    public Button forgotPassword_Btn;
 
     @FXML
     private CheckBox checkBox;
@@ -34,17 +28,30 @@ public class LoginController {
     @FXML
     private ImageView passwordVisibility;
 
-    AlertBox alertBox = new AlertBox();
+    @FXML
+    private Label unMaskedPassword;
+
+    @FXML
+    public Label forgotPassword_MSG;
+
+    @FXML
+    public Label invalidUserInfo_MSG;
+
+    @FXML
+    private PasswordField passwordInput;
+
+    @FXML
+    private TextField usernameInput;
 
     public void initialize() {
-       passwordVisibility.setImage( isNotVisibleEye );
+       passwordVisibility.setImage( isNotVisible_PNG );
     }
 
-    File isVisibleEye_File = new File( "src/main/resources/pngs/eye.png" );
-    Image isVisibleEye = new Image( isVisibleEye_File.toURI().toString() );
+    File isVisiblePNG_File = new File( "src/main/resources/pngs/isVisible.png" );
+    Image isVisible_PNG = new Image( isVisiblePNG_File.toURI().toString() );
 
-    File isNotVisibleEye_File = new File( "src/main/resources/pngs/eye-slash.png" );
-    Image isNotVisibleEye = new Image( isNotVisibleEye_File.toURI().toString() );
+    File isNotVisiblePNG_File = new File( "src/main/resources/pngs/isNotVisible.png" );
+    Image isNotVisible_PNG = new Image( isNotVisiblePNG_File.toURI().toString() );
 
     public void launchMainUI() throws IOException {
             AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/mainUI.fxml" ));
@@ -53,25 +60,32 @@ public class LoginController {
 
     public void showUnMaskedPassword() {
         if (checkBox.isSelected()) {
-            passwordVisibility.setImage(isVisibleEye);
+            passwordVisibility.setImage( isVisible_PNG );
             unMaskedPassword.setText( getPassword() );
-        }
-        else {
-            passwordVisibility.setImage( isNotVisibleEye );
-            unMaskedPassword.setText( "" );
-        }
+            unMaskedPassword.setVisible( true ); }
+        else { passwordVisibility.setImage( isNotVisible_PNG ); unMaskedPassword.setVisible( false ); }
     }
 
-    public void showHowToChangePassword() {
-        alertBox.display( "Recover Password",
-                "  Please visit 'password.bsu.edu' to recover your password  " );
+    public void showHowToChangePassword_MSG()  {
+        forgotPassword_MSG.setText( "Please visit 'password.bsu.edu' to recover your password" );
+        forgotPassword_MSG.setVisible( true );
+        PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
+        visiblePause.setOnFinished( event -> forgotPassword_MSG.setVisible(false) );
+        visiblePause.play();
     }
 
     public void verifyUserInfo() throws IOException {
         if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
              { launchMainUI(); }
-        else
-            { alertBox.display( "Warning" ,"Invalid username or password" ); }
+        else { displayInvalidUserInfo_MSG(); }
+    }
+
+    public void displayInvalidUserInfo_MSG() {
+        invalidUserInfo_MSG.setText( "Invalid username or password" );
+        invalidUserInfo_MSG.setVisible( true );
+        PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
+        visiblePause.setOnFinished( event -> invalidUserInfo_MSG.setVisible(false) );
+        visiblePause.play();
     }
 
     public String getUsername() {
@@ -93,8 +107,11 @@ public class LoginController {
     }
 
     private boolean isValidPassword(String password) {
-        Pattern pattern = Pattern.compile("[a-zA-Z]+([+-]?[0-9]+)?");
+        Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
+                "[$&+,:;=?@#|'<>.^*()%!-]?)");
         Matcher matcher = pattern.matcher(password);
+        if (getPassword().length() < 12 || getPassword().contains( getUsername() ) )
+        {return false;}
         return (matcher.find() && matcher.group().equals(password));
     }
 
