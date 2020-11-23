@@ -45,6 +45,9 @@ public class LoginController {
 
     public void initialize() {
        passwordVisibility.setImage( isNotVisible_PNG );
+        forgotPassword_MSG.setVisible( false );
+        invalidUserInfo_MSG.setVisible( false );
+        unMaskedPassword.setVisible( false );
     }
 
     File isVisiblePNG_File = new File( "src/main/resources/pngs/isVisible.png" );
@@ -67,7 +70,6 @@ public class LoginController {
     }
 
     public void showHowToChangePassword_MSG()  {
-        forgotPassword_MSG.setText( "Please visit 'password.bsu.edu' to recover your password" );
         forgotPassword_MSG.setVisible( true );
         PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
         visiblePause.setOnFinished( event -> forgotPassword_MSG.setVisible(false) );
@@ -81,7 +83,6 @@ public class LoginController {
     }
 
     public void displayInvalidUserInfo_MSG() {
-        invalidUserInfo_MSG.setText( "Invalid username or password" );
         invalidUserInfo_MSG.setVisible( true );
         PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
         visiblePause.setOnFinished( event -> invalidUserInfo_MSG.setVisible(false) );
@@ -103,6 +104,7 @@ public class LoginController {
     private boolean isValidUserName(String username) {
         Pattern pattern = Pattern.compile("[a-zA-Z]+(@bsu\\.edu)?");
         Matcher matcher = pattern.matcher(username);
+        if (getUsername().length() < 5) {return false;}
         return (matcher.find() && matcher.group().equals(username));
     }
 

@@ -49,13 +49,13 @@
             <Font name="Impact" size="12.0" />
          </font></Button>
       <CheckBox fx:id="checkBox" layoutX="320.0" layoutY="283.0" mnemonicParsing="false" onAction="#showUnMaskedPassword" />
-      <Label fx:id="unMaskedPassword" layoutX="202.0" layoutY="328.0" textFill="#a3a3a3">
+      <Label fx:id="unMaskedPassword" layoutX="192.0" layoutY="329.0" text="unMaskedPassword" textFill="#a3a3a3">
          <font>
-            <Font name="Century Schoolbook" size="12.0" />
+            <Font name="Century Schoolbook" size="14.0" />
          </font></Label>
       <ImageView fx:id="passwordVisibility" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="forgotPassword_MSG" layoutX="91.0" layoutY="491.0" textFill="#47c61c" />
-      <Label fx:id="invalidUserInfo_MSG" layoutX="151.0" layoutY="491.0" textFill="#ea0909" />
+      <Label fx:id="forgotPassword_MSG" layoutX="79.0" layoutY="491.0" text="Please visit 'password.bsu.edu' to recover your password" textFill="#47c61c" />
+      <Label fx:id="invalidUserInfo_MSG" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#ea0909" />
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
       <Image url="@../pngs/bsu.png" />
