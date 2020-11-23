@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.LoginController">
-   <VBox alignment="CENTER" onMouseClicked="#showHowToChangePassword_MSG" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Label prefHeight="28.0" prefWidth="190.0" text="Grocery Shop BSU">
          <font>
             <Font name="Century Schoolbook Italic" size="18.0" />
@@ -44,7 +44,7 @@
          <font>
             <Font name="Century Schoolbook" size="12.0" />
          </font></TextField>
-      <Button fx:id="forgotPassword_Btn" layoutX="202.0" layoutY="423.0" mnemonicParsing="false" onAction="#showHowToChangePassword_MSG" prefHeight="25.0" prefWidth="110.0" styleClass="loginBtn" stylesheets="@../stylesheets/loginUI_stylesheet.css" text="Forgot password?">
+      <Button fx:id="forgotPassword_Btn" layoutX="202.0" layoutY="423.0" mnemonicParsing="false" onAction="#openSiteToChangePassword" prefHeight="25.0" prefWidth="110.0" styleClass="loginBtn" stylesheets="@../stylesheets/loginUI_stylesheet.css" text="Forgot password?">
          <font>
             <Font name="Impact" size="12.0" />
          </font></Button>
@@ -54,7 +54,6 @@
             <Font name="Century Schoolbook" size="14.0" />
          </font></Label>
       <ImageView fx:id="passwordVisibility" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="forgotPassword_MSG" layoutX="79.0" layoutY="491.0" text="Please visit 'password.bsu.edu' to recover your password" textFill="#47c61c" />
       <Label fx:id="invalidUserInfo_MSG" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#ea0909" />
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">

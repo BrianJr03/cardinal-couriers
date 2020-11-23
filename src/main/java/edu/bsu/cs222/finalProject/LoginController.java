@@ -10,6 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,9 +34,6 @@ public class LoginController {
     private Label unMaskedPassword;
 
     @FXML
-    public Label forgotPassword_MSG;
-
-    @FXML
     public Label invalidUserInfo_MSG;
 
     @FXML
@@ -45,9 +44,8 @@ public class LoginController {
 
     public void initialize() {
        passwordVisibility.setImage( isNotVisible_PNG );
-        forgotPassword_MSG.setVisible( false );
-        invalidUserInfo_MSG.setVisible( false );
-        unMaskedPassword.setVisible( false );
+       invalidUserInfo_MSG.setVisible( false );
+       unMaskedPassword.setVisible( false );
     }
 
     File isVisiblePNG_File = new File( "src/main/resources/pngs/isVisible.png" );
@@ -69,11 +67,9 @@ public class LoginController {
         else { passwordVisibility.setImage( isNotVisible_PNG ); unMaskedPassword.setVisible( false ); }
     }
 
-    public void showHowToChangePassword_MSG()  {
-        forgotPassword_MSG.setVisible( true );
-        PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
-        visiblePause.setOnFinished( event -> forgotPassword_MSG.setVisible(false) );
-        visiblePause.play();
+    public void openSiteToChangePassword() throws URISyntaxException, IOException {
+        URI uri= new URI("https://password.bsu.edu/forgot.aspx");
+        java.awt.Desktop.getDesktop().browse(uri);
     }
 
     public void verifyUserInfo() throws IOException {
