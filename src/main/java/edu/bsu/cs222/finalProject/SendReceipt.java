@@ -78,13 +78,13 @@ public class SendReceipt {
             writer.close();
     }
 
-    private boolean isValidPhoneNumber(String phoneNumber) {
+    public boolean isValidPhoneNumber( String phoneNumber ) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
         return (matcher.find() && matcher.group().equals(phoneNumber));
     }
 
-    private boolean isValidEmail(String email) {
+    public boolean isValidEmail( String email ) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\" +
                 ".[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\" +
                 ".)+[a-zA-Z]{2,7}$");
