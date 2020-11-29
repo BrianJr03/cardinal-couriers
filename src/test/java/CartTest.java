@@ -23,6 +23,18 @@ public class CartTest {
     }
 
     @Test
+    public void testAdd2orMoreItemsToCart(){
+        Cart cart = new Cart(new ArrayList<>());
+        Item item1 = new Item("Apple", "1.89");
+        Item item2 = new Item("Ramen", "0.50");
+        Item item3 = new Item("Water", "1.00");
+        cart.add(item1);
+        cart.add(item2);
+        cart.add(item3);
+        Assertions.assertEquals(3, cart.getCartItems().size());
+    }
+
+    @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = new Item("Apple", "1.90");
@@ -42,53 +54,16 @@ public class CartTest {
         cart.add(itemToCart1);
         cart.add(itemToCart2);
         cart = new Cart( new ArrayList <>() );
-        Assertions.assertFalse(cart.getCartItems().contains(itemToCart) ||
-                cart.getCartItems().contains(itemToCart1) || cart.getCartItems().contains(itemToCart2) );
+        Assertions.assertEquals(0, cart.getCartItems().size());
     }
 
     @Test
     public void testCanRemoveItemFromCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
+        Item itemToCart = new Item("Apple", "1.89");
         cart.add(itemToCart);
         cart.remove(itemToCart);
         Assertions.assertFalse(cart.getCartItems().contains(itemToCart));
     }
 
-    @Test
-    public void printPreviousOrders() {
-        ArrayList < Cart > previousOrders = new ArrayList<>();
-
-        int orderCount = 0;
-        for (Cart userOrder : previousOrders) {
-            orderCount++;
-            System.out.printf("\nOrder %d", orderCount);
-            System.out.println("\n--------");
-
-        }
-    }
-
-    @Test
-    public void reOrderCart(){
-        ArrayList < Cart > previousOrders = new ArrayList<>();
-        Cart newCart = new Cart( new ArrayList <>() );
-
-
-
-        System.out.println("\nOrder 1");
-        System.out.println("--------");
-
-
-        System.out.println("Order 2");
-        System.out.println("--------");
-
-
-        //Selects first order and adds it to cart
-        for (Item item : previousOrders.get( 0 ).getCartItems())
-        { newCart.add( item ); }
-
-        System.out.println("New cart");
-        System.out.println("--------");
-
-    }
 }
