@@ -16,34 +16,20 @@ public class CartTest {
 
     @Test
     public void testCanAddItemToCart() {
-        ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
+        Item itemToCart = new Item("Apple", "1.89");
         cart.add(itemToCart);
-
-        ArrayList<String> actualOrderInfo = new ArrayList <>();
-        actualOrderInfo.add( '"' + "Apple" + '"');
-        actualOrderInfo.add( String.valueOf( 1.69 ) );
-
-        for(Item item : cart.getCartItems()) {
-            expectedOrderInfo.add( item.getName() );
-            expectedOrderInfo.add( item.getPrice() );
-        }
-        Assertions.assertEquals( expectedOrderInfo, actualOrderInfo );
+        Assertions.assertEquals( 1, cart.getCartItems().size());
     }
 
     @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        Item itemToCart2 = inventory.getItems().get(1);
+        Item itemToCart = new Item("Apple", "1.90");
+        Item itemToCart2 = new Item("Banana", "0.50");
         cart.add(itemToCart);
-        cart.add( itemToCart2 );
-        double sum = 0.0;
-        for (Item item : cart.getCartItems()) {
-            sum += Double.parseDouble( item.getPrice() );
-        }
-        Assertions.assertEquals( sum , 3.38 );
+        cart.add(itemToCart2);
+        Assertions.assertEquals(2.40, cart.getTotalCartPrice());
     }
 
     @Test
@@ -72,14 +58,13 @@ public class CartTest {
     @Test
     public void printPreviousOrders() {
         ArrayList < Cart > previousOrders = new ArrayList<>();
-        previousOrders.add( getOrder1() );
-        previousOrders.add( getOrder2() );
+
         int orderCount = 0;
         for (Cart userOrder : previousOrders) {
             orderCount++;
             System.out.printf("\nOrder %d", orderCount);
             System.out.println("\n--------");
-            displayCart( userOrder );
+
         }
     }
 
@@ -88,16 +73,15 @@ public class CartTest {
         ArrayList < Cart > previousOrders = new ArrayList<>();
         Cart newCart = new Cart( new ArrayList <>() );
 
-        previousOrders.add( getOrder1() );
-        previousOrders.add( getOrder2() );
+
 
         System.out.println("\nOrder 1");
         System.out.println("--------");
-        displayCart( previousOrders.get( 0 ) );
+
 
         System.out.println("Order 2");
         System.out.println("--------");
-        displayCart( previousOrders.get( 1 ) );
+
 
         //Selects first order and adds it to cart
         for (Item item : previousOrders.get( 0 ).getCartItems())
@@ -105,6 +89,6 @@ public class CartTest {
 
         System.out.println("New cart");
         System.out.println("--------");
-        displayCart( newCart );
+
     }
 }
