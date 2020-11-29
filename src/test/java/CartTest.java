@@ -83,19 +83,6 @@ public class CartTest {
         }
     }
 
-    public void displayCart(Cart cart) {
-        int counter = 1;
-        if (cart.getCartItems().isEmpty()) {
-            System.out.println("\nThe cart is empty.\n");
-            return;
-        }
-        for (Item item : cart.getCartItems()) {
-            System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
-            counter++;
-        }
-        System.out.println();
-    }
-
     @Test
     public void reOrderCart(){
         ArrayList < Cart > previousOrders = new ArrayList<>();
@@ -119,21 +106,5 @@ public class CartTest {
         System.out.println("New cart");
         System.out.println("--------");
         displayCart( newCart );
-    }
-
-    public Cart getOrder1() {
-        Cart order1 = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(6);
-        Item otherItemToCart = inventory.getItems().get(4);
-        order1.add(itemToCart); order1.add( otherItemToCart );
-        return order1;
-    }
-
-    public Cart getOrder2() {
-        Cart order2 = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(7);
-        Item otherItemToCart = inventory.getItems().get(9);
-        order2.add(itemToCart); order2.add( otherItemToCart );
-        return order2;
     }
 }
