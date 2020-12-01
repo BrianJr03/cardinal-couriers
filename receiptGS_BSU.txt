@@ -1,11 +1,11 @@
-Receipt for order 1920N
+Receipt for order 2549N
 ---------------------------------------
-1. "Bottled Water" | 1.89
-2. "Bottled Water" | 1.89
-3. "Bottled Water" | 1.89
+1. "Tomatoes" | 1.29
+2. "Tomatoes" | 1.29
+3. "Tomatoes" | 1.29
 
-Total: $5.67
-Date purchased: 2020-11-18
+Total: $3.87
+Date purchased: 2020-11-24
 ---------------------------------------------
 
 Thanks for shopping with us!

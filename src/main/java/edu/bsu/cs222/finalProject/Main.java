@@ -43,7 +43,7 @@ public class Main {
     public static String storePicker() {
         System.out.println("Which store would you like to shop from today?\n");
         System.out.println("1. Walmart");
-        System.out.println("2. Target");
+        System.out.println("2. ALDI");
         System.out.println("3. Kroger\n");
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
@@ -52,7 +52,7 @@ public class Main {
                 System.out.println("\nWalmart");
                 return Inventory.getInventory("walmart"); }
             case "2" -> {
-                System.out.println("\nTarget");
+                System.out.println("\nALDI");
                 return Inventory.getInventory("target"); }
             case "3" -> {
                 System.out.println("\nKroger");

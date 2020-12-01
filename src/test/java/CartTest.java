@@ -16,20 +16,10 @@ public class CartTest {
 
     @Test
     public void testCanAddItemToCart() {
-        ArrayList<String> expectedOrderInfo = new ArrayList <>();
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        cart.add(itemToCart);
-
-        ArrayList<String> actualOrderInfo = new ArrayList <>();
-        actualOrderInfo.add( '"' + "Apple" + '"');
-        actualOrderInfo.add( String.valueOf( 1.69 ) );
-
-        for(Item item : cart.getCartItems()) {
-            expectedOrderInfo.add( item.getName() );
-            expectedOrderInfo.add( item.getPrice() );
-        }
-        Assertions.assertEquals( expectedOrderInfo, actualOrderInfo );
+        Item item = new Item( "Apple","3.38" );
+        cart.add(item);
+        Assertions.assertEquals( "Apple", cart.getCartItems().get( 0 ).getName());
     }
 
     @Test
@@ -37,13 +27,9 @@ public class CartTest {
         Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(0);
         Item itemToCart2 = inventory.getItems().get(1);
-        cart.add(itemToCart);
-        cart.add( itemToCart2 );
-        double sum = 0.0;
-        for (Item item : cart.getCartItems()) {
-            sum += Double.parseDouble( item.getPrice() );
-        }
-        Assertions.assertEquals( sum , 3.38 );
+        cart.add(itemToCart); cart.add( itemToCart2 );
+        double sum = cart.getTotalCartPrice();
+        Assertions.assertEquals( 3.38 , sum );
     }
 
     @Test

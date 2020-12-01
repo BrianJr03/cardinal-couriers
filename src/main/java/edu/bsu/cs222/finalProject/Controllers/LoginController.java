@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject;
+package edu.bsu.cs222.finalProject.Controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginController {
-
+public class LoginController
+{
     @FXML
     private AnchorPane rootPane;
 
@@ -108,7 +109,7 @@ public class LoginController {
         Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
                 "[$&+,:;=?@#|'<>.^*()%!-]?)");
         Matcher matcher = pattern.matcher(password);
-        if (getPassword().length() < 12 || getPassword().contains( getUsername() ) )
+        if (getPassword().length() < 8 || getPassword().contains( getUsername() ) )
         {return false;}
         return (matcher.find() && matcher.group().equals(password));
     }
