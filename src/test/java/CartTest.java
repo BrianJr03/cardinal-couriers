@@ -23,6 +23,14 @@ public class CartTest {
     }
 
     @Test
+    public void testCanAddItemWithLastIndexToCart(){
+        Cart cart = new Cart(new ArrayList<>());
+        Item itemToCart = inventory.getItems().get(10);
+        cart.add(itemToCart);
+        Assertions.assertEquals(1, cart.getCartItems().size());
+    }
+
+    @Test
     public void testAdd2orMoreItemsToCart(){
         Cart cart = new Cart(new ArrayList<>());
         Item item1 = new Item("Apple", "1.89");
