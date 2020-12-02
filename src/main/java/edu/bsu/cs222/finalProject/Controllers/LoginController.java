@@ -97,32 +97,4 @@ public class LoginController
         password = passwordInput.getText();
         return password;
     }
-
-    private boolean isValidUserName(String username) {
-        Pattern pattern = Pattern.compile("[a-zA-Z]+(@bsu\\.edu)?");
-        Matcher matcher = pattern.matcher(username);
-        if (getUsername().length() < 5) {return false;}
-        return (matcher.find() && matcher.group().equals(username));
-    }
-
-    private boolean isValidPassword(String password) {
-        Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
-                "[$&+,:;=?@#|'<>.^*()%!-]?)");
-        Matcher matcher = pattern.matcher(password);
-        if (getPassword().length() < 8 || getPassword().contains( getUsername() ) )
-        {return false;}
-        return (matcher.find() && matcher.group().equals(password));
-    }
-
-    @SuppressWarnings( "unused" ) // will be used later
-    public ArrayList<String> getUserInfo() {
-        ArrayList<String> userInfo = new ArrayList <>();
-        if(isValidUserName( getUsername() ) && isValidPassword( getPassword() )) {
-            String username = this.getUsername();
-            String password = this.getPassword();
-            userInfo.add( username );
-            userInfo.add( password );
-        }
-        return userInfo;
-    }
 }
