@@ -8,7 +8,7 @@ public class Cart {
     public Cart(ArrayList<Item> cartItems)
     { this.cartItems = cartItems; }
 
-    public ArrayList<Item> getCartItems()
+    public ArrayList<Item> getItems()
     { return cartItems; }
 
     public void add(Item itemToCart)
@@ -45,8 +45,8 @@ public class Cart {
         Display display = new Display();
         display.displayCart( cart );
         int selectedIndex = display.getItemToRemoveCart();
-        if (selectedIndex > 0 && selectedIndex <= cart.getCartItems().size()) {
-            cart.remove( cart.getCartItems().get( selectedIndex - 1 ) );
+        if (selectedIndex > 0 && selectedIndex <= cart.getItems().size()) {
+            cart.remove( cart.getItems().get( selectedIndex - 1 ) );
             String continueResponse = display.continueEditCart();
             if ( continueResponse.equalsIgnoreCase( "y" ) ) {
                 editCart( cart );

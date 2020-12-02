@@ -48,7 +48,7 @@ public class InventoryTest {
         actualOrderInfo.add( '"' + "Bread" + '"');
         actualOrderInfo.add( String.valueOf( 0.99 ) );
 
-        for(Item item : cart.getCartItems()) {
+        for(Item item : cart.getItems()) {
             expectedOrderInfo.add( item.getName() );
             expectedOrderInfo.add( item.getPrice() );
         }
@@ -69,7 +69,7 @@ public class InventoryTest {
         actualOrderInfo.add( '"' + "Chicken Noodle Soup" + '"');
         actualOrderInfo.add( String.valueOf( 3.59 ) );
 
-        for(Item item : cart.getCartItems()) {
+        for(Item item : cart.getItems()) {
             expectedOrderInfo.add( item.getName() );
             expectedOrderInfo.add( item.getPrice() );
         }
@@ -90,7 +90,7 @@ public class InventoryTest {
         actualOrderInfo.add( '"' + "Apple" + '"');
         actualOrderInfo.add( String.valueOf( 1.69 ) );
 
-        for(Item item : cart.getCartItems()) {
+        for(Item item : cart.getItems()) {
             expectedOrderInfo.add( item.getName() );
             expectedOrderInfo.add( item.getPrice() );
         }

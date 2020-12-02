@@ -104,7 +104,7 @@ public class Main {
             System.out.println("Which order would you like to add to your cart?");
             int orderIndex = in.nextInt();
 
-            for (Item item : previousOrders.get( orderIndex - 1 ).getCartItems())
+            for (Item item : previousOrders.get( orderIndex - 1 ).getItems())
             { newCart.add( item ); }
             System.out.printf("\nOrder %d has been added to your cart.\n", orderIndex);
         }

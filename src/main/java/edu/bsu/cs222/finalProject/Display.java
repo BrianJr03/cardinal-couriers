@@ -53,11 +53,11 @@ public class Display {
 
     public void displayCart( Cart cart ) {
         int counter = 1;
-        if (cart.getCartItems().isEmpty()) {
+        if (cart.getItems().isEmpty()) {
             System.out.println("\nThe cart is empty.\n");
             return;
         }
-        for (Item item : cart.getCartItems()) {
+        for (Item item : cart.getItems()) {
             System.out.println(counter + ". " + item.getName() + " | " + item.getPrice());
             counter++;
         }

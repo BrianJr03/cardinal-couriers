@@ -67,7 +67,7 @@ public class SendReceipt {
         FileWriter writer = new FileWriter(file);
         writer.write( "Receipt for order " + orderNumber + "N\n" + "----------------------" +
                 "-----------------" + "\n");
-        for (Item item : cart.getCartItems()) {
+        for (Item item : cart.getItems()) {
             counter++;
             sum = cart.getTotalCartPrice();
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );}

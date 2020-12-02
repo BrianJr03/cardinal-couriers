@@ -17,9 +17,8 @@ public class CartTest {
     @Test
     public void testCanAddItemToCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = new Item("Apple", "1.89");
-        cart.add(itemToCart);
-        Assertions.assertEquals( 1, cart.getCartItems().size());
+        cart.add(new Item("Apple", "1.89"));
+        Assertions.assertEquals( 1, cart.getItems().size());
     }
 
     @Test
@@ -27,42 +26,34 @@ public class CartTest {
         Cart cart = new Cart(new ArrayList<>());
         Item itemToCart = inventory.getItems().get(10);
         cart.add(itemToCart);
-        Assertions.assertEquals(1, cart.getCartItems().size());
+        Assertions.assertEquals(1, cart.getItems().size());
     }
 
     @Test
     public void testAdd2orMoreItemsToCart(){
         Cart cart = new Cart(new ArrayList<>());
-        Item item1 = new Item("Apple", "1.89");
-        Item item2 = new Item("Ramen", "0.50");
-        Item item3 = new Item("Water", "1.00");
-        cart.add(item1);
-        cart.add(item2);
-        cart.add(item3);
-        Assertions.assertEquals(3, cart.getCartItems().size());
+        cart.add(new Item("Apple", "1.89"));
+        cart.add(new Item("Ramen", "0.50"));
+        cart.add(new Item("Water", "1.00"));
+        Assertions.assertEquals(3, cart.getItems().size());
     }
 
     @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = new Item("Apple", "1.90");
-        Item itemToCart2 = new Item("Banana", "0.50");
-        cart.add(itemToCart);
-        cart.add(itemToCart2);
+        cart.add(new Item("Apple", "1.90"));
+        cart.add(new Item("Ramen", "0.50"));
         Assertions.assertEquals(2.40, cart.getTotalCartPrice());
     }
 
     @Test
     public void testCanResetCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        Item itemToCart1 = inventory.getItems().get(0);
-        Item itemToCart2 = inventory.getItems().get(0);
-        cart.add(itemToCart);
-        cart.add(itemToCart1);
-        cart.add(itemToCart2);
+        for (int i = 0; i < 3; i++) {
+            cart.add(inventory.getItems().get(0));
+        }
         cart = new Cart( new ArrayList <>() );
-        Assertions.assertEquals(0, cart.getCartItems().size());
+        Assertions.assertEquals(0, cart.getItems().size());
     }
 
     @Test
@@ -71,7 +62,7 @@ public class CartTest {
         Item itemToCart = new Item("Apple", "1.89");
         cart.add(itemToCart);
         cart.remove(itemToCart);
-        Assertions.assertFalse(cart.getCartItems().contains(itemToCart));
+        Assertions.assertFalse(cart.getItems().contains(itemToCart));
     }
 
 }
