@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,35 +19,24 @@ public class Inventory {
     public ArrayList<Item> getItems()
     { return items; }
 
-    public static String getInventory(String storeName) {
+    public static JsonArray getInventory(String storeName) throws IOException {
+        String path;
         switch ( storeName ) {
-            default -> { return "src/main/resources/storeItems/Walmart_Items.json"; }
-            case "kroger" -> { return "src/main/resources/storeItems/Kroger_Items.json"; }
-            case "target" -> { return "src/main/resources/storeItems/Target_Items.json"; } }
-    }
-
-    public static ArrayList<Item> createArrayListOfItems(ArrayList<String[]> itemData) {
-        ArrayList<Item> itemsList = new ArrayList<>();
-        for ( String[] itemDatum : itemData ) {
-            Item newItem = new Item( itemDatum[ 0 ] , itemDatum[ 1 ] );
-            itemsList.add( newItem );
+            default -> { path = "src/main/resources/storeItems/Walmart_Items.json"; }
+            case "kroger" -> { path = "src/main/resources/storeItems/Kroger_Items.json"; }
+            case "target" -> { path = "src/main/resources/storeItems/Target_Items.json"; }
         }
-        return itemsList;
+
+        JsonParser parser = new JsonParser();
+        FileReader reader = new FileReader(path);
+        return parser.parse(reader).getAsJsonArray();
     }
 
-    public static ArrayList<String[]> collectItemsFromResources(String filePath) throws IOException {
-        JsonParser parser = new JsonParser();
-        FileReader reader = new FileReader( filePath );
-        ArrayList<String[]> itemsList = new ArrayList<>();
-
-        JsonArray inventory = parser.parse(reader).getAsJsonArray();
-        reader.close();
-
-        for (JsonElement item : inventory) {
-            String[] singleItem = new String[2];
-            singleItem[0] = item.getAsJsonObject().get("name").toString();
-            singleItem[1] = item.getAsJsonObject().get("price").getAsString();
-            itemsList.add(singleItem);
+    public static ArrayList<Item> collectItemsAsArrayList(String storeName) throws IOException {
+        JsonArray inventoryAsJsonArray = getInventory(storeName);
+        ArrayList<Item> itemsList = new ArrayList<>();
+        for (JsonElement item : inventoryAsJsonArray) {
+            itemsList.add(new Item(item.getAsJsonObject().get("name").toString(), item.getAsJsonObject().get("price").toString()));
         }
         return itemsList;
     }

@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
-import static edu.bsu.cs222.finalProject.Inventory.collectItemsFromResources;
-import static edu.bsu.cs222.finalProject.Inventory.createArrayListOfItems;
+import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class CartTest {
-    final Inventory inventory = new Inventory(createArrayListOfItems(collectItemsFromResources
-            (Inventory.getInventory("walmart"))));
+    final Inventory inventory = new Inventory(collectItemsAsArrayList
+            ("walmart"));
 
     public CartTest() throws IOException {}
 
