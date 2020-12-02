@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
+import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
+
 public class LoginController {
 
     @FXML
@@ -37,10 +40,10 @@ public class LoginController {
     public Label invalidUserInfo_MSG;
 
     @FXML
-    private PasswordField passwordInput;
+    private static PasswordField passwordInput;
 
     @FXML
-    private TextField usernameInput;
+    private static TextField usernameInput;
 
     public void initialize() {
        passwordVisibility.setImage( isNotVisible_PNG );
@@ -73,7 +76,7 @@ public class LoginController {
     }
 
     public void verifyUserInfo() throws IOException {
-        if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
+        if (isValidUserName( getUsername() ) && isValidPassword(getUsername(), getPassword() ))
              { launchMainUI(); }
         else { displayInvalidUserInfo_MSG(); }
     }
@@ -85,43 +88,16 @@ public class LoginController {
         visiblePause.play();
     }
 
-    public String getUsername() {
+    public static String getUsername() {
         String username;
         username = usernameInput.getText();
         return username;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         String password;
         password = passwordInput.getText();
         return password;
     }
 
-    private boolean isValidUserName(String username) {
-        Pattern pattern = Pattern.compile("[a-zA-Z]+(@bsu\\.edu)?");
-        Matcher matcher = pattern.matcher(username);
-        if (getUsername().length() < 5) {return false;}
-        return (matcher.find() && matcher.group().equals(username));
-    }
-
-    private boolean isValidPassword(String password) {
-        Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
-                "[$&+,:;=?@#|'<>.^*()%!-]?)");
-        Matcher matcher = pattern.matcher(password);
-        if (getPassword().length() < 12 || getPassword().contains( getUsername() ) )
-        {return false;}
-        return (matcher.find() && matcher.group().equals(password));
-    }
-
-    @SuppressWarnings( "unused" ) // will be used later
-    public ArrayList<String> getUserInfo() {
-        ArrayList<String> userInfo = new ArrayList <>();
-        if(isValidUserName( getUsername() ) && isValidPassword( getPassword() )) {
-            String username = this.getUsername();
-            String password = this.getPassword();
-            userInfo.add( username );
-            userInfo.add( password );
-        }
-        return userInfo;
-    }
 }
