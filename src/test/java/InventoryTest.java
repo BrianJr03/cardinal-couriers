@@ -1,4 +1,3 @@
-import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import org.junit.jupiter.api.Assertions;
@@ -11,67 +10,23 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class InventoryTest {
 
+
     @Test
     public void testCanReturnFirstItemFromKroger() throws IOException {
-        Inventory inventory =
-                new Inventory(collectItemsAsArrayList("kroger"));
-
-        ArrayList<String> expectedOrderInfo = new ArrayList <>();
-        Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        cart.add(itemToCart);
-
-        ArrayList<String> actualOrderInfo = new ArrayList <>();
-        actualOrderInfo.add( '"' + "Bread" + '"');
-        actualOrderInfo.add( String.valueOf( 0.99 ) );
-
-        for(Item item : cart.getItems()) {
-            expectedOrderInfo.add( item.getName() );
-            expectedOrderInfo.add( item.getPrice() );
-        }
-        Assertions.assertEquals(expectedOrderInfo,actualOrderInfo);
+        Inventory inventory = new Inventory(collectItemsAsArrayList("kroger"));
+        Assertions.assertEquals("\"Bread\"", inventory.getItems().get(0).getName());
     }
 
     @Test
     public void testCanReturnFirstItemFromStoreB() throws IOException {
-        Inventory inventory =
-                new Inventory(collectItemsAsArrayList("target"));
-
-        ArrayList<String> expectedOrderInfo = new ArrayList <>();
-        Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        cart.add(itemToCart);
-
-        ArrayList<String> actualOrderInfo = new ArrayList <>();
-        actualOrderInfo.add( '"' + "Chicken Noodle Soup" + '"');
-        actualOrderInfo.add( String.valueOf( 3.59 ) );
-
-        for(Item item : cart.getItems()) {
-            expectedOrderInfo.add( item.getName() );
-            expectedOrderInfo.add( item.getPrice() );
-        }
-        Assertions.assertEquals(expectedOrderInfo,actualOrderInfo);
+        Inventory inventory = new Inventory(collectItemsAsArrayList("target"));
+        Assertions.assertEquals("\"Chicken Noodle Soup\"", inventory.getItems().get(0).getName());
     }
 
     @Test
     public void testCanReturnFirstItemFromStoreC() throws IOException {
-        Inventory inventory =
-                new Inventory(collectItemsAsArrayList("walmart"));
-
-        ArrayList<String> expectedOrderInfo = new ArrayList <>();
-        Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = inventory.getItems().get(0);
-        cart.add(itemToCart);
-
-        ArrayList<String> actualOrderInfo = new ArrayList <>();
-        actualOrderInfo.add( '"' + "Apple" + '"');
-        actualOrderInfo.add( String.valueOf( 1.69 ) );
-
-        for(Item item : cart.getItems()) {
-            expectedOrderInfo.add( item.getName() );
-            expectedOrderInfo.add( item.getPrice() );
-        }
-        Assertions.assertEquals(expectedOrderInfo,actualOrderInfo);
+        Inventory inventory = new Inventory(collectItemsAsArrayList("walmart"));
+        Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
     }
 
     @Test
