@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+//import edu.bsu.cs222.finalProject.StoreInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,8 @@ public class MainUIController
 {
     @FXML
     private AnchorPane rootPane;
+
+//    StoreInfo storeInfo = new StoreInfo();
 
     @FXML
     public void launchLoginUI() throws IOException {

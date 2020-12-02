@@ -79,7 +79,7 @@ public class Main {
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
         switch ( userChoice.toUpperCase() ) {
-            case "Y" ->  System.out.println("\nMarked for contactless delivery!");
+            case "Y" -> System.out.println("\nMarked for contactless delivery!"); /*sendReceipt.isMarked( true ); */
             case "N" -> System.out.println("\nOrder is not marked contactless delivery.");
             default -> System.out.println("\nPlease enter Y or N\nOrder is not marked contactless delivery.");
         }

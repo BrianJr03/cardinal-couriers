@@ -1,11 +1,11 @@
-Receipt for order 2549N
+Receipt for order 1252N
 ---------------------------------------
-1. "Tomatoes" | 1.29
-2. "Tomatoes" | 1.29
-3. "Tomatoes" | 1.29
+1. "Milk" | 1.10
+2. "Milk" | 1.10
+3. "Milk" | 1.10
 
-Total: $3.87
-Date purchased: 2020-11-24
----------------------------------------------
+Total: $3.3
+Date purchased: 2020-12-01
+Marked for contactless delivery!---------------------------------------------
 
 Thanks for shopping with us!

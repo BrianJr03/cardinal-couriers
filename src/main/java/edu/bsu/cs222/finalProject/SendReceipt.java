@@ -59,6 +59,19 @@ public class SendReceipt {
         }
     }
 
+//    public String markedForContactlessDelivery()
+//    {
+//        { return "Marked for contactless delivery!"; }
+//    }
+//
+//    public boolean isMarked(boolean mark)
+//    {
+//        if ( mark )
+//        {markedForContactlessDelivery();}
+//        return false;
+//    }
+
+
     public void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
