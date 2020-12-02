@@ -1,10 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
 

@@ -14,9 +14,6 @@ public class Item {
 
     public Double getPrice() { return price; }
 
-    public String prettyPrintItem() {
-        return String.format("%s | $%s", this.getName(), this.getPrice());
-    }
 }
 
 

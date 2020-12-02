@@ -13,9 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;

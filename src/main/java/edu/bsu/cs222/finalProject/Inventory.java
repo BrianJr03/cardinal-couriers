@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +21,9 @@ public class Inventory {
     public static JsonArray getInventory(String storeName) throws IOException {
         String path;
         switch ( storeName ) {
-            default -> { path = "src/main/resources/storeItems/Walmart_Items.json"; }
-            case "kroger" -> { path = "src/main/resources/storeItems/Kroger_Items.json"; }
-            case "target" -> { path = "src/main/resources/storeItems/Target_Items.json"; }
+            default -> path = "src/main/resources/storeItems/Walmart_Items.json";
+            case "kroger" -> path = "src/main/resources/storeItems/Kroger_Items.json";
+            case "target" -> path = "src/main/resources/storeItems/Target_Items.json";
         }
 
         JsonParser parser = new JsonParser();
