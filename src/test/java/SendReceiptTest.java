@@ -1,7 +1,7 @@
-
 import edu.bsu.cs222.finalProject.SendReceipt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 public class SendReceiptTest {
 
     SendReceipt sendReceipt = new SendReceipt();

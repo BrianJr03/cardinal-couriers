@@ -59,19 +59,6 @@ public class SendReceipt {
         }
     }
 
-//    public String markedForContactlessDelivery()
-//    {
-//        { return "Marked for contactless delivery!"; }
-//    }
-//
-//    public boolean isMarked(boolean mark)
-//    {
-//        if ( mark )
-//        {markedForContactlessDelivery();}
-//        return false;
-//    }
-
-
     public void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
@@ -91,13 +78,13 @@ public class SendReceipt {
             writer.close();
     }
 
-    public boolean isValidPhoneNumber(String phoneNumber) {
+    public boolean isValidPhoneNumber( String phoneNumber ) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
         return (matcher.find() && matcher.group().equals(phoneNumber));
     }
 
-    public boolean isValidEmail(String email) {
+    public boolean isValidEmail( String email ) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\" +
                 ".[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\" +
                 ".)+[a-zA-Z]{2,7}$");
@@ -105,33 +92,29 @@ public class SendReceipt {
         return pattern.matcher(email).matches();
     }
 
-    public Properties setEmailProperties() {
+    public void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
+        writeReceipt( cart );
+        Multipart emailContent = new MimeMultipart();
+        MimeBodyPart textBodyPart = new MimeBodyPart();
+
+        String companyEmail = "groceryshop.bsu@yahoo.com";
         Properties props = System.getProperties();
         props.put( "mail.smtp.auth", "true" );
         props.put( "mail.smtp.starttls.enable", "true" );
         props.put( "mail.smtp.host", "smtp.mail.yahoo.com" );
         props.put( "mail.smtp.port", "587" );
-        return props;
-    }
 
-    private Session establishEmailSession() {
-        return Session.getInstance( setEmailProperties(), new Authenticator() {
+        Session session = Session.getInstance( props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication( "groceryshop.bsu","eikh xydc qbog pxhz" );
             }
         });
-    }
 
-    public void setMessageProperties(String userEmail) throws MessagingException {
-        Multipart emailContent = new MimeMultipart();
-        MimeBodyPart textBodyPart = new MimeBodyPart();
-        MimeMessage msg = new MimeMessage( establishEmailSession() );
-
-        String companyEmail = "groceryshop.bsu@yahoo.com";
-
+        MimeMessage msg = new MimeMessage( session );
         msg.setFrom(new InternetAddress( companyEmail ));
         msg.addRecipient(Message.RecipientType.TO, new InternetAddress( userEmail ));
         msg.setSubject( "Thanks for the order! [Receipt]" );
+
         String fileName = "receiptGS_BSU.txt";
 
         DataSource source = new FileDataSource( fileName );
@@ -140,18 +123,17 @@ public class SendReceipt {
         emailContent.addBodyPart( textBodyPart );
         msg.setContent( emailContent );
         Transport.send( msg );
-    }
 
-    public void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
-        writeReceipt( cart );
-        setMessageProperties( userEmail );
         System.out.println("\nYour receipt has been sent.\n");
     }
 
-    public void sendReceiptAsTextMSG(String phoneNumber , Cart cart) throws MessagingException, IOException {
+    public void sendReceiptAsTextMSG( String phoneNumber , Cart cart ) throws MessagingException, IOException {
         writeReceipt( cart );
-        Display display = new Display();
-        display.displayCarrierOptions();
+        System.out.println("\nWhich carrier do you have service with?");
+        System.out.println("1. AT&T");
+        System.out.println("2. Sprint");
+        System.out.println("3. Verizon");
+        System.out.println("4. T-Mobile");
         Scanner input = new Scanner(System.in);
         String userCarrier = input.nextLine();
         switch ( userCarrier ) {

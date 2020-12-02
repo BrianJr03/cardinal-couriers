@@ -29,10 +29,10 @@ public class Cart {
         Display display = new Display();
         int inventorySize = inventory.getItems().size();
         int itemIndex = display.getItemIndexToAddCart();
-        if ( 1 <= itemIndex && itemIndex < inventorySize ) {
+        if ( 1 <= itemIndex && itemIndex <= inventorySize ) {
             Item selectedItem = inventory.getItems().get( itemIndex - 1 );
             int quantity = display.getQuantity(selectedItem);
-            for ( int i = 0; i < quantity; i++ ) {
+            for ( int i = 0; i <= quantity; i++ ) {
                 cart.add( selectedItem );
             }
             display.successfulAddToCart();
