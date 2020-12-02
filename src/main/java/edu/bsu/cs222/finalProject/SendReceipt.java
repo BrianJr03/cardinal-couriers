@@ -32,7 +32,7 @@ public class SendReceipt {
                 "-----------------" + "\n");
         for (Item item : cart.getItems()) {
             counter++;
-            sum = cart.getTotalCartPrice();
+            sum = cart.getTotalCost();
             writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );}
             writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
             writer.write( "Date purchased: " + purchaseDate + "\n");

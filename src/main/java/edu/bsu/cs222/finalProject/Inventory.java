@@ -36,7 +36,7 @@ public class Inventory {
         JsonArray inventoryAsJsonArray = getInventory(storeName);
         ArrayList<Item> itemsList = new ArrayList<>();
         for (JsonElement item : inventoryAsJsonArray) {
-            itemsList.add(new Item(item.getAsJsonObject().get("name").toString(), item.getAsJsonObject().get("price").toString()));
+            itemsList.add(new Item(item.getAsJsonObject().get("name").toString(), item.getAsJsonObject().get("price").getAsDouble()));
         }
         return itemsList;
     }

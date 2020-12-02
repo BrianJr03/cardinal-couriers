@@ -16,7 +16,7 @@ public class CartTest {
     @Test
     public void testCanAddItemToCart() {
         Cart cart = new Cart(new ArrayList<>());
-        cart.add(new Item("Apple", "1.89"));
+        cart.add(new Item("Apple", 1.89));
         Assertions.assertEquals( 1, cart.getItems().size());
     }
 
@@ -31,17 +31,17 @@ public class CartTest {
     @Test
     public void testAdd2orMoreItemsToCart(){
         Cart cart = new Cart(new ArrayList<>());
-        cart.add(new Item("Apple", "1.89"));
-        cart.add(new Item("Ramen", "0.50"));
-        cart.add(new Item("Water", "1.00"));
+        cart.add(new Item("Apple", 1.89));
+        cart.add(new Item("Ramen", 0.50));
+        cart.add(new Item("Water", 1.00));
         Assertions.assertEquals(3, cart.getItems().size());
     }
 
     @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
-        cart.add(new Item("Apple", "1.90"));
-        cart.add(new Item("Ramen", "0.50"));
+        cart.add(new Item("Apple", 1.90));
+        cart.add(new Item("Ramen", 0.50));
         Assertions.assertEquals(2.40, cart.getTotalCartPrice());
     }
 
@@ -58,7 +58,7 @@ public class CartTest {
     @Test
     public void testCanRemoveItemFromCart() {
         Cart cart = new Cart(new ArrayList<>());
-        Item itemToCart = new Item("Apple", "1.89");
+        Item itemToCart = new Item("Apple", 1.89);
         cart.add(itemToCart);
         cart.remove(itemToCart);
         Assertions.assertFalse(cart.getItems().contains(itemToCart));
