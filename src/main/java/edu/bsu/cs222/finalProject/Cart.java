@@ -24,35 +24,4 @@ public class Cart {
         }
         return total;
     }
-
-    public void addItemsToCart( Inventory inventory , Cart cart ) {
-        Display display = new Display();
-        int inventorySize = inventory.getItems().size();
-        int itemIndex = display.getItemIndexToAddCart();
-        if ( 1 <= itemIndex && itemIndex <= inventorySize ) {
-            Item selectedItem = inventory.getItems().get( itemIndex - 1 );
-            int quantity = display.getQuantity(selectedItem);
-            for ( int i = 0; i <= quantity; i++ ) {
-                cart.add( selectedItem );
-            }
-            display.successfulAddToCart();
-        } else {
-            display.itemNotFound();
-        }
-    }
-
-    public void editCart( Cart cart ) {
-        Display display = new Display();
-        display.displayCart( cart );
-        int selectedIndex = display.getItemToRemoveCart();
-        if (selectedIndex > 0 && selectedIndex <= cart.getItems().size()) {
-            cart.remove( cart.getItems().get( selectedIndex - 1 ) );
-            String continueResponse = display.continueEditCart();
-            if ( continueResponse.equalsIgnoreCase( "y" ) ) {
-                editCart( cart );
-            }
-        } else {
-            display.itemNotFound();
-        }
-    }
 }
