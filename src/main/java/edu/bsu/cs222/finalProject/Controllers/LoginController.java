@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject;
+package edu.bsu.cs222.finalProject.Controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -16,11 +17,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
-import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
-
-public class LoginController {
-
+public class LoginController
+{
     @FXML
     private AnchorPane rootPane;
 
@@ -40,10 +38,10 @@ public class LoginController {
     public Label invalidUserInfo_MSG;
 
     @FXML
-    private static PasswordField passwordInput;
+    private PasswordField passwordInput;
 
     @FXML
-    private static TextField usernameInput;
+    private TextField usernameInput;
 
     public void initialize() {
        passwordVisibility.setImage( isNotVisible_PNG );
@@ -76,7 +74,7 @@ public class LoginController {
     }
 
     public void verifyUserInfo() throws IOException {
-        if (isValidUserName( getUsername() ) && isValidPassword(getUsername(), getPassword() ))
+        if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
              { launchMainUI(); }
         else { displayInvalidUserInfo_MSG(); }
     }
@@ -88,16 +86,43 @@ public class LoginController {
         visiblePause.play();
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         String username;
         username = usernameInput.getText();
         return username;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         String password;
         password = passwordInput.getText();
         return password;
     }
 
+    private boolean isValidUserName(String username) {
+        Pattern pattern = Pattern.compile("[a-zA-Z]+(@bsu\\.edu)?");
+        Matcher matcher = pattern.matcher(username);
+        if (getUsername().length() < 5) {return false;}
+        return (matcher.find() && matcher.group().equals(username));
+    }
+
+    private boolean isValidPassword(String password) {
+        Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
+                "[$&+,:;=?@#|'<>.^*()%!-]?)");
+        Matcher matcher = pattern.matcher(password);
+        if (getPassword().length() < 8 || getPassword().contains( getUsername() ) )
+        {return false;}
+        return (matcher.find() && matcher.group().equals(password));
+    }
+
+    @SuppressWarnings( "unused" ) // will be used later
+    public ArrayList<String> getUserInfo() {
+        ArrayList<String> userInfo = new ArrayList <>();
+        if(isValidUserName( getUsername() ) && isValidPassword( getPassword() )) {
+            String username = this.getUsername();
+            String password = this.getPassword();
+            userInfo.add( username );
+            userInfo.add( password );
+        }
+        return userInfo;
+    }
 }

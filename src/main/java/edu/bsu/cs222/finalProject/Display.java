@@ -14,6 +14,14 @@ public class Display {
         System.out.println("*---------------------------------------------*\n");
     }
 
+    public void displayCarrierOptions() {
+        System.out.println("\nWhich carrier do you have service with?");
+        System.out.println("1. AT&T");
+        System.out.println("2. Sprint");
+        System.out.println("3. Verizon");
+        System.out.println("4. T-Mobile");
+    }
+
     public void displayMainMenu() {
         System.out.println( "Main Menu" );
         System.out.println( "---------" );

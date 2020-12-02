@@ -43,7 +43,7 @@ public class Main {
     public static String storePicker() {
         System.out.println("Which store would you like to shop from today?\n");
         System.out.println("1. Walmart");
-        System.out.println("2. Target");
+        System.out.println("2. ALDI");
         System.out.println("3. Kroger\n");
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
@@ -52,7 +52,7 @@ public class Main {
                 System.out.println("\nWalmart");
                 return Inventory.getInventory("walmart"); }
             case "2" -> {
-                System.out.println("\nTarget");
+                System.out.println("\nALDI");
                 return Inventory.getInventory("target"); }
             case "3" -> {
                 System.out.println("\nKroger");
@@ -79,7 +79,7 @@ public class Main {
         Scanner input = new Scanner( System.in );
         String userChoice = input.nextLine();
         switch ( userChoice.toUpperCase() ) {
-            case "Y" ->  System.out.println("\nMarked for contactless delivery!");
+            case "Y" -> System.out.println("\nMarked for contactless delivery!"); /*sendReceipt.isMarked( true ); */
             case "N" -> System.out.println("\nOrder is not marked contactless delivery.");
             default -> System.out.println("\nPlease enter Y or N\nOrder is not marked contactless delivery.");
         }

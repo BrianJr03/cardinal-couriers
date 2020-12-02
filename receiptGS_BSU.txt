@@ -1,11 +1,11 @@
-Receipt for order 1920N
+Receipt for order 1252N
 ---------------------------------------
-1. "Bottled Water" | 1.89
-2. "Bottled Water" | 1.89
-3. "Bottled Water" | 1.89
+1. "Milk" | 1.10
+2. "Milk" | 1.10
+3. "Milk" | 1.10
 
-Total: $5.67
-Date purchased: 2020-11-18
----------------------------------------------
+Total: $3.3
+Date purchased: 2020-12-01
+Marked for contactless delivery!---------------------------------------------
 
 Thanks for shopping with us!
