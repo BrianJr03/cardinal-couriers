@@ -19,10 +19,10 @@ When logging into the application, if you do not wish to use your real BSU crede
   
     a. does not contain the username 
     
-    b. has minimum of 12 alphabet characters 
+    b. has minimum of 8 alphabet characters 
     
     c. special characters and numbers are optional
       * numbers can only be appended to the sequence of alphabet characters 
       * special characters can only be added to the beginning or end of the sequence of alphabet characters 
       
-    d. EX: !Passiveword779!
+    d. EX: !Passive
