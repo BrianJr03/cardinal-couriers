@@ -30,7 +30,5 @@ public class Cart {
         return total;
     }
 
-    public double getTotalCost() {
-        return totalCost;
-    }
+    public double getTotalCost() { return totalCost; }
 }

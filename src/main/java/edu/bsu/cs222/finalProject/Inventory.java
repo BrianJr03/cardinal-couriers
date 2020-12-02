@@ -23,7 +23,7 @@ public class Inventory {
         switch ( storeName ) {
             default -> path = "src/main/resources/storeItems/Walmart_Items.json";
             case "kroger" -> path = "src/main/resources/storeItems/Kroger_Items.json";
-            case "target" -> path = "src/main/resources/storeItems/Target_Items.json";
+            case "ALDI" -> path = "src/main/resources/storeItems/ALDI_Items.json";
         }
 
         JsonParser parser = new JsonParser();

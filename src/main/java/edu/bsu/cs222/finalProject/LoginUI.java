@@ -25,5 +25,4 @@ public class LoginUI extends Application implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {}
-
 }

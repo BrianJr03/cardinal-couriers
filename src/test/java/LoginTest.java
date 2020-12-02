@@ -18,5 +18,4 @@ public class LoginTest
         String password = "!PassiveWord786!";
         Assertions.assertTrue(isValidPassword(username, password));
     }
-
 }
