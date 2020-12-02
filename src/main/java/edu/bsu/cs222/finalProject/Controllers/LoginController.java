@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
+import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
+
 public class LoginController
 {
     @FXML
@@ -74,7 +77,7 @@ public class LoginController
     }
 
     public void verifyUserInfo() throws IOException {
-        if (isValidUserName( getUsername() ) && isValidPassword( getPassword() ))
+        if (isValidUserName(getUsername()) && isValidPassword(getUsername(), getPassword()))
              { launchMainUI(); }
         else { displayInvalidUserInfo_MSG(); }
     }

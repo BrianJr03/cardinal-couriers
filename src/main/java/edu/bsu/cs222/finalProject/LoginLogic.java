@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static edu.bsu.cs222.finalProject.LoginController.getPassword;
-import static edu.bsu.cs222.finalProject.LoginController.getUsername;
 
 public class LoginLogic {
 
@@ -26,11 +24,9 @@ public class LoginLogic {
     }
 
     @SuppressWarnings("unused") // will be used later
-    public ArrayList<String> getUserInfo() {
+    public ArrayList<String> getUserInfo(String username, String password) {
         ArrayList<String> userInfo = new ArrayList <>();
-        if(isValidUserName(getUsername()) && isValidPassword(getUsername(),getPassword())) {
-            String username = getUsername();
-            String password = getPassword();
+        if(isValidUserName(username) && isValidPassword(username, password)) {
             userInfo.add(username);
             userInfo.add(password);
         }
