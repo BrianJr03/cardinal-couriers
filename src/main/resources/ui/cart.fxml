@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.CartController">
     <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
-        <Label layoutX="128.0" layoutY="89.0" text="Cart">
+        <Label layoutX="128.0" layoutY="89.0" text="Cart" textFill="DARKORCHID">
             <font>
                 <Font size="24.0" />
             </font>
@@ -28,9 +28,8 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="128.0" layoutY="37.0" onMouseClicked="#launchStoreUI"
-                   pickOnBounds="true" preserveRatio="true">
-            <Image url="@../pngs/left.png"/>
+        <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="128.0" layoutY="37.0" onMouseClicked="#launchStoreUI" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/left.png" />
         </ImageView>
     </Pane>
 </AnchorPane>

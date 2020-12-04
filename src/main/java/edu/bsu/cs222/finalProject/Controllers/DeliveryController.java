@@ -8,11 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public class DeliveryController {
 
@@ -58,16 +56,19 @@ public class DeliveryController {
     public void launchMainUI() throws IOException
     { launchUI( "/ui/mainUI.fxml" ); }
 
+    @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
+    @SuppressWarnings( "unused" )
     public void displayInRange_Prompt()
     { displayPromptFor2secs(inRange_Prompt); }
 
-    public void verifyDeliveryInput() throws IOException
-    {
-        if (zipCode.getText().length() == 0 || addressOne.getText().length() == 0 || !isValidZip( zipCode.getText() ) )
+    public void verifyDeliveryInput() throws IOException {
+        if (    zipCode.getText().length() == 0
+                || addressOne.getText().length() == 0
+                || !isValidZip( zipCode.getText() ) )
         { displayInvalidDeliveryInfo_Prompt(); }
-        else {launchMainUI();}
+        else { launchMainUI(); }
     }
 }

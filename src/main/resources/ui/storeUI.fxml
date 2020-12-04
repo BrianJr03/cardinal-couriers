@@ -18,7 +18,7 @@
         <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="120.0" layoutY="32.0" onMouseClicked="#launchMainUI" pickOnBounds="true" preserveRatio="true">
             <Image url="@../pngs/left.png" />
         </ImageView>
-      <Label layoutX="142.0" layoutY="28.0" onMouseClicked="#launchMainUI" text="Choose a store">
+      <Label layoutX="142.0" layoutY="28.0" onMouseClicked="#launchMainUI" text="Choose a store" textFill="DARKORCHID">
          <font>
             <Font size="18.0" />
          </font>
@@ -30,7 +30,7 @@
             <TableColumn prefWidth="117.4000244140625" text="Quantity" />
          </columns>
       </TableView>
-      <Label layoutX="584.0" layoutY="86.0" onMouseClicked="#launchCartUI" text="Cart" />
+      <Label layoutX="584.0" layoutY="86.0" onMouseClicked="#launchCartUI" text="Cart" textFill="DARKORCHID" />
 
     </Pane>
 </AnchorPane>

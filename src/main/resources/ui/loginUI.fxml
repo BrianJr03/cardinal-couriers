@@ -24,7 +24,7 @@
       </ImageView>
    </VBox>
    <Pane layoutX="270.0" layoutY="-2.0" prefHeight="556.0" prefWidth="456.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css">
-      <Label alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="86.0" text="Welcome" textFill="#545454">
+      <Label alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="86.0" text="Welcome" textFill="DARKORCHID">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
