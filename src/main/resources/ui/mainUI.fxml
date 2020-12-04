@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -26,10 +27,13 @@
                <Font size="24.0" />
            </font>
         </Label>
-      <Button layoutX="676.0" layoutY="585.0" mnemonicParsing="false" onAction="#launchDeliveryUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Back">
-         <font>
-            <Font name="Impact" size="12.0" />
-         </font>
-      </Button>
+        <Label layoutX="150.0" layoutY="33.0" onMouseClicked="#launchDeliveryUI" text="Delivery Address">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="128.0" layoutY="37.0" onMouseClicked="#launchDeliveryUI" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/left.png" />
+        </ImageView>
     </Pane>
 </AnchorPane>

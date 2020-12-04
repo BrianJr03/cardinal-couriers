@@ -10,25 +10,30 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@SuppressWarnings( "unused" )
+
 public class DeliveryController {
 
-    public TextField zipTextField;
+    public TextField addressOne;
+    public TextField zipCode;
     public Label inRange_Prompt;
     public Label outOfRange_Prompt;
+    public Label invalidDeliveryInfo_Prompt;
     public Button continueButton;
     public AnchorPane rootPane;
 
     public void initialize() {
         inRange_Prompt.setVisible( false );
         outOfRange_Prompt.setVisible( false );
+        invalidDeliveryInfo_Prompt.setVisible( false );
     }
 
-    public void displayPromptFor2secs(Label range_Prompt) {
-        range_Prompt.setVisible( true );
+    public void displayPromptFor2secs(Label prompt) {
+        prompt.setVisible( true );
         PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
-        visiblePause.setOnFinished( event -> range_Prompt.setVisible(false) );
+        visiblePause.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause.play();
     }
 
@@ -37,6 +42,15 @@ public class DeliveryController {
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
     }
+
+    public boolean isValidZip( String zipCode ) {
+        Pattern pattern = Pattern.compile("\\d{5}");
+        Matcher matcher = pattern.matcher(zipCode);
+        return (matcher.find() && matcher.group().equals(zipCode));
+    }
+
+    public void displayInvalidDeliveryInfo_Prompt()
+    { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
     { launchUI( "/ui/loginUI.fxml" ); }
@@ -49,4 +63,11 @@ public class DeliveryController {
 
     public void displayInRange_Prompt()
     { displayPromptFor2secs(inRange_Prompt); }
+
+    public void verifyDeliveryInput() throws IOException
+    {
+        if (zipCode.getText().length() == 0 || addressOne.getText().length() == 0 || !isValidZip( zipCode.getText() ) )
+        { displayInvalidDeliveryInfo_Prompt(); }
+        else {launchMainUI();}
+    }
 }
