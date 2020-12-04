@@ -17,8 +17,8 @@ import java.net.URISyntaxException;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
 
-public class LoginController
-{
+public class LoginController {
+
     @FXML
     private AnchorPane rootPane;
 
@@ -35,7 +35,7 @@ public class LoginController
     private Label unMaskedPassword;
 
     @FXML
-    public Label invalidUserInfo_MSG;
+    public Label invalidUserInfo_Prompt;
 
     @FXML
     private PasswordField passwordInput;
@@ -45,7 +45,7 @@ public class LoginController
 
     public void initialize() {
        passwordVisibility.setImage( isNotVisible_PNG );
-       invalidUserInfo_MSG.setVisible( false );
+       invalidUserInfo_Prompt.setVisible( false );
        unMaskedPassword.setVisible( false );
     }
 
@@ -55,8 +55,8 @@ public class LoginController
     File isNotVisiblePNG_File = new File( "src/main/resources/pngs/isNotVisible.png" );
     Image isNotVisible_PNG = new Image( isNotVisiblePNG_File.toURI().toString() );
 
-    public void launchMainUI() throws IOException {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/mainUI.fxml" ));
+    public void launchDeliveryUI() throws IOException {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/deliveryUI.fxml" ));
             rootPane.getChildren().setAll( pane );
     }
 
@@ -75,14 +75,14 @@ public class LoginController
 
     public void verifyUserInfo() throws IOException {
         if (isValidUserName(getUsername()) && isValidPassword(getUsername(), getPassword()))
-             { launchMainUI(); }
-        else { displayInvalidUserInfo_MSG(); }
+             { launchDeliveryUI(); }
+        else { displayInvalidUserInfo_Prompt(); }
     }
 
-    public void displayInvalidUserInfo_MSG() {
-        invalidUserInfo_MSG.setVisible( true );
+    public void displayInvalidUserInfo_Prompt() {
+        invalidUserInfo_Prompt.setVisible( true );
         PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
-        visiblePause.setOnFinished( event -> invalidUserInfo_MSG.setVisible(false) );
+        visiblePause.setOnFinished( event -> invalidUserInfo_Prompt.setVisible(false) );
         visiblePause.play();
     }
 

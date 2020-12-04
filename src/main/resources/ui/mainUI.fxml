@@ -6,32 +6,30 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.MainUIController">
     <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
-        <Button layoutX="129.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_Walmart" styleClass="logoutBtn"
-                stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Walmart">
+        <Button layoutX="113.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_Walmart" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Walmart">
            <font>
                <Font name="Impact" size="12.0" />
            </font>
         </Button>
-        <Button layoutX="344.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_Kroger" styleClass="logoutBtn"
-                stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Kroger">
+        <Button layoutX="323.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_Kroger" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Kroger">
            <font>
                <Font name="Impact" size="12.0" />
            </font>
         </Button>
-        <Button layoutX="553.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_ALDI" styleClass="logoutBtn"
-                stylesheets="@../stylesheets/mainUI_stylesheet.css" text="ALDI">
+        <Button layoutX="546.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_ALDI" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="ALDI">
            <font>
                <Font name="Impact" size="12.0" />
            </font>
         </Button>
-        <Label layoutX="149.0" layoutY="104.0" text="Hello! Please choose a store to shop from">
+        <Label layoutX="186.0" layoutY="106.0" text="Please choose a store to shop from">
            <font>
                <Font size="24.0" />
            </font>
         </Label>
+      <Button layoutX="676.0" layoutY="585.0" mnemonicParsing="false" onAction="#launchDeliveryUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Back">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Button>
     </Pane>
-   <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
-      <font>
-         <Font name="Impact" size="12.0" />
-      </font></Button>
 </AnchorPane>

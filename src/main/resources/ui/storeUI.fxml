@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -10,16 +11,20 @@
          <font>
             <Font name="Impact" size="12.0" />
          </font></Button>
-      <Label fx:id="storeNameLBL" layoutX="345.0" layoutY="56.0" prefHeight="35.0" prefWidth="127.0" text="Store Name" textFill="DARKORCHID">
+      <Label fx:id="storeNameLBL" layoutX="128.0" layoutY="55.0" prefHeight="35.0" prefWidth="127.0" text="Store Name" textFill="DARKORCHID">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-        <TableView layoutX="345.0" layoutY="97.0" prefHeight="472.0" prefWidth="349.0">
+        <TableView fx:id="inventoryTable" layoutX="128.0" layoutY="103.0" prefHeight="472.0" prefWidth="487.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Item " />
-                <TableColumn prefWidth="75.0" text="Price" />
+                <TableColumn prefWidth="236.0" text="Item " />
+                <TableColumn prefWidth="133.60003662109375" text="Price" />
+            <TableColumn prefWidth="117.4000244140625" text="Quantity" />
             </columns>
         </TableView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="575.0" layoutY="52.0" onMouseClicked="#launchCartUI" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/cart.png" />
+        </ImageView>
     </Pane>
 </AnchorPane>

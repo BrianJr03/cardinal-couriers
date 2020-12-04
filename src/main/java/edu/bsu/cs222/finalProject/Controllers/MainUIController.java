@@ -7,16 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
-public class MainUIController
-{
+public class MainUIController {
     @FXML
     private AnchorPane rootPane;
 
     StoreInfo storeInfo = new StoreInfo();
 
     @FXML
-    public void launchLoginUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/loginUI.fxml"));
+    public void launchDeliveryUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
     }

@@ -29,4 +29,9 @@ public class StoreController {
 
     public void showStoreName( String storeName )
     { storeNameLBL.setText( storeName ); }
+
+    public void launchCartUI() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/cart.fxml" ));
+        rootPane.getChildren().setAll( pane );
+    }
 }
