@@ -22,13 +22,5 @@ public class Cart {
         totalCost -= itemToCart.getPrice();
     }
 
-    public double getTotalCartPrice() {
-        double total = 0;
-        for (Item item : cartItems) {
-            total += item.getPrice();
-        }
-        return total;
-    }
-
     public double getTotalCost() { return totalCost; }
 }
