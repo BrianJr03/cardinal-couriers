@@ -15,11 +15,13 @@ public class Cart {
     public void add(Item itemToCart) {
         cartItems.add(itemToCart);
         totalCost += itemToCart.getPrice();
+        totalCost = Math.round(totalCost * 100.0) / 100.0;
     }
 
     public void remove(Item itemToCart) {
         cartItems.remove(itemToCart);
         totalCost -= itemToCart.getPrice();
+        totalCost = Math.round(totalCost * 100.0) / 100.0;
     }
 
     public double getTotalCost() { return totalCost; }

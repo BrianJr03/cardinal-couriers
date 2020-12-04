@@ -40,9 +40,9 @@ public class CartTest {
     @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(new ArrayList<>());
-        cart.add(new Item("Apple", 1.90));
+        cart.add(new Item("Apple", 1.89));
         cart.add(new Item("Ramen", 0.50));
-        Assertions.assertEquals(2.40, cart.getTotalCost());
+        Assertions.assertEquals(2.39, cart.getTotalCost());
     }
 
     @Test
