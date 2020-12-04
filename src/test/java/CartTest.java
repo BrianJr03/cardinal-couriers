@@ -42,7 +42,7 @@ public class CartTest {
         Cart cart = new Cart(new ArrayList<>());
         cart.add(new Item("Apple", 1.90));
         cart.add(new Item("Ramen", 0.50));
-        Assertions.assertEquals(2.40, cart.getTotalCartPrice());
+        Assertions.assertEquals(2.40, cart.getTotalCost());
     }
 
     @Test
