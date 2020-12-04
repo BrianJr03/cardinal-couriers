@@ -8,8 +8,11 @@ import java.io.IOException;
 public class CartController {
     public AnchorPane rootPane;
 
-    public void launchStoreUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
+    public void launchStoreUI() throws IOException
+    { launchUI( "/ui/storeUI.fxml" ); }
+
+    public void launchUI(String uiPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
     }
