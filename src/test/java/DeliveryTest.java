@@ -1,10 +1,10 @@
-import edu.bsu.cs222.finalProject.Controllers.DeliveryController;
+import edu.bsu.cs222.finalProject.Controllers.DeliveryUIController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class DeliveryTest
 {
-    DeliveryController delivery = new DeliveryController();
+    DeliveryUIController delivery = new DeliveryUIController();
 
     @Test
     public void isValidZip1()

@@ -9,7 +9,8 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class StoreController {
+public class StoreUIController
+{
 
     @FXML
     public Label storeNameLBL;

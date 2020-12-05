@@ -12,7 +12,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DeliveryController {
+public class DeliveryUIController
+{
 
     public TextField addressOne;
     public TextField zipCode;
@@ -28,6 +29,17 @@ public class DeliveryController {
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
 
+    public void sendAddressInfoToMain() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
+        Parent root = loader.load();
+        MainUIController mainUI = loader.getController();
+        mainUI.setAddressInfoFromDelivery( zipCode.getText(), addressOne.getText() );
+        rootPane.getChildren().setAll( root );
+    }
+
+    public void setAddressInfoFromMain(String zipCodeFromMain, String addressOneFromMain)
+    { zipCode.setText( zipCodeFromMain ); addressOne.setText( addressOneFromMain ); }
+
     public void displayPromptFor2secs(Label prompt) {
         prompt.setVisible( true );
         PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
@@ -39,6 +51,7 @@ public class DeliveryController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
+        sendAddressInfoToMain();
     }
 
     public boolean isValidZip( String zipCode ) {
@@ -67,7 +80,7 @@ public class DeliveryController {
     public void verifyDeliveryInput() throws IOException {
         if (    zipCode.getText().length() == 0
                 || addressOne.getText().length() == 0
-                || !isValidZip( zipCode.getText() ) )
+                || !isValidZip(zipCode.getText()))
         { displayInvalidDeliveryInfo_Prompt(); }
         else { launchMainUI(); }
     }

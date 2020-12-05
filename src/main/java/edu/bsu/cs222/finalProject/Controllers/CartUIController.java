@@ -5,7 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
-public class CartController {
+public class CartUIController
+{
     public AnchorPane rootPane;
 
     public void launchStoreUI() throws IOException

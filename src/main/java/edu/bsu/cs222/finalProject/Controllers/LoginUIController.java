@@ -17,7 +17,8 @@ import java.net.URISyntaxException;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
 
-public class LoginController {
+public class LoginUIController
+{
 
     @FXML
     private AnchorPane rootPane;
