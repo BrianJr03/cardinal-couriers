@@ -29,6 +29,11 @@
       <TextField layoutX="206.0" layoutY="223.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
       <TextField fx:id="zipCode" layoutX="207.0" layoutY="261.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
       <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="278.0" layoutY="391.0" text="Please fill each required field correctly. " textFill="#da0909" />
+      <Button layoutX="466.0" layoutY="502.0" mnemonicParsing="false" onAction="#launchMainUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="byPass">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Button>
    </Pane>
    <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
       <font>

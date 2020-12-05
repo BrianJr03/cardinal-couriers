@@ -12,18 +12,18 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <TableView layoutX="128.0" layoutY="124.0" prefHeight="200.0" prefWidth="487.0">
+        <TableView layoutX="128.0" layoutY="124.0" prefHeight="273.0" prefWidth="487.0">
             <columns>
                 <TableColumn minWidth="236.0" prefWidth="75.0" text="Item" />
                 <TableColumn minWidth="133.60003662109375" prefWidth="75.0" text="Price" />
                 <TableColumn minWidth="117.4000244140625" prefWidth="75.0" text="Quantity" />
             </columns>
         </TableView>
-        <Button layoutX="323.0" layoutY="478.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Checkout">
+        <Button layoutX="323.0" layoutY="476.0" mnemonicParsing="false" onAction="#launchOrderConfirmUI" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Checkout">
             <font>
                 <Font name="Impact" size="12.0" />
             </font></Button>
-        <Label layoutX="150.0" layoutY="33.0" onMouseClicked="#launchStoreUI" text="Continue Shopping">
+        <Label layoutX="150.0" layoutY="33.0" onMouseClicked="#launchStoreUI" text="Continue Shopping" textFill="DARKORCHID">
             <font>
                 <Font size="18.0" />
             </font>

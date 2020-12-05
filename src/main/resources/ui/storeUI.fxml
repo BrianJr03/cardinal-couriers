@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="inventoryTable" layoutX="128.0" layoutY="103.0" prefHeight="472.0" prefWidth="487.0">
+      <TableView fx:id="inventoryTable" layoutX="128.0" layoutY="103.0" prefHeight="438.0" prefWidth="487.0">
          <columns>
             <TableColumn prefWidth="236.0" text="Item " />
             <TableColumn prefWidth="133.60003662109375" text="Price" />
@@ -31,6 +31,12 @@
          </columns>
       </TableView>
       <Label layoutX="584.0" layoutY="86.0" onMouseClicked="#launchCartUI" text="Cart" textFill="DARKORCHID" />
+      <Button layoutX="520.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Add to Cart">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Button>
+      <ButtonBar layoutX="395.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" />
 
     </Pane>
 </AnchorPane>
