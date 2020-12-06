@@ -68,5 +68,10 @@
             <Image url="@../pngs/left.png" />
         </ImageView>
     </Pane>
-    <VBox prefHeight="623.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css" />
+    <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+        <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../pngs/groceries200x200.png"/>
+        </ImageView>
+    </Pane>
 </AnchorPane>

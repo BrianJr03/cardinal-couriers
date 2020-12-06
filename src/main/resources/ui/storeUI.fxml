@@ -37,6 +37,11 @@
          </font>
       </Button>
       <ButtonBar layoutX="395.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" />
-        <VBox layoutX="-12.0" prefHeight="623.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css" />
+        <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+            <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../pngs/groceries200x200.png"/>
+            </ImageView>
+        </Pane>
     </Pane>
 </AnchorPane>
