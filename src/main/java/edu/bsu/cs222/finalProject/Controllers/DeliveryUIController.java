@@ -22,23 +22,14 @@ public class DeliveryUIController
     public Label invalidDeliveryInfo_Prompt;
     public Button continueButton;
     public AnchorPane rootPane;
+    public String storedZipCode;
+    public String storedAddress;
 
     public void initialize() {
         inRange_Prompt.setVisible( false );
         outOfRange_Prompt.setVisible( false );
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
-
-    public void sendAddressInfoToMain() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
-        Parent root = loader.load();
-        MainUIController mainUI = loader.getController();
-        mainUI.setAddressInfoFromDelivery( zipCode.getText(), addressOne.getText() );
-        rootPane.getChildren().setAll( root );
-    }
-
-    public void setAddressInfoFromMain(String zipCodeFromMain, String addressOneFromMain)
-    { zipCode.setText( zipCodeFromMain ); addressOne.setText( addressOneFromMain ); }
 
     public void displayPromptFor2secs(Label prompt) {
         prompt.setVisible( true );
@@ -51,7 +42,6 @@ public class DeliveryUIController
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
-        sendAddressInfoToMain();
     }
 
     public boolean isValidZip( String zipCode ) {
@@ -64,10 +54,10 @@ public class DeliveryUIController
     { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
-    { launchUI( "/ui/loginUI.fxml" ); }
+    { storeDeliveryInfo(); launchUI( "/ui/loginUI.fxml" ); }
 
     public void launchMainUI() throws IOException
-    { launchUI( "/ui/mainUI.fxml" ); }
+    { storeDeliveryInfo(); launchUI( "/ui/mainUI.fxml" ); }
 
     @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
@@ -83,5 +73,22 @@ public class DeliveryUIController
                 || !isValidZip(zipCode.getText()))
         { displayInvalidDeliveryInfo_Prompt(); }
         else { launchMainUI(); }
+    }
+
+    public void storeDeliveryInfo()
+    {
+       storedZipCode =  this.zipCode.getText() ;
+       storedAddress = this.addressOne.getText();
+    }
+
+    public void setAddress( String address )
+    {
+        addressOne.setText( address );
+    }
+
+
+    public void setZip( String zip )
+    {
+        zipCode.setText( zip );
     }
 }

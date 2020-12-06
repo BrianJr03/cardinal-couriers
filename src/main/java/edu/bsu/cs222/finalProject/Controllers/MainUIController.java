@@ -11,31 +11,14 @@ public class MainUIController {
     @FXML
     private AnchorPane rootPane;
 
-    @FXML
-    String zipCodeFromDelivery;
-
-    @FXML
-    String addressOneFromDelivery;
-
     StoreInfo storeInfo = new StoreInfo();
-
-    public void sendAddressInfoToDelivery() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
-        Parent root = loader.load();
-        DeliveryUIController delivery = loader.getController();
-        delivery.setAddressInfoFromMain( zipCodeFromDelivery , addressOneFromDelivery );
-        rootPane.getChildren().setAll( root );
-    }
-
-    public void setAddressInfoFromDelivery(String zipCode, String addressOne)
-    { this.zipCodeFromDelivery = zipCode; this.addressOneFromDelivery = addressOne; }
 
     @FXML
     public void launchDeliveryUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
-        sendAddressInfoToDelivery();
+        setAddressInfoDelivery();
     }
 
     @FXML
@@ -63,5 +46,14 @@ public class MainUIController {
     private void sendData_ALDI() throws IOException {
         storeInfo.setStoreName( "ALDI" );
         launchStoreUI( storeInfo );
+    }
+
+    public void setAddressInfoDelivery() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
+        DeliveryUIController delivery = loader.getController();
+        String zip = delivery.storedZipCode;
+        String address = delivery.storedAddress;
+        delivery.setAddress( address );
+        delivery.setZip( zip );
     }
 }

@@ -37,5 +37,16 @@ public class StoreUIController
     { storeNameLBL.setText( storeName ); }
 
     public void launchCartUI() throws IOException
-    { launchUI( "/ui/cart.fxml" ); }
+    { sendStoreNameToCart(); launchUI( "/ui/cart.fxml" ); }
+
+    public void sendStoreNameToCart() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
+        Parent root = loader.load();
+        CartUIController cart = loader.getController();
+        cart.setAddressInfoFromDelivery(storeNameLBL.getText());
+        rootPane.getChildren().setAll( root );
+    }
+
+    public void setStoreNameFromCart( String storeName)
+    { storeNameLBL.setText( storeName ); }
 }

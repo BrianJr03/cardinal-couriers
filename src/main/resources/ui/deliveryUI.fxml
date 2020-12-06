@@ -7,29 +7,29 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.DeliveryUIController">
    <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
-      <Label layoutX="259.0" layoutY="95.0" prefHeight="45.0" prefWidth="223.0" text="Delivery Address" textFill="DARKORCHID">
+      <Label layoutX="324.0" layoutY="97.0" prefHeight="45.0" prefWidth="223.0" text="Delivery Address" textFill="DARKORCHID">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
 
-      <Label fx:id="inRange_Prompt" layoutX="306.0" layoutY="391.0" text="Your address is in range." textFill="#08d248" />
-      <Label fx:id="outOfRange_Prompt" layoutX="248.0" layoutY="391.0" text="Your address is out of range.  Please try again." textFill="#da0909" />
+      <Label fx:id="inRange_Prompt" layoutX="370.0" layoutY="391.0" text="Your address is in range." textFill="#08d248" />
+      <Label fx:id="outOfRange_Prompt" layoutX="313.0" layoutY="391.0" text="Your address is out of range.  Please try again." textFill="#da0909" />
       <ButtonBar layoutX="207.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button fx:id="continueButton" layoutX="310.0" layoutY="494.0" mnemonicParsing="false" onAction="#verifyDeliveryInput" prefHeight="40.0" prefWidth="142.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Continue">
+      <Button fx:id="continueButton" layoutX="364.0" layoutY="486.0" mnemonicParsing="false" onAction="#verifyDeliveryInput" prefHeight="40.0" prefWidth="142.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Continue">
          <font>
             <Font name="Impact" size="12.0" />
          </font></Button>
-      <Label layoutX="214.0" layoutY="299.0" prefHeight="26.0" prefWidth="115.0" text="Muncie" textFill="DARKORCHID" />
-      <Label layoutX="431.0" layoutY="299.0" prefHeight="25.0" prefWidth="103.0" text="IN" textFill="DARKORCHID" />
-      <ImageView fitHeight="17.0" fitWidth="15.0" layoutX="519.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="278.0" layoutY="298.0" prefHeight="26.0" prefWidth="115.0" text="Muncie" textFill="DARKORCHID" />
+      <Label layoutX="532.0" layoutY="299.0" prefHeight="25.0" prefWidth="103.0" text="IN" textFill="DARKORCHID" />
+      <ImageView fitHeight="17.0" fitWidth="15.0" layoutX="584.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../pngs/arrows.png" />
       </ImageView>
-      <TextField fx:id="addressOne" layoutX="207.0" layoutY="185.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 1 (required)" />
-      <TextField layoutX="206.0" layoutY="223.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
-      <TextField fx:id="zipCode" layoutX="207.0" layoutY="261.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
-      <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="278.0" layoutY="391.0" text="Please fill each required field correctly. " textFill="#da0909" />
-      <Button layoutX="466.0" layoutY="502.0" mnemonicParsing="false" onAction="#launchMainUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="byPass">
+      <TextField fx:id="addressOne" layoutX="271.0" layoutY="190.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 1 (required)" />
+      <TextField layoutX="272.0" layoutY="225.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
+      <TextField fx:id="zipCode" layoutX="272.0" layoutY="265.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
+      <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="332.0" layoutY="391.0" text="Please fill each required field correctly. " textFill="#da0909" />
+      <Button layoutX="521.0" layoutY="494.0" mnemonicParsing="false" onAction="#launchMainUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="byPass">
          <font>
             <Font name="Impact" size="12.0" />
          </font>
@@ -39,4 +39,5 @@
       <font>
          <Font name="Impact" size="12.0" />
       </font></Button>
+   <VBox prefHeight="623.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css" />
 </AnchorPane>
