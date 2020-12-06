@@ -31,9 +31,9 @@ public class DeliveryUIController
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
 
-    public void displayPromptFor2secs(Label prompt) {
+    public void displayPromptFor10secs(Label prompt) {
         prompt.setVisible( true );
-        PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
+        PauseTransition visiblePause = new PauseTransition( Duration.seconds(10));
         visiblePause.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause.play();
     }
@@ -51,7 +51,7 @@ public class DeliveryUIController
     }
 
     public void displayInvalidDeliveryInfo_Prompt()
-    { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
+    { displayPromptFor10secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
     { storeDeliveryInfo(); launchUI( "/ui/loginUI.fxml" ); }
@@ -61,11 +61,11 @@ public class DeliveryUIController
 
     @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
-    { displayPromptFor2secs(outOfRange_Prompt); }
+    { displayPromptFor10secs(outOfRange_Prompt); }
 
     @SuppressWarnings( "unused" )
     public void displayInRange_Prompt()
-    { displayPromptFor2secs(inRange_Prompt); }
+    { displayPromptFor10secs(inRange_Prompt); }
 
     public void verifyDeliveryInput() throws IOException {
         if (    zipCode.getText().length() == 0
@@ -90,6 +90,8 @@ public class DeliveryUIController
     {
         zipCode.setText( zip );
     }
+
+
 
 
 }
