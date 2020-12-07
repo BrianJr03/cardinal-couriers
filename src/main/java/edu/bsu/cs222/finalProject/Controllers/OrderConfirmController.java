@@ -18,6 +18,7 @@ public class OrderConfirmController {
     public Label deliveryAddressInfo;
     public Button confirmCheckout;
     public Label cartTotalLabel;
+    String storeNameStored;
 
     public void initialize() {
         storeName.setVisible( false );
@@ -30,7 +31,15 @@ public class OrderConfirmController {
     { launchUI( "/ui/storeUI.fxml" ); }
 
     public void launchCartUI() throws IOException
-    { launchUI( "/ui/cart.fxml" ); }
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
+        Parent root = loader.load();
+        CartUIController cart = loader.getController();
+
+        //send data here
+        cart.setStoreName( storeNameStored );
+
+        rootPane.getChildren().setAll( root ); }
 
     public void launchPostPurchaseUI() throws IOException
     { launchUI( "/ui/postPurchaseUI.fxml" ); }
@@ -40,4 +49,7 @@ public class OrderConfirmController {
         Parent root = loader.load();
         rootPane.getChildren().setAll( root );
     }
+
+    public void setStoreName( String storeNameStored )
+    { this.storeNameStored = storeNameStored; }
 }

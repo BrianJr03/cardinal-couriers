@@ -14,14 +14,14 @@ public class CartUIController
     @FXML
     String storeNameStored;
 
-    public void launchOrderConfirmUI() throws IOException
-    { launchUI( "/ui/orderConfirm.fxml" ); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+    public void launchOrderConfirmUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/orderConfirm.fxml"));
         Parent root = loader.load();
-        rootPane.getChildren().setAll( root );
-    }
+        OrderConfirmController orderConfirmController = loader.getController();
+        //send data here
+        orderConfirmController.setStoreName(storeNameStored);
+
+        rootPane.getChildren().setAll( root ); }
 
     public void launchStoreUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
@@ -35,7 +35,7 @@ public class CartUIController
     }
 
     public void sendDataToStore(StoreUIController store) throws IOException {
-        store.setStoreNameFromCart(storeNameStored);
+        store.setStoreNameFromCart( storeNameStored );
         store.populateTableWithItems( storeNameStored );
     }
 
