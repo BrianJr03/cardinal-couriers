@@ -7,21 +7,19 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.LoginUIController">
-   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
-      <Label prefHeight="28.0" prefWidth="190.0" text="Grocery Shop BSU">
-         <font>
-            <Font name="Century Schoolbook Italic" size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="20.0" />
-         </VBox.margin>
-      </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <Image url="@../pngs/groceries200x200.png" />
-      </ImageView>
+   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0"
+         styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+      <Pane prefHeight="631.0" prefWidth="270.0">
+         <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="220.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@../pngs/groceries200x200.png"/>
+         </ImageView>
+         <Label layoutX="58.0" layoutY="192.0" prefHeight="28.0" prefWidth="155.0" text="Cardinal Couriers">
+            <font>
+               <Font name="Century Schoolbook Italic" size="18.0"/>
+            </font>
+         </Label>
+      </Pane>
    </VBox>
    <Pane layoutX="270.0" layoutY="-2.0" prefHeight="556.0" prefWidth="456.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Label alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="86.0" text="Welcome" textFill="DARKORCHID">

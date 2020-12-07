@@ -20,11 +20,6 @@
          <font>
             <Font name="Impact" size="12.0" />
          </font></Button>
-      <Label layoutX="278.0" layoutY="298.0" prefHeight="26.0" prefWidth="115.0" text="Muncie" textFill="DARKORCHID" />
-      <Label layoutX="532.0" layoutY="299.0" prefHeight="25.0" prefWidth="103.0" text="IN" textFill="DARKORCHID" />
-      <ImageView fitHeight="17.0" fitWidth="15.0" layoutX="584.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../pngs/arrows.png" />
-      </ImageView>
       <TextField fx:id="addressOne" layoutX="271.0" layoutY="190.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 1 (required)" />
       <TextField layoutX="272.0" layoutY="225.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
       <TextField fx:id="zipCode" layoutX="272.0" layoutY="265.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
@@ -34,15 +29,16 @@
             <Font name="Impact" size="12.0" />
          </font>
       </Button>
+      <TextField layoutX="272.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" promptText="City" />
+      <TextField layoutX="474.0" layoutY="299.0" prefHeight="26.0" prefWidth="129.0" promptText="State" />
    </Pane>
    <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
       <font>
          <Font name="Impact" size="12.0" />
       </font></Button>
    <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
-      <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../pngs/groceries200x200.png"/>
+      <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../pngs/groceries200x200.png" />
       </ImageView>
    </Pane>
 </AnchorPane>
