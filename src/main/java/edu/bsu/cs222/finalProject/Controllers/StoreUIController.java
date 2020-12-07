@@ -17,9 +17,7 @@ import java.io.IOException;
 
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
-public class StoreUIController
-{
-
+public class StoreUIController {
     @FXML
     public Label storeNameLBL;
 
@@ -27,18 +25,16 @@ public class StoreUIController
     TableView<Item> inventoryTable;
 
     @FXML
-    TableColumn nameColumn;
+    TableColumn < Item, String > nameColumn;
 
     @FXML
-    TableColumn priceColumn;
+    TableColumn<Item, Double> priceColumn;
 
     @FXML
-    TableColumn quantityColumn;
-
+    TableColumn<String, String> quantityColumn;
 
     @FXML
     private AnchorPane rootPane;
-
 
     public void launchMainUI() throws IOException
     { launchUI( "/ui/mainUI.fxml" ); }
@@ -55,31 +51,26 @@ public class StoreUIController
     public void showStoreName( String storeName )
     { storeNameLBL.setText( storeName ); }
 
-    public void launchCartUI() throws IOException
-    { sendStoreNameToCart(); launchUI( "/ui/cart.fxml" ); }
+    public void populateTableWithItems(String storeName) throws IOException {
+        Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
+        inventoryTable.setEditable(true);
+        nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
+        priceColumn.setCellValueFactory( new PropertyValueFactory <>( "price" ));
+        ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
+        inventoryTable.setItems(items);
+    }
 
-    public void sendStoreNameToCart() throws IOException{
+    public void launchCartUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cart = loader.getController();
-        cart.setAddressInfoFromDelivery(storeNameLBL.getText());
+
+        //send data here
+        cart.setStoreName( storeNameLBL.getText() );
+
         rootPane.getChildren().setAll( root );
     }
 
     public void setStoreNameFromCart( String storeName)
     { storeNameLBL.setText( storeName ); }
-
-    public void populateTableWithItems(String storeName) {
-        try {
-            Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
-            inventoryTable.setEditable(true);
-            nameColumn.setCellValueFactory(new PropertyValueFactory<Item,String>("name"));
-            priceColumn.setCellValueFactory(new PropertyValueFactory<Item,Double>("price"));
-            ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
-            inventoryTable.setItems(items);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
