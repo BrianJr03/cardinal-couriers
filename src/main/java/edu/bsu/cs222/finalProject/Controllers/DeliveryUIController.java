@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static edu.bsu.cs222.finalProject.DeliveryMap.collectJsonObjectFromGoogle;
+
 public class DeliveryUIController
 {
 
@@ -70,7 +72,8 @@ public class DeliveryUIController
     public void verifyDeliveryInput() throws IOException {
         if (    zipCode.getText().length() == 0
                 || addressOne.getText().length() == 0
-                || !isValidZip(zipCode.getText()))
+                || !isValidZip(zipCode.getText())
+                || collectJsonObjectFromGoogle(addressOne.getText()).isJsonNull())
         { displayInvalidDeliveryInfo_Prompt(); }
         else { launchMainUI(); }
     }
