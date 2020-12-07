@@ -64,16 +64,12 @@ public class StoreUIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cart = loader.getController();
-
-        //send data here
         sendDataToCart( cart );
-
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToCart(CartUIController cart) {
-        cart.setStoreName( storeNameLBL.getText() );
-    }
+    public void sendDataToCart(CartUIController cart)
+    { cart.setStoreName( storeNameLBL.getText() ); }
 
     public void setStoreNameFromCart( String storeName)
     { storeNameLBL.setText( storeName ); }

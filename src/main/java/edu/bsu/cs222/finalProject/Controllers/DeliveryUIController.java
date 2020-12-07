@@ -1,7 +1,9 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
 import com.google.gson.JsonObject;
+import com.sun.tools.javac.Main;
 import javafx.animation.PauseTransition;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -16,18 +18,26 @@ import java.util.regex.Pattern;
 import static edu.bsu.cs222.finalProject.DeliveryMap.collectJsonObjectFromGoogle;
 import static edu.bsu.cs222.finalProject.DeliveryMap.findDistanceFromBSU;
 
-public class DeliveryUIController
-{
+public class DeliveryUIController {
 
+    @FXML
     public TextField addressOne;
+    @FXML
     public TextField zipCode;
-    public Label inRange_Prompt;
-    public Label outOfRange_Prompt;
-    public Label invalidDeliveryInfo_Prompt;
+    @FXML
+    public TextField state;
+    @FXML
+    public TextField city;
+    @FXML
+    private Label inRange_Prompt;
+    @FXML
+    private Label outOfRange_Prompt;
+    @FXML
+    private Label invalidDeliveryInfo_Prompt;
+    @FXML
     public Button continueButton;
-    public AnchorPane rootPane;
-    public String storedZipCode;
-    public String storedAddress;
+    @FXML
+    private AnchorPane rootPane;
 
     public void initialize() {
         inRange_Prompt.setVisible( false );
@@ -58,10 +68,22 @@ public class DeliveryUIController
     { displayPromptFor10secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
-    { storeDeliveryInfo(); launchUI( "/ui/loginUI.fxml" ); }
+    { launchUI( "/ui/loginUI.fxml" ); }
 
-    public void launchMainUI() throws IOException
-    { storeDeliveryInfo(); launchUI( "/ui/mainUI.fxml" ); }
+    public void launchMainUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
+        Parent root = loader.load();
+        MainUIController mainUIController = loader.getController();
+        sendDataToMain( mainUIController );
+        rootPane.getChildren().setAll( root );
+    }
+
+    public void sendDataToMain( MainUIController mainUIController ) {
+        mainUIController.setCityText(city.getText());
+        mainUIController.setZipText(zipCode.getText());
+        mainUIController.setAddressText(addressOne.getText());
+        mainUIController.setStateText(state.getText());
+    }
 
     @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
@@ -81,24 +103,4 @@ public class DeliveryUIController
             launchMainUI();
         }
     }
-
-    public void storeDeliveryInfo()
-    {
-       storedZipCode =  this.zipCode.getText() ;
-       storedAddress = this.addressOne.getText();
-    }
-
-    public void setAddress( String address )
-    {
-        addressOne.setText( address );
-    }
-
-    public void setZip( String zip )
-    {
-        zipCode.setText( zip );
-    }
-
-
-
-
 }

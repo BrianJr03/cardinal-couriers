@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -11,12 +12,19 @@ import java.io.IOException;
 
 public class OrderConfirmController {
 
-    public AnchorPane rootPane;
+    @FXML
+    private AnchorPane rootPane;
+    @FXML
     public Label storeName;
+    @FXML
     public Label orderTotal;
+    @FXML
     public CheckBox checkBox;
+    @FXML
     public Label deliveryAddressInfo;
+    @FXML
     public Button confirmCheckout;
+    @FXML
     public Label cartTotalLabel;
     String storeNameStored;
 

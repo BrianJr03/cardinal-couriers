@@ -7,9 +7,10 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CartUIController
-{
-    public AnchorPane rootPane;
+public class CartUIController {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     String storeNameStored;
@@ -18,19 +19,18 @@ public class CartUIController
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/orderConfirm.fxml"));
         Parent root = loader.load();
         OrderConfirmController orderConfirmController = loader.getController();
-        //send data here
-        orderConfirmController.setStoreName(storeNameStored);
+        sendDataToOrderConfirm( orderConfirmController );
+        rootPane.getChildren().setAll( root );
+    }
 
-        rootPane.getChildren().setAll( root ); }
+    public void sendDataToOrderConfirm(OrderConfirmController orderConfirmController)
+    { orderConfirmController.setStoreName(storeNameStored); }
 
     public void launchStoreUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
         Parent root = loader.load();
         StoreUIController store = loader.getController();
-
-        //send data here
         sendDataToStore( store );
-
         rootPane.getChildren().setAll( root );
     }
 

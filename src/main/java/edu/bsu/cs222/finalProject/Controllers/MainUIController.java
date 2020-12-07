@@ -11,14 +11,27 @@ public class MainUIController {
     @FXML
     private AnchorPane rootPane;
 
+    String addressStored;
+    String zipStored;
+    String cityStored;
+    String stateStored;
+
     StoreInfo storeInfo = new StoreInfo();
 
     @FXML
     public void launchDeliveryUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
         Parent root = loader.load();
+        DeliveryUIController deliveryUIController = loader.getController();
+        sendDataToDelivery( deliveryUIController );
         rootPane.getChildren().setAll( root );
-        setAddressInfoDelivery();
+    }
+
+    public void sendDataToDelivery(DeliveryUIController deliveryUIController) {
+        deliveryUIController.zipCode.setText( zipStored );
+        deliveryUIController.city.setText( cityStored );
+        deliveryUIController.state.setText( stateStored );
+        deliveryUIController.addressOne.setText( addressStored );
     }
 
     @FXML
@@ -49,12 +62,15 @@ public class MainUIController {
         launchStoreUI( storeInfo );
     }
 
-    public void setAddressInfoDelivery() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
-        DeliveryUIController delivery = loader.getController();
-        String zip = delivery.storedZipCode;
-        String address = delivery.storedAddress;
-        delivery.setAddress( address );
-        delivery.setZip( zip );
-    }
+    public void setCityText(String cityStored )
+    { this.cityStored = cityStored; }
+
+    public void setZipText( String zipStored )
+    { this.zipStored = zipStored; }
+
+    public void setAddressText( String addressStored )
+    { this.addressStored = addressStored; }
+
+    public void setStateText( String stateStored )
+    { this.stateStored = stateStored; }
 }
