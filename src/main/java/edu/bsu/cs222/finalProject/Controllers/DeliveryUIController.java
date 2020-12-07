@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import com.google.gson.JsonObject;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static edu.bsu.cs222.finalProject.DeliveryMap.collectJsonObjectFromGoogle;
+import static edu.bsu.cs222.finalProject.DeliveryMap.findDistanceFromBSU;
 
 public class DeliveryUIController
 {
@@ -70,12 +72,14 @@ public class DeliveryUIController
     { displayPromptFor10secs(inRange_Prompt); }
 
     public void verifyDeliveryInput() throws IOException {
-        if (    zipCode.getText().length() == 0
-                || addressOne.getText().length() == 0
-                || !isValidZip(zipCode.getText())
-                || collectJsonObjectFromGoogle(addressOne.getText()).isJsonNull())
-        { displayInvalidDeliveryInfo_Prompt(); }
-        else { launchMainUI(); }
+        JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText());
+        if (findDistanceFromBSU(mapsData) == null) {
+            displayInvalidDeliveryInfo_Prompt();
+        } else if (findDistanceFromBSU(mapsData) > 10) {
+            displayOutOfRange_Prompt();
+        } else {
+            launchMainUI();
+        }
     }
 
     public void storeDeliveryInfo()
