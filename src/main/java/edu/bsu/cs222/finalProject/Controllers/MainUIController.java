@@ -27,6 +27,7 @@ public class MainUIController {
         Parent root = loader.load();
         StoreUIController store = loader.getController();
         store.showStoreName(storeInfo.getStoreName());
+        store.populateTableWithItems(storeInfo.getStoreName());
         rootPane.getChildren().setAll( root );
     }
 

@@ -1,13 +1,21 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import edu.bsu.cs222.finalProject.Inventory;
+import edu.bsu.cs222.finalProject.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+
+import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class StoreUIController
 {
@@ -16,10 +24,21 @@ public class StoreUIController
     public Label storeNameLBL;
 
     @FXML
-    TableView<String> inventoryTable;
+    TableView<Item> inventoryTable;
+
+    @FXML
+    TableColumn nameColumn;
+
+    @FXML
+    TableColumn priceColumn;
+
+    @FXML
+    TableColumn quantityColumn;
+
 
     @FXML
     private AnchorPane rootPane;
+
 
     public void launchMainUI() throws IOException
     { launchUI( "/ui/mainUI.fxml" ); }
@@ -49,4 +68,18 @@ public class StoreUIController
 
     public void setStoreNameFromCart( String storeName)
     { storeNameLBL.setText( storeName ); }
+
+    public void populateTableWithItems(String storeName) {
+        try {
+            Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
+            inventoryTable.setEditable(true);
+            nameColumn.setCellValueFactory(new PropertyValueFactory<Item,String>("name"));
+            priceColumn.setCellValueFactory(new PropertyValueFactory<Item,Double>("price"));
+            ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
+            inventoryTable.setItems(items);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

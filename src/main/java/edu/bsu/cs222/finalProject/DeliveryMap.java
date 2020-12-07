@@ -17,12 +17,8 @@ public class DeliveryMap {
             return null;
         }
         String distance = jsonData.getAsJsonArray("rows").get(0).getAsJsonObject().get("elements").getAsJsonArray().get(0).getAsJsonObject().get("distance").getAsJsonObject().get("text").toString();
-        if (distance.contains("km")) {
-            String[] distanceInfo = distance.split(" ");
-            return Double.parseDouble(distanceInfo[0].replaceFirst("\"", ""));
-        } else {
-            return null;
-        }
+        String[] distanceInfo = distance.split(" ");
+        return Double.parseDouble(distanceInfo[0].replaceFirst("\"", ""));
     }
 
     public static JsonObject collectJsonObjectFromGoogle(String address) {
