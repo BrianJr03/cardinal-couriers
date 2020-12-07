@@ -66,9 +66,13 @@ public class StoreUIController {
         CartUIController cart = loader.getController();
 
         //send data here
-        cart.setStoreName( storeNameLBL.getText() );
+        sendDataToCart( cart );
 
         rootPane.getChildren().setAll( root );
+    }
+
+    public void sendDataToCart(CartUIController cart) {
+        cart.setStoreName( storeNameLBL.getText() );
     }
 
     public void setStoreNameFromCart( String storeName)

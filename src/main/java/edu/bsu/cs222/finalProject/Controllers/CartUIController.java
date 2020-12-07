@@ -29,10 +29,14 @@ public class CartUIController
         StoreUIController store = loader.getController();
 
         //send data here
-        store.setStoreNameFromCart(storeNameStored);
-        store.populateTableWithItems( storeNameStored );
+        sendDataToStore( store );
 
         rootPane.getChildren().setAll( root );
+    }
+
+    public void sendDataToStore(StoreUIController store) throws IOException {
+        store.setStoreNameFromCart(storeNameStored);
+        store.populateTableWithItems( storeNameStored );
     }
 
     public void setStoreName(String storeName)
