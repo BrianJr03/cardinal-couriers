@@ -12,6 +12,12 @@ import java.net.URLConnection;
 
 public class DeliveryMap {
 
+    public static double findDistanceFromBSU(JsonObject jsonData) {
+        String distance = jsonData.getAsJsonArray("rows").get(0).getAsJsonObject().get("elements").getAsJsonArray().get(0).getAsJsonObject().get("distance").getAsJsonObject().get("text").toString();
+        String[] distanceInfo = distance.split(" ");
+        return Double.parseDouble(distanceInfo[0].replaceFirst("\"", ""));
+    }
+
     public static JsonObject collectJsonObjectFromGoogle(String address) throws IOException {
         URLConnection connection = connectToGoogleMaps(address);
         return readJsonDataFrom(connection);
