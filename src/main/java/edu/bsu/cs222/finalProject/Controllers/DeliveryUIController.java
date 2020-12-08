@@ -105,9 +105,9 @@ public class DeliveryUIController {
     { displayPromptFor2secs(inRange_Prompt); }
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
-        if (            city.getText().length() == 0
+        if (            !isValidCity( city.getText() )
                         || addressOne.getText().length() == 0
-                        || state.getText().length() == 0
+                        || !isValidState_Abbreviation( state.getText() )
                         || !isValidZip( zipCode.getText() ) )
         { displayInvalidDeliveryInfo_Prompt(); }
 
