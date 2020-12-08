@@ -27,11 +27,16 @@ public class CartUIController {
     }
 
     public void sendDataToOrderConfirm(OrderConfirmController orderConfirmController) {
-        orderConfirmController.setStoreName(storeNameStored);
+        orderConfirmController.setStoreName( storeNameStored );
         orderConfirmController.setZipText( zipStored );
         orderConfirmController.setCityText( cityStored );
         orderConfirmController.setStateText( stateStored );
         orderConfirmController.setAddressText( addressStored );
+        orderConfirmController.stAddress.setText( addressStored );
+        orderConfirmController. zip.setText( zipStored );
+        orderConfirmController.city.setText( cityStored );
+        orderConfirmController.state.setText( stateStored );
+        orderConfirmController.storeName.setText( storeNameStored );
     }
 
     public void launchStoreUI() throws IOException{

@@ -7,25 +7,33 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 public class OrderConfirmController {
 
     @FXML
+    public Label city;
+    @FXML
+    public Label zip;
+    @FXML
+    public Label state;
+    @FXML
+    public Label stAddress;
+    @FXML
+    public Label cartTotal;
+    @FXML
+    public Label costInDollars;
+    @FXML
     private AnchorPane rootPane;
     @FXML
     public Label storeName;
-    @FXML
-    public Label orderTotal;
+
     @FXML
     public CheckBox checkBox;
     @FXML
-    public Label deliveryAddressInfo;
-    @FXML
     public Button confirmCheckout;
-    @FXML
-    public Label cartUIController;
 
     String storeNameStored;
     String addressStored;
@@ -34,10 +42,13 @@ public class OrderConfirmController {
     String stateStored;
 
     public void initialize() {
-        storeName.setVisible( false );
-        orderTotal.setVisible( false );
-        deliveryAddressInfo.setVisible( false );
-        cartUIController.setVisible( false );
+        storeName.setVisible( true );
+        costInDollars.setVisible( false );
+        cartTotal.setVisible( false );
+        stAddress.setVisible( true );
+        zip.setVisible( true );
+        city.setVisible( true );
+        state.setVisible( true );
     }
 
     public void launchCartUI() throws IOException {

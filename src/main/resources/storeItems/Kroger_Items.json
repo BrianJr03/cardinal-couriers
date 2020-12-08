@@ -5,11 +5,11 @@
   },
   {
     "name": "Premium Salsa",
-    "price": 5.00
+    "price": 5.19
   },
   {
     "name":"Milk",
-    "price": 1.10
+    "price": 1.19
   },
   {
     "name": "Tomatoes",
@@ -41,6 +41,6 @@
   },
   {
     "name": "Yogurt",
-    "price": 1.00
+    "price": 1.19
   }
 ]
