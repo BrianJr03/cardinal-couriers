@@ -2,11 +2,9 @@ package edu.bsu.cs222.finalProject;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -23,7 +21,8 @@ public class DeliveryMap {
 
     public static JsonObject collectJsonObjectFromGoogle(String address) {
             URLConnection connection = connectToGoogleMaps(address);
-            return readJsonDataFrom(connection);
+        assert connection != null;
+        return readJsonDataFrom(connection);
     }
 
     public static URLConnection connectToGoogleMaps(String address) {

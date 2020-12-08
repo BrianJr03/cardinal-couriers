@@ -35,11 +35,16 @@ public class OrderConfirmController {
         cartTotalLabel.setVisible( false );
     }
 
-    public void launchStoreUI() throws IOException
-    { launchUI( "/ui/storeUI.fxml" ); }
+    public void launchStoreUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
+        Parent root = loader.load();
+        StoreUIController storeUIController = loader.getController();
+        storeUIController.showStoreName( storeNameStored );
+        storeUIController.populateTableWithItems( storeNameStored );
+        rootPane.getChildren().setAll( root );
+    }
 
-    public void launchCartUI() throws IOException
-    {
+    public void launchCartUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cart = loader.getController();

@@ -22,13 +22,12 @@ public class Inventory {
         String path;
         switch ( storeName ) {
             default -> path = "src/main/resources/storeItems/Walmart_Items.json";
-            case "kroger" -> path = "src/main/resources/storeItems/Kroger_Items.json";
+            case "Kroger" -> path = "src/main/resources/storeItems/Kroger_Items.json";
             case "ALDI" -> path = "src/main/resources/storeItems/ALDI_Items.json";
         }
 
-        JsonParser parser = new JsonParser();
         FileReader reader = new FileReader(path);
-        return parser.parse(reader).getAsJsonArray();
+        return JsonParser.parseReader( reader ).getAsJsonArray();
     }
 
     public static ArrayList<Item> collectItemsAsArrayList(String storeName) throws IOException {
