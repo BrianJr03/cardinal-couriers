@@ -44,7 +44,7 @@ public class DeliveryUIController {
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
 
-    public void displayPromptFor2secs( Label prompt) {
+    public void displayPromptFor2secs(Label prompt) {
         prompt.setVisible( true );
         PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
         visiblePause.setOnFinished( event -> prompt.setVisible(false) );
@@ -91,7 +91,7 @@ public class DeliveryUIController {
     public void displayInRange_Prompt()
     { displayPromptFor2secs(inRange_Prompt); }
 
-    public void verifyDeliveryInput() throws IOException {
+    public void verifyDeliveryInput() throws IOException, NullPointerException {
         if (            city.getText().length() == 0
                         || addressOne.getText().length() == 0
                         || state.getText().length() == 0
