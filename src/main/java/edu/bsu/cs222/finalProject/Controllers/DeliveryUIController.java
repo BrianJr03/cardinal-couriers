@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static edu.bsu.cs222.finalProject.DeliveryMap.collectJsonObjectFromGoogle;
-import static edu.bsu.cs222.finalProject.DeliveryMap.findDistanceFromBSU;
+import static edu.bsu.cs222.finalProject.DeliveryMap.*;
 
 public class DeliveryUIController {
 
@@ -61,6 +60,20 @@ public class DeliveryUIController {
         Pattern pattern = Pattern.compile("\\d{5}");
         Matcher matcher = pattern.matcher(zipCode);
         return (matcher.find() && matcher.group().equals(zipCode));
+    }
+
+    public boolean isValidCity(String city) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$");
+        Matcher matcher = pattern.matcher(city);
+        if ( city.length() < 3 ) {return false;}
+        return (matcher.find() && matcher.group().equals(city));
+    }
+
+    public boolean isValidState_Abbreviation( String state) {
+        Pattern pattern = Pattern.compile("^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|" +
+                "N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$");
+        Matcher matcher = pattern.matcher(state);
+        return (matcher.find() && matcher.group().equals(state));
     }
 
     public void displayInvalidDeliveryInfo_Prompt()
