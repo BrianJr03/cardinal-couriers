@@ -49,7 +49,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="storeName" layoutX="406.0" layoutY="104.0" text="Store Name" textFill="DARKORCHID">
+      <Label fx:id="storeName" layoutX="200.0" layoutY="104.0" text="Store Name" textFill="DARKORCHID">
          <font>
             <Font size="14.0" />
          </font>
