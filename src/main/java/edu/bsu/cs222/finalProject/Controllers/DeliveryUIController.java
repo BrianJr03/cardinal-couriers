@@ -1,7 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
 import com.google.gson.JsonObject;
-import com.sun.tools.javac.Main;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,9 +44,9 @@ public class DeliveryUIController {
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
 
-    public void displayPromptFor10secs(Label prompt) {
+    public void displayPromptFor2secs( Label prompt) {
         prompt.setVisible( true );
-        PauseTransition visiblePause = new PauseTransition( Duration.seconds(10));
+        PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
         visiblePause.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause.play();
     }
@@ -65,7 +64,7 @@ public class DeliveryUIController {
     }
 
     public void displayInvalidDeliveryInfo_Prompt()
-    { displayPromptFor10secs(invalidDeliveryInfo_Prompt); }
+    { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
     { launchUI( "/ui/loginUI.fxml" ); }
@@ -87,20 +86,27 @@ public class DeliveryUIController {
 
     @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
-    { displayPromptFor10secs(outOfRange_Prompt); }
+    { displayPromptFor2secs(outOfRange_Prompt); }
 
     @SuppressWarnings( "unused" )
     public void displayInRange_Prompt()
-    { displayPromptFor10secs(inRange_Prompt); }
+    { displayPromptFor2secs(inRange_Prompt); }
 
     public void verifyDeliveryInput() throws IOException {
-        JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText());
-        if (findDistanceFromBSU(mapsData) == null) {
-            displayInvalidDeliveryInfo_Prompt();
-        } else if (findDistanceFromBSU(mapsData) > 10) {
-            displayOutOfRange_Prompt();
-        } else {
-            launchMainUI();
-        }
+        if (            city.getText().length() == 0
+                        || addressOne.getText().length() == 0
+                        || state.getText().length() == 0
+                        || zipCode.getText().length() == 0)
+        { displayPromptFor2secs( invalidDeliveryInfo_Prompt ); }
+
+        else{
+            JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText());
+            if (findDistanceFromBSU(mapsData) == null) {
+                displayInvalidDeliveryInfo_Prompt();
+            } else if (findDistanceFromBSU(mapsData) > 10) {
+                displayOutOfRange_Prompt();
+            } else {
+                launchMainUI();
+            }}
     }
 }
