@@ -77,22 +77,4 @@ public class DeliveryUITest
     @Test
     public void isValidState5()
     { Assertions.assertFalse( delivery.isValidState_Abbreviation( "Cali" ) ); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
