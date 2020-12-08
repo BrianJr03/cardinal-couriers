@@ -1,9 +1,8 @@
 # Final_Grocery-Shop
 Repo for Final Project by Hailey Leonard, Caleb Van Lue, Brian Walker, Monika Krcoski
 
-First iteration: To run this project, run the program in the Main class. This iteration is ran through the console. 
-
-Second iteration: To run this project, run the program in the Main class. This iteration is ran through the console. 
+To run this project:
+  Run through Gradle. FinalProject -> Tasks -> application -> run
 
 When logging into the application, if you do not wish to use your real BSU credentials, any input will be accepted as a valid username and password only if:
 
