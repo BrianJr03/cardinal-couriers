@@ -14,7 +14,9 @@ public class DeliveryMapTest {
     @Test
     public void testCanPullJSONDataFromGoogle() throws IOException {
         String address = "1708 W Bethel Ave";
-        JsonObject results = collectJsonObjectFromGoogle(address);
+        String city = "Muncie";
+        String state = "IN";
+        JsonObject results = collectJsonObjectFromGoogle(address,city,state);
         JsonParser parser = new JsonParser();
         FileReader reader = new FileReader("src/test/resources/Static JSON Data.json");
         Assertions.assertEquals(parser.parse(reader).getAsJsonObject(),results.getAsJsonObject());
@@ -23,7 +25,9 @@ public class DeliveryMapTest {
     @Test
     public void canReturnProperDistanceDouble() throws IOException {
         String address = "1708 W Bethel Ave";
-        JsonObject results = collectJsonObjectFromGoogle(address);
+        String city = "Muncie";
+        String state = "IN";
+        JsonObject results = collectJsonObjectFromGoogle(address,city,state);
         JsonParser parser = new JsonParser();
         FileReader reader = new FileReader("src/test/resources/Static JSON Data.json");
         JsonObject object = parser.parse(reader).getAsJsonObject();

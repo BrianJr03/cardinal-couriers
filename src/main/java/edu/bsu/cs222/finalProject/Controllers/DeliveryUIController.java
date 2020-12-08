@@ -99,7 +99,7 @@ public class DeliveryUIController {
         { displayInvalidDeliveryInfo_Prompt(); }
 
         else{
-            JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText());
+            JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText(),city.getText(),state.getText());
             if (findDistanceFromBSU(mapsData) == null) {
                 displayInvalidDeliveryInfo_Prompt();
             } else if (findDistanceFromBSU(mapsData) > 10) {

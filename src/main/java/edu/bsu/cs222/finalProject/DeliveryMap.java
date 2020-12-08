@@ -20,13 +20,13 @@ public class DeliveryMap {
         return Double.parseDouble(distanceInfo[0].replaceFirst("\"", ""));
     }
 
-    public static JsonObject collectJsonObjectFromGoogle(String address) throws IOException {
-        URLConnection connection = connectToGoogleMaps(address);
+    public static JsonObject collectJsonObjectFromGoogle(String address, String city, String state) throws IOException {
+        URLConnection connection = connectToGoogleMaps(address, city, state);
         return readJsonDataFrom(connection);
     }
 
-    public static URLConnection connectToGoogleMaps(String address) throws IOException {
-        address = formatAddressForGoogle(address);
+    public static URLConnection connectToGoogleMaps(String address,String city,String state) throws IOException {
+        address = formatAddressForGoogle(address,city,state);
         URL url;
         url = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + address +
                 "&destinations=2000+W+University+Ave+Muncie+IN&key=AIzaSyDPvnx2-pANJxeTBNFyMQERpp2uRFznfP0");
@@ -46,13 +46,14 @@ public class DeliveryMap {
         return new Gson().fromJson(websiteInfo, JsonObject.class);
     }
 
-    public static String formatAddressForGoogle(String address){
+    public static String formatAddressForGoogle(String address, String city, String state){
         StringBuilder formattedAddress = new StringBuilder();
         String[]addressElements =  address.split(" ");
         for (String addressElement : addressElements) {
             formattedAddress.append(addressElement).append("+");
         }
-        formattedAddress.append("Muncie+IN");
+        formattedAddress.append(city).append("+");
+        formattedAddress.append(state);
         return formattedAddress.toString();
     }
 }
