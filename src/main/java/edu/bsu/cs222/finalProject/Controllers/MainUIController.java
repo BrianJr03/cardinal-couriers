@@ -35,34 +35,42 @@ public class MainUIController {
     }
 
     @FXML
-    private void launchStoreUI(StoreInfo storeInfo) throws IOException {
+    private void launchStoreUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
         Parent root = loader.load();
-        StoreUIController store = loader.getController();
-        store.showStoreName(storeInfo.getStoreName());
-        store.populateTableWithItems(storeInfo.getStoreName());
+        StoreUIController storeUIController = loader.getController();
+        sendDataToStore( storeUIController );
         rootPane.getChildren().setAll( root );
+    }
+
+    public void sendDataToStore(StoreUIController storeUIController) throws IOException {
+        storeUIController.showStoreName(storeInfo.getStoreName());
+        storeUIController.populateTableWithItems(storeInfo.getStoreName());
+        storeUIController.setCityText( cityStored );
+        storeUIController.setAddressText( addressStored );
+        storeUIController.setZipText( zipStored );
+        storeUIController.setStateText( stateStored );
     }
 
     @FXML
     private void sendData_Walmart() throws IOException {
         storeInfo.setStoreName( "Walmart" );
-        launchStoreUI( storeInfo );
+        launchStoreUI();
     }
 
     @FXML
     private void sendData_Kroger() throws IOException {
         storeInfo.setStoreName( "Kroger" );
-        launchStoreUI( storeInfo );
+        launchStoreUI();
     }
 
     @FXML
     private void sendData_ALDI() throws IOException {
         storeInfo.setStoreName( "ALDI" );
-        launchStoreUI( storeInfo );
+        launchStoreUI();
     }
 
-    public void setCityText(String cityStored )
+    public void setCityText( String cityStored )
     { this.cityStored = cityStored; }
 
     public void setZipText( String zipStored )
