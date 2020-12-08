@@ -25,6 +25,11 @@ public class PostPurchaseController {
     @FXML
     public Label receiptSent;
 
+    String addressStored;
+    String zipStored;
+    String cityStored;
+    String stateStored;
+
     public void initialize()
     {
         receiptSent.setVisible( false );
@@ -36,12 +41,30 @@ public class PostPurchaseController {
     public void closeProgram()
     { System.exit( 0 ); }
 
-    public void launchMainUI() throws IOException
-    { launchUI( "/ui/mainUI.fxml" ); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+    public void launchMainUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
+        MainUIController mainUIController = loader.getController();
+        sendDataToMain( mainUIController );
         rootPane.getChildren().setAll( root );
     }
+
+    public void sendDataToMain(MainUIController mainUIController) {
+        mainUIController.setZipText( zipStored );
+        mainUIController.setCityText( cityStored );
+        mainUIController.setStateText( stateStored );
+        mainUIController.setAddressText( addressStored );
+    }
+
+    public void setCityText( String cityStored )
+    { this.cityStored = cityStored; }
+
+    public void setZipText( String zipStored )
+    { this.zipStored = zipStored; }
+
+    public void setAddressText( String addressStored )
+    { this.addressStored = addressStored; }
+
+    public void setStateText( String stateStored )
+    { this.stateStored = stateStored; }
 }

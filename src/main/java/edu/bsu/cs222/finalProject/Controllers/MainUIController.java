@@ -81,4 +81,5 @@ public class MainUIController {
 
     public void setStateText( String stateStored )
     { this.stateStored = stateStored; }
+
 }

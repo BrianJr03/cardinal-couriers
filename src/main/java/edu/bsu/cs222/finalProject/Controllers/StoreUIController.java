@@ -74,15 +74,21 @@ public class StoreUIController {
     public void launchCartUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
-        CartUIController cart = loader.getController();
-        sendDataToCart( cart );
+        CartUIController cartUIController = loader.getController();
+        sendDataToCart( cartUIController );
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToCart(CartUIController cart)
-    { cart.setStoreName( storeNameLBL.getText() ); }
+    public void sendDataToCart( CartUIController cartUIController ) {
+        cartUIController.setStoreName( storeNameLBL.getText() );
+        cartUIController.setZipText( zipStored );
+        cartUIController.setCityText( cityStored );
+        cartUIController.setStoreName( stateStored );
+        cartUIController.setAddressText( addressStored );
+        cartUIController.setStateText( stateStored );
+    }
 
-    public void setStoreNameFromCart( String storeName)
+    public void setStoreNameFromCart( String storeName )
     { storeNameLBL.setText( storeName ); }
 
     public void setCityText( String cityStored )

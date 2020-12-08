@@ -39,17 +39,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="cartTotalLabel" layoutX="379.0" layoutY="339.0" text="Cart Total: $" textFill="DARKORCHID">
+      <Label fx:id="cartUIController" layoutX="379.0" layoutY="339.0" text="Cart Total: $" textFill="DARKORCHID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Label fx:id="orderTotal" layoutX="454.0" layoutY="339.0" text="0.00" textFill="DARKORCHID">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="382.0" layoutY="589.0" onMouseClicked="#launchStoreUI" text="Continue Shopping" textFill="DARKORCHID">
          <font>
             <Font size="14.0" />
          </font>
@@ -69,9 +64,8 @@
         </ImageView>
     </Pane>
     <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
-        <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../pngs/groceries200x200.png"/>
+        <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/groceries200x200.png" />
         </ImageView>
     </Pane>
 </AnchorPane>

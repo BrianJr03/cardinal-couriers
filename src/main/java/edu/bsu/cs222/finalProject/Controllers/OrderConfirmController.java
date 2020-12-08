@@ -25,44 +25,66 @@ public class OrderConfirmController {
     @FXML
     public Button confirmCheckout;
     @FXML
-    public Label cartTotalLabel;
+    public Label cartUIController;
+
     String storeNameStored;
+    String addressStored;
+    String zipStored;
+    String cityStored;
+    String stateStored;
 
     public void initialize() {
         storeName.setVisible( false );
         orderTotal.setVisible( false );
         deliveryAddressInfo.setVisible( false );
-        cartTotalLabel.setVisible( false );
-    }
-
-    public void launchStoreUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
-        Parent root = loader.load();
-        StoreUIController storeUIController = loader.getController();
-        storeUIController.showStoreName( storeNameStored );
-        storeUIController.populateTableWithItems( storeNameStored );
-        rootPane.getChildren().setAll( root );
+        cartUIController.setVisible( false );
     }
 
     public void launchCartUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
-        CartUIController cart = loader.getController();
-
-        //send data here
-        cart.setStoreName( storeNameStored );
-
-        rootPane.getChildren().setAll( root ); }
-
-    public void launchPostPurchaseUI() throws IOException
-    { launchUI( "/ui/postPurchaseUI.fxml" ); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
-        Parent root = loader.load();
+        CartUIController cartUIController = loader.getController();
+        sendDataToCart( cartUIController );
         rootPane.getChildren().setAll( root );
     }
 
-    public void setStoreName( String storeNameStored )
-    { this.storeNameStored = storeNameStored; }
+    public void sendDataToCart(CartUIController cartUIController) {
+        cartUIController.setStoreName( storeNameStored );
+        cartUIController.setZipText( zipStored );
+        cartUIController.setCityText( cityStored );
+        cartUIController.setStateText( stateStored );
+        cartUIController.setAddressText( addressStored );
+
+    }
+
+    public void launchPostPurchaseUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));
+        Parent root = loader.load();
+        PostPurchaseController postPurchaseController = loader.getController();
+        sendDataToPostPurchase( postPurchaseController );
+        rootPane.getChildren().setAll( root );
+    }
+
+    public void sendDataToPostPurchase(PostPurchaseController postPurchaseController) {
+        postPurchaseController.setZipText( zipStored );
+        postPurchaseController.setZipText( zipStored );
+        postPurchaseController.setCityText( cityStored );
+        postPurchaseController.setStateText( stateStored );
+        postPurchaseController.setAddressText( addressStored );
+    }
+
+    public void setStoreName(String storeName)
+    { this.storeNameStored = storeName; }
+
+    public void setCityText( String cityStored )
+    { this.cityStored = cityStored; }
+
+    public void setZipText( String zipStored )
+    { this.zipStored = zipStored; }
+
+    public void setAddressText( String addressStored )
+    { this.addressStored = addressStored; }
+
+    public void setStateText( String stateStored )
+    { this.stateStored = stateStored; }
 }
