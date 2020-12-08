@@ -69,11 +69,17 @@ public class DeliveryUIController {
         return (matcher.find() && matcher.group().equals(city));
     }
 
-    public boolean isValidState_Abbreviation( String state) {
+    public boolean isValidState_Abbreviation(String state) {
         Pattern pattern = Pattern.compile("^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|" +
                 "N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$");
         Matcher matcher = pattern.matcher(state);
         return (matcher.find() && matcher.group().equals(state));
+    }
+
+    public boolean isValidStreet_Address(String streetAddress) {
+        Pattern pattern = Pattern.compile("^\\d+?[A-Za-z]*\\s\\w*\\s?\\w+?\\s\\w{2}\\w*\\s*\\w*$");
+        Matcher matcher = pattern.matcher(streetAddress);
+        return (matcher.find() && matcher.group().equals(streetAddress));
     }
 
     public void displayInvalidDeliveryInfo_Prompt()
@@ -106,7 +112,7 @@ public class DeliveryUIController {
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
         if (            !isValidCity( city.getText() )
-                        || addressOne.getText().length() == 0
+                        || !isValidStreet_Address( addressOne.getText() )
                         || !isValidState_Abbreviation( state.getText() )
                         || !isValidZip( zipCode.getText() ) )
         { displayInvalidDeliveryInfo_Prompt(); }

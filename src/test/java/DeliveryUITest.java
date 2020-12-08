@@ -77,4 +77,28 @@ public class DeliveryUITest
     @Test
     public void isValidState5()
     { Assertions.assertFalse( delivery.isValidState_Abbreviation( "Cali" ) ); }
+
+    @Test
+    public void isValidStreetAddress1()
+    { Assertions.assertTrue( delivery.isValidStreet_Address( "2000 W University Ave" ) ); }
+
+    @Test
+    public void isValidStreetAddress2()
+    { Assertions.assertTrue( delivery.isValidStreet_Address( "1700 W Neely Ave" ) ); }
+
+    @Test
+    public void isValidStreetAddress3()
+    { Assertions.assertTrue( delivery.isValidStreet_Address( "1618 W University Ave" ) ); }
+
+    @Test
+    public void isValidStreetAddress4()
+    { Assertions.assertFalse( delivery.isValidStreet_Address( "West Avenue" ) ); }
+
+    @Test
+    public void isValidStreetAddress5()
+    { Assertions.assertFalse( delivery.isValidStreet_Address( "22b2 Rex St" ) ); }
+
+    @Test
+    public void isValidStreetAddress6()
+    { Assertions.assertFalse( delivery.isValidStreet_Address( " 22 Neeley" ) ); }
 }
