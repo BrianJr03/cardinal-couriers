@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -121,7 +122,7 @@ public class DeliveryUIController {
             JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText(),city.getText(),state.getText());
             if (findDistanceFromBSU(mapsData) == null) {
                 displayInvalidDeliveryInfo_Prompt();
-            } else if (findDistanceFromBSU(mapsData) > 10) {
+            } else if (Objects.requireNonNull(findDistanceFromBSU(mapsData)).floatValue() > 10) {
                 displayOutOfRange_Prompt();
             } else {
                 launchMainUI();
