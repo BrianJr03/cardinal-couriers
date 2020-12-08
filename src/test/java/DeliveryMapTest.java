@@ -17,20 +17,14 @@ public class DeliveryMapTest {
         String city = "Muncie";
         String state = "IN";
         JsonObject results = collectJsonObjectFromGoogle(address,city,state);
-        JsonParser parser = new JsonParser();
         FileReader reader = new FileReader("src/test/resources/Static JSON Data.json");
-        Assertions.assertEquals(parser.parse(reader).getAsJsonObject(),results.getAsJsonObject());
+        Assertions.assertEquals(JsonParser.parseReader(reader).getAsJsonObject(),results.getAsJsonObject());
     }
 
     @Test
     public void canReturnProperDistanceDouble() throws IOException {
-        String address = "1708 W Bethel Ave";
-        String city = "Muncie";
-        String state = "IN";
-        JsonObject results = collectJsonObjectFromGoogle(address,city,state);
-        JsonParser parser = new JsonParser();
         FileReader reader = new FileReader("src/test/resources/Static JSON Data.json");
-        JsonObject object = parser.parse(reader).getAsJsonObject();
+        JsonObject object = JsonParser.parseReader(reader).getAsJsonObject();
         Assertions.assertEquals(1.7, findDistanceFromBSU(object));
     }
 }
