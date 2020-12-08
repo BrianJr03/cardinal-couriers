@@ -42,5 +42,25 @@
   {
     "name": "Cleaning Spray Plus",
     "price": 3.79
+  },
+  {
+    "name": "6 PK Vanilla Pudding",
+    "price": 3.29
+  },
+  {
+    "name": "Jumbo Shrimp",
+    "price": 4.29
+  },
+  {
+    "name": "Orange Juice",
+    "price": 1.39
+  },
+  {
+    "name": "6 PK Vanilla Coffee",
+    "price": 3.59
+  },
+  {
+    "name": "Taco Sauce Supreme",
+    "price": 2.29
   }
 ]

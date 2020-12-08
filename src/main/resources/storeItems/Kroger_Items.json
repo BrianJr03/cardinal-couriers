@@ -42,5 +42,25 @@
   {
     "name": "Yogurt",
     "price": 1.19
+  },
+  {
+    "name": "Oatmeal",
+    "price": 1.29
+  },
+  {
+    "name": "Fully Cooked Ham",
+    "price": 8.29
+  },
+  {
+    "name": "Mozzarella Cheese",
+    "price": 2.29
+  },
+  {
+    "name": "Strawberries",
+    "price": 1.39
+  },
+  {
+    "name": "Blueberries",
+    "price": 1.39
   }
 ]

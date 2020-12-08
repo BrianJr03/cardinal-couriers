@@ -42,5 +42,25 @@
   {
     "name": "Cake Mix",
     "price": 1.29
+  },
+  {
+    "name": "Beans",
+    "price": 1.19
+  },
+  {
+    "name": "Rice",
+    "price": 2.29
+  },
+  {
+    "name": "Milk",
+    "price": 1.29
+  },
+  {
+    "name": "Soup",
+    "price": 0.99
+  },
+  {
+  "name": "Frosted Flakes",
+  "price": 1.29
   }
 ]
