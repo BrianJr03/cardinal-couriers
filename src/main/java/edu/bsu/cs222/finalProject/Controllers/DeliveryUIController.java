@@ -84,7 +84,6 @@ public class DeliveryUIController {
         mainUIController.setStateText(state.getText());
     }
 
-    @SuppressWarnings( "unused" )
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
@@ -96,8 +95,8 @@ public class DeliveryUIController {
         if (            city.getText().length() == 0
                         || addressOne.getText().length() == 0
                         || state.getText().length() == 0
-                        || zipCode.getText().length() == 0)
-        { displayPromptFor2secs( invalidDeliveryInfo_Prompt ); }
+                        || !isValidZip( zipCode.getText() ) )
+        { displayInvalidDeliveryInfo_Prompt(); }
 
         else{
             JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText());
