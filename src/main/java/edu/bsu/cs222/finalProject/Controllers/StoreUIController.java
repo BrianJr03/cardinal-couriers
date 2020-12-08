@@ -79,11 +79,10 @@ public class StoreUIController {
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToCart( CartUIController cartUIController ) {
+    public void sendDataToCart(CartUIController cartUIController) {
         cartUIController.setStoreName( storeNameLBL.getText() );
         cartUIController.setZipText( zipStored );
         cartUIController.setCityText( cityStored );
-        cartUIController.setStoreName( stateStored );
         cartUIController.setAddressText( addressStored );
         cartUIController.setStateText( stateStored );
     }
