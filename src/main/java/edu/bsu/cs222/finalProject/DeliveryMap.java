@@ -14,7 +14,8 @@ public class DeliveryMap {
         if (jsonData.getAsJsonObject().get("origin_addresses") == null) {
             return null;
         }
-        String distance = jsonData.getAsJsonArray("rows").get(0).getAsJsonObject().get("elements").getAsJsonArray().get(0).getAsJsonObject().get("distance").getAsJsonObject().get("text").toString();
+        String distance = jsonData.getAsJsonArray("rows").get(0).getAsJsonObject().get("elements")
+                .getAsJsonArray().get(0).getAsJsonObject().get("distance").getAsJsonObject().get("text").toString();
         String[] distanceInfo = distance.split(" ");
         return Double.parseDouble(distanceInfo[0].replaceFirst("\"", ""));
     }
@@ -32,7 +33,7 @@ public class DeliveryMap {
         URLConnection connection = url.openConnection();
         connection.connect();
         return connection;
-        }
+    }
 
     public static JsonObject readJsonDataFrom(URLConnection connection) throws IOException {
         StringBuilder jsonStringBuilder = new StringBuilder();
