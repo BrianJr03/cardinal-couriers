@@ -88,6 +88,9 @@ public class CartUIController {
         store.setAddressText( addressStored );
     }
 
+    public void setItemsInCart(ObservableList<Item> items)
+    {this.itemsInCart = items;}
+
     public void setStoreName(String storeName)
     { this.storeNameStored = storeName; }
 

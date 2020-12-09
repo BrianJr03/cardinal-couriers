@@ -16,12 +16,7 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 public class StoreUIController {
     @FXML
     public Label storeNameLBL;
-    public TableView<Item> cartTable;
-    public TableColumn<Item, String> nameColumn1;
-    public TableColumn<Item, Double> priceColumn1;
-    public TableColumn<Button, Button> decrementColumn1;
-    public TableColumn<String, String> quantityColumn1;
-    public TableColumn<Button, Button> incrementColumn1;
+
 
     @FXML
     TableColumn<Button, Button> decrementColumn;
@@ -77,11 +72,6 @@ public class StoreUIController {
     public void initialize() {
         storeNameLBL.setVisible( true );
         inventoryTable.setEditable(true);
-        nameColumn1.setCellValueFactory( new PropertyValueFactory<>( "name" ));
-        priceColumn1.setCellValueFactory( new PropertyValueFactory<>( "price" ));
-        quantityColumn1.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        decrementColumn1.setCellValueFactory(new PropertyValueFactory<>("decButton"));
-        incrementColumn1.setCellValueFactory(new PropertyValueFactory<>("incButton"));
     }
 
     public void showStoreName( String storeName )
@@ -109,7 +99,7 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
-        cartUIController.cartTable.setItems( itemsToCart );
+        cartUIController.itemsInCart.addAll( itemsToCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
         cartUIController.setZipText( zipStored );
         cartUIController.setCityText( cityStored );
