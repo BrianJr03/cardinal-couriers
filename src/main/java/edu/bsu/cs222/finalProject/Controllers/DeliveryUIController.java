@@ -107,10 +107,6 @@ public class DeliveryUIController {
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
-    @SuppressWarnings( "unused" )
-    public void displayInRange_Prompt()
-    { displayPromptFor2secs(inRange_Prompt); }
-
     public void verifyDeliveryInput() throws IOException, NullPointerException {
         if (            !isValidCity( city.getText() )
                         || !isValidStreet_Address( addressOne.getText() )

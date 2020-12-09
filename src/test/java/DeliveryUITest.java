@@ -100,5 +100,5 @@ public class DeliveryUITest
 
     @Test
     public void isValidStreetAddress6()
-    { Assertions.assertFalse( delivery.isValidStreet_Address( " 22 Neeley" ) ); }
+    { Assertions.assertFalse( delivery.isValidStreet_Address( "22 Neeley" ) ); }
 }
