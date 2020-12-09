@@ -62,6 +62,7 @@ public class StoreUIController {
     }
 
     public void sendDataToMain(MainUIController mainUIController) {
+        mainUIController.displayPromptFor2secs( mainUIController.cartResetPrompt );
         mainUIController.setZipText( zipStored );
         mainUIController.setCityText( cityStored );
         mainUIController.setStateText( stateStored );

@@ -22,7 +22,7 @@
                <Font name="Impact" size="12.0" />
            </font>
         </Button>
-        <Label layoutX="249.0" layoutY="121.0" text="Please choose a store to shop from" textFill="DARKORCHID">
+        <Label layoutX="249.0" layoutY="122.0" text="Please choose a store to shop from" textFill="DARKORCHID">
            <font>
                <Font size="24.0" />
            </font>
@@ -35,6 +35,10 @@
         <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="235.0" layoutY="37.0" onMouseClicked="#launchDeliveryUI" pickOnBounds="true" preserveRatio="true">
             <Image url="@../pngs/left.png" />
         </ImageView>
+      <Label fx:id="cartResetPrompt" layoutX="358.0" layoutY="377.0" text="Your cart has been reset." textFill="#0c8404">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </Pane>
     <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
         <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">

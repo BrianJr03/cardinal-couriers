@@ -1,13 +1,19 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
 import edu.bsu.cs222.finalProject.StoreInfo;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+
 import java.io.IOException;
 
 public class MainUIController {
+    @FXML
+    public Label cartResetPrompt;
     @FXML
     private AnchorPane rootPane;
 
@@ -18,6 +24,9 @@ public class MainUIController {
 
     StoreInfo storeInfo = new StoreInfo();
 
+    public void initialize()
+    { cartResetPrompt.setVisible( false ); }
+
     @FXML
     public void launchDeliveryUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
@@ -25,6 +34,13 @@ public class MainUIController {
         DeliveryUIController deliveryUIController = loader.getController();
         sendDataToDelivery( deliveryUIController );
         rootPane.getChildren().setAll( root );
+    }
+
+    public void displayPromptFor2secs(Label prompt) {
+        prompt.setVisible( true );
+        PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(2));
+        visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
+        visiblePause1.play();
     }
 
     public void sendDataToDelivery(DeliveryUIController deliveryUIController) {
