@@ -47,7 +47,6 @@ public class StoreUIController {
     ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
     ObservableList<Item> itemsStoredInCart = FXCollections.observableArrayList();
 
-
     public void addItemToCart() {
         Item selection = inventoryTable.getSelectionModel().getSelectedItem();
         if (selection != null)
@@ -99,8 +98,8 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
-        cartUIController.itemsInCart.addAll( itemsToCart );
         cartUIController.itemsInCart.addAll( itemsStoredInCart );
+        cartUIController.itemsInCart.addAll( itemsToCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
         cartUIController.setZipText( zipStored );
         cartUIController.setCityText( cityStored );
