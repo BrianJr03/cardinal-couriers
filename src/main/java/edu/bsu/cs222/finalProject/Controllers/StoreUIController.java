@@ -123,9 +123,6 @@ public class StoreUIController {
     public void setStateText( String stateStored )
     { this.stateStored = stateStored; }
 
-    public void setItemsInCart(ObservableList<Item> items)
-    {this.itemsStoredInCart = items;}
-
     private void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {
             item.getDecButton().setOnMouseClicked(event -> {
