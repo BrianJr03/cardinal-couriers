@@ -4,14 +4,18 @@ import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
@@ -26,7 +30,7 @@ public class StoreUIController {
     TableColumn<Button, Button> incrementColumn;
 
     @FXML
-    TableView<Item> inventoryTable;
+    public TableView<Item> inventoryTable;
 
     @FXML
     TableColumn < Item, String > nameColumn;
@@ -36,8 +40,6 @@ public class StoreUIController {
 
     @FXML
     TableColumn<String, String> quantityColumn;
-
-
 
     @FXML
     private AnchorPane rootPane;
@@ -72,15 +74,16 @@ public class StoreUIController {
         Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
         inventoryTable.setEditable(true);
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
-        priceColumn.setCellValueFactory( new PropertyValueFactory <>( "price" ));
+        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
         ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
+        setMouseClickEvents(items);
         inventoryTable.setItems(items);
     }
 
-    public void launchCartUI() throws IOException{
+    public void launchCartUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cartUIController = loader.getController();
@@ -110,4 +113,18 @@ public class StoreUIController {
 
     public void setStateText( String stateStored )
     { this.stateStored = stateStored; }
+
+    private void setMouseClickEvents(ObservableList<Item> itemsList) {
+        for (Item item : itemsList) {
+            item.getDecButton().setOnMouseClicked(event -> {
+                item.decreaseQuantity();
+                inventoryTable.refresh();
+            });
+            item.getIncButton().setOnMouseClicked(event -> {
+                item.increaseQuantity();
+                inventoryTable.refresh();
+            });
+        }
+    }
+
 }
