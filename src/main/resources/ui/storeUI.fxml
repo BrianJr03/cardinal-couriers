@@ -27,9 +27,9 @@
          <columns>
             <TableColumn fx:id="nameColumn" prefWidth="212.0" text="Item " />
             <TableColumn fx:id="priceColumn" prefWidth="99.0" text="Price" />
-            <TableColumn fx:id="decrementColumn" prefWidth="47.0" resizable="false" style="-fx-alignment: CENTER;" />
+            <TableColumn fx:id="decrementColumn" prefWidth="47.0" style="-fx-alignment: CENTER;" />
             <TableColumn fx:id="quantityColumn" prefWidth="77.0" resizable="false" style="-fx-alignment: CENTER;" text="Quantity" />
-            <TableColumn fx:id="incrementColumn" prefWidth="50.0" resizable="false" style="-fx-alignment: CENTER;" />
+            <TableColumn fx:id="incrementColumn" prefWidth="50.0" style="-fx-alignment: CENTER;" />
          </columns>
       </TableView>
       <Label layoutX="657.0" layoutY="88.0" onMouseClicked="#launchCartUI" text="Cart" textFill="DARKORCHID" />

@@ -7,9 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -22,6 +20,12 @@ public class StoreUIController {
     public Label storeNameLBL;
 
     @FXML
+    TableColumn<Button, Button> decrementColumn;
+
+    @FXML
+    TableColumn<Button, Button> incrementColumn;
+
+    @FXML
     TableView<Item> inventoryTable;
 
     @FXML
@@ -32,6 +36,8 @@ public class StoreUIController {
 
     @FXML
     TableColumn<String, String> quantityColumn;
+
+
 
     @FXML
     private AnchorPane rootPane;
@@ -65,9 +71,11 @@ public class StoreUIController {
     public void populateTableWithItems(String storeName) throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
         inventoryTable.setEditable(true);
-        nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
+        nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory <>( "price" ));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
+        incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
         ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
         inventoryTable.setItems(items);
     }
