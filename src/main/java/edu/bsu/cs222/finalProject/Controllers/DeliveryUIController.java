@@ -27,8 +27,7 @@ public class DeliveryUIController {
     public TextField state;
     @FXML
     public TextField city;
-    @FXML
-    private Label inRange_Prompt;
+
     @FXML
     private Label outOfRange_Prompt;
     @FXML
@@ -39,7 +38,6 @@ public class DeliveryUIController {
     private AnchorPane rootPane;
 
     public void initialize() {
-        inRange_Prompt.setVisible( false );
         outOfRange_Prompt.setVisible( false );
         invalidDeliveryInfo_Prompt.setVisible( false );
     }
