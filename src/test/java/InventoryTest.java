@@ -11,7 +11,7 @@ public class InventoryTest {
     @Test
     public void testCanReturnFirstItemFromKroger() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("kroger"));
-        Assertions.assertEquals("\"Bread\"", inventory.getItems().get(0).getName());
+        Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class InventoryTest {
     public void canReturnFinalItemFromWalmart() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("kroger"));
         int inventorySize = inventory.getItems().size();
-        Assertions.assertEquals("\"Yogurt\"", inventory.getItems().get(inventorySize-1).getName());
+        Assertions.assertEquals("\"Taco Sauce Supreme\"", inventory.getItems().get(inventorySize-1).getName());
     }
 
 }
