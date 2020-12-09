@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="inventoryTable" layoutX="192.0" layoutY="103.0" prefHeight="438.0" prefWidth="487.0">
+      <TableView fx:id="inventoryTable" layoutX="192.0" layoutY="103.0" prefHeight="248.0" prefWidth="487.0">
          <columns>
             <TableColumn fx:id="nameColumn" prefWidth="212.0" text="Item " />
             <TableColumn fx:id="priceColumn" prefWidth="99.0" text="Price" />
@@ -33,7 +33,7 @@
          </columns>
       </TableView>
       <Label layoutX="657.0" layoutY="88.0" onMouseClicked="#launchCartUI" text="Cart" textFill="DARKORCHID" />
-      <Button layoutX="584.0" layoutY="565.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Add to Cart">
+      <Button layoutX="584.0" layoutY="565.0" mnemonicParsing="false" onAction="#addItemToCart" prefHeight="25.0" prefWidth="95.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Add to Cart">
          <font>
             <Font name="Impact" size="12.0" />
          </font>
@@ -44,5 +44,14 @@
                 <Image url="@../pngs/groceries200x200.png" />
             </ImageView>
         </Pane>
+      <TableView fx:id="cartTable" layoutX="192.0" layoutY="362.0" prefHeight="192.0" prefWidth="487.0">
+         <columns>
+            <TableColumn fx:id="nameColumn1" prefWidth="212.0" text="Item " />
+            <TableColumn fx:id="priceColumn1" prefWidth="99.0" text="Price" />
+            <TableColumn fx:id="decrementColumn1" prefWidth="47.0" style="-fx-alignment: CENTER;" />
+            <TableColumn fx:id="quantityColumn1" prefWidth="77.0" resizable="false" style="-fx-alignment: CENTER;" text="Quantity" />
+            <TableColumn fx:id="incrementColumn1" prefWidth="45.39996337890625" style="-fx-alignment: CENTER;" />
+         </columns>
+      </TableView>
     </Pane>
 </AnchorPane>

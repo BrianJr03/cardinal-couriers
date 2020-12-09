@@ -1,14 +1,33 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import edu.bsu.cs222.finalProject.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class CartUIController {
 
+    @FXML
+    TableColumn< Button, Button> decrementColumn;
+    @FXML
+    TableColumn<Button, Button> incrementColumn;
+    @FXML
+    public TableView< Item > cartTable;
+    @FXML
+    TableColumn < Item, String > nameColumn;
+    @FXML
+    TableColumn<Item, Double> priceColumn;
+    @FXML
+    TableColumn<String, String> quantityColumn;
     @FXML
     private AnchorPane rootPane;
 
@@ -17,6 +36,18 @@ public class CartUIController {
     String zipStored;
     String cityStored;
     String stateStored;
+
+    ObservableList<Item> itemsInCart = FXCollections.observableArrayList();
+
+    public void initialize() {
+        cartTable.setEditable(true);
+        nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
+        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
+        incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
+        cartTable.setItems( itemsInCart );
+    }
 
     public void launchOrderConfirmUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/orderConfirm.fxml"));
@@ -48,6 +79,7 @@ public class CartUIController {
     }
 
     public void sendDataToStore(StoreUIController store) throws IOException {
+        store.itemsStoredInCart.addAll( itemsInCart );
         store.setStoreNameFromCart( storeNameStored );
         store.populateTableWithItems( storeNameStored );
         store.setZipText( zipStored );

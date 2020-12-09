@@ -4,24 +4,24 @@ import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
-
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class StoreUIController {
     @FXML
     public Label storeNameLBL;
+    public TableView<Item> cartTable;
+    public TableColumn<Item, String> nameColumn1;
+    public TableColumn<Item, Double> priceColumn1;
+    public TableColumn<Button, Button> decrementColumn1;
+    public TableColumn<String, String> quantityColumn1;
+    public TableColumn<Button, Button> incrementColumn1;
 
     @FXML
     TableColumn<Button, Button> decrementColumn;
@@ -49,6 +49,16 @@ public class StoreUIController {
     String cityStored;
     String stateStored;
 
+    ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
+    ObservableList<Item> itemsStoredInCart = FXCollections.observableArrayList();
+
+
+    public void addItemToCart() {
+        Item selection = inventoryTable.getSelectionModel().getSelectedItem();
+        if (selection != null)
+        { this.itemsToCart.add( new Item(selection.getName(), selection.getPrice()) ); }
+    }
+
     public void launchMainUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
@@ -64,8 +74,15 @@ public class StoreUIController {
         mainUIController.setAddressText( addressStored );
     }
 
-    public void initialize()
-    { storeNameLBL.setVisible( true ); }
+    public void initialize() {
+        storeNameLBL.setVisible( true );
+        inventoryTable.setEditable(true);
+        nameColumn1.setCellValueFactory( new PropertyValueFactory<>( "name" ));
+        priceColumn1.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        quantityColumn1.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        decrementColumn1.setCellValueFactory(new PropertyValueFactory<>("decButton"));
+        incrementColumn1.setCellValueFactory(new PropertyValueFactory<>("incButton"));
+    }
 
     public void showStoreName( String storeName )
     { storeNameLBL.setText( storeName ); }
@@ -92,6 +109,7 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
+        cartUIController.cartTable.setItems( itemsToCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
         cartUIController.setZipText( zipStored );
         cartUIController.setCityText( cityStored );
@@ -113,6 +131,9 @@ public class StoreUIController {
 
     public void setStateText( String stateStored )
     { this.stateStored = stateStored; }
+
+    public void setItemsInCart(ObservableList<Item> items)
+    {this.itemsStoredInCart = items;}
 
     private void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {
