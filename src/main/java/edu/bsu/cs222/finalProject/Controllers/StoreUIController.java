@@ -100,6 +100,7 @@ public class StoreUIController {
 
     public void sendDataToCart(CartUIController cartUIController) {
         cartUIController.itemsInCart.addAll( itemsToCart );
+        cartUIController.itemsInCart.addAll( itemsStoredInCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
         cartUIController.setZipText( zipStored );
         cartUIController.setCityText( cityStored );
