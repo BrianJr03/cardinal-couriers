@@ -67,6 +67,7 @@ public class StoreUIController {
         inventoryTable.setEditable(true);
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory <>( "price" ));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
         inventoryTable.setItems(items);
     }
