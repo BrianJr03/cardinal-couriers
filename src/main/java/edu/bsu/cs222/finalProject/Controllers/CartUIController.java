@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +17,10 @@ import java.io.IOException;
 
 public class CartUIController {
 
+    @FXML
+    public Label cartTotal;
+    @FXML
+    public Label costInDollars;
     @FXML
     TableColumn< Button, Button> decrementColumn;
     @FXML
@@ -40,6 +45,8 @@ public class CartUIController {
     ObservableList<Item> itemsInCart = FXCollections.observableArrayList();
 
     public void initialize() {
+        cartTotal.setVisible(true);
+        costInDollars.setVisible(true);
         cartTable.setEditable(true);
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
@@ -47,6 +54,7 @@ public class CartUIController {
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
         cartTable.setItems( itemsInCart );
+        System.out.println( this.itemsInCart );
     }
 
     public void launchOrderConfirmUI() throws IOException {

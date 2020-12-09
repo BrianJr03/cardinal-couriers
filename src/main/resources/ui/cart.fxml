@@ -33,6 +33,16 @@
                 <Font size="18.0" />
             </font>
         </Label>
+        <Label fx:id="cartTotal" layoutX="582.0" layoutY="418.0" text="Cart Total: $" textFill="DARKORCHID">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="costInDollars" layoutX="657.0" layoutY="418.0" text="0.00" textFill="DARKORCHID">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
         <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="196.0" layoutY="37.0" onMouseClicked="#launchStoreUI" pickOnBounds="true" preserveRatio="true">
             <Image url="@../pngs/left.png" />
         </ImageView>

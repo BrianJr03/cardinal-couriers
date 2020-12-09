@@ -1,15 +1,16 @@
 package edu.bsu.cs222.finalProject;
 
-import java.util.ArrayList;
+import javafx.collections.ObservableList;
+
 
 public class Cart {
-    private final ArrayList<Item> cartItems;
+    private final ObservableList <Item> cartItems;
     private double totalCost = 0;
 
-    public Cart(ArrayList<Item> cartItems)
+    public Cart(ObservableList<Item> cartItems)
     { this.cartItems = cartItems; }
 
-    public ArrayList<Item> getItems()
+    public ObservableList<Item> getItems()
     { return cartItems; }
 
     public void add(Item itemToCart) {

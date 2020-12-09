@@ -1,10 +1,12 @@
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
+import javafx.collections.FXCollections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
-import java.util.ArrayList;
+
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class CartTest {
@@ -15,14 +17,14 @@ public class CartTest {
 
     @Test
     public void testCanAddItemToCart() {
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart( FXCollections.observableArrayList());
         cart.add(new Item("Apple", 1.89));
         Assertions.assertEquals( 1, cart.getItems().size());
     }
 
     @Test
     public void testCanAddItemWithLastIndexToCart(){
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart(FXCollections.observableArrayList());
         Item itemToCart = inventory.getItems().get(10);
         cart.add(itemToCart);
         Assertions.assertEquals(1, cart.getItems().size());
@@ -30,7 +32,7 @@ public class CartTest {
 
     @Test
     public void testAdd2orMoreItemsToCart(){
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart(FXCollections.observableArrayList());
         cart.add(new Item("Apple", 1.89));
         cart.add(new Item("Ramen", 0.50));
         cart.add(new Item("Water", 1.00));
@@ -39,7 +41,7 @@ public class CartTest {
 
     @Test
     public void testFindPriceSum() {
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart(FXCollections.observableArrayList());
         cart.add(new Item("Apple", 1.89));
         cart.add(new Item("Ramen", 0.50));
         Assertions.assertEquals(2.39, cart.getTotalCost());
@@ -47,17 +49,17 @@ public class CartTest {
 
     @Test
     public void testCanResetCart() {
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart(FXCollections.observableArrayList());
         for (int i = 0; i < 3; i++) {
             cart.add(inventory.getItems().get(0));
         }
-        cart = new Cart( new ArrayList <>() );
+        cart = new Cart( FXCollections.observableArrayList());
         Assertions.assertEquals(0, cart.getItems().size());
     }
 
     @Test
     public void testCanRemoveItemFromCart() {
-        Cart cart = new Cart(new ArrayList<>());
+        Cart cart = new Cart(FXCollections.observableArrayList());
         Item itemToCart = new Item("Apple", 1.89);
         cart.add(itemToCart);
         cart.remove(itemToCart);
