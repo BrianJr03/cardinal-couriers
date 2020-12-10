@@ -12,12 +12,13 @@ import java.io.IOException;
 import static edu.bsu.cs222.finalProject.Main.*;
 
 public class MainUIController {
+
     @FXML
-    public Label cartResetPrompt;
+    private Label cartResetPrompt;
     @FXML
     private AnchorPane rootPane;
 
-    final StoreInfo storeInfo = new StoreInfo();
+    private String storeName;
 
     public void initialize()
     { cartResetPrompt.setVisible( false ); }
@@ -45,25 +46,22 @@ public class MainUIController {
     }
 
     public void sendDataToStore(StoreUIController storeUIController) throws IOException {
-        storeUIController.storeNameLabel.setText(storeInfo.getStoreName());
-        storeUIController.populateTableWithItems(storeInfo.getStoreName());
+        storeUIController.storeNameLabel.setText(storeName);
+        storeUIController.populateTableWithItems(storeName);
     }
 
-    @FXML
-    private void sendData_Walmart() throws IOException {
-        storeInfo.setStoreName("Walmart");
+    public void setWalmartLaunch() throws IOException {
+        storeName = "Walmart";
         launchStoreUI();
     }
 
-    @FXML
-    private void sendData_Kroger() throws IOException {
-        storeInfo.setStoreName("Kroger");
+    public void setKrogerLaunch() throws IOException {
+        storeName = "Kroger";
         launchStoreUI();
     }
 
-    @FXML
-    private void sendData_ALDI() throws IOException {
-        storeInfo.setStoreName("ALDI");
+    public void setALDILaunch() throws IOException {
+        storeName = "ALDI";
         launchStoreUI();
     }
 }
