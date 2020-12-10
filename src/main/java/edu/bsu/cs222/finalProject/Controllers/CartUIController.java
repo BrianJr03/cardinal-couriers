@@ -89,6 +89,9 @@ public class CartUIController {
         for (Item item : itemsList) {
             item.getDecButton().setOnMouseClicked(event -> {
                 item.decreaseQuantity();
+                if (item.getQuantity() == 0) {
+                    cartTable.getItems().remove(item);
+                }
                 cartTable.refresh();
                 costInDollars.setText(String.valueOf(cart.getTotalCost()));
             });
