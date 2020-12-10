@@ -42,7 +42,6 @@ public class CartUIController {
     private String storeNameStored;
 
     public void initialize() {
-        cartTotalLabel.setVisible(true);
         costInDollars.setVisible(true);
         cartTable.setEditable(true);
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
@@ -66,6 +65,7 @@ public class CartUIController {
         for (Item item : cart.getItems()) {
             orderConfirm.cart.add(item);
         }
+        orderConfirm.orderConfirmTable.setItems( cart.getItems() );
         orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
         orderConfirm.storeName.setText(storeNameStored);
     }

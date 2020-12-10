@@ -45,8 +45,6 @@ public class OrderConfirmController {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        ObservableList<Item> items = FXCollections.observableArrayList(cart.getItems());
-        orderConfirmTable.setItems(items);
     }
 
     public void launchCartUI() throws IOException {
