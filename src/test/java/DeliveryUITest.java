@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class DeliveryUITest
 {
-    final DeliveryInfo delivery = new DeliveryInfo("","","","","");
+    final DeliveryInfo delivery = new DeliveryInfo("","","","");
 
     @Test
     public void isValidZip1()

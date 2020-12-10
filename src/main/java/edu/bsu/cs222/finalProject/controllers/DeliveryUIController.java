@@ -77,7 +77,7 @@ public class DeliveryUIController {
     }
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
-        deliveryInfo = new DeliveryInfo( addressOne.getText(), addressTwo.getText(), zipCode.getText(),
+        deliveryInfo = new DeliveryInfo( addressOne.getText(),zipCode.getText(),
                 state.getText(), city.getText() );
         if (verifyDeliveryInfo())
             { displayInvalidDeliveryInfo_Prompt(); }

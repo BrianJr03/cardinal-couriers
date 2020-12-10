@@ -6,14 +6,12 @@ import java.util.regex.Pattern;
 public class DeliveryInfo
 {
      private final String streetAddressLine1;
-     private final String streetAddressLine2;
      private final String zipCode;
      private final String state;
      private final String city;
 
-    public DeliveryInfo( String streetAddressLine1 , String streetAddressLine2 , String zipCode , String state , String city ) {
+    public DeliveryInfo( String streetAddressLine1 , String zipCode , String state , String city ) {
         this.streetAddressLine1 = streetAddressLine1;
-        this.streetAddressLine2 = streetAddressLine2;
         this.zipCode = zipCode;
         this.state = state;
         this.city = city;
@@ -47,9 +45,6 @@ public class DeliveryInfo
 
     public String getStreetAddressLine1()
     { return streetAddressLine1; }
-
-    public String getStreetAddressLine2()
-    { return streetAddressLine2; }
 
     public String getZipCode()
     { return zipCode; }
