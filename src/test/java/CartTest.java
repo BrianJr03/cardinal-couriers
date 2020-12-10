@@ -66,8 +66,8 @@ public class CartTest {
     @Test
     public void testFindPriceSum() {
         Cart cart = new Cart(FXCollections.observableArrayList());
-        cart.add(new Item("Apple", 1.89));
-        cart.add(new Item("Ramen", 0.50));
+        cart.add(new Item(new Item("Apple", 1.89), 1));
+        cart.add(new Item(new Item("Ramen", 0.50), 1));
         Assertions.assertEquals(2.39, cart.getTotalCost());
     }
 

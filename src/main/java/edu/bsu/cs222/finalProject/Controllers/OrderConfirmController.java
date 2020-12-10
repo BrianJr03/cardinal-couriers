@@ -3,7 +3,6 @@ package edu.bsu.cs222.finalProject.Controllers;
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,12 +61,11 @@ public class OrderConfirmController {
         cartUIController.initialize();
         cartUIController.setStoreName( storeNameStored ); }
 
-    public void launchPostPurchaseUI() throws IOException
-    { launchUI( "/ui/postPurchaseUI.fxml" ); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+    public void launchPostPurchaseUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));
         Parent root = loader.load();
+        PostPurchaseController postPurchaseController = loader.getController();
+        postPurchaseController.cart.setCartItems(this.cart.getItems());
         rootPane.getChildren().setAll( root );
     }
 }

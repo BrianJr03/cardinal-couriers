@@ -11,26 +11,26 @@ public class InventoryTest {
     @Test
     public void testCanReturnFirstItemFromKroger() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("kroger"));
-        Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
+        Assertions.assertEquals("Apple", inventory.getItems().get(0).getName());
     }
 
     @Test
     public void testCanReturnFirstItemFromALDI() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("ALDI"));
-        Assertions.assertEquals("\"Chicken Noodle Soup\"", inventory.getItems().get(0).getName());
+        Assertions.assertEquals("Chicken Noodle Soup", inventory.getItems().get(0).getName());
     }
 
     @Test
     public void testCanReturnFirstItemFromWalmart() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("walmart"));
-        Assertions.assertEquals("\"Apple\"", inventory.getItems().get(0).getName());
+        Assertions.assertEquals("Apple", inventory.getItems().get(0).getName());
     }
 
     @Test
     public void canReturnFinalItemFromWalmart() throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList("kroger"));
         int inventorySize = inventory.getItems().size();
-        Assertions.assertEquals("\"Taco Sauce Supreme\"", inventory.getItems().get(inventorySize-1).getName());
+        Assertions.assertEquals("Taco Sauce Supreme", inventory.getItems().get(inventorySize-1).getName());
     }
 
 }

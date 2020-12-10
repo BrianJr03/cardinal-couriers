@@ -24,15 +24,14 @@ public class SendReceipt {
     public void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
-        int counter = 0; double sum = 0;
+        double sum = 0;
         File file = new File( "receiptGS_BSU.txt" );
         FileWriter writer = new FileWriter(file);
         writer.write( "Receipt for order " + orderNumber + "N\n" + "----------------------" +
                 "-----------------" + "\n");
         for (Item item : cart.getItems()) {
-            counter++;
             sum = cart.getTotalCost();
-            writer.write(counter + ". " + item.getName() + " | " + item.getPrice() + "\n" );}
+            writer.write(item.getName() + " | " + item.getPrice() + " | QTY:" + item.getQuantity() + "\n" );}
             writer.write( "\nTotal: $" + Math.round(sum * 100.0) / 100.0 + "\n" );
             writer.write( "Date purchased: " + purchaseDate + "\n");
             writer.write( "---------------------------------------------\n" );
@@ -59,11 +58,8 @@ public class SendReceipt {
         emailContent.addBodyPart( textBodyPart );
         msg.setContent( emailContent );
         Transport.send( msg );
-
-        System.out.println("\nYour receipt has been sent.\n");
     }
 
-    @SuppressWarnings( "unused" )
     public void sendReceiptAsTextMSG( String phoneNumber , Cart cart , String userCarrier) throws MessagingException, IOException {
         writeReceipt( cart );
         switch ( userCarrier ) {
@@ -91,17 +87,21 @@ public class SendReceipt {
         });
     }
 
-    public boolean isValidEmail( String email ) {
+    public static String isValidEmail( String email ) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\" +
                 ".[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\" +
                 ".)+[a-zA-Z]{2,7}$");
-        if (email == null) return false;
-        return pattern.matcher(email).matches();
+        if (email == null) return null;
+        boolean isMatch =  pattern.matcher(email).matches();
+        if (isMatch){return email;}
+        else return null;
     }
 
-    public boolean isValidPhoneNumber( String phoneNumber ) {
+    public static String isValidPhoneNumber( String phoneNumber ) {
         Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
         Matcher matcher = pattern.matcher(phoneNumber);
-        return (matcher.find() && matcher.group().equals(phoneNumber));
+        boolean isMatch = (matcher.find() && matcher.group().equals(phoneNumber));
+        if(isMatch){return phoneNumber;}
+        else return null;
     }
 }
