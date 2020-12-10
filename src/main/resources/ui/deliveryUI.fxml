@@ -12,7 +12,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="outOfRange_Prompt" layoutX="313.0" layoutY="392.0" text="Your address is out of range.  Please try again." textFill="#da0909" />
+      <Label fx:id="outOfRange_Prompt" layoutX="313.0" layoutY="392.0" text="Your address is out of range.  Please try again." textFill="#da0909" visible="false" />
       <Button fx:id="continueButton" layoutX="375.0" layoutY="485.0" mnemonicParsing="false" onAction="#verifyDeliveryInput" prefHeight="40.0" prefWidth="142.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Continue">
          <font>
             <Font name="Impact" size="12.0" />
@@ -20,7 +20,7 @@
       <TextField fx:id="addressOne" layoutX="271.0" layoutY="190.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 1 (required)" />
       <TextField fx:id="addressTwo" layoutX="272.0" layoutY="225.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
       <TextField fx:id="zipCode" layoutX="272.0" layoutY="265.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
-      <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="333.0" layoutY="392.0" text="Please fill each required field correctly. " textFill="#da0909" />
+      <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="333.0" layoutY="392.0" text="Please fill each required field correctly. " textFill="#da0909" visible="false" />
       <TextField fx:id="city" layoutX="272.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" promptText="City (required)" />
       <TextField fx:id="state" layoutX="464.0" layoutY="299.0" prefHeight="26.0" prefWidth="139.0" promptText="State Abbrev. (required)" />
    </Pane>

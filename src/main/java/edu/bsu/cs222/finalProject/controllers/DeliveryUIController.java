@@ -2,7 +2,6 @@ package edu.bsu.cs222.finalProject.controllers;
 
 import com.google.gson.JsonObject;
 import edu.bsu.cs222.finalProject.DeliveryInfo;
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -20,30 +19,22 @@ import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 public class DeliveryUIController {
 
     @FXML
-    public TextField addressOne;
+    private TextField addressOne;
     @FXML
-    public TextField addressTwo;
+    private TextField zipCode;
     @FXML
-    public TextField zipCode;
+    private TextField state;
     @FXML
-    public TextField state;
-    @FXML
-    public TextField city;
+    private TextField city;
     @FXML
     private Label outOfRange_Prompt;
     @FXML
     private Label invalidDeliveryInfo_Prompt;
     @FXML
-    public Button continueButton;
-    @FXML
     private AnchorPane rootPane;
 
-    public DeliveryInfo deliveryInfo;
-
-    public void initialize() {
-        outOfRange_Prompt.setVisible(false);
-        invalidDeliveryInfo_Prompt.setVisible( false );
-    }
+    public Button continueButton;
+    private DeliveryInfo deliveryInfo;
 
     public void launchUI(String uiPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
@@ -51,20 +42,20 @@ public class DeliveryUIController {
         rootPane.getChildren().setAll( root );
     }
 
-    public void displayInvalidDeliveryInfo_Prompt()
-    { displayPromptFor3secs(invalidDeliveryInfo_Prompt); }
-
     public void launchLoginUI() throws IOException
     { launchUI("/ui/loginUI.fxml"); }
 
     public void launchMainUI() throws IOException
     { launchUI("/ui/mainUI.fxml"); }
 
+    public void displayInvalidDeliveryInfo_Prompt()
+    { displayPromptFor3secs(invalidDeliveryInfo_Prompt); }
+
     public void displayOutOfRange_Prompt()
     { displayPromptFor3secs(outOfRange_Prompt); }
 
-    public boolean verifyDeliveryInfo() {
-        return  (!deliveryInfo.isValidCity(deliveryInfo.getCity())
+    public boolean deliveryInfoIsValid() {
+        return  (deliveryInfo.isValidCity(deliveryInfo.getCity())
                 || !deliveryInfo.isValidStreet_Address(deliveryInfo.getStreetAddressLine1())
                 || !deliveryInfo.isValidState_Abbreviation(deliveryInfo.getState())
                 || !deliveryInfo.isValidZip(deliveryInfo.getZipCode()));
@@ -73,10 +64,10 @@ public class DeliveryUIController {
     public void verifyDeliveryInput() throws IOException, NullPointerException {
         deliveryInfo = new DeliveryInfo(addressOne.getText(),zipCode.getText(),
                 state.getText(), city.getText());
-        if (verifyDeliveryInfo())
-            { displayInvalidDeliveryInfo_Prompt(); }
-        else
+        if (deliveryInfoIsValid())
             { verifyDistance(); }
+        else
+            { displayInvalidDeliveryInfo_Prompt(); }
     }
 
     public void verifyDistance() throws IOException {
