@@ -38,7 +38,6 @@ public class CartUIController {
     private AnchorPane rootPane;
 
     public final Cart cart = new Cart(FXCollections.observableArrayList());
-
     public String storeNameStored;
 
     public void initialize() {

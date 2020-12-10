@@ -15,13 +15,13 @@ public class Cart {
     public void add(Item itemToCart) {
         cartItems.add(itemToCart);
         totalCost += itemToCart.getPrice();
-        totalCost = Math.round(totalCost * 100.0) / 100.0;
+        totalCost = Math.round(totalCost * 100.00) / 100.00;
     }
 
     public void remove(Item itemToCart) {
         cartItems.remove(itemToCart);
         totalCost -= itemToCart.getPrice();
-        totalCost = Math.round(totalCost * 100.0) / 100.0;
+        totalCost = Math.round(totalCost * 100.00) / 100.00;
     }
 
     public double getTotalCost() {
@@ -29,7 +29,7 @@ public class Cart {
         for (Item item : cartItems) {
             totalCost += item.getPrice() * item.getQuantity();
         }
-        return Math.round(totalCost * 100.0) / 100.0; }
+        return Math.round(totalCost * 100.00) / 100.00; }
 
     public void setCartItems(ObservableList<Item> itemsList)
     { this.cartItems = itemsList; }

@@ -27,7 +27,6 @@ public class Item {
         this.incButton = new Button("+");
     }
 
-
     public String getName() { return name; }
 
     public Double getPrice() { return price; }
@@ -49,14 +48,11 @@ public class Item {
     public void decreaseQuantity() {
         this.quantity -= 1;
         if (quantity < 0) {
-            quantity = 0;
-        }
+            quantity = 0; }
     }
 
-    public void setQuantity( int i )
-    {
-        this.quantity = i;
-    }
+    public void setQuantity(int i)
+    { this.quantity = i; }
 }
 
 

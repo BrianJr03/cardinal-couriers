@@ -22,14 +22,4 @@ public class LoginLogic {
         {return false;}
         return (matcher.find() && matcher.group().equals(password));
     }
-
-    @SuppressWarnings("unused") // will be used later
-    public ArrayList<String> getUserInfo(String username, String password) {
-        ArrayList<String> userInfo = new ArrayList <>();
-        if(isValidUserName(username) && isValidPassword(username, password)) {
-            userInfo.add(username);
-            userInfo.add(password);
-        }
-        return userInfo;
-    }
 }

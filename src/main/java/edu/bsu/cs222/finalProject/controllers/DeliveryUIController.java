@@ -61,28 +61,28 @@ public class DeliveryUIController {
     { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
-    { launchUI( "/ui/loginUI.fxml" ); }
+    { launchUI("/ui/loginUI.fxml"); }
 
     public void launchMainUI() throws IOException
-    { launchUI( "/ui/mainUI.fxml" ); }
+    { launchUI("/ui/mainUI.fxml"); }
 
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
     public boolean verifyDeliveryInfo() {
-        return  ( !deliveryInfo.isValidCity( deliveryInfo.getCity() )
-                || !deliveryInfo.isValidStreet_Address( deliveryInfo.getStreetAddressLine1() )
-                || !deliveryInfo.isValidState_Abbreviation( deliveryInfo.getState() )
-                || !deliveryInfo.isValidZip( deliveryInfo.getZipCode() ) );
+        return  (!deliveryInfo.isValidCity(deliveryInfo.getCity())
+                || !deliveryInfo.isValidStreet_Address(deliveryInfo.getStreetAddressLine1())
+                || !deliveryInfo.isValidState_Abbreviation(deliveryInfo.getState())
+                || !deliveryInfo.isValidZip(deliveryInfo.getZipCode()));
     }
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
-        deliveryInfo = new DeliveryInfo( addressOne.getText(),zipCode.getText(),
-                state.getText(), city.getText() );
+        deliveryInfo = new DeliveryInfo(addressOne.getText(),zipCode.getText(),
+                state.getText(), city.getText());
         if (verifyDeliveryInfo())
             { displayInvalidDeliveryInfo_Prompt(); }
         else
-            { verifyDistance();}
+            { verifyDistance(); }
     }
 
     public void verifyDistance() throws IOException {

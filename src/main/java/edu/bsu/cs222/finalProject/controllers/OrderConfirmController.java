@@ -37,12 +37,12 @@ public class OrderConfirmController {
     public String storeNameStored;
 
     public void initialize() {
-        storeName.setVisible( true );
-        costInDollars.setVisible( true );
-        cartTotalLabel.setVisible( true );
+        storeName.setVisible(true);
+        costInDollars.setVisible(true);
+        cartTotalLabel.setVisible(true);
         orderConfirmTable.setEditable(true);
-        nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
-        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
 
@@ -50,8 +50,8 @@ public class OrderConfirmController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cartUIController = loader.getController();
-        sendDataToCart( cartUIController );
-        rootPane.getChildren().setAll( root );
+        sendDataToCart(cartUIController);
+        rootPane.getChildren().setAll(root);
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
@@ -59,13 +59,13 @@ public class OrderConfirmController {
         cartUIController.storeNameStored = this.storeName.getText();
         cartUIController.costInDollars.setText(String.valueOf(this.cart.getTotalCost()));
         cartUIController.initialize();
-        cartUIController.setStoreName( storeNameStored ); }
+        cartUIController.setStoreName(storeNameStored); }
 
     public void launchPostPurchaseUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));
         Parent root = loader.load();
         PostPurchaseController postPurchaseController = loader.getController();
         postPurchaseController.cart.setCartItems(this.cart.getItems());
-        rootPane.getChildren().setAll( root );
+        rootPane.getChildren().setAll(root);
     }
 }

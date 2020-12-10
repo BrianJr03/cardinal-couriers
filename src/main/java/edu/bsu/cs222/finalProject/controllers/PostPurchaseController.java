@@ -40,49 +40,49 @@ public class PostPurchaseController {
 
     public void initialize() {
         receiptSent.setVisible( false );
-        carrierOptions.add( "AT&T" );
-        carrierOptions.add( "Sprint" );
-        carrierOptions.add( "T-Mobile" );
-        carrierOptions.add( "Verizon" );
+        carrierOptions.add("AT&T");
+        carrierOptions.add("Sprint");
+        carrierOptions.add("T-Mobile");
+        carrierOptions.add("Verizon");
         carrierComboBox.setItems( carrierOptions );
     }
 
     public void sendReceipt() throws MessagingException, IOException {
         SendReceipt sendReceipt = new SendReceipt();
         if (emailCheckBox.isSelected())
-        { sendReceipt.sendReceiptAsEmail( SendReceipt.isValidEmail(email.getText()), cart );}
+        { sendReceipt.sendReceiptAsEmail(SendReceipt.isValidEmail(email.getText()), cart );}
         if(textCheckBox.isSelected()) {
             if (carrierComboBox.getSelectionModel().isSelected( 0 ))
-            { sendReceipt.sendReceiptAsTextMSG( SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "AT&T"); }
+            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "AT&T"); }
 
             if (carrierComboBox.getSelectionModel().isSelected( 1 ))
-            { sendReceipt.sendReceiptAsTextMSG( SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Sprint"); }
+            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Sprint"); }
 
             if (carrierComboBox.getSelectionModel().isSelected( 2 ))
-            { sendReceipt.sendReceiptAsTextMSG( SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "T-Mobile"); }
+            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "T-Mobile"); }
 
             if (carrierComboBox.getSelectionModel().isSelected( 3 ))
-            { sendReceipt.sendReceiptAsTextMSG( SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Verizon"); }
+            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Verizon"); }
         }
-        displayPromptFor3secs( receiptSent );
+        displayPromptFor3secs(receiptSent);
     }
 
-    public void displayPromptFor3secs( Label prompt) {
-        prompt.setVisible( true );
-        PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(3));
+    public void displayPromptFor3secs(Label prompt) {
+        prompt.setVisible(true);
+        PauseTransition visiblePause1 = new PauseTransition(Duration.seconds(3));
         visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause1.play();
     }
 
     public void closeProgram()
-    { System.exit( 0 ); }
+    { System.exit(0); }
 
     public void launchMainUI() throws IOException
-    { launchUI( "/ui/mainUI.fxml" ); }
+    { launchUI("/ui/mainUI.fxml"); }
 
     public void launchUI(String uiPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
-        rootPane.getChildren().setAll( root );
+        rootPane.getChildren().setAll(root);
     }
 }

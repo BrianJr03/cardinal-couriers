@@ -42,17 +42,17 @@ public class StoreUIController {
                 {
                     for ( int i = 0; i < itemsToCart.size(); i++ )
                     {
-                        if ( itemsToCart.get( i ).getName().equals( newItem.getName() ) )
+                        if (itemsToCart.get(i).getName().equals(newItem.getName()))
                         {
-                            itemsToCart.get( i ).setQuantity( newItem.getQuantity() + itemsToCart.get( i ).getQuantity() );
+                            itemsToCart.get(i).setQuantity(newItem.getQuantity() + itemsToCart.get(i).getQuantity());
                             break;
                         } else if (i == itemsToCart.size()-1) {
-                        itemsToCart.add( newItem );
+                        itemsToCart.add(newItem);
                         break;
                         }
                     }
                 } else {
-                    itemsToCart.add( newItem );
+                    itemsToCart.add(newItem);
                 }
             }
         }
@@ -62,26 +62,26 @@ public class StoreUIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
         MainUIController mainUIController = loader.getController();
-        sendDataToMain( mainUIController );
-        rootPane.getChildren().setAll( root );
+        sendDataToMain(mainUIController);
+        rootPane.getChildren().setAll(root);
     }
 
     public void sendDataToMain(MainUIController mainUIController)
-    { mainUIController.displayPromptFor2secs( mainUIController.cartResetPrompt ); }
+    { mainUIController.displayPromptFor2secs(mainUIController.cartResetPrompt); }
 
     public void initialize() {
-        storeNameLBL.setVisible( true );
+        storeNameLBL.setVisible(true);
         inventoryTable.setEditable(true);
     }
 
-    public void showStoreName( String storeName )
-    { storeNameLBL.setText( storeName ); }
+    public void showStoreName(String storeName)
+    { storeNameLBL.setText(storeName); }
 
     public void populateTableWithItems(String storeName) throws IOException {
         Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
         inventoryTable.setEditable(true);
-        nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
-        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        nameColumn.setCellValueFactory( new PropertyValueFactory<>("name"));
+        priceColumn.setCellValueFactory( new PropertyValueFactory<>("price"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
@@ -94,8 +94,8 @@ public class StoreUIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));
         Parent root = loader.load();
         CartUIController cartUIController = loader.getController();
-        sendDataToCart( cartUIController );
-        rootPane.getChildren().setAll( root );
+        sendDataToCart(cartUIController);
+        rootPane.getChildren().setAll(root);
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
@@ -103,12 +103,12 @@ public class StoreUIController {
             cartUIController.cart.add(item);
         }
         cartUIController.costInDollars.setText(String.valueOf(cartUIController.cart.getTotalCost()));
-        cartUIController.setMouseClickEvents( cartUIController.cart.getItems() );
-        cartUIController.setStoreName( storeNameLBL.getText() );
+        cartUIController.setMouseClickEvents(cartUIController.cart.getItems());
+        cartUIController.setStoreName(storeNameLBL.getText());
     }
 
-    public void setStoreNameFromCart( String storeName )
-    { storeNameLBL.setText( storeName ); }
+    public void setStoreNameFromCart(String storeName)
+    { storeNameLBL.setText(storeName); }
 
     private void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {

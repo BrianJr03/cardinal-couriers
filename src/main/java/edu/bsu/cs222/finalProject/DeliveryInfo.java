@@ -10,14 +10,14 @@ public class DeliveryInfo
      private final String state;
      private final String city;
 
-    public DeliveryInfo( String streetAddressLine1 , String zipCode , String state , String city ) {
+    public DeliveryInfo(String streetAddressLine1, String zipCode, String state, String city) {
         this.streetAddressLine1 = streetAddressLine1;
         this.zipCode = zipCode;
         this.state = state;
         this.city = city;
     }
 
-    public boolean isValidZip( String zipCode ) {
+    public boolean isValidZip(String zipCode) {
         Pattern pattern = Pattern.compile("\\d{5}");
         Matcher matcher = pattern.matcher(zipCode);
         return (matcher.find() && matcher.group().equals(zipCode));

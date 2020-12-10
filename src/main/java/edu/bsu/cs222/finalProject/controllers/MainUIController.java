@@ -22,20 +22,19 @@ public class MainUIController {
     public void initialize()
     { cartResetPrompt.setVisible( false ); }
 
-    @FXML
     public void launchDeliveryUI() throws IOException
     { launchUI( "/ui/deliveryUI.fxml" ); }
 
     public void launchUI(String uiPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
-        rootPane.getChildren().setAll( root );
+        rootPane.getChildren().setAll(root);
     }
 
     public void displayPromptFor2secs(Label prompt) {
-        prompt.setVisible( true );
-        PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(2));
-        visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
+        prompt.setVisible(true);
+        PauseTransition visiblePause1 = new PauseTransition(Duration.seconds(2));
+        visiblePause1.setOnFinished(event -> prompt.setVisible(false));
         visiblePause1.play();
     }
 
@@ -44,8 +43,8 @@ public class MainUIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
         Parent root = loader.load();
         StoreUIController storeUIController = loader.getController();
-        sendDataToStore( storeUIController );
-        rootPane.getChildren().setAll( root );
+        sendDataToStore(storeUIController);
+        rootPane.getChildren().setAll(root);
     }
 
     public void sendDataToStore(StoreUIController storeUIController) throws IOException {
@@ -55,19 +54,19 @@ public class MainUIController {
 
     @FXML
     private void sendData_Walmart() throws IOException {
-        storeInfo.setStoreName( "Walmart" );
+        storeInfo.setStoreName("Walmart");
         launchStoreUI();
     }
 
     @FXML
     private void sendData_Kroger() throws IOException {
-        storeInfo.setStoreName( "Kroger" );
+        storeInfo.setStoreName("Kroger");
         launchStoreUI();
     }
 
     @FXML
     private void sendData_ALDI() throws IOException {
-        storeInfo.setStoreName( "ALDI" );
+        storeInfo.setStoreName("ALDI");
         launchStoreUI();
     }
 }

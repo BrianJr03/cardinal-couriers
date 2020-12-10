@@ -25,7 +25,6 @@ public class Inventory {
             case "Kroger" -> path = "src/main/resources/storeItems/Kroger_Items.json";
             case "ALDI" -> path = "src/main/resources/storeItems/ALDI_Items.json";
         }
-
         FileReader reader = new FileReader(path);
         return JsonParser.parseReader( reader ).getAsJsonArray();
     }
