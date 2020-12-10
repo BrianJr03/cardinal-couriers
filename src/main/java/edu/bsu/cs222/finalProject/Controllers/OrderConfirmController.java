@@ -28,17 +28,12 @@ public class OrderConfirmController {
     private AnchorPane rootPane;
     @FXML
     public Label storeName;
-
     @FXML
     public CheckBox checkBox;
     @FXML
     public Button confirmCheckout;
 
-    String storeNameStored;
-    String addressStored;
-    String zipStored;
-    String cityStored;
-    String stateStored;
+    public String storeNameStored;
 
     public void initialize() {
         storeName.setVisible( true );
@@ -58,43 +53,15 @@ public class OrderConfirmController {
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToCart(CartUIController cartUIController) {
-        cartUIController.setStoreName( storeNameStored );
-        cartUIController.setZipText( zipStored );
-        cartUIController.setCityText( cityStored );
-        cartUIController.setStateText( stateStored );
-        cartUIController.setAddressText( addressStored );
+    public void sendDataToCart(CartUIController cartUIController)
+    { cartUIController.setStoreName( storeNameStored ); }
 
-    }
+    public void launchPostPurchaseUI() throws IOException
+    { launchUI( "/ui/postPurchaseUI.fxml" ); }
 
-    public void launchPostPurchaseUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));
+    public void launchUI(String uiPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
-        PostPurchaseController postPurchaseController = loader.getController();
-        sendDataToPostPurchase( postPurchaseController );
         rootPane.getChildren().setAll( root );
     }
-
-    public void sendDataToPostPurchase(PostPurchaseController postPurchaseController) {
-        postPurchaseController.setZipText( zipStored );
-        postPurchaseController.setZipText( zipStored );
-        postPurchaseController.setCityText( cityStored );
-        postPurchaseController.setStateText( stateStored );
-        postPurchaseController.setAddressText( addressStored );
-    }
-
-    public void setStoreName(String storeName)
-    { this.storeNameStored = storeName; }
-
-    public void setCityText( String cityStored )
-    { this.cityStored = cityStored; }
-
-    public void setZipText( String zipStored )
-    { this.zipStored = zipStored; }
-
-    public void setAddressText( String addressStored )
-    { this.addressStored = addressStored; }
-
-    public void setStateText( String stateStored )
-    { this.stateStored = stateStored; }
 }

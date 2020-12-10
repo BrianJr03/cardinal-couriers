@@ -17,22 +17,18 @@ public class MainUIController {
     @FXML
     private AnchorPane rootPane;
 
-    String addressStored;
-    String zipStored;
-    String cityStored;
-    String stateStored;
-
     StoreInfo storeInfo = new StoreInfo();
 
     public void initialize()
     { cartResetPrompt.setVisible( false ); }
 
     @FXML
-    public void launchDeliveryUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/deliveryUI.fxml"));
+    public void launchDeliveryUI() throws IOException
+    { launchUI( "/ui/deliveryUI.fxml" ); }
+
+    public void launchUI(String uiPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
         Parent root = loader.load();
-        DeliveryUIController deliveryUIController = loader.getController();
-        sendDataToDelivery( deliveryUIController );
         rootPane.getChildren().setAll( root );
     }
 
@@ -41,13 +37,6 @@ public class MainUIController {
         PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(2));
         visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause1.play();
-    }
-
-    public void sendDataToDelivery(DeliveryUIController deliveryUIController) {
-        deliveryUIController.zipCode.setText( zipStored );
-        deliveryUIController.city.setText( cityStored );
-        deliveryUIController.state.setText( stateStored );
-        deliveryUIController.addressOne.setText( addressStored );
     }
 
     @FXML
@@ -62,10 +51,6 @@ public class MainUIController {
     public void sendDataToStore(StoreUIController storeUIController) throws IOException {
         storeUIController.showStoreName(storeInfo.getStoreName());
         storeUIController.populateTableWithItems(storeInfo.getStoreName());
-        storeUIController.setCityText( cityStored );
-        storeUIController.setAddressText( addressStored );
-        storeUIController.setZipText( zipStored );
-        storeUIController.setStateText( stateStored );
     }
 
     @FXML
@@ -85,17 +70,4 @@ public class MainUIController {
         storeInfo.setStoreName( "ALDI" );
         launchStoreUI();
     }
-
-    public void setCityText( String cityStored )
-    { this.cityStored = cityStored; }
-
-    public void setZipText( String zipStored )
-    { this.zipStored = zipStored; }
-
-    public void setAddressText( String addressStored )
-    { this.addressStored = addressStored; }
-
-    public void setStateText( String stateStored )
-    { this.stateStored = stateStored; }
-
 }

@@ -16,33 +16,20 @@ import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 public class StoreUIController {
     @FXML
     public Label storeNameLBL;
-
-
     @FXML
     TableColumn<Button, Button> decrementColumn;
-
     @FXML
     TableColumn<Button, Button> incrementColumn;
-
     @FXML
     public TableView<Item> inventoryTable;
-
     @FXML
     TableColumn < Item, String > nameColumn;
-
     @FXML
     TableColumn<Item, Double> priceColumn;
-
     @FXML
     TableColumn<String, String> quantityColumn;
-
     @FXML
     private AnchorPane rootPane;
-
-    String addressStored;
-    String zipStored;
-    String cityStored;
-    String stateStored;
 
     ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
     ObservableList<Item> itemsStoredInCart = FXCollections.observableArrayList();
@@ -61,13 +48,8 @@ public class StoreUIController {
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToMain(MainUIController mainUIController) {
-        mainUIController.displayPromptFor2secs( mainUIController.cartResetPrompt );
-        mainUIController.setZipText( zipStored );
-        mainUIController.setCityText( cityStored );
-        mainUIController.setStateText( stateStored );
-        mainUIController.setAddressText( addressStored );
-    }
+    public void sendDataToMain(MainUIController mainUIController)
+    { mainUIController.displayPromptFor2secs( mainUIController.cartResetPrompt ); }
 
     public void initialize() {
         storeNameLBL.setVisible( true );
@@ -102,26 +84,10 @@ public class StoreUIController {
         cartUIController.itemsInCart.addAll( itemsStoredInCart );
         cartUIController.itemsInCart.addAll( itemsToCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
-        cartUIController.setZipText( zipStored );
-        cartUIController.setCityText( cityStored );
-        cartUIController.setAddressText( addressStored );
-        cartUIController.setStateText( stateStored );
     }
 
     public void setStoreNameFromCart( String storeName )
     { storeNameLBL.setText( storeName ); }
-
-    public void setCityText( String cityStored )
-    { this.cityStored = cityStored; }
-
-    public void setZipText( String zipStored )
-    { this.zipStored = zipStored; }
-
-    public void setAddressText( String addressStored )
-    { this.addressStored = addressStored; }
-
-    public void setStateText( String stateStored )
-    { this.stateStored = stateStored; }
 
     private void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {
