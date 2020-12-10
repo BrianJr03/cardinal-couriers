@@ -19,7 +19,7 @@ import java.io.IOException;
 public class CartUIController {
 
     @FXML
-    public Label cartTotal;
+    public Label cartTotalLabel;
     @FXML
     public Label costInDollars;
     @FXML
@@ -42,7 +42,7 @@ public class CartUIController {
     private String storeNameStored;
 
     public void initialize() {
-        cartTotal.setVisible(true);
+        cartTotalLabel.setVisible(true);
         costInDollars.setVisible(true);
         cartTable.setEditable(true);
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
@@ -54,14 +54,21 @@ public class CartUIController {
         setMouseClickEvents( cart.getItems() );
     }
 
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+    public void launchOrderConfirmUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/orderConfirm.fxml"));
         Parent root = loader.load();
-        rootPane.getChildren().setAll( root );
+        OrderConfirmController orderConfirm = loader.getController();
+        sendDataToOrderConfirm(orderConfirm);
+        rootPane.getChildren().setAll(root);
     }
 
-    public void launchOrderConfirmUI() throws IOException
-    { launchUI( "/ui/orderConfirm.fxml" ); }
+    private void sendDataToOrderConfirm(OrderConfirmController orderConfirm) {
+        for (Item item : cart.getItems()) {
+            orderConfirm.cart.add(item);
+        }
+        orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
+        orderConfirm.storeName.setText(storeNameStored);
+    }
 
     public void launchStoreUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));

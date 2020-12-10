@@ -12,11 +12,11 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <TableView layoutX="200.0" layoutY="124.0" prefHeight="294.0" prefWidth="487.0">
+        <TableView fx:id="orderConfirmTable" layoutX="200.0" layoutY="124.0" prefHeight="294.0" prefWidth="487.0">
             <columns>
-                <TableColumn minWidth="236.0" prefWidth="75.0" text="Item" />
-                <TableColumn minWidth="133.60003662109375" prefWidth="75.0" text="Price" />
-                <TableColumn minWidth="117.4000244140625" prefWidth="75.0" text="Quantity" />
+                <TableColumn fx:id="nameColumn" minWidth="236.0" prefWidth="75.0" text="Item" />
+                <TableColumn fx:id="priceColumn" minWidth="133.60003662109375" prefWidth="75.0" text="Price" />
+                <TableColumn fx:id="quantityColumn" minWidth="117.4000244140625" prefWidth="75.0" text="Quantity" />
             </columns>
         </TableView>
         <Button fx:id="confirmCheckout" layoutX="388.0" layoutY="554.0" mnemonicParsing="false" onAction="#launchPostPurchaseUI" prefHeight="35.0" prefWidth="109.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Confirm Checkout">
@@ -29,7 +29,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="cartTotal" layoutX="576.0" layoutY="418.0" text="Cart Total: $" textFill="DARKORCHID">
+      <Label fx:id="cartTotalLabel" layoutX="576.0" layoutY="418.0" text="Cart Total: $" textFill="DARKORCHID">
          <font>
             <Font size="14.0" />
          </font>
