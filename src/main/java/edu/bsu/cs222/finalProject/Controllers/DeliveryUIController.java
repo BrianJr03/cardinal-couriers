@@ -1,6 +1,7 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
 import com.google.gson.JsonObject;
+import edu.bsu.cs222.finalProject.DeliveryInfo;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,10 @@ public class DeliveryUIController {
 
     @FXML
     public TextField addressOne;
+
+    @FXML
+    public TextField addressTwo;
+
     @FXML
     public TextField zipCode;
     @FXML
@@ -36,6 +41,8 @@ public class DeliveryUIController {
     public Button continueButton;
     @FXML
     private AnchorPane rootPane;
+
+    DeliveryInfo deliveryInfo;
 
     public void initialize() {
         outOfRange_Prompt.setVisible( false );
@@ -88,32 +95,24 @@ public class DeliveryUIController {
     { launchUI( "/ui/loginUI.fxml" ); }
 
     public void launchMainUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
-        Parent root = loader.load();
-        MainUIController mainUIController = loader.getController();
-        sendDataToMain( mainUIController );
-        rootPane.getChildren().setAll( root );
-    }
-
-    public void sendDataToMain( MainUIController mainUIController ) {
-        mainUIController.setCityText(city.getText());
-        mainUIController.setZipText(zipCode.getText());
-        mainUIController.setAddressText(addressOne.getText());
-        mainUIController.setStateText(state.getText());
+        launchUI( "/ui/mainUI.fxml" );
     }
 
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
-        if (            !isValidCity( city.getText() )
-                        || !isValidStreet_Address( addressOne.getText() )
-                        || !isValidState_Abbreviation( state.getText() )
-                        || !isValidZip( zipCode.getText() ) )
+        deliveryInfo = new DeliveryInfo( addressOne.getText(), addressTwo.getText(), zipCode.getText(),
+                state.getText(), city.getText() );
+        if (            !isValidCity( deliveryInfo.getCity() )
+                        || !isValidStreet_Address( deliveryInfo.getStreetAddressLine1() )
+                        || !isValidState_Abbreviation( deliveryInfo.getState() )
+                        || !isValidZip( deliveryInfo.getZipCode() ) )
         { displayInvalidDeliveryInfo_Prompt(); }
 
         else{
-            JsonObject mapsData = collectJsonObjectFromGoogle(addressOne.getText(),city.getText(),state.getText());
+            JsonObject mapsData = collectJsonObjectFromGoogle(deliveryInfo.getStreetAddressLine1(),deliveryInfo.getCity(),
+                    deliveryInfo.getState());
             if (findDistanceFromBSU(mapsData) == null) {
                 displayInvalidDeliveryInfo_Prompt();
             } else if (Objects.requireNonNull(findDistanceFromBSU(mapsData)).floatValue() > 10) {

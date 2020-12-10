@@ -11,7 +11,6 @@ public class Item {
     private final Button decButton;
     private final Button incButton;
 
-
     public Item(String name, Double price) {
         this.name = name;
         this.price = price;
