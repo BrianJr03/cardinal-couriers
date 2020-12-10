@@ -1,7 +1,7 @@
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
-import edu.bsu.cs222.finalProject.LoginUI;
+import edu.bsu.cs222.finalProject.Main;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,7 +16,7 @@ public class CartTest {
 
     @BeforeAll
     public static void setUp() {
-        Platform.startup( ( ) -> Application.launch(LoginUI.class) );
+        Platform.startup( ( ) -> Application.launch(Main.class) );
     }
 
     public CartTest() throws Exception {

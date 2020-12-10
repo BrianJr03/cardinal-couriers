@@ -1,9 +1,7 @@
 package edu.bsu.cs222.finalProject;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public class LoginLogic {
 

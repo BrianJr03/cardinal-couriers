@@ -2,7 +2,6 @@ package edu.bsu.cs222.finalProject;
 
 import javafx.scene.control.Button;
 
-
 public class Item {
 
     private final String name;

@@ -39,21 +39,21 @@ public class StoreUIController {
             if (item.getQuantity() != 0) {
                 Item newItem = new Item(new Item(item.getName(), item.getPrice()), item.getQuantity());
                 if (!itemsToCart.isEmpty())
-                {
-                    for ( int i = 0; i < itemsToCart.size(); i++ )
-                    {
-                        if (itemsToCart.get(i).getName().equals(newItem.getName()))
-                        {
-                            itemsToCart.get(i).setQuantity(newItem.getQuantity() + itemsToCart.get(i).getQuantity());
-                            break;
-                        } else if (i == itemsToCart.size()-1) {
-                        itemsToCart.add(newItem);
-                        break;
-                        }
-                    }
-                } else {
-                    itemsToCart.add(newItem);
-                }
+                { verifyNoDuplicateCartItems(newItem); }
+                else { itemsToCart.add(newItem); }
+            }
+        }
+    }
+
+    public void verifyNoDuplicateCartItems(Item item) {
+        for ( int i = 0; i < itemsToCart.size(); i++ ) {
+            Item cartItem = itemsToCart.get(i);
+            if (cartItem.getName().equals(item.getName())) {
+                cartItem.setQuantity(item.getQuantity() + cartItem.getQuantity());
+                break;
+            } else if (i == itemsToCart.size() - 1) {
+                itemsToCart.add(item);
+                break;
             }
         }
     }

@@ -26,6 +26,8 @@ dependencies {
 
     implementation 'com.google.maps:google-maps-services:0.15.0'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
+
+    mainClassName = 'edu.bsu.cs222.finalProject.Main'
 }
 
 test {
@@ -35,5 +37,3 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
     version = '15'
 }
-
-mainClassName = 'edu.bsu.cs222.finalProject.LoginUI'

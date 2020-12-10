@@ -3,6 +3,7 @@ package edu.bsu.cs222.finalProject;
 import javafx.collections.ObservableList;
 
 public class Cart {
+
     private ObservableList <Item> cartItems;
     private double totalCost;
 
