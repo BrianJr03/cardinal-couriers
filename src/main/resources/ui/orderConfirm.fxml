@@ -23,18 +23,8 @@
             <font>
                 <Font name="Impact" size="12.0" />
             </font></Button>
-      <Label layoutX="354.0" layoutY="381.0" text="Delivery Address" textFill="DARKORCHID">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="checkBox" layoutX="371.0" layoutY="496.0" mnemonicParsing="false" />
-      <Label layoutX="389.0" layoutY="494.0" text="Contactless Delivery?" textFill="DARKORCHID">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="stAddress" layoutX="354.0" layoutY="426.0" text="Street Address" textFill="DARKORCHID">
+      <CheckBox fx:id="checkBox" layoutX="371.0" layoutY="423.0" mnemonicParsing="false" />
+      <Label layoutX="389.0" layoutY="422.0" text="Contactless Delivery?" textFill="DARKORCHID">
          <font>
             <Font size="14.0" />
          </font>
@@ -62,21 +52,6 @@
         <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="200.0" layoutY="37.0" onMouseClicked="#launchCartUI" pickOnBounds="true" preserveRatio="true">
             <Image url="@../pngs/left.png" />
         </ImageView>
-      <Label fx:id="city" layoutX="354.0" layoutY="446.0" text="City" textFill="DARKORCHID">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="zip" layoutX="487.0" layoutY="446.0" text="Zip" textFill="DARKORCHID">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="state" layoutX="437.0" layoutY="446.0" text="State" textFill="DARKORCHID">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
     </Pane>
     <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
         <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">

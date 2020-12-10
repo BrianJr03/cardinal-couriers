@@ -37,7 +37,7 @@ public class DeliveryUIController {
     @FXML
     private AnchorPane rootPane;
 
-    private DeliveryInfo deliveryInfo;
+    public DeliveryInfo deliveryInfo;
 
     public void initialize() {
         outOfRange_Prompt.setVisible( false );
