@@ -52,6 +52,11 @@ public class Item {
             quantity = 0;
         }
     }
+
+    public void setQuantity( int i )
+    {
+        this.quantity = i;
+    }
 }
 
 

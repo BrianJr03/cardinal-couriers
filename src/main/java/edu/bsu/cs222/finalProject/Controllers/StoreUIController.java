@@ -32,12 +32,30 @@ public class StoreUIController {
     private AnchorPane rootPane;
 
     ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
-    ObservableList<Item> itemsStoredInCart = FXCollections.observableArrayList();
 
     public void addItemToCart() {
-        Item selection = inventoryTable.getSelectionModel().getSelectedItem();
-        if (selection != null)
-        { this.itemsToCart.add( new Item(new Item(selection.getName(), selection.getPrice()), selection.getQuantity())); }
+        ObservableList<Item> items = FXCollections.observableArrayList(inventoryTable.getItems());
+        for (Item item : items) {
+            if (item.getQuantity() != 0) {
+                Item newItem = new Item(new Item(item.getName(), item.getPrice()), item.getQuantity());
+                if (!itemsToCart.isEmpty())
+                {
+                    for ( int i = 0; i < itemsToCart.size(); i++ )
+                    {
+                        if ( itemsToCart.get( i ).getName().equals( newItem.getName() ) )
+                        {
+                            itemsToCart.get( i ).setQuantity( newItem.getQuantity() + itemsToCart.get( i ).getQuantity() );
+                            break;
+                        } else if (i == itemsToCart.size()-1) {
+                        itemsToCart.add( newItem );
+                        break;
+                        }
+                    }
+                } else {
+                    itemsToCart.add( newItem );
+                }
+            }
+        }
     }
 
     public void launchMainUI() throws IOException {
@@ -81,7 +99,6 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
-        cartUIController.itemsInCart.addAll( itemsStoredInCart );
         cartUIController.itemsInCart.addAll( itemsToCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
     }

@@ -49,7 +49,6 @@ public class CartUIController {
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
         cartTable.setItems( itemsInCart );
-        System.out.println( this.itemsInCart );
     }
 
     public void launchUI(String uiPath) throws IOException {
@@ -70,7 +69,7 @@ public class CartUIController {
     }
 
     public void sendDataToStore(StoreUIController store) throws IOException {
-        store.itemsStoredInCart.addAll( itemsInCart );
+        store.itemsToCart.addAll( itemsInCart );
         store.setStoreNameFromCart( storeNameStored );
         store.populateTableWithItems( storeNameStored );
     }
