@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 public class Cart {
     private final ObservableList <Item> cartItems;
-    private double totalCost = 0;
+    private double totalCost;
 
     public Cart(ObservableList<Item> cartItems)
     { this.cartItems = cartItems; }
@@ -25,5 +25,10 @@ public class Cart {
         totalCost = Math.round(totalCost * 100.0) / 100.0;
     }
 
-    public double getTotalCost() { return totalCost; }
+    public double getTotalCost() {
+        totalCost = 0;
+        for (Item item : cartItems) {
+            totalCost += item.getPrice() * item.getQuantity();
+        }
+        return Math.round(totalCost * 100.0) / 100.0; }
 }

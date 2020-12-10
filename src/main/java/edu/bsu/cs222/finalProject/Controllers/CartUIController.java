@@ -82,10 +82,12 @@ public class CartUIController {
             item.getDecButton().setOnMouseClicked(event -> {
                 item.decreaseQuantity();
                 cartTable.refresh();
+                costInDollars.setText(String.valueOf(cart.getTotalCost()));
             });
             item.getIncButton().setOnMouseClicked(event -> {
                 item.increaseQuantity();
                 cartTable.refresh();
+                costInDollars.setText(String.valueOf(cart.getTotalCost()));
             });
         }
     }
