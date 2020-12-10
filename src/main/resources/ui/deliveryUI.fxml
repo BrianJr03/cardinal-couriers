@@ -21,8 +21,8 @@
       <TextField fx:id="addressTwo" layoutX="272.0" layoutY="225.0" prefHeight="25.0" prefWidth="328.0" promptText="Address Line 2 (optional)" />
       <TextField fx:id="zipCode" layoutX="272.0" layoutY="265.0" prefHeight="26.0" prefWidth="174.0" promptText="Zip Code (required)" />
       <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="333.0" layoutY="392.0" text="Please fill each required field correctly. " textFill="#da0909" />
-      <TextField fx:id="city" layoutX="272.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" promptText="City" />
-      <TextField fx:id="state" layoutX="474.0" layoutY="299.0" prefHeight="26.0" prefWidth="129.0" promptText="State Abbrev." />
+      <TextField fx:id="city" layoutX="272.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" promptText="City (required)" />
+      <TextField fx:id="state" layoutX="464.0" layoutY="299.0" prefHeight="26.0" prefWidth="139.0" promptText="State Abbrev. (required)" />
    </Pane>
    <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
       <font>
