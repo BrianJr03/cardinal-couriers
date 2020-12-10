@@ -1,10 +1,9 @@
-Receipt for order 1725N
+Receipt for order 1596N
 ---------------------------------------
-Chicken Noodle Soup | 3.59 | QTY:4
-Frozen Burgers | 4.79 | QTY:3
-Burrito | 0.99 | QTY:2
+Frozen Burgers | 4.79 | QTY:69
+Beans | 1.19 | QTY:69
 
-Total: $30.71
+Total: $412.62
 Date purchased: 2020-12-10
 ---------------------------------------------
 

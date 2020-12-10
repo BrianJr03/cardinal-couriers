@@ -64,12 +64,12 @@ public class PostPurchaseController {
             if (carrierComboBox.getSelectionModel().isSelected( 3 ))
             { sendReceipt.sendReceiptAsTextMSG( SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Verizon"); }
         }
-        displayPromptFor4secs( receiptSent );
+        displayPromptFor3secs( receiptSent );
     }
 
-    public void displayPromptFor4secs( Label prompt) {
+    public void displayPromptFor3secs( Label prompt) {
         prompt.setVisible( true );
-        PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(4));
+        PauseTransition visiblePause1 = new PauseTransition( Duration.seconds(3));
         visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
         visiblePause1.play();
     }

@@ -7,16 +7,14 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.LoginUIController">
-   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0"
-         styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Pane prefHeight="631.0" prefWidth="270.0">
-         <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="220.0" pickOnBounds="true"
-                    preserveRatio="true">
-            <Image url="@../pngs/groceries200x200.png"/>
+         <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/groceries200x200.png" />
          </ImageView>
          <Label layoutX="58.0" layoutY="192.0" prefHeight="28.0" prefWidth="155.0" text="Cardinal Couriers">
             <font>
-               <Font name="Century Schoolbook Italic" size="18.0"/>
+               <Font name="Century Schoolbook Italic" size="18.0" />
             </font>
          </Label>
       </Pane>
@@ -52,12 +50,7 @@
             <Font name="Century Schoolbook" size="14.0" />
          </font></Label>
       <ImageView fx:id="passwordVisibility" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#ea0909" />
-      <Button layoutX="352.0" layoutY="423.0" mnemonicParsing="false" onAction="#launchDeliveryUI" styleClass="loginBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="byPass">
-         <font>
-            <Font name="Impact" size="12.0" />
-         </font>
-      </Button>
+      <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#da0909" />
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
       <Image url="@../pngs/bsu.png" />

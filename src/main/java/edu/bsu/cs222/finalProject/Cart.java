@@ -2,7 +2,6 @@ package edu.bsu.cs222.finalProject;
 
 import javafx.collections.ObservableList;
 
-
 public class Cart {
     private ObservableList <Item> cartItems;
     private double totalCost;
@@ -32,7 +31,6 @@ public class Cart {
         }
         return Math.round(totalCost * 100.0) / 100.0; }
 
-    public void setCartItems(ObservableList<Item> itemsList) {
-        this.cartItems = itemsList;
-    }
+    public void setCartItems(ObservableList<Item> itemsList)
+    { this.cartItems = itemsList; }
 }
