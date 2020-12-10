@@ -59,7 +59,7 @@ public class OrderConfirmController {
         cartUIController.storeNameStored = this.storeName.getText();
         cartUIController.costInDollars.setText(String.valueOf(this.cart.getTotalCost()));
         cartUIController.initialize();
-        cartUIController.setStoreName(storeNameStored); }
+        cartUIController.storeNameStored = storeNameStored; }
 
     public void launchPostPurchaseUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));

@@ -45,15 +45,6 @@ public class CartUIController {
         setMouseClickEvents( cart.getItems() );
     }
 
-    public static void setTableProperties(TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
-                                     TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn, TableColumn<Button, Button> incrementColumn) {
-        nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
-        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
-        incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
-    }
-
     public void launchOrderConfirmUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/orderConfirm.fxml"));
         Parent root = loader.load();
@@ -86,6 +77,15 @@ public class CartUIController {
         store.populateTableWithItems( storeNameStored );
     }
 
+    public static void setTableProperties(TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
+                                          TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn, TableColumn<Button, Button> incrementColumn) {
+        nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
+        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
+        incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
+    }
+
     public void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {
             item.getDecButton().setOnMouseClicked(event -> {
@@ -103,7 +103,4 @@ public class CartUIController {
             });
         }
     }
-
-    public void setStoreName(String storeName)
-    { this.storeNameStored = storeName; }
 }

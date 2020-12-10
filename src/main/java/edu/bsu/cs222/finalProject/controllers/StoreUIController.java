@@ -105,7 +105,7 @@ public class StoreUIController {
         }
         cartUIController.costInDollars.setText(String.valueOf(cartUIController.cart.getTotalCost()));
         cartUIController.setMouseClickEvents(cartUIController.cart.getItems());
-        cartUIController.setStoreName(storeNameLBL.getText());
+        cartUIController.storeNameStored = storeNameLBL.getText();
     }
 
     public void setStoreNameFromCart(String storeName)
