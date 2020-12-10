@@ -33,12 +33,12 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="cartTotal" layoutX="582.0" layoutY="418.0" text="Cart Total: $" textFill="DARKORCHID">
+        <Label fx:id="cartTotal" layoutX="196.0" layoutY="418.0" text="Cart Total: $" textFill="DARKORCHID">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="costInDollars" layoutX="657.0" layoutY="418.0" text="0.00" textFill="DARKORCHID">
+        <Label fx:id="costInDollars" layoutX="270.0" layoutY="418.0" text="0.00" textFill="DARKORCHID">
             <font>
                 <Font size="14.0" />
             </font>
