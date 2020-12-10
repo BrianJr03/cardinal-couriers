@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +37,8 @@ public class CartUIController {
     @FXML
     private AnchorPane rootPane;
 
-    ObservableList<Item> itemsInCart = FXCollections.observableArrayList();
+    public Cart cart = new Cart(FXCollections.observableArrayList());
+
     private String storeNameStored;
 
     public void initialize() {
@@ -48,8 +50,8 @@ public class CartUIController {
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
-        cartTable.setItems( itemsInCart );
-        setMouseClickEvents( this.itemsInCart );
+        cartTable.setItems( cart.getItems() );
+        setMouseClickEvents( cart.getItems() );
     }
 
     public void launchUI(String uiPath) throws IOException {
@@ -70,7 +72,7 @@ public class CartUIController {
     }
 
     public void sendDataToStore(StoreUIController store) throws IOException {
-        store.itemsToCart.addAll( itemsInCart );
+        store.itemsToCart.addAll( cart.getItems() );
         store.setStoreNameFromCart( storeNameStored );
         store.populateTableWithItems( storeNameStored );
     }

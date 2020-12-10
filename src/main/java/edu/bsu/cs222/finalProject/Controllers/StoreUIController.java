@@ -99,8 +99,10 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
-        cartUIController.itemsInCart.addAll( itemsToCart );
-        cartUIController.setMouseClickEvents( cartUIController.itemsInCart );
+        for (Item item : itemsToCart) {
+            cartUIController.cart.add(item);
+        }
+        cartUIController.setMouseClickEvents( cartUIController.cart.getItems() );
         cartUIController.setStoreName( storeNameLBL.getText() );
     }
 
