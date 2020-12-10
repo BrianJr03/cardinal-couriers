@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -50,11 +50,11 @@ public class LoginUIController
        unMaskedPassword.setVisible( false );
     }
 
-    File isVisiblePNG_File = new File( "src/main/resources/pngs/isVisible.png" );
-    Image isVisible_PNG = new Image( isVisiblePNG_File.toURI().toString() );
+    final File isVisiblePNG_File = new File( "src/main/resources/pngs/isVisible.png" );
+    final Image isVisible_PNG = new Image( isVisiblePNG_File.toURI().toString() );
 
-    File isNotVisiblePNG_File = new File( "src/main/resources/pngs/isNotVisible.png" );
-    Image isNotVisible_PNG = new Image( isNotVisiblePNG_File.toURI().toString() );
+    final File isNotVisiblePNG_File = new File( "src/main/resources/pngs/isNotVisible.png" );
+    final Image isNotVisible_PNG = new Image( isNotVisiblePNG_File.toURI().toString() );
 
     public void launchDeliveryUI() throws IOException {
             AnchorPane pane = FXMLLoader.load(getClass().getResource( "/ui/deliveryUI.fxml" ));

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.MainUIController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.MainUIController">
     <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
         <Button layoutX="187.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendData_Walmart" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Walmart">
            <font>

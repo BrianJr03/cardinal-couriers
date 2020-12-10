@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.StoreInfo;
 import javafx.animation.PauseTransition;
@@ -17,7 +17,7 @@ public class MainUIController {
     @FXML
     private AnchorPane rootPane;
 
-    StoreInfo storeInfo = new StoreInfo();
+    final StoreInfo storeInfo = new StoreInfo();
 
     public void initialize()
     { cartResetPrompt.setVisible( false ); }

@@ -1,6 +1,5 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
-import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;
@@ -32,7 +31,7 @@ public class StoreUIController {
     @FXML
     private AnchorPane rootPane;
 
-    ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
+    final ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
 
     public void addItemToCart() {
         ObservableList<Item> items = FXCollections.observableArrayList(inventoryTable.getItems());

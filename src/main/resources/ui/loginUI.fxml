@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controllers.LoginUIController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.LoginUIController">
    <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0"
          styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Pane prefHeight="631.0" prefWidth="270.0">

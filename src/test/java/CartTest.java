@@ -4,20 +4,8 @@ import edu.bsu.cs222.finalProject.Item;
 import edu.bsu.cs222.finalProject.LoginUI;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.stage.Stage;
-import org.apache.commons.logging.Log;
 import org.junit.jupiter.api.*;
-
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
@@ -28,12 +16,7 @@ public class CartTest {
 
     @BeforeAll
     public static void setUp() {
-        Platform.startup(new Runnable() {
-            @Override
-            public void run() {
-                Application.launch(LoginUI.class);
-            }
-        });
+        Platform.startup( ( ) -> Application.launch(LoginUI.class) );
     }
 
     public CartTest() throws Exception {

@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
 import com.google.gson.JsonObject;
 import edu.bsu.cs222.finalProject.DeliveryInfo;

@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Item;
@@ -33,7 +33,7 @@ public class OrderConfirmController {
     @FXML
     TableColumn<String, String> quantityColumn;
 
-    public Cart cart = new Cart(FXCollections.observableArrayList());
+    public final Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeNameStored;
 
     public void initialize() {

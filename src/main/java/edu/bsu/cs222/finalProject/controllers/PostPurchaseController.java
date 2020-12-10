@@ -1,4 +1,4 @@
-package edu.bsu.cs222.finalProject.Controllers;
+package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.SendReceipt;
@@ -35,8 +35,8 @@ public class PostPurchaseController {
     @FXML
     public Label receiptSent;
 
-    public Cart cart = new Cart( FXCollections.observableArrayList() );
-    public ObservableList<String> carrierOptions = FXCollections.observableArrayList();
+    public final Cart cart = new Cart( FXCollections.observableArrayList() );
+    public final ObservableList<String> carrierOptions = FXCollections.observableArrayList();
 
     public void initialize() {
         receiptSent.setVisible( false );

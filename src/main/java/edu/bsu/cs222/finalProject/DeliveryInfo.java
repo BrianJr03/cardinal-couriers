@@ -5,11 +5,11 @@ import java.util.regex.Pattern;
 
 public class DeliveryInfo
 {
-     private String streetAddressLine1;
-     private String streetAddressLine2;
-     private String zipCode;
-     private String state;
-     private String city;
+     private final String streetAddressLine1;
+     private final String streetAddressLine2;
+     private final String zipCode;
+     private final String state;
+     private final String city;
 
     public DeliveryInfo( String streetAddressLine1 , String streetAddressLine2 , String zipCode , String state , String city ) {
         this.streetAddressLine1 = streetAddressLine1;
