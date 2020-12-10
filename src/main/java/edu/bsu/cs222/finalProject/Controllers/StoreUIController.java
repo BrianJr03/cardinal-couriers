@@ -37,7 +37,7 @@ public class StoreUIController {
     public void addItemToCart() {
         Item selection = inventoryTable.getSelectionModel().getSelectedItem();
         if (selection != null)
-        { this.itemsToCart.add( new Item(selection.getName(), selection.getPrice()) ); }
+        { this.itemsToCart.add( new Item(new Item(selection.getName(), selection.getPrice()), selection.getQuantity())); }
     }
 
     public void launchMainUI() throws IOException {

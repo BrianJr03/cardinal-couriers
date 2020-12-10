@@ -19,6 +19,15 @@ public class Item {
         this.incButton = new Button("+");
     }
 
+    public Item(Item item, Integer quantity) {
+        this.name = item.getName();
+        this.price = item.getPrice();
+        this.quantity = quantity;
+        this.decButton = new Button("-");
+        this.incButton = new Button("+");
+    }
+
+
     public String getName() { return name; }
 
     public Double getPrice() { return price; }
