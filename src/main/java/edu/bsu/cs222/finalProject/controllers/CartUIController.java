@@ -36,6 +36,7 @@ public class CartUIController {
     public Label costInDollars;
     public final Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeName;
+    public Label cartTotalLabel;
 
     public void initialize() {
         setTableProperties(nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);

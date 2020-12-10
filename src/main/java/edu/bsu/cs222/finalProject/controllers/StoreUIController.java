@@ -24,7 +24,7 @@ public class StoreUIController {
     @FXML
     public TableView<Item> inventoryTable;
     @FXML
-    TableColumn < Item, String > nameColumn;
+    TableColumn <Item, String> nameColumn;
     @FXML
     TableColumn<Item, Double> priceColumn;
     @FXML

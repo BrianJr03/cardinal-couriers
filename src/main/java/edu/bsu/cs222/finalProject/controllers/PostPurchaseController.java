@@ -2,7 +2,6 @@ package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.SendReceipt;
-import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 import javax.mail.MessagingException;
 import java.io.IOException;

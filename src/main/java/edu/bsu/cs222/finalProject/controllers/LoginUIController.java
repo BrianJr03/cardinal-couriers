@@ -1,14 +1,11 @@
 package edu.bsu.cs222.finalProject.controllers;
 
-import edu.bsu.cs222.finalProject.Main;
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +16,8 @@ import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
 import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
-public class LoginUIController
-{
+public class LoginUIController {
+
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -35,6 +32,8 @@ public class LoginUIController
     private PasswordField passwordInput;
     @FXML
     private TextField usernameInput;
+
+    public Button forgotPasswordButton;
 
     public void initialize() {
        passwordVisibility.setImage(isNotVisible_PNG);

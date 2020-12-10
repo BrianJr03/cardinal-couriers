@@ -34,6 +34,8 @@ public class DeliveryUIController {
     private AnchorPane rootPane;
 
     private DeliveryInfo deliveryInfo;
+    public Button continueButton;
+    public TextField addressTwo;
 
     public void launchUI(String uiPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));

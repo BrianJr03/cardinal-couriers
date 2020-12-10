@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
@@ -29,6 +28,9 @@ public class OrderConfirmController {
     public TableView<Item> orderConfirmTable;
     public final Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeNameStored;
+    public Button confirmCheckout;
+    public CheckBox checkBox;
+    public Label cartTotalLabel;
 
     public void initialize() {
         setTableProperties(nameColumn, priceColumn, quantityColumn, new TableColumn<>(), new TableColumn<>());
