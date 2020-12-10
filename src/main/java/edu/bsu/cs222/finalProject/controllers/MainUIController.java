@@ -1,14 +1,11 @@
 package edu.bsu.cs222.finalProject.controllers;
 
-import edu.bsu.cs222.finalProject.Main;
 import edu.bsu.cs222.finalProject.StoreInfo;
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -48,7 +45,7 @@ public class MainUIController {
     }
 
     public void sendDataToStore(StoreUIController storeUIController) throws IOException {
-        storeUIController.showStoreName(storeInfo.getStoreName());
+        storeUIController.storeNameLabel.setText(storeInfo.getStoreName());
         storeUIController.populateTableWithItems(storeInfo.getStoreName());
     }
 

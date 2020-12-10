@@ -2,23 +2,21 @@ package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
-import edu.bsu.cs222.finalProject.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
-import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
+import static edu.bsu.cs222.finalProject.controllers.CartUIController.setTableProperties;
 
 public class StoreUIController {
 
     @FXML
-    public Label storeNameLBL;
+    public Label storeNameLabel;
     @FXML
     TableColumn<Button, Button> decrementColumn;
     @FXML
@@ -30,22 +28,20 @@ public class StoreUIController {
     @FXML
     TableColumn<Item, Double> priceColumn;
     @FXML
-    TableColumn<String, String> quantityColumn;
+    TableColumn<Item, String> quantityColumn;
     @FXML
     private AnchorPane rootPane;
 
     final ObservableList<Item> itemsToCart = FXCollections.observableArrayList();
 
     public void addItemToCart() {
-        ObservableList<Item> items = FXCollections.observableArrayList(inventoryTable.getItems());
+        ObservableList<Item> items = inventoryTable.getItems();
         for (Item item : items) {
             if (item.getQuantity() != 0) {
                 Item newItem = new Item(new Item(item.getName(), item.getPrice()), item.getQuantity());
                 if (!itemsToCart.isEmpty())
                 { verifyNoDuplicateCartItems(newItem); }
-                else { itemsToCart.add(newItem); }
-            }
-        }
+                else { itemsToCart.add(newItem); }}}
     }
 
     public void verifyNoDuplicateCartItems(Item item) {
@@ -56,9 +52,15 @@ public class StoreUIController {
                 break;
             } else if (i == itemsToCart.size() - 1) {
                 itemsToCart.add(item);
-                break;
-            }
-        }
+                break; }}
+    }
+
+    public void populateTableWithItems(String storeName) throws IOException {
+        Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
+        setTableProperties(nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);
+        ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
+        setMouseClickEvents(items);
+        inventoryTable.setItems(items);
     }
 
     public void launchMainUI() throws IOException {
@@ -67,27 +69,6 @@ public class StoreUIController {
         MainUIController mainUIController = loader.getController();
         rootPane.getChildren().setAll(root);
         mainUIController.displayCartClearPrompt();
-    }
-
-    public void initialize() {
-        storeNameLBL.setVisible(true);
-        inventoryTable.setEditable(true);
-    }
-
-    public void showStoreName(String storeName)
-    { storeNameLBL.setText(storeName); }
-
-    public void populateTableWithItems(String storeName) throws IOException {
-        Inventory inventory = new Inventory(collectItemsAsArrayList(storeName));
-        inventoryTable.setEditable(true);
-        nameColumn.setCellValueFactory( new PropertyValueFactory<>("name"));
-        priceColumn.setCellValueFactory( new PropertyValueFactory<>("price"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
-        incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
-        ObservableList<Item> items = FXCollections.observableArrayList(inventory.getItems());
-        setMouseClickEvents(items);
-        inventoryTable.setItems(items);
     }
 
     public void launchCartUI() throws IOException {
@@ -104,11 +85,8 @@ public class StoreUIController {
         }
         cartUIController.costInDollars.setText(String.valueOf(cartUIController.cart.getTotalCost()));
         cartUIController.setMouseClickEvents(cartUIController.cart.getItems());
-        cartUIController.storeName = storeNameLBL.getText();
+        cartUIController.storeName = storeNameLabel.getText();
     }
-
-    public void setStoreNameFromCart(String storeName)
-    { storeNameLBL.setText(storeName); }
 
     private void setMouseClickEvents(ObservableList<Item> itemsList) {
         for (Item item : itemsList) {

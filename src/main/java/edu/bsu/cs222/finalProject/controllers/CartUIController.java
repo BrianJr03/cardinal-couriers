@@ -71,7 +71,7 @@ public class CartUIController {
 
     public void sendDataToStore(StoreUIController store) throws IOException {
         store.itemsToCart.addAll( cart.getItems() );
-        store.setStoreNameFromCart(storeName);
+        store.storeNameLabel.setText(storeName);
         store.populateTableWithItems(storeName);
     }
 
