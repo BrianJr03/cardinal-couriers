@@ -55,8 +55,10 @@ public class OrderConfirmController {
         rootPane.getChildren().setAll( root );
     }
 
-    public void sendDataToCart(CartUIController cartUIController)
-    { cartUIController.setStoreName( storeNameStored ); }
+    public void sendDataToCart(CartUIController cartUIController) {
+        cartUIController.cart.setCartItems(this.cart.getItems());
+        cartUIController.initialize();
+        cartUIController.setStoreName( storeNameStored ); }
 
     public void launchPostPurchaseUI() throws IOException
     { launchUI( "/ui/postPurchaseUI.fxml" ); }
