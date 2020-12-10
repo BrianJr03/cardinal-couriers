@@ -35,8 +35,7 @@ public class MainUIController {
         displayPromptFor3secs(cartResetPrompt);
     }
 
-    @FXML
-    private void launchStoreUI() throws IOException {
+    public void launchStoreUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
         Parent root = loader.load();
         StoreUIController storeUIController = loader.getController();
