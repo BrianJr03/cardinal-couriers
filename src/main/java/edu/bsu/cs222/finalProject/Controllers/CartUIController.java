@@ -49,6 +49,7 @@ public class CartUIController {
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
         cartTable.setItems( itemsInCart );
+        setMouseClickEvents( this.itemsInCart );
     }
 
     public void launchUI(String uiPath) throws IOException {
@@ -72,6 +73,19 @@ public class CartUIController {
         store.itemsToCart.addAll( itemsInCart );
         store.setStoreNameFromCart( storeNameStored );
         store.populateTableWithItems( storeNameStored );
+    }
+
+    public void setMouseClickEvents(ObservableList<Item> itemsList) {
+        for (Item item : itemsList) {
+            item.getDecButton().setOnMouseClicked(event -> {
+                item.decreaseQuantity();
+                cartTable.refresh();
+            });
+            item.getIncButton().setOnMouseClicked(event -> {
+                item.increaseQuantity();
+                cartTable.refresh();
+            });
+        }
     }
 
     public void setStoreName(String storeName)

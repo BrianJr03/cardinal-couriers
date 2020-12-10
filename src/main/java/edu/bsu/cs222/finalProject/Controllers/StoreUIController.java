@@ -100,6 +100,7 @@ public class StoreUIController {
 
     public void sendDataToCart(CartUIController cartUIController) {
         cartUIController.itemsInCart.addAll( itemsToCart );
+        cartUIController.setMouseClickEvents( cartUIController.itemsInCart );
         cartUIController.setStoreName( storeNameLBL.getText() );
     }
 
