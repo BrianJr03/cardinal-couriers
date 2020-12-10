@@ -2,6 +2,7 @@ package edu.bsu.cs222.finalProject.controllers;
 
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
+import edu.bsu.cs222.finalProject.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
+import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
 public class StoreUIController {
 
@@ -63,12 +65,9 @@ public class StoreUIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
         MainUIController mainUIController = loader.getController();
-        sendDataToMain(mainUIController);
         rootPane.getChildren().setAll(root);
+        mainUIController.displayCartClearPrompt();
     }
-
-    public void sendDataToMain(MainUIController mainUIController)
-    { mainUIController.displayPromptFor2secs(mainUIController.cartResetPrompt); }
 
     public void initialize() {
         storeNameLBL.setVisible(true);

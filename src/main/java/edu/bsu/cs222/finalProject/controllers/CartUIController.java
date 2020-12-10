@@ -51,22 +51,22 @@ public class CartUIController {
         rootPane.getChildren().setAll(root);
     }
 
-    private void sendDataToOrderConfirm(OrderConfirmController orderConfirm) {
-        for (Item item : cart.getItems()) {
-            orderConfirm.cart.add(item);
-        }
-        orderConfirm.orderConfirmTable.setItems( cart.getItems() );
-        orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
-        orderConfirm.storeName.setText(storeName);
-        orderConfirm.storeNameStored = storeName;
-    }
-
     public void launchStoreUI() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
         Parent root = loader.load();
         StoreUIController store = loader.getController();
         sendDataToStore( store );
         rootPane.getChildren().setAll( root );
+    }
+
+    private void sendDataToOrderConfirm(OrderConfirmController orderConfirm) {
+        for (Item item : cart.getItems()) {
+            orderConfirm.cart.add(item);
+        }
+        orderConfirm.orderConfirmTable.setItems(cart.getItems());
+        orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
+        orderConfirm.storeName.setText(storeName);
+        orderConfirm.storeNameStored = storeName;
     }
 
     public void sendDataToStore(StoreUIController store) throws IOException {
@@ -76,7 +76,8 @@ public class CartUIController {
     }
 
     public static void setTableProperties(TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
-                                          TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn, TableColumn<Button, Button> incrementColumn) {
+                                          TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn,
+                                          TableColumn<Button, Button> incrementColumn) {
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));

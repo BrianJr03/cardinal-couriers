@@ -1,12 +1,15 @@
 package edu.bsu.cs222.finalProject;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application implements EventHandler<ActionEvent> {
 
@@ -24,4 +27,11 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {}
+
+    public static void displayPromptFor3secs(Label prompt) {
+        prompt.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition( Duration.seconds(3));
+        visiblePause.setOnFinished( event -> prompt.setVisible(false) );
+        visiblePause.play();
+    }
 }

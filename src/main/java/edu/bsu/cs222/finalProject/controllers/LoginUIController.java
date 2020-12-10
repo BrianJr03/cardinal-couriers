@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.controllers;
 
+import edu.bsu.cs222.finalProject.Main;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import java.net.URISyntaxException;
 
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
+import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
 public class LoginUIController
 {
@@ -73,10 +75,7 @@ public class LoginUIController
     }
 
     public void displayInvalidUserInfo_Prompt() {
-        invalidUserInfo_Prompt.setVisible(true);
-        PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
-        visiblePause.setOnFinished(event -> invalidUserInfo_Prompt.setVisible(false));
-        visiblePause.play();
+        displayPromptFor3secs(invalidUserInfo_Prompt);
     }
 
     public String getUsername() {

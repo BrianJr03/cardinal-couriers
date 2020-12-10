@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.controllers;
 
+import edu.bsu.cs222.finalProject.Main;
 import edu.bsu.cs222.finalProject.StoreInfo;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
+
+import static edu.bsu.cs222.finalProject.Main.*;
 
 public class MainUIController {
     @FXML
@@ -31,11 +34,8 @@ public class MainUIController {
         rootPane.getChildren().setAll(root);
     }
 
-    public void displayPromptFor2secs(Label prompt) {
-        prompt.setVisible(true);
-        PauseTransition visiblePause1 = new PauseTransition(Duration.seconds(2));
-        visiblePause1.setOnFinished(event -> prompt.setVisible(false));
-        visiblePause1.play();
+    public void displayCartClearPrompt() {
+        displayPromptFor3secs(cartResetPrompt);
     }
 
     @FXML

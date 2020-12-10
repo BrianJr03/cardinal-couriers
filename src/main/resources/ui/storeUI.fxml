@@ -23,7 +23,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <TableView fx:id="inventoryTable" layoutX="192.0" layoutY="103.0" prefHeight="438.0" prefWidth="487.0">
+        <TableView fx:id="inventoryTable" editable="true" layoutX="192.0" layoutY="103.0" prefHeight="438.0" prefWidth="487.0">
             <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="212.0" text="Item " />
                 <TableColumn fx:id="priceColumn" prefWidth="99.0" text="Price" />

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static edu.bsu.cs222.finalProject.DeliveryMap.*;
+import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
 public class DeliveryUIController {
 
@@ -40,15 +41,8 @@ public class DeliveryUIController {
     public DeliveryInfo deliveryInfo;
 
     public void initialize() {
-        outOfRange_Prompt.setVisible( false );
+        outOfRange_Prompt.setVisible(false);
         invalidDeliveryInfo_Prompt.setVisible( false );
-    }
-
-    public void displayPromptFor2secs(Label prompt) {
-        prompt.setVisible( true );
-        PauseTransition visiblePause = new PauseTransition( Duration.seconds(2));
-        visiblePause.setOnFinished( event -> prompt.setVisible(false) );
-        visiblePause.play();
     }
 
     public void launchUI(String uiPath) throws IOException {
@@ -58,7 +52,7 @@ public class DeliveryUIController {
     }
 
     public void displayInvalidDeliveryInfo_Prompt()
-    { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
+    { displayPromptFor3secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
     { launchUI("/ui/loginUI.fxml"); }
@@ -67,7 +61,7 @@ public class DeliveryUIController {
     { launchUI("/ui/mainUI.fxml"); }
 
     public void displayOutOfRange_Prompt()
-    { displayPromptFor2secs(outOfRange_Prompt); }
+    { displayPromptFor3secs(outOfRange_Prompt); }
 
     public boolean verifyDeliveryInfo() {
         return  (!deliveryInfo.isValidCity(deliveryInfo.getCity())
