@@ -40,12 +40,12 @@ public class CartUIController {
     public void initialize() {
         costInDollars.setVisible(true);
         cartTable.setEditable(true);
-        setTableProperties(cartTable, nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);
+        setTableProperties(nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);
         cartTable.setItems( cart.getItems() );
         setMouseClickEvents( cart.getItems() );
     }
 
-    public static void setTableProperties(TableView<Item> tableView, TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
+    public static void setTableProperties(TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
                                      TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn, TableColumn<Button, Button> incrementColumn) {
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
