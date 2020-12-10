@@ -18,28 +18,35 @@ import javafx.util.Duration;
 import javax.mail.MessagingException;
 import java.io.IOException;
 
+import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
+import static edu.bsu.cs222.finalProject.SendReceipt.sendReceiptAsEmail;
+import static edu.bsu.cs222.finalProject.SendReceipt.sendReceiptAsTextMSG;
+
 public class PostPurchaseController {
 
     @FXML
-    public ComboBox<String> carrierComboBox;
+    private ComboBox<String> carrierComboBox;
     @FXML
     private AnchorPane rootPane;
     @FXML
-    public CheckBox emailCheckBox;
+    private CheckBox emailCheckBox;
     @FXML
-    public CheckBox textCheckBox;
+    private CheckBox textCheckBox;
     @FXML
-    public TextField email;
+    private TextField emailAddress;
     @FXML
-    public TextField txtMSG;
+    private TextField phoneNumber;
     @FXML
-    public Label receiptSent;
+    private Label receiptSent;
 
-    public final Cart cart = new Cart( FXCollections.observableArrayList() );
+    public final Cart cart = new Cart(FXCollections.observableArrayList());
     public final ObservableList<String> carrierOptions = FXCollections.observableArrayList();
 
     public void initialize() {
-        receiptSent.setVisible( false );
+        addCarriersToDropdown();
+    }
+
+    public void addCarriersToDropdown() {
         carrierOptions.add("AT&T");
         carrierOptions.add("Sprint");
         carrierOptions.add("T-Mobile");
@@ -48,41 +55,19 @@ public class PostPurchaseController {
     }
 
     public void sendReceipt() throws MessagingException, IOException {
-        SendReceipt sendReceipt = new SendReceipt();
         if (emailCheckBox.isSelected())
-        { sendReceipt.sendReceiptAsEmail(SendReceipt.isValidEmail(email.getText()), cart );}
+        { sendReceiptAsEmail(SendReceipt.isValidEmail(emailAddress.getText()), cart );}
         if(textCheckBox.isSelected()) {
-            if (carrierComboBox.getSelectionModel().isSelected( 0 ))
-            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "AT&T"); }
-
-            if (carrierComboBox.getSelectionModel().isSelected( 1 ))
-            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Sprint"); }
-
-            if (carrierComboBox.getSelectionModel().isSelected( 2 ))
-            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "T-Mobile"); }
-
-            if (carrierComboBox.getSelectionModel().isSelected( 3 ))
-            { sendReceipt.sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(txtMSG.getText()), cart, "Verizon"); }
+            sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(phoneNumber.getText()), cart, carrierComboBox.getValue());
         }
         displayPromptFor3secs(receiptSent);
-    }
-
-    public void displayPromptFor3secs(Label prompt) {
-        prompt.setVisible(true);
-        PauseTransition visiblePause1 = new PauseTransition(Duration.seconds(3));
-        visiblePause1.setOnFinished( event -> prompt.setVisible(false) );
-        visiblePause1.play();
     }
 
     public void closeProgram()
     { System.exit(0); }
 
     public void launchMainUI() throws IOException
-    { launchUI("/ui/mainUI.fxml"); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+    { FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
-        rootPane.getChildren().setAll(root);
-    }
+        rootPane.getChildren().setAll(root); }
 }

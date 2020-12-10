@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
 
 public class SendReceipt {
 
-    private final LocalDate purchaseDate = DateTime.now().toLocalDate();
+    private static final LocalDate purchaseDate = DateTime.now().toLocalDate();
 
-    public void writeReceipt(Cart cart) throws IOException {
+    public static void writeReceipt(Cart cart) throws IOException {
         int lowerbound = 1225; int upperbound = 2590;
         int orderNumber = (int) (Math.random() * (upperbound - lowerbound + 1) + lowerbound);
         double sum = 0;
@@ -39,7 +39,7 @@ public class SendReceipt {
             writer.close();
     }
 
-    public void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
+    public static void sendReceiptAsEmail(String userEmail, Cart cart) throws MessagingException, IOException {
         writeReceipt(cart);
         Multipart emailContent = new MimeMultipart();
         MimeBodyPart textBodyPart = new MimeBodyPart();
@@ -56,7 +56,7 @@ public class SendReceipt {
         Transport.send(msg);
     }
 
-    public void sendReceiptAsTextMSG(String phoneNumber, Cart cart, String userCarrier) throws MessagingException, IOException {
+    public static void sendReceiptAsTextMSG(String phoneNumber, Cart cart, String userCarrier) throws MessagingException, IOException {
         writeReceipt(cart);
         switch (userCarrier) {
             case "AT&T" -> sendReceiptAsEmail(phoneNumber + "@mms.att.net", cart);
