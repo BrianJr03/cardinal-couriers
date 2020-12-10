@@ -14,6 +14,7 @@ import java.io.IOException;
 import static edu.bsu.cs222.finalProject.Inventory.collectItemsAsArrayList;
 
 public class StoreUIController {
+
     @FXML
     public Label storeNameLBL;
     @FXML

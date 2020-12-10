@@ -19,37 +19,39 @@ import java.io.IOException;
 public class CartUIController {
 
     @FXML
-    public Label cartTotalLabel;
+    private TableColumn<Button, Button> decrementColumn;
     @FXML
-    public Label costInDollars;
+    private TableColumn<Button, Button> incrementColumn;
     @FXML
-    TableColumn< Button, Button> decrementColumn;
+    private TableView<Item> cartTable;
     @FXML
-    TableColumn<Button, Button> incrementColumn;
+    private TableColumn <Item, String> nameColumn;
     @FXML
-    public TableView< Item > cartTable;
+    private TableColumn<Item, Double> priceColumn;
     @FXML
-    TableColumn < Item, String > nameColumn;
-    @FXML
-    TableColumn<Item, Double> priceColumn;
-    @FXML
-    TableColumn<String, String> quantityColumn;
+    private TableColumn<Item, String> quantityColumn;
     @FXML
     private AnchorPane rootPane;
 
+    public Label costInDollars;
     public final Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeNameStored;
 
     public void initialize() {
         costInDollars.setVisible(true);
         cartTable.setEditable(true);
+        setTableProperties(cartTable, nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);
+        cartTable.setItems( cart.getItems() );
+        setMouseClickEvents( cart.getItems() );
+    }
+
+    public static void setTableProperties(TableView<Item> tableView, TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,
+                                     TableColumn<Item, String> quantityColumn, TableColumn<Button, Button> decrementColumn, TableColumn<Button, Button> incrementColumn) {
         nameColumn.setCellValueFactory( new PropertyValueFactory <>( "name" ));
         priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         decrementColumn.setCellValueFactory(new PropertyValueFactory<>("decButton"));
         incrementColumn.setCellValueFactory(new PropertyValueFactory<>("incButton"));
-        cartTable.setItems( cart.getItems() );
-        setMouseClickEvents( cart.getItems() );
     }
 
     public void launchOrderConfirmUI() throws IOException {
