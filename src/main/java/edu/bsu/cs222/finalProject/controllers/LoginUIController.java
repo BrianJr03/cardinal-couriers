@@ -24,8 +24,6 @@ public class LoginUIController
     @FXML
     private AnchorPane rootPane;
     @FXML
-    public Button forgotPassword_Btn;
-    @FXML
     private CheckBox checkBox;
     @FXML
     private ImageView passwordVisibility;
@@ -40,13 +38,10 @@ public class LoginUIController
 
     public void initialize() {
        passwordVisibility.setImage(isNotVisible_PNG);
-       invalidUserInfo_Prompt.setVisible(false);
-       unMaskedPassword.setVisible(false);
     }
 
     final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
     final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
-
     final File isNotVisiblePNG_File = new File("src/main/resources/pngs/isNotVisible.png");
     final Image isNotVisible_PNG = new Image(isNotVisiblePNG_File.toURI().toString());
 
@@ -58,7 +53,7 @@ public class LoginUIController
     public void showUnMaskedPassword() {
         if (checkBox.isSelected()) {
             passwordVisibility.setImage(isVisible_PNG);
-            unMaskedPassword.setText(getPassword());
+            unMaskedPassword.setText(passwordInput.getText());
             unMaskedPassword.setVisible(true); }
         else { passwordVisibility.setImage(isNotVisible_PNG); unMaskedPassword.setVisible(false); }
     }
@@ -69,24 +64,12 @@ public class LoginUIController
     }
 
     public void verifyUserInfo() throws IOException {
-        if (isValidUserName(getUsername()) && isValidPassword(getUsername(), getPassword()))
+        if (isValidUserName(usernameInput.getText()) && isValidPassword(usernameInput.getText(), passwordInput.getText()))
              { launchDeliveryUI(); }
         else { displayInvalidUserInfo_Prompt(); }
     }
 
     public void displayInvalidUserInfo_Prompt() {
         displayPromptFor3secs(invalidUserInfo_Prompt);
-    }
-
-    public String getUsername() {
-        String username;
-        username = usernameInput.getText();
-        return username;
-    }
-
-    public String getPassword() {
-        String password;
-        password = passwordInput.getText();
-        return password;
     }
 }

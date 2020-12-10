@@ -45,12 +45,12 @@
             <Font name="Impact" size="12.0" />
          </font></Button>
       <CheckBox fx:id="checkBox" layoutX="320.0" layoutY="283.0" mnemonicParsing="false" onAction="#showUnMaskedPassword" />
-      <Label fx:id="unMaskedPassword" layoutX="192.0" layoutY="329.0" text="unMaskedPassword" textFill="#a3a3a3">
+      <Label fx:id="unMaskedPassword" layoutX="192.0" layoutY="329.0" text="unMaskedPassword" textFill="#a3a3a3" visible="false">
          <font>
             <Font name="Century Schoolbook" size="14.0" />
          </font></Label>
       <ImageView fx:id="passwordVisibility" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#da0909" />
+      <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#da0909" visible="false" />
    </Pane>
    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
       <Image url="@../pngs/bsu.png" />

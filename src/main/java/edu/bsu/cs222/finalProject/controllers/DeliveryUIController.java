@@ -33,7 +33,6 @@ public class DeliveryUIController {
     @FXML
     private AnchorPane rootPane;
 
-    public Button continueButton;
     private DeliveryInfo deliveryInfo;
 
     public void launchUI(String uiPath) throws IOException {
