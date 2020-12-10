@@ -35,9 +35,8 @@ public class LoginUIController {
 
     public Button forgotPasswordButton;
 
-    public void initialize() {
-       passwordVisibility.setImage(isNotVisible_PNG);
-    }
+    public void initialize()
+    { passwordVisibility.setImage(isNotVisible_PNG); }
 
     final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
     final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
@@ -68,7 +67,6 @@ public class LoginUIController {
         else { displayInvalidUserInfo_Prompt(); }
     }
 
-    public void displayInvalidUserInfo_Prompt() {
-        displayPromptFor3secs(invalidUserInfo_Prompt);
-    }
+    public void displayInvalidUserInfo_Prompt()
+    { displayPromptFor3secs(invalidUserInfo_Prompt); }
 }

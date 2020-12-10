@@ -80,9 +80,7 @@ public class StoreUIController {
     }
 
     public void sendDataToCart(CartUIController cartUIController) {
-        for (Item item : itemsToCart) {
-            cartUIController.cart.add(item);
-        }
+        for (Item item : itemsToCart) { cartUIController.cart.add(item); }
         cartUIController.costInDollars.setText(String.valueOf(cartUIController.cart.getTotalCost()));
         cartUIController.setMouseClickEvents(cartUIController.cart.getItems());
         cartUIController.storeName = storeNameLabel.getText();

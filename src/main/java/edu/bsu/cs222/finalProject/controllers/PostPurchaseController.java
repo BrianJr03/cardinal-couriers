@@ -40,9 +40,8 @@ public class PostPurchaseController {
     public final Cart cart = new Cart(FXCollections.observableArrayList());
     public final ObservableList<String> carrierOptions = FXCollections.observableArrayList();
 
-    public void initialize() {
-        addCarriersToDropdown();
-    }
+    public void initialize()
+    { addCarriersToDropdown(); }
 
     public void addCarriersToDropdown() {
         carrierOptions.add("AT&T");
@@ -64,8 +63,9 @@ public class PostPurchaseController {
     public void closeProgram()
     { System.exit(0); }
 
-    public void launchMainUI() throws IOException
-    { FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
+    public void launchMainUI() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
         Parent root = loader.load();
-        rootPane.getChildren().setAll(root); }
+        rootPane.getChildren().setAll(root);
+    }
 }

@@ -33,7 +33,7 @@ public class DeliveryUIController {
     @FXML
     private AnchorPane rootPane;
 
-    private DeliveryInfo deliveryInfo;
+    private DeliveryInfo deliveryInfo = new DeliveryInfo("","","","");
     public Button continueButton;
     public TextField addressTwo;
 
@@ -57,9 +57,9 @@ public class DeliveryUIController {
 
     public boolean deliveryInfoIsValid() {
         return  (deliveryInfo.isValidCity(deliveryInfo.getCity())
-                || !deliveryInfo.isValidStreet_Address(deliveryInfo.getStreetAddressLine1())
-                || !deliveryInfo.isValidState_Abbreviation(deliveryInfo.getState())
-                || !deliveryInfo.isValidZip(deliveryInfo.getZipCode()));
+                && deliveryInfo.isValidStreet_Address(deliveryInfo.getStreetAddressLine1())
+                && deliveryInfo.isValidState_Abbreviation(deliveryInfo.getState())
+                && deliveryInfo.isValidZip(deliveryInfo.getZipCode()));
     }
 
     public void verifyDeliveryInput() throws IOException, NullPointerException {
