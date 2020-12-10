@@ -11,39 +11,27 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
+import static edu.bsu.cs222.finalProject.controllers.CartUIController.setTableProperties;
+
 public class OrderConfirmController {
-    @FXML
-    public Label cartTotalLabel;
-    @FXML
-    public Label costInDollars;
+
     @FXML
     private AnchorPane rootPane;
     @FXML
-    public Label storeName;
+    private TableColumn< Item, String > nameColumn;
     @FXML
-    public CheckBox checkBox;
+    private TableColumn<Item, Double> priceColumn;
     @FXML
-    public Button confirmCheckout;
-    @FXML
-    public TableView<Item> orderConfirmTable;
-    @FXML
-    TableColumn< Item, String > nameColumn;
-    @FXML
-    TableColumn<Item, Double> priceColumn;
-    @FXML
-    TableColumn<String, String> quantityColumn;
+    private TableColumn<Item, String> quantityColumn;
 
+    public Label storeName;
+    public Label costInDollars;
+    public TableView<Item> orderConfirmTable;
     public final Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeNameStored;
 
     public void initialize() {
-        storeName.setVisible(true);
-        costInDollars.setVisible(true);
-        cartTotalLabel.setVisible(true);
-        orderConfirmTable.setEditable(true);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        setTableProperties(nameColumn, priceColumn, quantityColumn, new TableColumn<>(), new TableColumn<>());
     }
 
     public void launchCartUI() throws IOException {
