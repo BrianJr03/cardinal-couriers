@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import edu.bsu.cs222.finalProject.Cart;
 import edu.bsu.cs222.finalProject.Inventory;
 import edu.bsu.cs222.finalProject.Item;
 import javafx.collections.FXCollections;

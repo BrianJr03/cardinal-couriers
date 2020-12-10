@@ -1,17 +1,20 @@
 package edu.bsu.cs222.finalProject.Controllers;
 
+import edu.bsu.cs222.finalProject.Cart;
+import edu.bsu.cs222.finalProject.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class OrderConfirmController {
     @FXML
-    public Label cartTotal;
+    public Label cartTotalLabel;
     @FXML
     public Label costInDollars;
     @FXML
@@ -22,13 +25,28 @@ public class OrderConfirmController {
     public CheckBox checkBox;
     @FXML
     public Button confirmCheckout;
+    @FXML
+    public TableView<Item> orderConfirmTable;
+    @FXML
+    TableColumn< Item, String > nameColumn;
+    @FXML
+    TableColumn<Item, Double> priceColumn;
+    @FXML
+    TableColumn<String, String> quantityColumn;
 
+    public Cart cart = new Cart(FXCollections.observableArrayList());
     public String storeNameStored;
 
     public void initialize() {
         storeName.setVisible( true );
-        costInDollars.setVisible( false );
-        cartTotal.setVisible( false );
+        costInDollars.setVisible( true );
+        cartTotalLabel.setVisible( true );
+        orderConfirmTable.setEditable(true);
+        nameColumn.setCellValueFactory( new PropertyValueFactory<>( "name" ));
+        priceColumn.setCellValueFactory( new PropertyValueFactory<>( "price" ));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        ObservableList<Item> items = FXCollections.observableArrayList(cart.getItems());
+        orderConfirmTable.setItems(items);
     }
 
     public void launchCartUI() throws IOException {
