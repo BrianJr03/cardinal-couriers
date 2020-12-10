@@ -39,7 +39,7 @@ public class CartUIController {
 
     public Cart cart = new Cart(FXCollections.observableArrayList());
 
-    private String storeNameStored;
+    public String storeNameStored;
 
     public void initialize() {
         costInDollars.setVisible(true);
@@ -68,6 +68,7 @@ public class CartUIController {
         orderConfirm.orderConfirmTable.setItems( cart.getItems() );
         orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
         orderConfirm.storeName.setText(storeNameStored);
+        orderConfirm.storeNameStored = storeNameStored;
     }
 
     public void launchStoreUI() throws IOException{

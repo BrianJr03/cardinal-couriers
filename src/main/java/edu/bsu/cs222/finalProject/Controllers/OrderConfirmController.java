@@ -57,6 +57,8 @@ public class OrderConfirmController {
 
     public void sendDataToCart(CartUIController cartUIController) {
         cartUIController.cart.setCartItems(this.cart.getItems());
+        cartUIController.storeNameStored = this.storeName.getText();
+        cartUIController.costInDollars.setText(String.valueOf(this.cart.getTotalCost()));
         cartUIController.initialize();
         cartUIController.setStoreName( storeNameStored ); }
 
