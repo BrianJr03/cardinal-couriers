@@ -13,8 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static edu.bsu.cs222.finalProject.DeliveryMap.*;
 
@@ -22,17 +20,14 @@ public class DeliveryUIController {
 
     @FXML
     public TextField addressOne;
-
     @FXML
     public TextField addressTwo;
-
     @FXML
     public TextField zipCode;
     @FXML
     public TextField state;
     @FXML
     public TextField city;
-
     @FXML
     private Label outOfRange_Prompt;
     @FXML
@@ -42,7 +37,7 @@ public class DeliveryUIController {
     @FXML
     private AnchorPane rootPane;
 
-    DeliveryInfo deliveryInfo;
+    private DeliveryInfo deliveryInfo;
 
     public void initialize() {
         outOfRange_Prompt.setVisible( false );
@@ -62,63 +57,43 @@ public class DeliveryUIController {
         rootPane.getChildren().setAll( root );
     }
 
-    public boolean isValidZip( String zipCode ) {
-        Pattern pattern = Pattern.compile("\\d{5}");
-        Matcher matcher = pattern.matcher(zipCode);
-        return (matcher.find() && matcher.group().equals(zipCode));
-    }
-
-    public boolean isValidCity(String city) {
-        Pattern pattern = Pattern.compile("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$");
-        Matcher matcher = pattern.matcher(city);
-        if ( city.length() < 3 ) {return false;}
-        return (matcher.find() && matcher.group().equals(city));
-    }
-
-    public boolean isValidState_Abbreviation(String state) {
-        Pattern pattern = Pattern.compile("^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|" +
-                "N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$");
-        Matcher matcher = pattern.matcher(state);
-        return (matcher.find() && matcher.group().equals(state));
-    }
-
-    public boolean isValidStreet_Address(String streetAddress) {
-        Pattern pattern = Pattern.compile("^\\d+?[A-Za-z]*\\s\\w*\\s?\\w+?\\s\\w{2}\\w*\\s*\\w*$");
-        Matcher matcher = pattern.matcher(streetAddress);
-        return (matcher.find() && matcher.group().equals(streetAddress));
-    }
-
     public void displayInvalidDeliveryInfo_Prompt()
     { displayPromptFor2secs(invalidDeliveryInfo_Prompt); }
 
     public void launchLoginUI() throws IOException
     { launchUI( "/ui/loginUI.fxml" ); }
 
-    public void launchMainUI() throws IOException {
-        launchUI( "/ui/mainUI.fxml" );
-    }
+    public void launchMainUI() throws IOException
+    { launchUI( "/ui/mainUI.fxml" ); }
 
     public void displayOutOfRange_Prompt()
     { displayPromptFor2secs(outOfRange_Prompt); }
 
+    public boolean verifyDeliveryInfo() {
+        return  ( !deliveryInfo.isValidCity( deliveryInfo.getCity() )
+                || !deliveryInfo.isValidStreet_Address( deliveryInfo.getStreetAddressLine1() )
+                || !deliveryInfo.isValidState_Abbreviation( deliveryInfo.getState() )
+                || !deliveryInfo.isValidZip( deliveryInfo.getZipCode() ) );
+    }
+
     public void verifyDeliveryInput() throws IOException, NullPointerException {
         deliveryInfo = new DeliveryInfo( addressOne.getText(), addressTwo.getText(), zipCode.getText(),
                 state.getText(), city.getText() );
-        if (            !isValidCity( deliveryInfo.getCity() )
-                        || !isValidStreet_Address( deliveryInfo.getStreetAddressLine1() )
-                        || !isValidState_Abbreviation( deliveryInfo.getState() )
-                        || !isValidZip( deliveryInfo.getZipCode() ) )
-        { displayInvalidDeliveryInfo_Prompt(); }
+        if (verifyDeliveryInfo())
+            { displayInvalidDeliveryInfo_Prompt(); }
+        else
+            { verifyDistance();}
+    }
 
-        else{
-            JsonObject mapsData = collectJsonObjectFromGoogle(deliveryInfo.getStreetAddressLine1(),deliveryInfo.getCity(),
-                    deliveryInfo.getState());
-            if (findDistanceFromBSU(mapsData) == null) {
-                displayInvalidDeliveryInfo_Prompt();
-            } else if (Objects.requireNonNull(findDistanceFromBSU(mapsData)).floatValue() > 10) {
-                displayOutOfRange_Prompt();
-            } else {
-                launchMainUI();
-            }}
+    public void verifyDistance() throws IOException {
+        JsonObject mapsData = collectJsonObjectFromGoogle(deliveryInfo.getStreetAddressLine1(),deliveryInfo.getCity(),
+                deliveryInfo.getState());
+        if (findDistanceFromBSU(mapsData) == null) {
+            displayInvalidDeliveryInfo_Prompt();
+        } else if (Objects.requireNonNull(findDistanceFromBSU(mapsData)).floatValue() > 10) {
+            displayOutOfRange_Prompt();
+        } else {
+            launchMainUI();
+        }
     }
 }
