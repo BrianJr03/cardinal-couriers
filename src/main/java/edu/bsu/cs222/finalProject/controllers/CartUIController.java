@@ -35,14 +35,12 @@ public class CartUIController {
 
     public Label costInDollars;
     public final Cart cart = new Cart(FXCollections.observableArrayList());
-    public String storeNameStored;
+    public String storeName;
 
     public void initialize() {
-        costInDollars.setVisible(true);
-        cartTable.setEditable(true);
         setTableProperties(nameColumn, priceColumn, quantityColumn, decrementColumn, incrementColumn);
-        cartTable.setItems( cart.getItems() );
-        setMouseClickEvents( cart.getItems() );
+        cartTable.setItems(cart.getItems());
+        setMouseClickEvents(cart.getItems());
     }
 
     public void launchOrderConfirmUI() throws IOException {
@@ -59,8 +57,8 @@ public class CartUIController {
         }
         orderConfirm.orderConfirmTable.setItems( cart.getItems() );
         orderConfirm.costInDollars.setText(String.valueOf(orderConfirm.cart.getTotalCost()));
-        orderConfirm.storeName.setText(storeNameStored);
-        orderConfirm.storeNameStored = storeNameStored;
+        orderConfirm.storeName.setText(storeName);
+        orderConfirm.storeNameStored = storeName;
     }
 
     public void launchStoreUI() throws IOException{
@@ -73,8 +71,8 @@ public class CartUIController {
 
     public void sendDataToStore(StoreUIController store) throws IOException {
         store.itemsToCart.addAll( cart.getItems() );
-        store.setStoreNameFromCart( storeNameStored );
-        store.populateTableWithItems( storeNameStored );
+        store.setStoreNameFromCart(storeName);
+        store.populateTableWithItems(storeName);
     }
 
     public static void setTableProperties(TableColumn<Item, String> nameColumn, TableColumn<Item, Double> priceColumn,

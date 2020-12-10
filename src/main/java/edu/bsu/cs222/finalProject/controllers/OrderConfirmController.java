@@ -56,10 +56,10 @@ public class OrderConfirmController {
 
     public void sendDataToCart(CartUIController cartUIController) {
         cartUIController.cart.setCartItems(this.cart.getItems());
-        cartUIController.storeNameStored = this.storeName.getText();
+        cartUIController.storeName = this.storeName.getText();
         cartUIController.costInDollars.setText(String.valueOf(this.cart.getTotalCost()));
         cartUIController.initialize();
-        cartUIController.storeNameStored = storeNameStored; }
+        cartUIController.storeName = storeNameStored; }
 
     public void launchPostPurchaseUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/postPurchaseUI.fxml"));
