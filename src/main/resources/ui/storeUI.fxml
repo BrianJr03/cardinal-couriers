@@ -44,5 +44,10 @@
                 <Image url="@../pngs/groceries200x200.png" />
             </ImageView>
         </Pane>
+      <Label fx:id="itemsAddedToCart_Label" layoutX="372.0" layoutY="565.0" prefHeight="25.0" prefWidth="127.0" text="Item(s) added to cart." textFill="#08aa51">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
     </Pane>
 </AnchorPane>
