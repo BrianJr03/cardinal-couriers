@@ -71,11 +71,11 @@ public class StoreUIController {
     }
 
     public void launchMainUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource( "/ui/chooseStoreUI.fxml" ));
         Parent root = loader.load();
-        MainUIController mainUIController = loader.getController();
+        ChooseStoreUIController chooseStoreUIController = loader.getController();
         rootPane.getChildren().setAll(root);
-        mainUIController.displayCartClearPrompt();
+        chooseStoreUIController.displayCartClearPrompt();
     }
 
     public void launchCartUI() throws IOException {

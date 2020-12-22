@@ -32,22 +32,16 @@ public class Item {
 
     public int getQuantity() { return quantity; }
 
-    public Button getDecButton() {
-        return decButton;
-    }
+    public Button getDecButton() { return decButton; }
 
-    public Button getIncButton() {
-        return incButton;
-    }
+    public Button getIncButton() { return incButton; }
 
-    public void increaseQuantity() {
-        this.quantity += 1;
-    }
+    public void increaseQuantity() { this.quantity += 1; }
 
     public void decreaseQuantity() {
         this.quantity -= 1;
-        if (quantity < 0) {
-            quantity = 0; }
+        if (quantity < 0)
+        { quantity = 0; }
     }
 
     public void setQuantity(int i)

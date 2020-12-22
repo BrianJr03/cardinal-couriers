@@ -32,9 +32,8 @@ public class OrderConfirmController {
     public CheckBox checkBox;
     public Label cartTotalLabel;
 
-    public void initialize() {
-        setTableProperties(nameColumn, priceColumn, quantityColumn, new TableColumn<>(), new TableColumn<>());
-    }
+    public void initialize()
+    { setTableProperties(nameColumn, priceColumn, quantityColumn, new TableColumn<>(), new TableColumn<>()); }
 
     public void launchCartUI() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/cart.fxml"));

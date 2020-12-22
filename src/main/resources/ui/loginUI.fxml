@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.LoginUIController">
-   <VBox alignment="CENTER" onMouseClicked="#openSiteToChangePassword" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+   <VBox alignment="CENTER" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <Pane prefHeight="631.0" prefWidth="270.0">
          <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../pngs/groceries200x200.png" />
@@ -25,7 +25,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label alignment="BOTTOM_LEFT" layoutX="127.0" layoutY="122.0" text="Sign in with your BSU info to continue" textFill="#a3a3a3" wrapText="true" />
+      <Label alignment="BOTTOM_LEFT" layoutX="112.0" layoutY="122.0" text="Sign in with your BSU or CC info to continue" textFill="#a3a3a3" wrapText="true" />
       <Button layoutX="145.0" layoutY="379.0" mnemonicParsing="false" onAction="#verifyUserInfo" prefHeight="38.0" prefWidth="167.0" styleClass="loginBtn" text="Login" underline="true">
          <font>
             <Font name="Impact" size="12.0" />
@@ -45,25 +45,26 @@
             <Font name="Impact" size="12.0" />
          </font></Button>
       <CheckBox fx:id="checkBox" layoutX="320.0" layoutY="283.0" mnemonicParsing="false" onAction="#showUnMaskedPassword" />
-      <Label fx:id="unMaskedPassword" layoutX="192.0" layoutY="329.0" text="unMaskedPassword" textFill="#a3a3a3" visible="false">
+      <Label fx:id="unMaskedPassword_Label" layoutX="155.0" layoutY="329.0" prefHeight="18.0" prefWidth="167.0" textFill="#a3a3a3" visible="false">
          <font>
             <Font name="Century Schoolbook" size="14.0" />
          </font></Label>
-      <ImageView fx:id="passwordVisibility" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="passwordVisibility_ImageView" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#da0909" visible="false" />
+      <Label layoutX="143.0" layoutY="339.0" prefHeight="17.0" prefWidth="167.0" textFill="#a3a3a3" />
    </Pane>
-   <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="569.0">
+   <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../pngs/insta.png" />
+   </ImageView>
+   <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../pngs/bsu.png" />
    </ImageView>
-   <Label layoutX="450.0" layoutY="575.0" prefHeight="38.0" prefWidth="120.0" text="\@BSUGrocery_Shop">
+   <Label layoutX="446.0" layoutY="546.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
       <font>
-         <Font name="High Tower Text" size="12.0" />
+         <Font name="High Tower Text" size="13.0" />
       </font>
       <padding>
          <Insets left="5.0" top="20.0" />
       </padding>
    </Label>
-   <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="435.0" layoutY="598.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../pngs/insta.png" />
-   </ImageView>
 </AnchorPane>

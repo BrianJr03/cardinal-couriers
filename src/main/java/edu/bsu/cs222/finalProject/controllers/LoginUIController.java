@@ -23,9 +23,9 @@ public class LoginUIController {
     @FXML
     private CheckBox checkBox;
     @FXML
-    private ImageView passwordVisibility;
+    private ImageView passwordVisibility_ImageView;
     @FXML
-    private Label unMaskedPassword;
+    private Label unMaskedPassword_Label;
     @FXML
     public Label invalidUserInfo_Prompt;
     @FXML
@@ -36,7 +36,7 @@ public class LoginUIController {
     public Button forgotPasswordButton;
 
     public void initialize()
-    { passwordVisibility.setImage(isNotVisible_PNG); }
+    { passwordVisibility_ImageView.setImage(isNotVisible_PNG); }
 
     final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
     final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
@@ -50,10 +50,10 @@ public class LoginUIController {
 
     public void showUnMaskedPassword() {
         if (checkBox.isSelected()) {
-            passwordVisibility.setImage(isVisible_PNG);
-            unMaskedPassword.setText(passwordInput.getText());
-            unMaskedPassword.setVisible(true); }
-        else { passwordVisibility.setImage(isNotVisible_PNG); unMaskedPassword.setVisible(false); }
+            passwordVisibility_ImageView.setImage(isVisible_PNG);
+            unMaskedPassword_Label.setText(passwordInput.getText());
+            unMaskedPassword_Label.setVisible(true); }
+        else { passwordVisibility_ImageView.setImage(isNotVisible_PNG); unMaskedPassword_Label.setVisible(false); }
     }
 
     public void openSiteToChangePassword() throws URISyntaxException, IOException {

@@ -1,65 +1,69 @@
 package edu.bsu.cs222.finalProject.controllers;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import static edu.bsu.cs222.finalProject.Main.*;
-
-public class MainUIController {
+public class MainUIController implements Initializable {
 
     @FXML
-    private Label cartResetPrompt;
+    private VBox vBox;
     @FXML
-    private AnchorPane rootPane;
+    private Parent fxml;
 
-    private String storeName;
-
-    public void initialize()
-    { cartResetPrompt.setVisible( false ); }
-
-    public void launchDeliveryUI() throws IOException
-    { launchUI( "/ui/deliveryUI.fxml" ); }
-
-    public void launchUI(String uiPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
-        Parent root = loader.load();
-        rootPane.getChildren().setAll(root);
+    @Override
+    public void initialize( URL location , ResourceBundle resources ) {
+        TranslateTransition transition = new TranslateTransition( Duration.seconds( 1 ), vBox);
+        transition.setToX( vBox.getLayoutX() * 20 );
+        transition.play();
+        transition.setOnFinished( (e) -> {
+            try {
+                fxml = FXMLLoader.load( getClass().getResource( "/ui/loginUI.fxml" ));
+                vBox.getChildren().removeAll();
+                vBox.getChildren().setAll( fxml );
+            }
+            catch ( IOException ignored ) {}
+        } );
     }
 
-    public void displayCartClearPrompt() {
-        displayPromptFor3secs(cartResetPrompt);
+    @FXML
+    private void launchSignIn() {
+        TranslateTransition transition = new TranslateTransition( Duration.seconds( 1 ), vBox);
+        transition.setToX( vBox.getLayoutX() * 20 );
+        transition.play();
+        transition.setOnFinished( (e) -> {
+            try {
+                fxml = FXMLLoader.load( getClass().getResource( "/ui/loginUI.fxml" ));
+                vBox.getChildren().removeAll();
+                vBox.getChildren().setAll( fxml );
+            }
+            catch ( IOException ignored ) {}
+        } );
     }
 
-    public void launchStoreUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/storeUI.fxml"));
-        Parent root = loader.load();
-        StoreUIController storeUIController = loader.getController();
-        sendDataToStore(storeUIController);
-        rootPane.getChildren().setAll(root);
+    @FXML
+    private void launchSignUp() {
+        TranslateTransition transition = new TranslateTransition( Duration.seconds( 1 ), vBox);
+        transition.setToX(0);
+        transition.play();
+        transition.setOnFinished( (e) -> {
+            try {
+                fxml = FXMLLoader.load( getClass().getResource( "/ui/signupUI.fxml" ));
+                vBox.getChildren().removeAll();
+                vBox.getChildren().setAll( fxml );
+            }
+            catch ( IOException ignored ) {}
+        } );
     }
 
-    public void sendDataToStore(StoreUIController storeUIController) throws IOException {
-        storeUIController.storeNameLabel.setText(storeName);
-        storeUIController.populateTableWithItems(storeName);
-    }
-
-    public void setWalmartLaunch() throws IOException {
-        storeName = "Walmart";
-        launchStoreUI();
-    }
-
-    public void setKrogerLaunch() throws IOException {
-        storeName = "Kroger";
-        launchStoreUI();
-    }
-
-    public void setALDILaunch() throws IOException {
-        storeName = "ALDI";
-        launchStoreUI();
-    }
+    public void closeProgram()
+    { System.exit(0); }
 }

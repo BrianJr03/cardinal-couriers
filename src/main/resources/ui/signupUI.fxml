@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.SignUpUIController">
+    <VBox alignment="CENTER" prefHeight="619.0" prefWidth="270.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+        <Pane prefHeight="631.0" prefWidth="270.0">
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../pngs/groceries200x200.png" />
+            </ImageView>
+            <Label layoutX="58.0" layoutY="192.0" prefHeight="28.0" prefWidth="155.0" text="Cardinal Couriers">
+                <font>
+                    <Font name="Century Schoolbook Italic" size="18.0" />
+                </font>
+            </Label>
+        </Pane>
+    </VBox>
+    <Pane layoutX="270.0" layoutY="-2.0" prefHeight="556.0" prefWidth="456.0" styleClass="parent" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+        <Label alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="86.0" text="Welcome" textFill="DARKORCHID">
+            <font>
+                <Font name="Impact" size="24.0" />
+            </font>
+        </Label>
+        <Label alignment="BOTTOM_LEFT" layoutX="118.0" layoutY="123.0" text="Create a Cardinal Couriers account below" textFill="#a3a3a3" wrapText="true" />
+        <Button layoutX="145.0" layoutY="379.0" mnemonicParsing="false" onAction="#verifyUserInfo" prefHeight="38.0" prefWidth="167.0" styleClass="loginBtn" text="Create Account" underline="true">
+            <font>
+                <Font name="Impact" size="12.0" />
+            </font>
+        </Button>
+        <PasswordField fx:id="passwordInput1" layoutX="132.0" layoutY="278.0" prefHeight="25.0" prefWidth="167.0" promptText="password">
+            <font>
+                <Font name="Century Schoolbook" size="13.0" />
+            </font>
+        </PasswordField>
+        <PasswordField fx:id="passwordInput2" layoutX="132.0" layoutY="317.0" prefHeight="25.0" prefWidth="167.0" promptText="confirm password">
+            <font>
+                <Font name="Century Schoolbook" size="13.0" />
+            </font>
+        </PasswordField>
+        <TextField fx:id="usernameInput" layoutX="132.0" layoutY="238.0" promptText="username">
+            <font>
+                <Font name="Century Schoolbook" size="12.0" />
+            </font></TextField>
+        <CheckBox fx:id="checkBox1" layoutX="320.0" layoutY="283.0" mnemonicParsing="false" onAction="#showUnMaskedPassword_Field1" />
+        <ImageView fx:id="passwordVisibility_ImageView1" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/isNotVisible.png" />
+        </ImageView>
+        <CheckBox fx:id="checkBox2" layoutX="320.0" layoutY="321.0" mnemonicParsing="false" onAction="#showUnMaskedPassword_Field2" />
+        <ImageView fx:id="passwordVisibility_ImageView2" fitHeight="16.0" fitWidth="16.0" layoutX="344.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/isNotVisible.png" />
+        </ImageView>
+      <Label fx:id="unMaskedPassword_Label" layoutX="145.0" layoutY="350.0" prefHeight="17.0" prefWidth="167.0" textFill="#a3a3a3" />
+      <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="474.0" text="Invalid username or password" textFill="#da0909" />
+    </Pane>
+    <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../pngs/insta.png" />
+    </ImageView>
+    <ImageView id="test" fitHeight="50.0" fitWidth="50.0" layoutX="676.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../pngs/bsu.png" />
+    </ImageView>
+    <Label layoutX="446.0" layoutY="546.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
+        <font>
+            <Font name="High Tower Text" size="13.0" />
+        </font>
+        <padding>
+            <Insets left="5.0" top="20.0" />
+        </padding>
+    </Label>
+</AnchorPane>

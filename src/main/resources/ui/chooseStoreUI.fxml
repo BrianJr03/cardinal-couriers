@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.ChooseStoreUIController">
+    <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="623.0" prefWidth="739.0" styleClass="parent">
+        <Button layoutX="187.0" layoutY="248.0" mnemonicParsing="false" onAction="#setWalmartLaunch" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Walmart">
+           <font>
+               <Font name="Impact" size="12.0" />
+           </font>
+        </Button>
+        <Button layoutX="386.0" layoutY="248.0" mnemonicParsing="false" onAction="#setKrogerLaunch" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Kroger">
+           <font>
+               <Font name="Impact" size="12.0" />
+           </font>
+        </Button>
+        <Button layoutX="596.0" layoutY="248.0" mnemonicParsing="false" onAction="#setALDILaunch" prefHeight="35.0" prefWidth="97.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="ALDI">
+           <font>
+               <Font name="Impact" size="12.0" />
+           </font>
+        </Button>
+        <Label layoutX="249.0" layoutY="122.0" text="Please choose a store to shop from" textFill="DARKORCHID">
+           <font>
+               <Font size="24.0" />
+           </font>
+        </Label>
+        <Label layoutX="254.0" layoutY="33.0" onMouseClicked="#launchDeliveryUI" text="Delivery Address" textFill="DARKORCHID">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="235.0" layoutY="37.0" onMouseClicked="#launchDeliveryUI" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/left.png" />
+        </ImageView>
+      <Label fx:id="cartResetPrompt" layoutX="358.0" layoutY="377.0" text="Your cart has been reset." textFill="#0c8404">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+    </Pane>
+    <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
+        <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../pngs/groceries200x200.png" />
+        </ImageView>
+    </Pane>
+</AnchorPane>

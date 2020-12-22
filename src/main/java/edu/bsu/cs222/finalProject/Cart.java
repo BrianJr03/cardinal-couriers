@@ -27,9 +27,8 @@ public class Cart {
 
     public double getTotalCost() {
         totalCost = 0;
-        for (Item item : cartItems) {
-            totalCost += item.getPrice() * item.getQuantity();
-        }
+        for (Item item : cartItems)
+        { totalCost += item.getPrice() * item.getQuantity(); }
         return Math.round(totalCost * 100.00) / 100.00; }
 
     public void setCartItems(ObservableList<Item> itemsList)

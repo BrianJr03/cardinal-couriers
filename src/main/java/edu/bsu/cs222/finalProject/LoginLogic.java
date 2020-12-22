@@ -16,8 +16,7 @@ public class LoginLogic {
         Pattern pattern = Pattern.compile("([$&+,:;=?@#|'<>.^*()%!-]?+[a-zA-Z]+([+-]?[0-9]+)?+" +
                 "[$&+,:;=?@#|'<>.^*()%!-]?)");
         Matcher matcher = pattern.matcher(password);
-        if (password.length() < 8 || password.contains(username) )
-        {return false;}
+        if (password.length() < 8 || password.contains(username) ) {return false;}
         return (matcher.find() && matcher.group().equals(password));
     }
 }

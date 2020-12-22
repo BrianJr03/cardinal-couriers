@@ -47,7 +47,7 @@ public class DeliveryUIController {
     { launchUI("/ui/loginUI.fxml"); }
 
     public void launchMainUI() throws IOException
-    { launchUI("/ui/mainUI.fxml"); }
+    { launchUI( "/ui/chooseStoreUI.fxml" ); }
 
     public void displayInvalidDeliveryInfo_Prompt()
     { displayPromptFor3secs(invalidDeliveryInfo_Prompt); }

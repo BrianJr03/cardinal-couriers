@@ -1,11 +1,24 @@
-Receipt for order 2538N
+Receipt for order 2503N
 ---------------------------------------
-Chicken Noodle Soup | 3.59 | QTY:5
-Frozen Burgers | 4.79 | QTY:4
-Burrito | 0.99 | QTY:3
+Apple | 1.69 | QTY:12
+Orange | 1.69 | QTY:5
+Bottled Water | 1.89 | QTY:5
+Ramen Noodles | 0.99 | QTY:1
+Mac and Cheese | 1.75 | QTY:10
+Frozen Pizza | 2.99 | QTY:5
+Hand Sanitizer | 1.09 | QTY:4
+Paper Plates | 1.99 | QTY:7
+Popcorn | 1.49 | QTY:11
+French Toast Sticks | 1.99 | QTY:11
+Cleaning Spray Plus | 3.79 | QTY:35
+6 PK Vanilla Pudding | 3.29 | QTY:13
+Jumbo Shrimp | 4.29 | QTY:10
+Orange Juice | 1.39 | QTY:29
+6 PK Vanilla Coffee | 3.59 | QTY:13
+Taco Sauce Supreme | 2.29 | QTY:32
 
-Total: $40.08
-Date purchased: 2020-12-10
+Total: $506.77
+Date purchased: 2020-12-18
 ---------------------------------------------
 
 Thanks for shopping with us!

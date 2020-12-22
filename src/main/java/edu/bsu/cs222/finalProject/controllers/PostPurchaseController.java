@@ -54,9 +54,8 @@ public class PostPurchaseController {
     public void sendReceipt() throws MessagingException, IOException {
         if (emailCheckBox.isSelected())
         { sendReceiptAsEmail(SendReceipt.isValidEmail(emailAddress.getText()), cart );}
-        if(textCheckBox.isSelected()) {
-            sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(phoneNumber.getText()), cart, carrierComboBox.getValue());
-        }
+        if(textCheckBox.isSelected())
+        { sendReceiptAsTextMSG(SendReceipt.isValidPhoneNumber(phoneNumber.getText()), cart, carrierComboBox.getValue()); }
         displayPromptFor3secs(receiptSent);
     }
 
@@ -64,7 +63,7 @@ public class PostPurchaseController {
     { System.exit(0); }
 
     public void launchMainUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/mainUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource( "/ui/chooseStoreUI.fxml" ));
         Parent root = loader.load();
         rootPane.getChildren().setAll(root);
     }
