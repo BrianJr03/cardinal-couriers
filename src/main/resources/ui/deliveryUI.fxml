@@ -23,11 +23,12 @@
       <Label fx:id="invalidDeliveryInfo_Prompt" layoutX="333.0" layoutY="392.0" text="Please fill each required field correctly. " textFill="#da0909" visible="false" />
       <TextField fx:id="city" layoutX="272.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" promptText="City (required)" />
       <TextField fx:id="state" layoutX="464.0" layoutY="299.0" prefHeight="26.0" prefWidth="139.0" promptText="State Abbrev. (required)" />
+      <Button layoutX="676.0" layoutY="553.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Button>
    </Pane>
-   <Button layoutX="665.0" layoutY="580.0" mnemonicParsing="false" onAction="#launchLoginUI" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Logout">
-      <font>
-         <Font name="Impact" size="12.0" />
-      </font></Button>
    <Pane layoutX="-5.0" prefHeight="622.0" prefWidth="139.0" styleClass="sidebar" stylesheets="@../stylesheets/loginUI_stylesheet.css">
       <ImageView fitHeight="128.0" fitWidth="115.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../pngs/groceries200x200.png" />

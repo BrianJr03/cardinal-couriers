@@ -33,7 +33,7 @@
             </columns>
         </TableView>
         <Label layoutX="657.0" layoutY="88.0" onMouseClicked="#launchCartUI" text="Cart" textFill="DARKORCHID" />
-        <Button layoutX="584.0" layoutY="565.0" mnemonicParsing="false" onAction="#addItemToCart" prefHeight="25.0" prefWidth="95.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Add to Cart">
+        <Button layoutX="584.0" layoutY="552.0" mnemonicParsing="false" onAction="#addItemToCart" prefHeight="25.0" prefWidth="95.0" styleClass="logoutBtn" stylesheets="@../stylesheets/mainUI_stylesheet.css" text="Add to Cart">
             <font>
                 <Font name="Impact" size="12.0" />
             </font>
@@ -44,7 +44,7 @@
                 <Image url="@../pngs/groceries200x200.png" />
             </ImageView>
         </Pane>
-      <Label fx:id="itemsAddedToCart_Label" layoutX="372.0" layoutY="565.0" prefHeight="25.0" prefWidth="127.0" text="Item(s) added to cart." textFill="#08aa51">
+      <Label fx:id="itemsAddedToCart_Label" layoutX="372.0" layoutY="552.0" prefHeight="25.0" prefWidth="127.0" text="Item(s) added to cart." textFill="#08aa51">
          <font>
             <Font size="13.0" />
          </font>
