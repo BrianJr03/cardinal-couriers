@@ -33,5 +33,9 @@
          </font>
       </Label>
       <Label fx:id="signUpToday_Label" layoutX="192.0" layoutY="137.0" text="Sign Up Today!" textFill="WHITE" />
+      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1166.0" layoutY="482.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../pngs/bsu.png"/>
+      </ImageView>
    </Pane>
 </AnchorPane>

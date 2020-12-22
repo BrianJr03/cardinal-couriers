@@ -1,6 +1,5 @@
 package edu.bsu.cs222.finalProject.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
@@ -10,40 +9,51 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.File;
 import java.io.IOException;
-
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidUserName;
 import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
-
 public class SignUpUIController {
 
-    public AnchorPane rootPane;
-    public TextField usernameInput;
-    public CheckBox checkBox1;
-    public Label unMaskedPassword_Label;
-    public ImageView passwordVisibility_ImageView1;
-    public Label invalidUserInfo_Prompt;
-    public CheckBox checkBox2;
-    public ImageView passwordVisibility_ImageView2;
+    @FXML
+    private AnchorPane rootPane;
+    @FXML
+    private TextField usernameInput;
+    @FXML
+    private CheckBox checkBox1;
+    @FXML
+    private Label unMaskedPassword_Label;
+    @FXML
+    private ImageView passwordVisibility_ImageView1;
+    @FXML
+    private Label invalidUserInfo_Prompt;
+    @FXML
+    private CheckBox checkBox2;
+    @FXML
+    private ImageView passwordVisibility_ImageView2;
+    public Label username_Label;
+    public Label password_Label;
+    public Label hasMinReq_Label;
+    public Label usernameReq_Label;
+    public Label charAndNumReq_Label;
+    public Label notContainUserReq_Label;
     @FXML
     private PasswordField passwordInput1;
     @FXML
     private PasswordField passwordInput2;
+
+    final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
+    final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
+    final File isNotVisiblePNG_File = new File("src/main/resources/pngs/isNotVisible.png");
+    final Image isNotVisible_PNG = new Image(isNotVisiblePNG_File.toURI().toString());
 
     public void initialize() {
         passwordVisibility_ImageView1.setImage(isNotVisible_PNG);
         passwordVisibility_ImageView2.setImage( isNotVisible_PNG );
         invalidUserInfo_Prompt.setVisible( false );
     }
-
-    final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
-    final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
-    final File isNotVisiblePNG_File = new File("src/main/resources/pngs/isNotVisible.png");
-    final Image isNotVisible_PNG = new Image(isNotVisiblePNG_File.toURI().toString());
 
     public void showUnMaskedPassword_Field1() {
         if (checkBox1.isSelected()) {
@@ -66,8 +76,7 @@ public class SignUpUIController {
         rootPane.getChildren().setAll(pane);
     }
 
-    public void verifyUserInfo() throws IOException
-    {
+    public void verifyUserInfo() throws IOException {
         if (isValidUserName(usernameInput.getText()) && isValidPassword(usernameInput.getText(),
                 passwordInput1.getText()) && passwordInput1.getText().equals( passwordInput2.getText() ))
         { launchDeliveryUI(); }
