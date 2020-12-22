@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import java.io.File;
 import java.io.IOException;
 import static edu.bsu.cs222.finalProject.LoginLogic.isValidPassword;
@@ -17,6 +18,8 @@ import static edu.bsu.cs222.finalProject.Main.displayPromptFor3secs;
 
 public class SignUpUIController {
 
+    @FXML
+    public Label pwFieldsMustMatch_Label;
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -33,16 +36,23 @@ public class SignUpUIController {
     private CheckBox checkBox2;
     @FXML
     private ImageView passwordVisibility_ImageView2;
-    public Label username_Label;
-    public Label password_Label;
-    public Label hasMinReq_Label;
-    public Label usernameReq_Label;
-    public Label charAndNumReq_Label;
-    public Label notContainUserReq_Label;
+    @FXML
+    private Label username_Label;
+    @FXML
+    private Label password_Label;
+    @FXML
+    private Label hasMinReq_Label;
+    @FXML
+    private Label usernameReq_Label;
+    @FXML
+    private Label notContainUserReq_Label;
     @FXML
     private PasswordField passwordInput1;
     @FXML
     private PasswordField passwordInput2;
+
+    String gray = "#a3a3a3";
+    String green = "#08aa51";
 
     final File isVisiblePNG_File = new File("src/main/resources/pngs/isVisible.png");
     final Image isVisible_PNG = new Image(isVisiblePNG_File.toURI().toString());
@@ -83,6 +93,47 @@ public class SignUpUIController {
         else { displayInvalidUserInfo_Prompt(); }
     }
 
-    private void displayInvalidUserInfo_Prompt( )
+    private void displayInvalidUserInfo_Prompt()
     { displayPromptFor3secs( invalidUserInfo_Prompt ); }
+
+    public boolean verifyUserNameLength()
+    { return usernameInput.getText().length() >= 5; }
+
+    public void verifyUserInput() {
+       if (verifyUserNameLength()) {
+           username_Label.setTextFill(Color.web(green));
+           usernameReq_Label.setTextFill(Color.web(green)); }
+       else {
+           username_Label.setTextFill(Color.web(gray));
+           usernameReq_Label.setTextFill(Color.web(gray)); }
+    }
+
+    public boolean verifyPasswordContain() {
+        return !passwordInput1.getText().contains( usernameInput.getText() )
+                && !passwordInput2.getText().contains( usernameInput.getText());
+    }
+
+    public boolean verifyPasswordFieldMatch()
+    { return passwordInput1.getText().equals( passwordInput2.getText() ); }
+
+    public boolean verifyNonEmptyPWField()
+    { return passwordInput1.getText().length() != 0 && passwordInput2.getText().length() != 0; }
+
+    public boolean verifyPasswordMinLength()
+    { return passwordInput1.getText().length() >= 8 && passwordInput2.getText().length() >= 8; }
+
+    public void verifyPasswordInput(){
+        if (verifyPasswordContain() && verifyNonEmptyPWField()) { notContainUserReq_Label.setTextFill(Color.web(green)); }
+        else {notContainUserReq_Label.setTextFill(Color.web(gray));}
+
+        if (verifyPasswordMinLength() && verifyNonEmptyPWField()) { hasMinReq_Label.setTextFill( Color.web(green)); }
+        else { hasMinReq_Label.setTextFill( Color.web(gray));}
+
+        if (verifyPasswordFieldMatch() && verifyNonEmptyPWField()) { pwFieldsMustMatch_Label.setTextFill( Color.web(green)); }
+        else {pwFieldsMustMatch_Label.setTextFill( Color.web(gray)); }
+
+        if (verifyPasswordContain() && verifyPasswordMinLength() && verifyPasswordFieldMatch() && verifyNonEmptyPWField()) {
+            password_Label.setTextFill( Color.web(green)); }
+        else { password_Label.setTextFill( Color.web(gray));}
+    }
 }
