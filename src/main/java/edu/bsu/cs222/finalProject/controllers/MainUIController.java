@@ -26,21 +26,23 @@ public class MainUIController implements Initializable {
     private Parent fxml;
 
     @Override
-    public void initialize( URL location , ResourceBundle resources ) {
+    public void initialize( URL location , ResourceBundle resources )  {
         alreadyHaveCC_Label.setVisible( false );
         bsu_Student_Label.setVisible( false );
+        try { loadUI_IntoVBox(); } catch ( IOException ignored ){}
         TranslateTransition transition = new TranslateTransition( Duration.seconds( 1 ), vBox);
         transition.setToX( vBox.getLayoutX() * 20 );
         transition.play();
         transition.setOnFinished( (e) -> {
-            try {
-                fxml = FXMLLoader.load( getClass().getResource( "/ui/loginUI.fxml" ));
-                vBox.getChildren().removeAll();
-                vBox.getChildren().setAll( fxml );
-
-            }
+            try { loadUI_IntoVBox(); }
             catch ( IOException ignored ) {}
         } );
+    }
+
+    public void loadUI_IntoVBox() throws IOException {
+        fxml = FXMLLoader.load( getClass().getResource( "/ui/loginUI.fxml" ));
+        vBox.getChildren().removeAll();
+        vBox.getChildren().setAll( fxml );
     }
 
     @FXML
