@@ -96,11 +96,11 @@ public class SignUpUIController {
     private void displayInvalidUserInfo_Prompt()
     { displayPromptFor3secs( invalidUserInfo_Prompt ); }
 
-    public boolean verifyUserNameLength()
+    public boolean verifyUserName_Length()
     { return usernameInput.getText().length() >= 5; }
 
     public void verifyUserInput() {
-       if (verifyUserNameLength()) {
+       if ( verifyUserName_Length()) {
            username_Label.setTextFill(Color.web(green));
            usernameReq_Label.setTextFill(Color.web(green)); }
        else {
@@ -108,30 +108,30 @@ public class SignUpUIController {
            usernameReq_Label.setTextFill(Color.web(gray)); }
     }
 
-    public boolean verifyPasswordContain()
+    public boolean verifyPassword_NotContainUser()
     { return !passwordInput1.getText().contains( usernameInput.getText() ); }
 
-    public boolean verifyPasswordFieldMatch()
+    public boolean verifyPassword_FieldsMatch()
     { return passwordInput1.getText().equals( passwordInput2.getText() ); }
 
-    public boolean verifyNonEmptyPWField()
+    public boolean verifyNonEmpty_PWField()
     { return passwordInput1.getText().length() != 0; }
 
-    public boolean verifyPasswordMinLength()
+    public boolean verifyPassword_MinLength()
     { return passwordInput1.getText().length() >= 8; }
 
     public void verifyPasswordInput(){
-        if (verifyPasswordContain() && verifyNonEmptyPWField()) { notContainUserReq_Label.setTextFill(Color.web(green)); }
+        if ( verifyPassword_NotContainUser() && verifyNonEmpty_PWField()) { notContainUserReq_Label.setTextFill(Color.web(green)); }
         else {notContainUserReq_Label.setTextFill(Color.web(gray));}
 
-        if (verifyPasswordMinLength() && verifyNonEmptyPWField()) { hasMinReq_Label.setTextFill( Color.web(green)); }
-        else { hasMinReq_Label.setTextFill( Color.web(gray));}
+        if ( verifyPassword_MinLength() && verifyNonEmpty_PWField()) { hasMinReq_Label.setTextFill(Color.web(green)); }
+        else { hasMinReq_Label.setTextFill(Color.web(gray));}
 
-        if (verifyPasswordFieldMatch() && verifyNonEmptyPWField()) { pwFieldsMustMatch_Label.setTextFill( Color.web(green)); }
-        else {pwFieldsMustMatch_Label.setTextFill( Color.web(gray)); }
+        if ( verifyPassword_FieldsMatch() && verifyNonEmpty_PWField()) { pwFieldsMustMatch_Label.setTextFill(Color.web(green)); }
+        else {pwFieldsMustMatch_Label.setTextFill(Color.web(gray)); }
 
-        if (verifyPasswordContain() && verifyPasswordMinLength() && verifyPasswordFieldMatch() && verifyNonEmptyPWField()) {
-            password_Label.setTextFill( Color.web(green)); }
-        else { password_Label.setTextFill( Color.web(gray));}
+        if ( verifyPassword_NotContainUser() && verifyPassword_MinLength() && verifyPassword_FieldsMatch() && verifyNonEmpty_PWField()) {
+            password_Label.setTextFill(Color.web(green)); }
+        else { password_Label.setTextFill(Color.web(gray));}
     }
 }
