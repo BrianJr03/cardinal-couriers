@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TranslateTransitionBuilder">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/libs/TranslateTransitionBuilder.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
