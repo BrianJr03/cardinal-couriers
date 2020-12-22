@@ -34,6 +34,7 @@
 
 .white-pane{
     -fx-background-color: #FFF;
+    -fx-border-color: #000000;
 }
 
 .logoutBtn:hover{

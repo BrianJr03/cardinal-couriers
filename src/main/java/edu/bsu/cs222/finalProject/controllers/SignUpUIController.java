@@ -88,7 +88,7 @@ public class SignUpUIController {
 
     public void verifyUserInfo() throws IOException {
         if (isValidUserName(usernameInput.getText()) && isValidPassword(usernameInput.getText(),
-                passwordInput1.getText()) && passwordInput1.getText().equals( passwordInput2.getText() ))
+                passwordInput1.getText()) && passwordInput1.getText().equals( passwordInput2.getText()))
         { launchDeliveryUI(); }
         else { displayInvalidUserInfo_Prompt(); }
     }
@@ -108,19 +108,17 @@ public class SignUpUIController {
            usernameReq_Label.setTextFill(Color.web(gray)); }
     }
 
-    public boolean verifyPasswordContain() {
-        return !passwordInput1.getText().contains( usernameInput.getText() )
-                && !passwordInput2.getText().contains( usernameInput.getText());
-    }
+    public boolean verifyPasswordContain()
+    { return !passwordInput1.getText().contains( usernameInput.getText() ); }
 
     public boolean verifyPasswordFieldMatch()
     { return passwordInput1.getText().equals( passwordInput2.getText() ); }
 
     public boolean verifyNonEmptyPWField()
-    { return passwordInput1.getText().length() != 0 && passwordInput2.getText().length() != 0; }
+    { return passwordInput1.getText().length() != 0; }
 
     public boolean verifyPasswordMinLength()
-    { return passwordInput1.getText().length() >= 8 && passwordInput2.getText().length() >= 8; }
+    { return passwordInput1.getText().length() >= 8; }
 
     public void verifyPasswordInput(){
         if (verifyPasswordContain() && verifyNonEmptyPWField()) { notContainUserReq_Label.setTextFill(Color.web(green)); }
