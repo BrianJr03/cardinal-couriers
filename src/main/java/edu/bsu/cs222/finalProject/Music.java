@@ -20,11 +20,11 @@ public class Music {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( new File( filePath ).getAbsoluteFile() );
         clip = AudioSystem.getClip();
         clip.open( audioInputStream );
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     public void play() {
         clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         clipStatus = "playing";
     }
 
@@ -38,11 +38,11 @@ public class Music {
         clipStatus = "paused";
     }
 
-    public void stop() {
-        currentFrame = 0L;
-        clip.stop();
-        clip.close();
-    }
+//    public void stop() {
+//        currentFrame = 0L;
+//        clip.stop();
+//        clip.close();
+//    }
 
 //    public void resumeAudio() throws UnsupportedAudioFileException,
 //            IOException, LineUnavailableException {

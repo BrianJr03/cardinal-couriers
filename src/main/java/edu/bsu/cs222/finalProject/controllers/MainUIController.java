@@ -52,12 +52,11 @@ public class MainUIController implements Initializable {
 
     @Override
     public void initialize( URL location , ResourceBundle resources ) {
-        audioPlayer.clipStatus = "playing";
+        hideMusicInfo();
         initSnowBalls(snowballs);
         bsu_Student_Label.setVisible( false );
         alreadyHaveCC_Label.setVisible( false );
         try { loadUI_IntoVBox(); } catch ( IOException ignored ){}
-        try { playSong(); } catch ( Exception e ) { e.printStackTrace(); }
         TranslateTransition sceneTransition  = new TranslateTransition( Duration.seconds( 1 ), vBox);
         sceneTransition.setToX( vBox.getLayoutX() * 20 );
         sceneTransition.play();
