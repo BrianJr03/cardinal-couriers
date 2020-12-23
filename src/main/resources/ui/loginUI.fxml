@@ -53,10 +53,10 @@
       <Label fx:id="invalidUserInfo_Prompt" layoutX="150.0" layoutY="491.0" text="Invalid username or password" textFill="#da0909" visible="false" />
       <Label layoutX="143.0" layoutY="339.0" prefHeight="17.0" prefWidth="167.0" textFill="#a3a3a3" />
    </Pane>
-   <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../pngs/insta.png" />
    </ImageView>
-   <Label layoutX="446.0" layoutY="546.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
+   <Label layoutX="446.0" layoutY="531.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
       <font>
          <Font name="High Tower Text" size="13.0" />
       </font>

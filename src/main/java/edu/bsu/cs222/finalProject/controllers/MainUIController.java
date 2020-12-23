@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject.controllers;
 
+import edu.bsu.cs222.finalProject.Music;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -23,6 +26,12 @@ public class MainUIController implements Initializable {
     public AnchorPane rootPane;
     public Pane pane;
     @FXML
+    private Label nowPlaying_Label;
+    @FXML
+    private Label songTitle_Label;
+    @FXML
+    private Label artist_Label;
+    @FXML
     private Label alreadyHaveCC_Label;
     @FXML
     private Label bsu_Student_Label;
@@ -33,24 +42,45 @@ public class MainUIController implements Initializable {
     @FXML
     private Parent fxml;
 
-    Random random = new Random();
-    Circle[] snowballs = new Circle[2000];
+    private final Random random = new Random();
+    private final Circle[] snowballs = new Circle[2000];
 
+    Music audioPlayer = new Music();
+
+    public MainUIController() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {}
 
     @Override
-    public void initialize( URL location , ResourceBundle resources )  {
+    public void initialize( URL location , ResourceBundle resources ) {
+        audioPlayer.clipStatus = "playing";
         initSnowBalls(snowballs);
-        alreadyHaveCC_Label.setVisible( false );
         bsu_Student_Label.setVisible( false );
+        alreadyHaveCC_Label.setVisible( false );
         try { loadUI_IntoVBox(); } catch ( IOException ignored ){}
-        TranslateTransition transition = new TranslateTransition( Duration.seconds( 1 ), vBox);
-        transition.setToX( vBox.getLayoutX() * 20 );
-        transition.play();
-        transition.setOnFinished( (e) -> {
-            try { loadUI_IntoVBox(); }
-            catch ( IOException ignored ) {}
-        } );
+        try { playSong(); } catch ( Exception e ) { e.printStackTrace(); }
+        TranslateTransition sceneTransition  = new TranslateTransition( Duration.seconds( 1 ), vBox);
+        sceneTransition.setToX( vBox.getLayoutX() * 20 );
+        sceneTransition.play();
+        sceneTransition.setOnFinished( (e) ->
+        { try { loadUI_IntoVBox(); } catch ( IOException ignored ) {} } );
     }
+
+    public void playSong()
+    { audioPlayer.play(); showMusicInfo();}
+
+    public void showMusicInfo() {
+        artist_Label.setVisible( true );
+        songTitle_Label.setVisible( true );
+        nowPlaying_Label.setVisible( true );
+    }
+    public void hideMusicInfo() {
+        artist_Label.setVisible( false );
+        songTitle_Label.setVisible( false );
+        nowPlaying_Label.setVisible( false );
+    }
+
+    public void pauseSong ()
+    { audioPlayer.pause(); hideMusicInfo(); }
 
     public void initSnowBalls(Circle[] snowballs) {
         Random random = new Random();
@@ -60,21 +90,21 @@ public class MainUIController implements Initializable {
             Color color = Color.rgb(255, 255, 255, random.nextDouble());
             snowballs[i].setFill(color);
             this.pane.getChildren().add(snowballs[i]);
-            Raining(snowballs[i]);
+            raining(snowballs[i]);
         }
     }
 
-    public void Raining(Circle snowball) {
+    public void raining( Circle snowball) {
         int windowHeight = 534; int windowWidth = 1225;
-        snowball.setCenterX(random.nextInt(windowWidth));
         int time = 10 + random.nextInt(50);
-        TranslateTransition fall = new TranslateTransition(Duration.seconds( time ));
-        fall.setNode(snowball);
-        fall.setFromY(-200);
-        fall.setToY(windowHeight+200);
-        fall.setToX(random.nextDouble() * pane.getLayoutX());
-        fall.setOnFinished( t -> Raining(snowball) );
-        fall.play();
+        TranslateTransition snowfall_Animation = new TranslateTransition(Duration.seconds( time ));
+        snowball.setCenterX(random.nextInt(windowWidth));
+        snowfall_Animation.setNode(snowball);
+        snowfall_Animation.setFromY(-200);
+        snowfall_Animation.setToY(windowHeight+200);
+        snowfall_Animation.setToX(random.nextDouble() * pane.getLayoutX());
+        snowfall_Animation.setOnFinished( t -> raining(snowball) );
+        snowfall_Animation.play();
     }
 
     public void loadUI_IntoVBox() throws IOException {

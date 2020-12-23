@@ -63,10 +63,10 @@
       <Label fx:id="usernameReq_Label" layoutX="181.0" layoutY="159.0" text="minimum of 5 characters" textFill="#a3a3a3" />
       <Label fx:id="pwFieldsMustMatch_Label" layoutX="178.0" layoutY="211.0" prefHeight="17.0" prefWidth="218.0" text="both password fields must match" textFill="#a3a3a3" />
     </Pane>
-    <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="430.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../pngs/insta.png" />
     </ImageView>
-    <Label layoutX="446.0" layoutY="546.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
+    <Label layoutX="446.0" layoutY="531.0" prefHeight="38.0" prefWidth="130.0" text="\@BSUGrocery_Shop">
         <font>
             <Font name="High Tower Text" size="13.0" />
         </font>

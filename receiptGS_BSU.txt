@@ -1,11 +1,10 @@
-Receipt for order 1510N
+Receipt for order 1231N
 ---------------------------------------
-Ice Cream | 4.99 | QTY:3
-Bacon | 2.09 | QTY:3
-BBQ Sauce | 1.99 | QTY:3
-Ketchup | 1.89 | QTY:4
+Bread | 0.99 | QTY:7
+Premium Salsa | 5.19 | QTY:8
+Tomatoes | 1.29 | QTY:9
 
-Total: $34.77
+Total: $60.06
 Date purchased: 2020-12-22
 ---------------------------------------------
 

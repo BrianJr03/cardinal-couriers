@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="680.0" prefWidth="1228.0" styleClass="parent2" stylesheets="@../stylesheets/mainUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.MainUIController">
+<AnchorPane prefHeight="564.0" prefWidth="1228.0" styleClass="parent2" stylesheets="@../stylesheets/mainUI_stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.controllers.MainUIController">
    <Pane fx:id="pane" layoutX="2.0" layoutY="140.0" prefHeight="535.0" prefWidth="1225.0" styleClass="pane">
       <Label layoutX="129.0" layoutY="107.0" text="Don't have an account?" textFill="WHITE">
          <font>
@@ -27,14 +27,23 @@
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="1185.0" onMouseClicked="#closeProgram" pickOnBounds="true" preserveRatio="true">
          <Image url="@../pngs/close_icon.png" />
       </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="1193.0" layoutY="217.0" onMouseClicked="#playSong" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../pngs/play.png" />
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="25.0" layoutX="1193.0" layoutY="255.0" onMouseClicked="#pauseSong" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../pngs/pause.png" />
+      </ImageView>
       <Label fx:id="bsu_Student_Label" layoutX="905.0" layoutY="107.0" text="Ball State Student?" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Label fx:id="signUpToday_Label" layoutX="192.0" layoutY="137.0" text="Sign Up Today!" textFill="WHITE" />
-      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1166.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="59.0" fitWidth="47.0" layoutX="1182.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../pngs/bsu.png" />
       </ImageView>
+      <Label fx:id="nowPlaying_Label" layoutX="31.0" layoutY="482.0" text="Now Playing : " textFill="WHITE" />
+      <Label fx:id="songTitle_Label" layoutX="108.0" layoutY="482.0" text="Encomium" textFill="WHITE" />
+      <Label fx:id="artist_Label" layoutX="107.0" layoutY="504.0" text="by Evan Schaeffer" textFill="WHITE" />
    </Pane>
 </AnchorPane>
