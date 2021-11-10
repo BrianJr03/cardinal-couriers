@@ -1,7 +1,7 @@
 # Final_Grocery-Shop
 Repository for Final Project by Hailey Leonard, Caleb Van Lue, Brian Walker, Monika Krcoski
 
-#NO LONGER FUNTIONAL; Google Maps API license expired
+# NO LONGER FUNTIONAL; Google Maps API license expired
 
 About:
     Cardinal Couriers is a mock grocery delivery service designed for students living on or near Ball State University's campus. Through this JavaFX application, users are able to choose a local store of their preference, verify their distance from BSU's campus, select items from the store of interest, and order them in a simple and easy-to-use interface. While this is a mock application and there is no true ordering/delivering aspect to this project, that functionality could be easily added in the future with slight modification. Application has been created using Java and JavaFX JDK 15. 
