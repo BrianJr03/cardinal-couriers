@@ -34,7 +34,7 @@ public class DeliveryUIController {
     private AnchorPane rootPane;
 
     private DeliveryInfo deliveryInfo = new DeliveryInfo("","","","");
-    public Button continueButton;
+    public Button byPass, continueButton;
     public TextField addressTwo;
 
     public void launchUI(String uiPath) throws IOException {
@@ -66,9 +66,9 @@ public class DeliveryUIController {
         deliveryInfo = new DeliveryInfo(addressOne.getText(),zipCode.getText(),
                 state.getText(), city.getText());
         if (deliveryInfoIsValid())
-            { verifyDistance(); }
+        { verifyDistance(); }
         else
-            { displayInvalidDeliveryInfo_Prompt(); }
+        { displayInvalidDeliveryInfo_Prompt(); }
     }
 
     public void verifyDistance() throws IOException {
